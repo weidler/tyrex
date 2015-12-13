@@ -1,27 +1,27 @@
-Universität Heidelberg
+###Universität Heidelberg
 
-Insitut für Computerlinguistik
+###Insitut für Computerlinguistik
 
-Designing Experiments for Machine Learning
+###Designing Experiments for Machine Learning
 
-Éva Mújdricza-Maydt
+###Éva Mújdricza-Maydt
 
-Wintersemester 2015/16
-
-
-Gruppe: TextErk (Text Type Recognition)
-
-Mitglieder: Svenja Lohse, Tonio Weidler, Lydia Hofmann
+###Wintersemester 2015/16
 
 
-Statusbericht am 16.12.2015
+#####Gruppe: TextErk (Text Type Recognition)
+
+#####Mitglieder: Svenja Lohse, Tonio Weidler, Lydia Hofmann
 
 
+###Statusbericht am 16.12.2015
 
 
 
 
-Zeitplan/Aufgaben:
+
+
+#####Zeitplan/Aufgaben:
 
 Korpus erstellen
 geeignete Algorithmen finden
