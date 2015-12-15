@@ -1,1 +1,1 @@
-# texttyperecognition
+# TyRex
