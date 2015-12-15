@@ -6,7 +6,7 @@ TexErk aka **TyReX** (Text Type Recognition)
 ===================
 
 *Statusbericht*  16.12.2015  
-Authoren: Lydia Hofmann, Svenja Lohse, Tonio Weidler  
+Autoren: Lydia Hofmann, Svenja Lohse, Tonio Weidler  
 Betreuer: Éva Mújdricza-Maydt  
 
 Ziel
