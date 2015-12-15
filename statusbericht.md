@@ -1,33 +1,53 @@
-###Universität Heidelberg
+Designing Experiments for Machine Learning, WiSe 2015/16  
+Institute of Computational Linguistics  
+Heidelberg University, Germany  
 
-###Insitut für Computerlinguistik
+TextErk (Text Type Recognition)  
+===================
 
-###Designing Experiments for Machine Learning
+*Statusbericht*  16.12.2015  
+Authoren: Lydia Hofmann, Svenja Lohse, Tonio Weidler  
+Betreuer: Éva Mújdricza-Maydt  
 
-###Éva Mújdricza-Maydt
+Ziel
+------
+Klassifizierung und Erkennung von Texten anhand ihrer Textart  
 
-###Wintersemester 2015/16
+Hauptaufgabenverteilung:
+------
+*Lydia*: Dokumentation, Ressourcen  
+*Svenja*: Recherche, Features  
+*Tonio*: Programmierung  
+-> alle helfen gegenseitig   
 
+To Do:
+------
+*Texte verschiedener Arten finden  
+*Vorverarbeitung (Formatierung und Linguistik) zur Feature-Extraktion  
+*geeignete Algorithmen finden
+*Feature-Extraktion
+*Aufbau einer DB mit extrahierten Informationen
+*Analyseprogramm
 
-#####Gruppe: TextErk (Text Type Recognition)
+??.01.16 Präsentation des Projekts  
+??.??.16 Abgabe des Projekts (in den Semesterferien)  
 
-#####Mitglieder: Svenja Lohse, Tonio Weidler, Lydia Hofmann
+Weitere Ideen:
+------
+**Programm-Struktur**
+Text -> "Parser"/Preprocessing/Normierung -> niceText -> 'FeatureExtraktion'Module <-> Features in JSON -> ARFF Datei  
 
+**Mögliche Ressourcen**  
+*ella-Ressourcen: "Projekt Guttenberg"
+*Textklassen: Zeitungsartikel; Poesie/Gedichte; literarische Prosatexte; wissenschaftliche Artikel; ...
+*darauf achten: Sprache(Deutsch), Länge(Auschnitte?), Format(normieren?), Anzahl(ausgeglichen)
 
-###Statusbericht am 16.12.2015
+**Mögliche Algorithmen**  
+*k-means
 
-
-
-
-
-
-#####Zeitplan/Aufgaben:
-
-Korpus erstellen
-geeignete Algorithmen finden
-Programmieren der einzelnen Features
-
-
-00.01.16 Präsentation des Projekts
-00.00.16 Abgabe des Projekts (in den Semesterferien)
-
+**Mögliche Features**  
+- Textlänge  
+- Satzbau: Verbstellung, Satzlänge, Verschachtelung (Anzahl Verben; Kommata; Dependenzen), Reim
+- Terminologien (Vergleich mit Fachlexika oder Trainingskorpora)
+- Worthäufigkeiten
+- tbc...
