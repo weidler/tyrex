@@ -2,7 +2,7 @@ Designing Experiments for Machine Learning, WiSe 2015/16
 Institute of Computational Linguistics  
 Heidelberg University, Germany  
 
-TextErk (Text Type Recognition)  
+TexErk (Text Type Recognition)  
 ===================
 
 *Statusbericht*  16.12.2015  
