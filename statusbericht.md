@@ -2,7 +2,7 @@ Designing Experiments for Machine Learning, WiSe 2015/16
 Institute of Computational Linguistics  
 Heidelberg University, Germany  
 
-TexErk (Text Type Recognition)  
+TexErk aka **TyReX** (Text Type Recognition)  
 ===================
 
 *Statusbericht*  16.12.2015  
