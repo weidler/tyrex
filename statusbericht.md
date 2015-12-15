@@ -34,7 +34,7 @@ To Do:
 
 Weitere Ideen:
 ------
-**Programm-Struktur**
+**Programm-Struktur**  
 Text *->* "Parser"/Preprocessing/Normierung *->* niceText *->* 'FeatureExtraktion'Module *<->* Features in JSON *->* ARFF Datei  
 
 **Mögliche Ressourcen**  
