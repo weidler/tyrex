@@ -22,12 +22,12 @@ Hauptaufgabenverteilung:
 
 To Do:
 ------
--Texte verschiedener Arten finden  
--Vorverarbeitung (Formatierung und Linguistik) zur Feature-Extraktion  
--geeignete Algorithmen finden
--Feature-Extraktion
--Aufbau einer DB mit extrahierten Informationen
--Analyseprogramm
+- Texte verschiedener Arten finden  
+- Vorverarbeitung (Formatierung und Linguistik) zur Feature-Extraktion  
+- geeignete Algorithmen finden
+- Feature-Extraktion
+- Aufbau einer DB mit extrahierten Informationen
+- Analyseprogramm
 
 ??.01.16 Präsentation des Projekts  
 ??.??.16 Abgabe des Projekts (in den Semesterferien)  
@@ -35,15 +35,15 @@ To Do:
 Weitere Ideen:
 ------
 **Programm-Struktur**
-Text -> "Parser"/Preprocessing/Normierung -> niceText -> 'FeatureExtraktion'Module <-> Features in JSON -> ARFF Datei  
+Text *->* "Parser"/Preprocessing/Normierung *->* niceText *->* 'FeatureExtraktion'Module *<->* Features in JSON *->* ARFF Datei  
 
 **Mögliche Ressourcen**  
--ella-Ressourcen: "Projekt Guttenberg"  
--Textklassen: Zeitungsartikel; Poesie/Gedichte; literarische Prosatexte; wissenschaftliche Artikel; ...  
--darauf achten: Sprache(Deutsch), Länge(Auschnitte?), Format(normieren?), Anzahl(ausgeglichen)  
+- ella-Ressourcen: "Projekt Guttenberg"  
+- Textklassen: Zeitungsartikel; Poesie/Gedichte; literarische Prosatexte; wissenschaftliche Artikel; ...  
+- darauf achten: Sprache(Deutsch), Länge(Auschnitte?), Format(normieren?), Anzahl(ausgeglichen)  
 
 **Mögliche Algorithmen**  
-*k-means
+- k-means
 
 **Mögliche Features**  
 - Textlänge  
