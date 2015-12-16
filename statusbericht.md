@@ -39,8 +39,8 @@ Weitere Ideen:
 Text *->* "Parser"/Preprocessing/Normierung *->* niceText *->* 'FeatureExtraktion'Module *<->* Features in JSON *->* ARFF Datei  
 
 **Mögliche Ressourcen**  
-- ella-Ressourcen: "Projekt Guttenberg"  
-- Brown-Korpus (Zugriff von nltk auf verschiedene Genres)
+- ella-Ressourcen: "Projekt Guttenberg", dt
+- Brown-Korpus, engl (Zugriff von nltk auf verschiedene Genres, schon vorsortiert; z.B. reportage, reviews, science, governmental documents, fiction)
 - Textklassen: Zeitungsartikel; Poesie/Gedichte; literarische Prosatexte; wissenschaftliche Artikel; ...  
 - darauf achten: Sprache(Deutsch), Länge(Auschnitte?), Format(normieren?), Anzahl(ausgeglichen)  
 
@@ -48,8 +48,13 @@ Text *->* "Parser"/Preprocessing/Normierung *->* niceText *->* 'FeatureExtraktio
 - k-means
 
 **Mögliche Features**  
-- Textlänge: einfach zu messen anhand der Anzahl der Wörter eines Textes; Ermittlung einer üblichen Spanne  
-- Satzbau: Verbstellung, Satzlänge, Verschachtelung (Anzahl Verben; Kommata; Dependenzen), Reim
-- Terminologien (Vergleich mit Fachlexika oder Trainingskorpora)
+- Textlänge: einfach zu messen anhand der Anzahl der Wörter eines Textes; Ermittlung einer üblichen Spanne 
+- Textstruktur: Anzahl der Paragraphen/Absätze/Strophen
+- Satzbau: Verbstellung, Satzlänge, Komplexität/Verschachtelung (Anzahl Verben; Kommata; Dependenzen -> Parsing), Reim (der Einfachheit halber: die letzten 2-3 Buchstaben eines Wortes am Ende eines Verses)
+- Terminologien (Vergleich mit Fachlexika oder Trainingskorpora: Sammlung typischer Begriffe, Inhalts-/Schlüsselwörter; wordnet?)
 - Worthäufigkeiten
 - tbc...
+- 
+
+**TO DECIDE**
+- Sprache des Korpus (dt/engl)
