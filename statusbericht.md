@@ -57,3 +57,10 @@ Text *->* "Parser"/Preprocessing/Normierung *->* niceText *->* 'FeatureExtraktio
 
 **TO DECIDE**
 - Sprache des Korpus (dt/engl)
+
+Literaturverzeichnis:
+------
+
+-
+-
+-
