@@ -54,7 +54,6 @@ Text *->* "Parser"/Preprocessing/Normierung *->* niceText *->* 'FeatureExtraktio
 - Terminologien (Vergleich mit Fachlexika oder Trainingskorpora: Sammlung typischer Begriffe, Inhalts-/Schlüsselwörter; wordnet?)
 - Worthäufigkeiten
 - tbc...
-- 
 
 **TO DECIDE**
 - Sprache des Korpus (dt/engl)
