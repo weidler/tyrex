@@ -33,7 +33,7 @@ To Do:
 - ??.01.16 Präsentation des Projekts  
 - ??.??.16 Abgabe des Projekts (in den Semesterferien)  
 
-Weitere Ideen:
+Ansätze:
 ------
 **Programm-Struktur**  
 Die Texte (*raw_data*) werden im Rohformat nach Dateitypen/Formatierung sortiert und dementsprechend an den geeigneten **Parser** übergeben.
