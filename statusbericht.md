@@ -30,8 +30,8 @@ To Do:
 - Analyseprogramm
 
 **Deadlines**
-??.01.16 Präsentation des Projekts  
-??.??.16 Abgabe des Projekts (in den Semesterferien)  
+- ??.01.16 Präsentation des Projekts  
+- ??.??.16 Abgabe des Projekts (in den Semesterferien)  
 
 Weitere Ideen:
 ------
