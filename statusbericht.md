@@ -51,8 +51,8 @@ Text *->* "Parser"/Preprocessing/Normierung *->* niceText *->* 'FeatureExtraktio
 - Textlänge: einfach zu messen anhand der Anzahl der Wörter eines Textes; Ermittlung einer üblichen Spanne 
 - Textstruktur: Anzahl der Paragraphen/Absätze/Strophen
 - Satzbau: Verbstellung, Satzlänge, Komplexität/Verschachtelung (Anzahl Verben; Kommata; Dependenzen -> Parsing), Reim (der Einfachheit halber: die letzten 2-3 Buchstaben eines Wortes am Ende eines Verses)
-- Terminologien (Vergleich mit Fachlexika oder Trainingskorpora: Sammlung typischer Begriffe, Inhalts-/Schlüsselwörter; wordnet?)
-- Worthäufigkeiten
+- Terminologien (Vergleich mit Fachlexika oder Trainingskorpora: Sammlung typischer/häufiger (hoher count) Begriffe, Inhalts-/Schlüsselwörter; wordnet?)
+- Erzählperspektive: auktorial, neutral, ich, (personal); direkte Rede: 'du', 'ihr', 'sie' (mit Deklinationen)
 - tbc...
 
 **TO DECIDE**
@@ -61,6 +61,4 @@ Text *->* "Parser"/Preprocessing/Normierung *->* niceText *->* 'FeatureExtraktio
 Literaturverzeichnis:
 ------
 
--
--
 -
