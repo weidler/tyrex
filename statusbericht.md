@@ -40,6 +40,7 @@ Text *->* "Parser"/Preprocessing/Normierung *->* niceText *->* 'FeatureExtraktio
 
 **Mögliche Ressourcen**  
 - ella-Ressourcen: "Projekt Guttenberg"  
+- Brown-Korpus (Zugriff von nltk auf verschiedene Genres)
 - Textklassen: Zeitungsartikel; Poesie/Gedichte; literarische Prosatexte; wissenschaftliche Artikel; ...  
 - darauf achten: Sprache(Deutsch), Länge(Auschnitte?), Format(normieren?), Anzahl(ausgeglichen)  
 
@@ -47,7 +48,7 @@ Text *->* "Parser"/Preprocessing/Normierung *->* niceText *->* 'FeatureExtraktio
 - k-means
 
 **Mögliche Features**  
-- Textlänge  
+- Textlänge: einfach zu messen anhand der Anzahl der Wörter eines Textes; Ermittlung einer üblichen Spanne  
 - Satzbau: Verbstellung, Satzlänge, Verschachtelung (Anzahl Verben; Kommata; Dependenzen), Reim
 - Terminologien (Vergleich mit Fachlexika oder Trainingskorpora)
 - Worthäufigkeiten
