@@ -11,7 +11,7 @@ Betreuer: Éva Mújdricza-Maydt
 
 Ziel
 ------
-Klassifizierung und Erkennung von Texten anhand ihrer Textart  
+Klassifizierung von Texten anhand ihrer Textart  
 
 Hauptaufgabenverteilung:
 ------
