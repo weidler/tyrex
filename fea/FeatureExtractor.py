@@ -13,6 +13,7 @@ class FeatureExtractor():
 			self.source = self.readFile("../data/"+source)
 		except IOError:
 			print("SOURCE FILE does not exist. Please provide valid path name.\nFiles are expected to be in '../data/'")
+			exit()
 
 		if json_data:
 			self.data = json.load(json_data)
@@ -26,7 +27,12 @@ class FeatureExtractor():
 
 	# EXTRACTION ALGORITHMS
 	def calcExample(self):
-		pass
+		"""
+			Structure calc* methods like this. Calculate based on source string and RETURN the value that
+			is meant to be written into the final output
+		"""
+
+		return len(self.source)
 
 	def calcTextLength(self):
 		pass
@@ -42,9 +48,11 @@ class FeatureExtractor():
 
 	# MAIN PROCESSORS
 	def finalize(self):
-		pass
+		if "example" not in self.data.keys():
+			self.data.update({"example": self.calcExample()})
 
+		return self.data
 
 if __name__ == "__main__":
-	fea = FeatureExtractor("test.txt")
-	fea.finalize()
+	fea = FeatureExtractor("normalized_test.txt")
+	print(fea.finalize())
