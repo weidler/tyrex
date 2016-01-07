@@ -1,4 +1,6 @@
+import sys
 import json
+import re
 from pathlib import Path
 
 class FEA():
@@ -14,10 +16,12 @@ class FEA():
 
 	def __init__(self, source, use_json=False):
 		try:
-			self.filename = source.split(".")[0]
-			self.source = self.readFile("../data/"+source)
+			m = re.search(".*\/(.*)\..*", source)
+			self.filename = m.group(1)
+			print(self.filename)
+			self.source = self.readFile(source)
 		except IOError:
-			print("SOURCE FILE does not exist. Please provide valid path name.\nFiles are expected to be in '../data/'")
+			print("SOURCE FILE does not exist. Please provide valid path name.")
 			exit()
 
 		if use_json:
@@ -60,7 +64,7 @@ class FEA():
 		# TODO
 		pass
 
-	def calcSentenceLenthMax(self):
+	def calcSentenceLengthMax(self):
 		# TODO
 		pass
 
@@ -81,5 +85,8 @@ class FEA():
 
 
 if __name__ == "__main__":
-	fea = FeatureExtractionAlgorithms("normalized_test_die_zwote.txt")
+	if len(sys.argv) != 2:
+		print("USAGE: python FeatureExtractionAlgorithms.py [filename]\n")
+		sys.exit()
+	fea = FEA(sys.argv[1])
 	fea.finalize()

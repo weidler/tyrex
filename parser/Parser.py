@@ -1,3 +1,4 @@
+import sys
 import re
 from pathlib import Path
 
@@ -5,6 +6,7 @@ class Parser():
 	def __init__(self, source_dir, target_dir, prefix="normalized"):
 		self.files = list(Path(source_dir).rglob("*.txt"))
 		if len(self.files) < 1:
+			print(source_dir)
 			print("No files found! Exiting...")
 			exit()
 
@@ -48,5 +50,8 @@ class Parser():
 
 
 if __name__ == "__main__":
-	p = Parser("../raw_data/", "../data/")
+	if len(sys.argv) != 3:
+		print("USAGE: python Parser[XY].py [source_dir] [destination_dir]")
+		sys.exit()
+	p = Parser(sys.argv[1], sys.argv[2])
 	p.finalize()
