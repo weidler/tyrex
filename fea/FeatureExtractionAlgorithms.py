@@ -65,23 +65,27 @@ class FEA():
 	def calcSentenceLengthAvg(self):
 		# TODO by Svenja
 		# mit regex...
-		#m = re.search("...", source)
-		allPhrases = 0
-		NumOfPhrases = 0
-		for phrase in text:
-			i += 1
-			allPhrases += len(phrases)
-		averagePhrase = allPhrases/NumOfPhrases
-		return averagePhrase
+		#m = re.search("(.*)[.,-\/#!$%\^&\*;:{}=\-_`~()]", self.source)
+		#...
+		#allPhrases = 0
+		#NumOfPhrases = 0
+		#run=0
+		#for i in range(len()):
+		#	run += 1
+		#	allPhrases += len(phrases)
+		#averagePhrase = allPhrases/NumOfPhrases
+		#return averagePhrase
+		pass
 
 	def calcSentenceLengthMax(self):
 		# TODO (by Svenja)
 		# mit regex...
-		sentenceLengthMax = 0
-		for phrase in text:
-			if len(phrase)>= sentenceLengthMax:
-				sentenceLengthMax = len(phrase)
-		return sentenceLengthMax
+		#sentenceLengthMax = 0
+		#for phrase in text:
+		#	if len(phrase)>= sentenceLengthMax:
+		#		sentenceLengthMax = len(phrase)
+		#return sentenceLengthMax
+		pass
 
 	def calcSentenceLengthMin(self):
 		# TODO (by Svenja)
