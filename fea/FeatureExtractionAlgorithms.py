@@ -14,18 +14,20 @@ class FEA():
 		data	-->	dict object of already calculated data and destination of newly calculated data
 	"""
 
-	def __init__(self, source, use_json=False):
+	def __init__(self, source, map_dir, use_json=False):
+
+		m = re.search(".*\/(.*)\..*", source)
+		self.filename = m.group(1)
+		self.map_dir = map_dir
+
 		try:
-			m = re.search(".*\/(.*)\..*", source)
-			self.filename = m.group(1)
-			print(self.filename)
 			self.source = self.readFile(source)
 		except IOError:
 			print("SOURCE FILE does not exist. Please provide valid path name.")
 			exit()
 
 		if use_json:
-			self.data = json.loads(self.readFile("../feature_maps/" + source.split("."[0])))
+			self.data = json.loads(self.readFile(self.map_dir + source.split("."[0])))
 		else:
 			self.data = {}
 
@@ -35,7 +37,7 @@ class FEA():
 			return f.read()
 
 	def writeFeatureMaps(self):
-		path = Path("../feature_maps/" + self.filename + ".json")
+		path = Path(self.map_dir + self.filename + ".json")
 		path.touch(exist_ok=True)
 		with path.open("w") as f:
 			f.write(json.dumps(self.data))
@@ -72,21 +74,45 @@ class FEA():
 		# TODO
 		pass
 
+	def calcRhyme(self):
+		# TODO by Svenjay
+		pass
+
+	def calcTerminologicalCongruence(self):
+		# TODO
+		pass
+
+	def calcDigitFrequency(self):
+		# TODO
+		pass
+
+	def calcPunctuationFrequency(self):
+		# TODO
+		pass
+
+	def calcHashtagFrequency(self):
+		# TODO
+		pass
+
+	def calcNEFrequency(self):
+		# TODO
+		pass
+
 	# MAIN PROCESSORS
 	def finalize(self):
 		if "example" not in self.data.keys():
 			self.data.update({"example": self.calcExample()})
 			print("calculated example")
 		if "example2" not in self.data.keys():
-			self.data.update({"example2": self.calcExample()})
+			self.data.update({"example2": self.calcExample2()})
 			print("calculated example2")
 
 		self.writeFeatureMaps()
 
 
 if __name__ == "__main__":
-	if len(sys.argv) != 2:
-		print("USAGE: python FeatureExtractionAlgorithms.py [filename]\n")
+	if len(sys.argv) != 3:
+		print("USAGE: python FeatureExtractionAlgorithms.py [filename] [map_dir]\n")
 		sys.exit()
-	fea = FEA(sys.argv[1])
+	fea = FEA(sys.argv[1], sys.argv[2])
 	fea.finalize()
