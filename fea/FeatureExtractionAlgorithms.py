@@ -63,19 +63,19 @@ class FEA():
 		pass
 
 	def calcSentenceLengthAvg(self):
-		# TODO
+		# TODO by Svenja
 		pass
 
 	def calcSentenceLengthMax(self):
-		# TODO
+		# TODO (by Svenja)
 		pass
 
 	def calcSentenceLengthMin(self):
-		# TODO
+		# TODO (by Svenja)
 		pass
 
 	def calcRhyme(self):
-		# TODO by Svenjay
+		# TODO by Svenja
 		pass
 
 	def calcTerminologicalCongruence(self):
