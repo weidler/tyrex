@@ -64,11 +64,24 @@ class FEA():
 
 	def calcSentenceLengthAvg(self):
 		# TODO by Svenja
-		pass
+		# mit regex...
+		#m = re.search("...", source)
+		allPhrases = 0
+		NumOfPhrases = 0
+		for phrase in text:
+			i += 1
+			allPhrases += len(phrases)
+		averagePhrase = allPhrases/NumOfPhrases
+		return averagePhrase
 
 	def calcSentenceLengthMax(self):
 		# TODO (by Svenja)
-		pass
+		# mit regex...
+		sentenceLengthMax = 0
+		for phrase in text:
+			if len(phrase)>= sentenceLengthMax:
+				sentenceLengthMax = len(phrase)
+		return sentenceLengthMax
 
 	def calcSentenceLengthMin(self):
 		# TODO (by Svenja)
