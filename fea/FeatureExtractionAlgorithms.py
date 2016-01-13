@@ -75,28 +75,29 @@ class FEA():
 
 	def calcSentenceLengthAvg(self):
 		# TODO by Svenja
-		# mit regex...
-		#m = re.search("(.*)[.,-\/#!$%\^&\*;:{}=\-_`~()]", self.source)
-		#...
-		#allPhrases = 0
-		#NumOfPhrases = 0
-		#run=0
-		#for i in range(len()):
-		#	run += 1
-		#	allPhrases += len(phrases)
-		#averagePhrase = allPhrases/NumOfPhrases
-		#return averagePhrase
-		pass
+		m = re.search("(.*)[\.\!\?]", self.source)
+		NumOfPhrases = 0
+		allPhrases = 0
+		for i in range(len(m.group)):
+			NumOfPhrases += 1
+			allPhrases += len(m.group(i+1))
+		averagePhrase = allPhrases/NumOfPhrases
+
+		return averagePhrase
+		#pass
 
 	def calcSentenceLengthMax(self):
 		# TODO (by Svenja)
-		# mit regex...
-		#sentenceLengthMax = 0
-		#for phrase in text:
-		#	if len(phrase)>= sentenceLengthMax:
-		#		sentenceLengthMax = len(phrase)
-		#return sentenceLengthMax
-		pass
+		m = re.search("(.*)[\.\!\?]", self.source)
+		longestPhrase = 0
+		actualPhrase = 0
+		for i in range(len(m.group)):
+			actualPhrase = m.group(i+1)
+			if actualPhrase > longestPhrase:
+				longestPhrase = actualPhrase
+
+		return longestPhrase
+		#pass
 
 	def calcSentenceLengthMin(self):
 		# TODO (by Svenja)
@@ -104,7 +105,22 @@ class FEA():
 
 	def calcRhyme(self):
 		# TODO by Svenja
-		pass
+		#nimmt liste von endungen
+		#vergleicht Endungen mit Liste
+		# macht plus 1 wenn übereinstimmt
+		# line-darstellung/ liste mit lines splitted an \n erstellen?
+		lines = source.split("\n")
+		ends = [“” for i in len(lines)]
+		i=0
+		for line in lines:
+			if line != “”:
+				lastword = line[-1]
+				lastchars = lastword[-1:-3] # last 3 or 2?
+				ends[i] = lastchars
+				#add to list ends
+		#vergleich endungen
+		#return ...
+		#pass
 
 	def calcTerminologicalCongruence(self):
 		# TODO
