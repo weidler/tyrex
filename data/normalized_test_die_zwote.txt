@@ -1,1 +1,3 @@
-Hallo.Dieser test ist toll.Und wie toll bist du so?
+Hallo<punct>
+Dieser test ist toll<punct>
+Und wie toll bist du so?

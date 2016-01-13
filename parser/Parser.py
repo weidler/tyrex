@@ -28,7 +28,7 @@ class Parser():
 
 	def convertToNormalized(self, unnormalized):
 		""" TO BE OVERWRITTEN """
-		return re.sub("\\n", "", unnormalized)
+		return re.sub("\.", "<punct>", unnormalized)
 
 	# MAIN PROCESSORS
 

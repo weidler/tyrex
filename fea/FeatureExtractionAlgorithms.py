@@ -2,6 +2,7 @@ import sys
 import json
 import re
 from pathlib import Path
+#from tyrex_lib import checkFileExistance
 
 class FEA():
 
@@ -39,6 +40,9 @@ class FEA():
 	def writeFeatureMaps(self):
 		path = Path(self.map_dir + self.filename + ".json")
 		path.touch(exist_ok=True)
+
+		#checkFileExistance(path)
+
 		with path.open("w") as f:
 			f.write(json.dumps(self.data))
 
@@ -49,14 +53,21 @@ class FEA():
 			is meant to be written into the final output
 		"""
 
-		return len(self.source)
+		four_letter_words = re.findall("[A-Z]+[a-z]{3}", self.source)
+		out = len(four_letter_words)
+
+		return out
 
 	def calcExample2(self):
 		"""
 			Test the precalced data from json_data
 		"""
 
-		return len(self.source)*3
+		mo = re.match(".*([A-Z][^0-9]*)\s.*", self.source)
+		word = mo.group(1)
+		print(word)
+
+		return len(word)
 
 	def calcTextLength(self):
 		# TODO
