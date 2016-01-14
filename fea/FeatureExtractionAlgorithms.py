@@ -64,44 +64,41 @@ class FEA():
 		"""
 
 		mo = re.match(".*([A-Z][^0-9]*)\s.*", self.source)
-		word = mo.group(1)
-		print(word)
-
+		try:
+			word = mo.group(1)
+			print(word)
+		except:
+			word = ""
 		return len(word)
 
 	def calcTextLength(self):
-		# TODO
+		# TODO (by Svenja)
+		# krasse aufgabe: ignore <...>
+		return len(self.source.split(" "))
 		pass
 
 	def calcSentenceLengthAvg(self):
 		# TODO by Svenja
-		m = re.search("(.*)[\.\!\?]", self.source)
+		sentences = re.findall("(.*?)[\.|\!|\?]", self.source)
 		NumOfPhrases = 0
 		allPhrases = 0
-		for i in range(len(m.group)):
+		for sentence in sentences:
 			NumOfPhrases += 1
-			allPhrases += len(m.group(i+1))
-		averagePhrase = allPhrases/NumOfPhrases
+			allPhrases += len(sentence.split(" "))
+
+		averagePhrase = allPhrases/float(NumOfPhrases)
 
 		return averagePhrase
-		#pass
 
 	def calcSentenceLengthMax(self):
 		# TODO (by Svenja)
-		m = re.search("(.*)[\.\!\?]", self.source)
-		longestPhrase = 0
-		actualPhrase = 0
-		for i in range(len(m.group)):
-			actualPhrase = m.group(i+1)
-			if actualPhrase > longestPhrase:
-				longestPhrase = actualPhrase
-
-		return longestPhrase
-		#pass
+		sentences = re.findall("(.*?)[\.|\!|\?]", self.source)
+		return max(map(len, [i.split(" ") for i in sentences]))
 
 	def calcSentenceLengthMin(self):
 		# TODO (by Svenja)
-		pass
+		sentences = re.findall("(.*?)[\.|\!|\?]", self.source)
+		return min(map(len, [i.split(" ") for i in sentences]))
 
 	def calcRhyme(self):
 		# TODO by Svenja
@@ -109,13 +106,13 @@ class FEA():
 		#vergleicht Endungen mit Liste
 		# macht plus 1 wenn übereinstimmt
 		# line-darstellung/ liste mit lines splitted an \n erstellen?
-		lines = source.split("\n")
-		ends = [“” for i in len(lines)]
-		i=0
+		lines = self.source.split("\n")
+		ends = ["" for i in len(lines)]
+		i = 0
 		for line in lines:
-			if line != “”:
+			if line != "":
 				lastword = line[-1]
-				lastchars = lastword[-1:-3] # last 3 or 2?
+				lastchars = lastword[-1:-3]  # last 3 or 2?
 				ends[i] = lastchars
 				#add to list ends
 		#vergleich endungen
@@ -127,15 +124,15 @@ class FEA():
 		pass
 
 	def calcDigitFrequency(self):
-		# TODO
+		# TODO (by Lydia)
 		pass
 
 	def calcPunctuationFrequency(self):
-		# TODO
+		# TODO (by Lydia)
 		pass
 
 	def calcHashtagFrequency(self):
-		# TODO
+		# TODO (by Lydia)
 		pass
 
 	def calcNEFrequency(self):
@@ -150,6 +147,12 @@ class FEA():
 		if "example2" not in self.data.keys():
 			self.data.update({"example2": self.calcExample2()})
 			print("calculated example2")
+		if "sentence_length_avg" not in self.data.keys():
+			self.data.update({"sentence_length_avg": self.calcSentenceLengthAvg()})
+			print("calculated sentence_length_avg")
+		if "sentence_length_max" not in self.data.keys():
+			self.data.update({"sentence_length_max": self.calcSentenceLengthMax()})
+			print("calculated sentence_length_max")
 
 		self.writeFeatureMaps()
 

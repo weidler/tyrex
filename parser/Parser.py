@@ -27,8 +27,15 @@ class Parser():
 	# DATA PROCESSING
 
 	def convertToNormalized(self, unnormalized):
-		""" TO BE OVERWRITTEN """
-		return re.sub("\.", "<punct>", unnormalized)
+		"""
+		Sentence Bounds: <s> </s>
+		Punctuations: <punct> | <question> | <exclamation> | <suspension> | <comma> | <colon> | <thinking>
+		Direct Speech: <speech> </speech>
+		Apostroph: <apo> </apo>
+		Line Break: <ln>
+		"""
+
+		return unnormalized
 
 	# MAIN PROCESSORS
 
