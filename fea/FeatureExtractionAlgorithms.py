@@ -125,7 +125,11 @@ class FEA():
 
 	def calcDigitFrequency(self):
 		# TODO (by Lydia)
-		pass
+		count = 0
+		for char in self.source:
+			if char in "1234567890":
+				count+=1
+		return len(self.source)/count
 
 	def calcPunctuationFrequency(self):
 		# TODO (by Lydia)
