@@ -72,13 +72,17 @@ class FEA():
 		return len(word)
 
 	def calcTextLength(self):
-		# TODO (by Svenja)
-		# krasse aufgabe: ignore <...>
-		return len(self.source.split(" "))
-		pass
+		"""
+		Calculates the length of the text and ignores XMl-tags.
+		"""
+		splittedText = self.source.split(" ")
+		#remove <...>
+		return len(splittedText)
 
 	def calcSentenceLengthAvg(self):
-		# TODO by Svenja
+		"""
+		Calculates the average of number of words in all sentences.
+		"""
 		sentences = re.findall("(.*?)[\.|\!|\?]", self.source)
 		NumOfPhrases = 0
 		allPhrases = 0
@@ -91,12 +95,16 @@ class FEA():
 		return averagePhrase
 
 	def calcSentenceLengthMax(self):
-		# TODO (by Svenja)
+		"""
+		Calculates the longest sentence and gives back the number of words in this sentence.
+		"""
 		sentences = re.findall("(.*?)[\.|\!|\?]", self.source)
 		return max(map(len, [i.split(" ") for i in sentences]))
 
 	def calcSentenceLengthMin(self):
-		# TODO (by Svenja)
+		"""
+		Calculates the shortest sentence and gives back the number of words in this sentence.
+		"""
 		sentences = re.findall("(.*?)[\.|\!|\?]", self.source)
 		return min(map(len, [i.split(" ") for i in sentences]))
 
