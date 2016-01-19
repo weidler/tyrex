@@ -15,14 +15,10 @@ class FEA():
 		data	-->	dict object of already calculated data and destination of newly calculated data
 	"""
 
-	def __init__(self, class_name, source, map_dir, use_json=False):
+	def __init__(self, source, map_dir, use_json=False):
 
 		m = re.search(".*\/(.*)\..*", source)
-		if m:
-			self.filename = m.group(1)
-		else:
-			self.filename = source
-
+		self.filename = m.group(1)
 		self.map_dir = map_dir
 
 		try:
@@ -35,8 +31,6 @@ class FEA():
 			self.data = json.loads(self.readFile(self.map_dir + source.split("."[0])))
 		else:
 			self.data = {}
-
-		self.data.update({"class": class_name})
 
 	# PREPROCESSORS
 	def readFile(self, filename):
@@ -72,6 +66,7 @@ class FEA():
 		mo = re.match(".*([A-Z][^0-9]*)\s.*", self.source)
 		try:
 			word = mo.group(1)
+			print(word)
 		except:
 			word = ""
 		return len(word)
@@ -118,35 +113,28 @@ class FEA():
 
 	def calcRhyme1(self):
 		"""
-		Counts all occurence of endings and returns the number of rhymes/count of lines
+		Counts all occurence of endings and returns the number of rhymes/count of lines. From 0->1; 0 means no rhymes, 1 means everything rhymes.
 		"""
 		#S.L.
-		# soll letzten 3 buchstaben nehmen, als key in dict machen und dann zählen wie oft die endung vorkommt
-	    # am schluss wird gezählt, welche endungen mehr als 2 mal aufkommen, die werden zusammengezählt und durch anzahl lines gerechnet
-	    # -> eine Art Durchschnitts-Reim-Wert
-		lines = re.findall("(.*?)[\\n]", self.source)
-		endings_dict = {}
-		for line in lines:
-			punctuation = ".,;:!?-"
-			lastchar = line[-1][-1]
-			# muss mehr als nur letztes char sein, wegen "...!". oder ähnliches
-			lastchars = ""
-			if lastchar != " ":
-				if lastchar in punctuation:
-					lastchars = line[-1][-2:-4]	#punctuation muss weg!
-				else:
-					lastchars = line[-1][-1:-3]
-			if lastchars in endings_dict.keys():
-				endings_dict[lastchars] += 1
-			else:
-				endings_dict[lastchars] = 1
+	    # muss noch angepasst werden an: unreine Reime, wenn "" auftaucht
+	    lines = re.findall("(.*?)[\.|\!|\?|\,|\;|\:|\-]*[\\n]", source)    # parser "" und '' umgewandelt? # anpassen
+	    #print lines
+	    endings_dict = {}
+	    for line in lines:
+	        lastword = line.split()[-1]
+	        lastchar = lastword[-1]
+	        if lastchar != " ":
+	            lastchars = lastword[-3:]
+	            if lastchars in endings_dict.keys():
+	                endings_dict[lastchars] += 1
+	            else:
+	                endings_dict[lastchars] = 1
+	    rhymes = 0
+	    for k in endings_dict:
+	        if endings_dict[k] >= 2:		#counts all endings that occures min 2 times
+	            rhymes += endings_dict[k]
 
-		rhymes = 0
-		for key in endings_dict:
-			if endings_dict[key] >= 2:		#counts all endings that occures min 2 times
-				rhymes += endings_dict[key]
-
-		return rhymes/len(lines) #durschnittlicher Reimwert
+	    return float(rhymes)/len(lines) #durschnittlicher Reimwert, 0 means no rhymes, 1 means everything rhymes
 
 	def calcRhyme2(self):
 		"""
@@ -176,7 +164,7 @@ class FEA():
 		count = 0
 		for char in self.source:
 			if char in "1234567890":
-				count += 1
+				count+=1
 		return len(self.source)/count
 
 	def calcPunctuationFrequency(self):
@@ -216,8 +204,8 @@ class FEA():
 
 
 if __name__ == "__main__":
-	if len(sys.argv) != 4:
-		print("USAGE: python FeatureExtractionAlgorithms.py [class] [filename] [map_dir]\n")
+	if len(sys.argv) != 3:
+		print("USAGE: python FeatureExtractionAlgorithms.py [filename] [map_dir]\n")
 		sys.exit()
-	fea = FEA(sys.argv[1], sys.argv[2], sys.argv[3])
+	fea = FEA(sys.argv[1], sys.argv[2])
 	fea.finalize()
