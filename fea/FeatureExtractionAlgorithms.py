@@ -76,9 +76,8 @@ class FEA():
 		Calculates the length of the text and ignores XMl-tags.
 		"""
 		#S.L.
-		text = re.match((.*?)[<.*?>], self.source)
-		#ignore <...>
-		#return len(splittedText)
+		text = re.sub("<.*?>","", self.source)
+		return len(text.split())
 
 	def calcSentenceLengthAvg(self):
 		"""
