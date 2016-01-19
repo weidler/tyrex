@@ -77,8 +77,8 @@ class FEA():
 		"""
 		#S.L.
 		text = re.match((.*?)[<.*?>], self.source)
-		splittedText = [el.split() for el in text]
-		return len(splittedText)
+		#ignore <...>
+		#return len(splittedText)
 
 	def calcSentenceLengthAvg(self):
 		"""
