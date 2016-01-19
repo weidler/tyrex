@@ -119,16 +119,23 @@ class FEA():
 		lines = re.findall("(.*?)[\\n]", self.source)
 		endings_dict = {}
 		for line in lines:
-			lastchars = line[-1][-1:-3]
+			punctuation = ".,;:!?-"
+			lastchar = line[-1][-1]
+			lastchars = ""
+			if lastchar != " ":
+				if lastchar in punctuation :
+					lastchars = line[-1][-2:-4]	#punctuation muss weg!
+				else:
+					lastchars = line[-1][-1:-3]
 			if lastchars in endings_dict.keys():
 				endings_dict[lastchars] += 1
 			else:
 				endings_dict[lastchars] = 1
 
 		rhymes = 0
-		for key in vers_dict:
-			if vers_dict[key] >= 2:		#counts all endings that occures min 2 times
-				rhymes += vers_dict[key]
+		for key in endings_dict:
+			if endings_dict[key] >= 2:		#counts all endings that occures min 2 times
+				rhymes += endings_dict[key]
 
 		return rhymes/len(lines) #durschnittlicher Reimwert
 
@@ -149,6 +156,7 @@ class FEA():
 		# Paarreim, Kreuzreim, umarmender Reim, Schweifreim, Kettenreim, verschränkter Reim, (Binnenreim?[...a...a...,...b...,...b...])
 
 		# vergleichen übereinstimmung
+
 
 	def calcTerminologicalCongruence(self):
 		# TODO
@@ -188,6 +196,12 @@ class FEA():
 		if "sentence_length_max" not in self.data.keys():
 			self.data.update({"sentence_length_max": self.calcSentenceLengthMax()})
 			print("calculated sentence_length_max")
+		if "sentence_length_min" not in self.data.keys():
+			self.data.update({"sentence_length_min": self.calcSentenceLengthMin()})
+			print("calculated sentence_length_min")
+		if "text_length" not in self.data.keys():
+			self.data.update({"text_length": self.calcTextLength()})
+			print("calculated text_length")
 
 		self.writeFeatureMaps()
 
