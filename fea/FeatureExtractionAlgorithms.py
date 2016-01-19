@@ -77,13 +77,18 @@ class FEA():
 		return len(word)
 
 	def calcTextLength(self):
-		# TODO (by Svenja)
-		# krasse aufgabe: ignore <...>
-		return len(self.source.split(" "))
-		pass
+		"""
+		Calculates the length of the text and ignores XMl-tags.
+		"""
+		#S.L.
+		text = re.sub("<.*?>","", self.source)
+		return len(text.split())
 
 	def calcSentenceLengthAvg(self):
-		# TODO by Svenja
+		"""
+		Calculates the average of number of words in all sentences.
+		"""
+		#(S.L.)
 		sentences = re.findall("(.*?)[\.|\!|\?]", self.source)
 		NumOfPhrases = 0
 		allPhrases = 0
@@ -96,33 +101,71 @@ class FEA():
 		return averagePhrase
 
 	def calcSentenceLengthMax(self):
-		# TODO (by Svenja)
+		"""
+		Calculates the longest sentence and gives back the number of words in this sentence.
+		"""
+		#(S.L./T.W.)
 		sentences = re.findall("(.*?)[\.|\!|\?]", self.source)
 		return max(map(len, [i.split(" ") for i in sentences]))
 
 	def calcSentenceLengthMin(self):
-		# TODO (by Svenja)
+		"""
+		Calculates the shortest sentence and gives back the number of words in this sentence.
+		"""
+		#(S.L./T.W.)
 		sentences = re.findall("(.*?)[\.|\!|\?]", self.source)
 		return min(map(len, [i.split(" ") for i in sentences]))
 
-	def calcRhyme(self):
-		# TODO by Svenja
-		#nimmt liste von endungen
-		#vergleicht Endungen mit Liste
-		# macht plus 1 wenn übereinstimmt
-		# line-darstellung/ liste mit lines splitted an \n erstellen?
-		lines = self.source.split("\n")
-		ends = ["" for i in len(lines)]
-		i = 0
+	def calcRhyme1(self):
+		"""
+		Counts all occurence of endings and returns the number of rhymes/count of lines
+		"""
+		#S.L.
+		# soll letzten 3 buchstaben nehmen, als key in dict machen und dann zählen wie oft die endung vorkommt
+	    # am schluss wird gezählt, welche endungen mehr als 2 mal aufkommen, die werden zusammengezählt und durch anzahl lines gerechnet
+	    # -> eine Art Durchschnitts-Reim-Wert
+		lines = re.findall("(.*?)[\\n]", self.source)
+		endings_dict = {}
 		for line in lines:
-			if line != "":
-				lastword = line[-1]
-				lastchars = lastword[-1:-3]  # last 3 or 2?
-				ends[i] = lastchars
-				#add to list ends
-		#vergleich endungen
-		#return ...
-		#pass
+			punctuation = ".,;:!?-"
+			lastchar = line[-1][-1]
+			# muss mehr als nur letztes char sein, wegen "...!". oder ähnliches
+			lastchars = ""
+			if lastchar != " ":
+				if lastchar in punctuation:
+					lastchars = line[-1][-2:-4]	#punctuation muss weg!
+				else:
+					lastchars = line[-1][-1:-3]
+			if lastchars in endings_dict.keys():
+				endings_dict[lastchars] += 1
+			else:
+				endings_dict[lastchars] = 1
+
+		rhymes = 0
+		for key in endings_dict:
+			if endings_dict[key] >= 2:		#counts all endings that occures min 2 times
+				rhymes += endings_dict[key]
+
+		return rhymes/len(lines) #durschnittlicher Reimwert
+
+	def calcRhyme2(self):
+		"""
+		Takes rhyme schemes and checks a text with them, giving back ???
+		"""
+		#S.L.
+		lines = re.findall("(.*?)[\\n]", self.source)
+		endings_list = ["" for i in len(lines)]
+		c=0			#counter
+		for line in lines:
+			lastchars = line[-1][-1:-3]
+			endings_list[c] = lastchars
+			c +=1
+
+		rhyme_schemes = [[a,a,b,b],[a,b,a,b],[a,b,b,a],[a,a,b,c,c,b],[a,b,a,((b,c,b)|(c,b,c))],[a,b,c,a,b,c]]
+		# Paarreim, Kreuzreim, umarmender Reim, Schweifreim, Kettenreim, verschränkter Reim, (Binnenreim?[...a...a...,...b...,...b...])
+
+		# vergleichen übereinstimmung
+
 
 	def calcTerminologicalCongruence(self):
 		# TODO
@@ -162,6 +205,12 @@ class FEA():
 		if "sentence_length_max" not in self.data.keys():
 			self.data.update({"sentence_length_max": self.calcSentenceLengthMax()})
 			print("calculated sentence_length_max")
+		if "sentence_length_min" not in self.data.keys():
+			self.data.update({"sentence_length_min": self.calcSentenceLengthMin()})
+			print("calculated sentence_length_min")
+		if "text_length" not in self.data.keys():
+			self.data.update({"text_length": self.calcTextLength()})
+			print("calculated text_length")
 
 		self.writeFeatureMaps()
 

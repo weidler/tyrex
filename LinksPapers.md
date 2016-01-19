@@ -1,6 +1,7 @@
 http://www.kdnuggets.com/2015/01/text-analysis-101-document-classification.html  - *comparing the number of matching terms in doc vectors*  
 http://www.python-kurs.eu/text_klassifikation_einfuehrung.php - *theoretical naive bayes*  
-http://www.python-kurs.eu/text_klassifikation_python.php - *implementing bag of words/ naive bayes*  
+http://www.python-kurs.eu/text_klassifikation_python.php - *implementing bag of words/ naive bayes*
+http://wt.hs-augsburg.de/report/2005/Zelch_Christa_Engel_Stephan/Klassifikation.pdf *automatische Textklassifizierung mit SVM*  
 
 http://www.falkwolfschneider.de/kurs10/Textgattungen.pdf - *lists different text genres*  
 
