@@ -116,14 +116,18 @@ class FEA():
 		Counts all occurence of endings and returns the number of rhymes/count of lines
 		"""
 		#S.L.
+		# soll letzten 3 buchstaben nehmen, als key in dict machen und dann zählen wie oft die endung vorkommt
+	    # am schluss wird gezählt, welche endungen mehr als 2 mal aufkommen, die werden zusammengezählt und durch anzahl lines gerechnet
+	    # -> eine Art Durchschnitts-Reim-Wert
 		lines = re.findall("(.*?)[\\n]", self.source)
 		endings_dict = {}
 		for line in lines:
 			punctuation = ".,;:!?-"
 			lastchar = line[-1][-1]
+			# muss mehr als nur letztes char sein, wegen "...!". oder ähnliches
 			lastchars = ""
 			if lastchar != " ":
-				if lastchar in punctuation :
+				if lastchar in punctuation:
 					lastchars = line[-1][-2:-4]	#punctuation muss weg!
 				else:
 					lastchars = line[-1][-1:-3]
