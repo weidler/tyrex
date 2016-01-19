@@ -11,9 +11,10 @@ class ARFFBuilder():
 		f_order		-->	Order of features in ARFF file
 	"""
 
-	def __init__(self, feature_dir, arff_filename):
+	def __init__(self, feature_dir, arff_filename, relation_name="tyrex"):
 		self.feature_dir = feature_dir
 		self.files = list(Path(feature_dir).rglob("*.json"))
+		self.relation = relation_name
 
 		# test if any files found in feature directory, else shut down process
 		if len(self.files) < 1:
@@ -24,6 +25,7 @@ class ARFFBuilder():
 		self.arff = checkFileExistance(arff_filename)
 
 		self.f_order = sorted(list(self.readJSONToDict(self.files[0]).keys()))
+		self.vectors = [self.readJSONToDict(self.files[i]) for i in range(len(self.files))]
 
 	# PREPROCESSORS
 	def checkVektorLengths(self):
@@ -42,22 +44,55 @@ class ARFFBuilder():
 		with open(self.arff, "a") as arff:
 			arff.write(line+"\n")
 
+	def extractPossibleValues(self, feature):
+		poss = set([vector[feature] for vector in self.vectors])
+		return poss
+
+	def toAtrrListString(self, attr_list):
+		out = "{ "
+		for attr in attr_list:
+			out += attr + ", "
+		out = out[:-2] + " }"
+		return out
+
 	# WRITE COMPONENTS
 	def writeHead(self):
-		pass
+		head = ""
+		head += "@relation " + self.relation
+		self.addToARFF(head)
 
 	def writeFeatureList(self):
 		for feature in self.f_order:
-			line = "@attribute " + feature
+			if feature == "class":
+				possible_values = self.toAtrrListString(self.extractPossibleValues(feature))
+			elif isinstance(self.vectors[0][feature], int):
+				possible_values = "numeric"
+			elif isinstance(self.vectors[0][feature], bool):
+				possible_values = "{true, false}"
+			elif isinstance(self.vectors[0][feature], str):
+				possible_values = "string"
+			line = "@attribute\t" + feature + "\t" + possible_values
 			self.addToARFF(line)
 
 	def writeVectors(self):
-		pass
+		self.addToARFF("@DATA")
+		for vector in self.vectors:
+			line = ""
+			for feature in self.f_order:
+				line += str(vector[feature]) + ", "
+			line = line[:-2]  #delete last comma
+			self.addToARFF(line)
+
+	def writeSpacer(self):
+		spacer = "\n"
+		self.addToARFF(spacer)
 
 	# MAIN PROCESSORS
 	def finalize(self):
 		self.writeHead()
+		self.writeSpacer()
 		self.writeFeatureList()
+		self.writeSpacer()
 		self.writeVectors()
 
 if __name__ == "__main__":

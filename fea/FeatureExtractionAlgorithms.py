@@ -15,10 +15,14 @@ class FEA():
 		data	-->	dict object of already calculated data and destination of newly calculated data
 	"""
 
-	def __init__(self, source, map_dir, use_json=False):
+	def __init__(self, class_name, source, map_dir, use_json=False):
 
 		m = re.search(".*\/(.*)\..*", source)
-		self.filename = m.group(1)
+		if m:
+			self.filename = m.group(1)
+		else:
+			self.filename = source
+
 		self.map_dir = map_dir
 
 		try:
@@ -31,6 +35,8 @@ class FEA():
 			self.data = json.loads(self.readFile(self.map_dir + source.split("."[0])))
 		else:
 			self.data = {}
+
+		self.data.update({"class": class_name})
 
 	# PREPROCESSORS
 	def readFile(self, filename):
@@ -66,7 +72,6 @@ class FEA():
 		mo = re.match(".*([A-Z][^0-9]*)\s.*", self.source)
 		try:
 			word = mo.group(1)
-			print(word)
 		except:
 			word = ""
 		return len(word)
@@ -128,7 +133,7 @@ class FEA():
 		count = 0
 		for char in self.source:
 			if char in "1234567890":
-				count+=1
+				count += 1
 		return len(self.source)/count
 
 	def calcPunctuationFrequency(self):
@@ -162,8 +167,8 @@ class FEA():
 
 
 if __name__ == "__main__":
-	if len(sys.argv) != 3:
-		print("USAGE: python FeatureExtractionAlgorithms.py [filename] [map_dir]\n")
+	if len(sys.argv) != 4:
+		print("USAGE: python FeatureExtractionAlgorithms.py [class] [filename] [map_dir]\n")
 		sys.exit()
-	fea = FEA(sys.argv[1], sys.argv[2])
+	fea = FEA(sys.argv[1], sys.argv[2], sys.argv[3])
 	fea.finalize()
