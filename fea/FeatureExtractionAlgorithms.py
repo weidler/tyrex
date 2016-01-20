@@ -2,6 +2,7 @@ import sys
 import json
 import re, os
 from pathlib import Path
+from Collections import Counter
 #from tyrex_lib import checkFileExistance
 
 class FEA():
@@ -158,9 +159,8 @@ class FEA():
 	def calcTerminologicalCongruence(self):
 		# TODO
 		# S.L.
-		# aussortieren fehlt
+		# aussortieren von Füllwörtern, Zeichen etc fehlt
 		# lemmatisieren
-		from Collections import Counter
 		words = self.source.split()
 		mostCommonWords = Counter(words).most_common() 	# list with tuples
 		return mostCommonWords
