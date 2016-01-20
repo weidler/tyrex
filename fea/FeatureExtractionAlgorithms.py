@@ -158,26 +158,24 @@ class FEA():
 	def calcTerminologicalCongruence(self):
 		# TODO
 		pass
-
-	def calcDigitFrequency(self):
-		# TODO (by Lydia)
-		count = 0
-		for char in self.source:
-			if char in "1234567890":
-				count+=1
-		return count/len(self.source)
-
-	def calcPunctuationFrequency(self):
-		count = 0
-		for char in self.source:
-			if re.match(r'!', '?', '...', '.', ',', ';', ':', '()']:
-				count += 1
-		return float(count)/len(self.source)
 		
-		# TODO (by Lydia)
+		def calcDigitFrequency(source):
+		count = 0 #count per word
+		for char in source.split():
+			if re.match(r'.*\d+', char):
+				count += 1
+				print char
+		return float(count)/len(source)
+		
+		def calcPunctuationFrequency(source):
+		count = 0 #how to count? punct per word/char?
+		for char in source:
+			if re.match(r'(...)', char) or re.match(r'([!\?,;:(\(.*\))]|[...])', char): # ..., ()
+				count += 1
+		return float(count)/len(source)
 
 	def calcHashtagFrequency(self):
-		count = 0
+		count = 0 #count per word
 		for char in self.source.split():
 			if re.match(r'#[.]*', char):
 				count += 1		
