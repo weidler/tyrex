@@ -136,6 +136,7 @@ class FEA():
 	    return float(rhymes)/len(lines) #durschnittlicher Reimwert, 0 means no rhymes, 1 means everything rhymes
 
 	def calcRhyme2(self):
+		#TODO
 		"""
 		Takes rhyme schemes and checks a text with them, giving back ???
 		"""
@@ -172,14 +173,14 @@ class FEA():
 			if re.match(r'!', '?', '...', '.', ',', ';', ':', '()']:
 				count += 1
 		return float(count)/len(self.source)
-		
+
 		# TODO (by Lydia)
 
 	def calcHashtagFrequency(self):
 		count = 0
 		for char in self.source.split():
 			if re.match(r'#[.]*', char):
-				count += 1		
+				count += 1
 		return float(count)/len(self.source)
 
 	def calcNEFrequency(self):
@@ -200,18 +201,22 @@ class FEA():
 		if "sentence_length_max" not in self.data.keys():
 			self.data.update({"sentence_length_max": self.calcSentenceLengthMax()})
 			print("calculated sentence_length_max")
-		if "punctuation_frequency" not in self.data.keys():
-			self.data.update({"punctuation_frequency": self.calcPunctuationFrequency()})
-			print("calculated punctuation_frequency")
-		if "hashtag_frequency" not in self.data.keys():
-			self.data.update({"hashtag_frequency": self.calcPunctuationFrequency()})
-			print("calculated hashtag_frequency")
 		if "sentence_length_min" not in self.data.keys():
 			self.data.update({"sentence_length_min": self.calcSentenceLengthMin()})
 			print("calculated sentence_length_min")
 		if "text_length" not in self.data.keys():
 			self.data.update({"text_length": self.calcTextLength()})
 			print("calculated text_length")
+		if "punctuation_frequency" not in self.data.keys():
+			self.data.update({"punctuation_frequency": self.calcPunctuationFrequency()})
+			print("calculated punctuation_frequency")
+		if "hashtag_frequency" not in self.data.keys():
+			self.data.update({"hashtag_frequency": self.calcPunctuationFrequency()})
+			print("calculated hashtag_frequency")
+		if "rhyme_average" not in self.data.keys():
+			self.data.update({"rhyme_average": self.calcRhyme1()})
+			print("calculated rhyme_average")
+
 
 
 if __name__ == "__main__":
