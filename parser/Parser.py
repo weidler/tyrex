@@ -27,15 +27,40 @@ class Parser():
 	# DATA PROCESSING
 
 	def convertToNormalized(self, unnormalized):
-		"""
-		Sentence Bounds: <s> </s>
-		Punctuations: <punct> | <question> | <exclamation> | <suspension> | <comma> | <colon> | <thinking>
-		Direct Speech: <speech> </speech>
-		Apostroph: <apo> </apo>
-		Line Break: <ln>
-		"""
+		# TODO direct speech
 
-		return unnormalized
+		#sentence bounds
+		phrase = "<s>", "</s>"
+
+		#punctuations
+		punct = "<punct>"  #  .
+		question = "<question>"  #  ?
+		excl = "<exclamation>"  #  !
+		susp = "<suspension>"  # ...
+		comma = "<comma>"  #  ,
+		colon = "<colon>"  #  :
+		think = "<thinking>"  #  -
+
+		#apostroph
+		direct = ("<speech>", "</speech>")
+		apo = ("<apo>", "</apo>")
+
+		#regex
+		phrase_bound = punct + "|" + question + "|" + excl
+		phrase_match = "(?=((" + phrase_bound + "|^)(((.|\s)*?)(" + phrase_bound + "))))"
+
+		#annotating...
+		out = re.sub("\.{3,}", susp, unnormalized)
+		out = re.sub("\.", punct, out)
+		out = re.sub("\?", question, out)
+		out = re.sub("\!", excl, out)
+		out = re.sub("\,", comma, out)
+		out = re.sub("\:", colon, out)
+		out = re.sub(" \- ", think, out)
+
+		out = "".join([phrase[0] + match[2] + phrase[1] for match in re.findall(phrase_match, out)]).replace("<s>\n", "\n<s>")
+
+		return out
 
 	# MAIN PROCESSORS
 
