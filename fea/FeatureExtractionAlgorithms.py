@@ -118,7 +118,6 @@ class FEA():
 		#S.L.
 	    # muss noch angepasst werden an: unreine Reime, wenn "" auftaucht
 	    lines = re.findall("(.*?)[\.|\!|\?|\,|\;|\:|\-]*[\\n]", source)    # parser "" und '' umgewandelt? # anpassen
-	    #print lines
 	    endings_dict = {}
 	    for line in lines:
 	        lastword = line.split()[-1]
