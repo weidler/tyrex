@@ -129,15 +129,23 @@ class FEA():
 		for char in self.source:
 			if char in "1234567890":
 				count+=1
-		return len(self.source)/count
+		return count/len(self.source)
 
 	def calcPunctuationFrequency(self):
+		count = 0
+		for char in self.source:
+			if re.match(r'!', '?', '...', '.', ',', ';', ':', '()']:
+				count += 1
+		return float(count)/len(self.source)
+		
 		# TODO (by Lydia)
-		pass
 
 	def calcHashtagFrequency(self):
-		# TODO (by Lydia)
-		pass
+		count = 0
+		for char in self.source.split():
+			if re.match(r'#[.]*', char):
+				count += 1		
+		return float(count)/len(self.source)
 
 	def calcNEFrequency(self):
 		# TODO
@@ -157,7 +165,13 @@ class FEA():
 		if "sentence_length_max" not in self.data.keys():
 			self.data.update({"sentence_length_max": self.calcSentenceLengthMax()})
 			print("calculated sentence_length_max")
-
+		if "punctuation_frequency" not in self.data.keys():
+			self.data.update({"punctuation_frequency": self.calcPunctuationFrequency()})
+			print("calculated punctuation_frequency")
+		if "hashtag_frequency" not in self.data.keys():
+			self.data.update({"hashtag_frequency": self.calcPunctuationFrequency()})
+			print("calculated hashtag_frequency")
+			
 		self.writeFeatureMaps()
 
 
