@@ -215,11 +215,14 @@ class FEA():
 		if "text_length" not in self.data.keys():
 			self.data.update({"text_length": self.calcTextLength()})
 			print("calculated text_length")
+		if "digit_frequency" not in self.data.keys():
+			self.data.update({"digit_frequency": self.calcDigitFrequency()})
+			print("calculated digit_frequency")
 		if "punctuation_frequency" not in self.data.keys():
 			self.data.update({"punctuation_frequency": self.calcPunctuationFrequency()})
 			print("calculated punctuation_frequency")
 		if "hashtag_frequency" not in self.data.keys():
-			self.data.update({"hashtag_frequency": self.calcPunctuationFrequency()})
+			self.data.update({"hashtag_frequency": self.calcHashtagFrequencyFrequency()})
 			print("calculated hashtag_frequency")
 		if "rhyme_average" not in self.data.keys():
 			self.data.update({"rhyme_average": self.calcRhyme1()})
