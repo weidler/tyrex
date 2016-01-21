@@ -63,29 +63,6 @@ class FEA():
 			f.write(json.dumps(self.data))
 
 	# EXTRACTION ALGORITHMS
-	def calcExample(self):
-		"""
-			Structure calc* methods like this. Calculate based on source string and RETURN the value that
-			is meant to be written into the final output
-		"""
-
-		four_letter_words = re.findall("[A-Z]+[a-z]{3}", self.source)
-		out = len(four_letter_words)
-
-		return out
-
-	def calcExample2(self):
-		"""
-			Test the precalced data from json_data
-		"""
-
-		mo = re.match(".*([A-Z][^0-9]*)\s.*", self.source)
-		try:
-			word = mo.group(1)
-		except:
-			word = ""
-		return len(word)
-
 	def calcTextLength(self):
 		"""
 		Calculates the length of the text and ignores XMl-tags.
@@ -214,12 +191,6 @@ class FEA():
 
 	# MAIN PROCESSORS
 	def finalize(self):
-		if "example" not in self.data.keys():
-			self.data.update({"example": self.calcExample()})
-			print("calculated example")
-		if "example2" not in self.data.keys():
-			self.data.update({"example2": self.calcExample2()})
-			print("calculated example2")
 		if "sentence_length_avg" not in self.data.keys():
 			self.data.update({"sentence_length_avg": self.calcSentenceLengthAvg()})
 			print("calculated sentence_length_avg")

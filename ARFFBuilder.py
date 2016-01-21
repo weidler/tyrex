@@ -66,12 +66,16 @@ class ARFFBuilder():
 		for feature in self.f_order:
 			if feature == "class":
 				possible_values = self.toAtrrListString(self.extractPossibleValues(feature))
-			elif isinstance(self.vectors[0][feature], int):
+			elif isinstance(self.vectors[0][feature], int) or isinstance(self.vectors[0][feature], float):
 				possible_values = "numeric"
 			elif isinstance(self.vectors[0][feature], bool):
 				possible_values = "{true, false}"
 			elif isinstance(self.vectors[0][feature], str):
 				possible_values = "string"
+			else:
+				print("COULDNT RECOGNIZE TYPE")
+				possible_values = "string"
+
 			line = "@attribute\t" + feature + "\t" + possible_values
 			self.addToARFF(line)
 
