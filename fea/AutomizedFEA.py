@@ -1,5 +1,6 @@
 from FeatureExtractionAlgorithms import FEA
 from pathlib import Path
+import sys
 
 class AutomizedFEA():
 
@@ -15,10 +16,9 @@ class AutomizedFEA():
 		target	-->	path where feature maps will be saved
 	"""
 
-	def __init__(self, class_name, directory, target, f_type="txt"):
+	def __init__(self, directory, target, prefix="", f_type="txt"):
 		self.dir = directory
 		self.prefix = prefix
-		self.class_name = class_name
 		self.target = target
 
 		self.f_type = f_type
@@ -27,10 +27,22 @@ class AutomizedFEA():
 
 	def process(self):
 		for f in self.files:
-			fea = FEA(self.class_name, str(f), self.target)
+			if not self.prefix:
+				class_name = f.name.split("_")[0]
+			else:
+				class_name = self.prefix
+
+			fea = FEA(class_name, str(f), self.target)
 			fea.finalize()
 			print("wrote file " + f.name + "...")
 
 if __name__ == '__main__':
-	afea = AutomizedFEA("1", "data/", "feature_maps/", "normalized_")
+	if len(sys.argv) == 3:
+		afea = AutomizedFEA(sys.argv[1], sys.argv[2])
+	elif len(sys.argv) == 4:
+		afea = AutomizedFEA(sys.argv[1], sys.argv[2], prefix=sys.argv[1])
+	else:
+		print("USAGE: python3 AutomizedFEA.py [input] [target] [[prefix]] [[input_type]]")
+		exit()
+
 	afea.process()

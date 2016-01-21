@@ -1,6 +1,7 @@
 import json
 from pathlib import Path
 from tyrex_lib import checkFileExistance
+import sys
 
 class ARFFBuilder():
 
@@ -96,5 +97,10 @@ class ARFFBuilder():
 		self.writeVectors()
 
 if __name__ == "__main__":
-	builder = ARFFBuilder("feature_maps/", "data.arff")
-	builder.finalize()
+	if len(sys.argv) != 3:
+		print(len(sys.argv))
+		print("USAGE: python3 ARFFBuilder.py [vector dir] [output filename]")
+		exit()
+	else:
+		builder = ARFFBuilder(sys.argv[1], sys.argv[2])
+		builder.finalize()

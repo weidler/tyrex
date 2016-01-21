@@ -89,7 +89,7 @@ class FEA():
 		Calculates the average of number of words in all sentences.
 		"""
 		#(S.L.)
-		sentences = re.findall("(.*?)[\.|\!|\?]", self.source)
+		sentences = re.findall("<s>(.*?)<\/s>", self.source)
 		NumOfPhrases = 0
 		allPhrases = 0
 		for sentence in sentences:
@@ -105,7 +105,7 @@ class FEA():
 		Calculates the longest sentence and gives back the number of words in this sentence.
 		"""
 		#(S.L./T.W.)
-		sentences = re.findall("(.*?)[\.|\!|\?]", self.source)
+		sentences = re.findall("<s>(.*?)<\/s>", self.source)
 		return max(map(len, [i.split(" ") for i in sentences]))
 
 	def calcSentenceLengthMin(self):
@@ -113,7 +113,7 @@ class FEA():
 		Calculates the shortest sentence and gives back the number of words in this sentence.
 		"""
 		#(S.L./T.W.)
-		sentences = re.findall("(.*?)[\.|\!|\?]", self.source)
+		sentences = re.findall(("<s>(.*?)<\/s>"), self.source)
 		return min(map(len, [i.split(" ") for i in sentences]))
 
 	def calcRhyme1(self):
@@ -169,6 +169,12 @@ class FEA():
 
 	def calcTerminologicalCongruence(self):
 		# TODO
+		pass
+
+	def calcPhrasesPerParagraph(self):
+		# TODO
+		# Weil: in romanen/epik werden mit blocksatz nur für neue absätze umbrüche benutzt, dementsprechend viele sätze pro line
+		# gedichte hingegen haben meist weniger als einen satz pro line
 		pass
 
 	def calcDigitFrequency(self):

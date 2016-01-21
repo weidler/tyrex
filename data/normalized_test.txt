@@ -1,7 +1,0 @@
-<s>Ich schlängel mich wie eine Schlange durch die lange Warteschlange<punct></s>
-<s>Dumm die dumm und wumm die wumm<comma> ich bin echt Dumm<exclamation></s>
-<s>Warum bin ich ich<question></s><s> UNd warum bist du du<question></s>
-<s>Keiner Weiß<exclamation></s>
-<s>Ich bin ein Schuh<exclamation></s>
-<s>
-Hi<punct></s>

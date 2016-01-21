@@ -1,3 +1,0 @@
-<s>Hallo<punct></s>
-<s>Dieser test ist toll<punct></s>
-<s>Und wie toll bist du so<question></s>
