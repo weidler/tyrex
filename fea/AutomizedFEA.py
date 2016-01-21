@@ -23,7 +23,6 @@ class AutomizedFEA():
 
 		self.f_type = f_type
 		self.files = list(Path(self.dir).rglob(self.prefix + "*." + self.f_type))
-		print(self.files)
 
 	def process(self):
 		for f in self.files:

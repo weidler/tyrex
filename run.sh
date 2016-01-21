@@ -6,7 +6,6 @@ DATA=$2
 MAP_DIR=$3
 PREFIX=$4
 ARFF_FILE=$5
-CLASS="1"
 
 # PARSER
 python3 parser/Parser.py $RAW_DATA $DATA;

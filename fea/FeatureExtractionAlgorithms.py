@@ -17,10 +17,16 @@ class FEA():
 		data	-->	dict object of already calculated data and destination of newly calculated data
 	"""
 
-	def __init__(self, source, map_dir, use_json=False):
+	def __init__(self, class_name, source, map_dir, use_json=False):
 
+		print("----------NEW---------------")
 		m = re.search(".*\/(.*)\..*", source)
-		self.filename = m.group(1)
+		if m:
+			self.filename = m.group(1)
+			print(self.filename)
+		else:
+			self.filename = source
+
 		self.map_dir = map_dir
 
 		try:
@@ -33,6 +39,14 @@ class FEA():
 			self.data = json.loads(self.readFile(self.map_dir + source.split("."[0])))
 		else:
 			self.data = {}
+
+		self.data.update({"class": class_name})
+
+		print("____________________")
+		print(source)
+		print(self.filename)
+		print(self.map_dir)
+		print("____________________")
 
 	# PREPROCESSORS
 	def readFile(self, filename):
@@ -68,7 +82,6 @@ class FEA():
 		mo = re.match(".*([A-Z][^0-9]*)\s.*", self.source)
 		try:
 			word = mo.group(1)
-			print(word)
 		except:
 			word = ""
 		return len(word)
@@ -86,7 +99,7 @@ class FEA():
 		Calculates the average of number of words in all sentences.
 		"""
 		#(S.L.)
-		sentences = re.findall("<s>(.*?)<\/s>", self.source)
+		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		NumOfPhrases = 0
 		allPhrases = 0
 		for sentence in sentences:
@@ -102,7 +115,7 @@ class FEA():
 		Calculates the longest sentence and gives back the number of words in this sentence.
 		"""
 		#(S.L./T.W.)
-		sentences = re.findall("<s>(.*?)<\/s>", self.source)
+		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		return max(map(len, [i.split(" ") for i in sentences]))
 
 	def calcSentenceLengthMin(self):
@@ -110,7 +123,7 @@ class FEA():
 		Calculates the shortest sentence and gives back the number of words in this sentence.
 		"""
 		#(S.L./T.W.)
-		sentences = re.findall(("<s>(.*?)<\/s>"), self.source)
+		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		return min(map(len, [i.split(" ") for i in sentences]))
 
 	def calcRhyme1(self):
@@ -119,23 +132,23 @@ class FEA():
 		"""
 		#S.L.
 		## muss noch angepasst werden an: unreine Reime, wenn "" auftaucht
-		#lines = re.findall("(.*?)[\.|\!|\?|\,|\;|\:|\-]*[\\n]", source)    # parser "" und '' umgewandelt? # anpassen
-		#endings_dict = {}
-		#for line in lines:
-		lastword = line.split()[-1]
-		lastchar = lastword[-1]
-		if lastchar != " ":
-			lastchars = lastword[-3:]
-			if lastchars in endings_dict.keys():
-				endings_dict[lastchars] += 1
-			else:
-				endings_dict[lastchars] = 1
+		lines = re.findall("(.*?)[\.|\!|\?|\,|\;|\:|\-]*[\\n]", self.source)    # parser "" und '' umgewandelt? # anpassen
+		endings_dict = {}
+		for line in lines:
+			lastword = line.split()[-1]
+			lastchar = lastword[-1]
+			if lastchar != " ":
+				lastchars = lastword[-3:]
+				if lastchars in endings_dict.keys():
+					endings_dict[lastchars] += 1
+				else:
+					endings_dict[lastchars] = 1
 		rhymes = 0
 		for k in endings_dict:
 			if endings_dict[k] >= 2:		#counts all endings that occures min 2 times
 				rhymes += endings_dict[k]
 
-		return float(rhymes)/len(lines) #durschnittlicher Reimwert, 0 means no rhymes, 1 means everything rhymes
+		return float(rhymes)/len(lines)  #durschnittlicher Reimwert, 0 means no rhymes, 1 means everything rhymes
 
 	def calcRhyme2(self):
 		#TODO
@@ -155,7 +168,6 @@ class FEA():
 		# Paarreim, Kreuzreim, umarmender Reim, Schweifreim, Kettenreim, verschränkter Reim, (Binnenreim?[...a...a...,...b...,...b...])
 
 		# vergleichen übereinstimmung
-
 
 	def calcTerminologicalCongruence(self):
 		# TODO
@@ -227,17 +239,17 @@ class FEA():
 			self.data.update({"punctuation_frequency": self.calcPunctuationFrequency()})
 			print("calculated punctuation_frequency")
 		if "hashtag_frequency" not in self.data.keys():
-			self.data.update({"hashtag_frequency": self.calcHashtagFrequencyFrequency()})
+			self.data.update({"hashtag_frequency": self.calcHashtagFrequency()})
 			print("calculated hashtag_frequency")
-		if "rhyme_average" not in self.data.keys():
-			self.data.update({"rhyme_average": self.calcRhyme1()})
-			print("calculated rhyme_average")
+		#if "rhyme_average" not in self.data.keys():
+		#	self.data.update({"rhyme_average": self.calcRhyme1()})
+		#	print("calculated rhyme_average")
 
-
+		self.writeFeatureMaps()
 
 if __name__ == "__main__":
-	if len(sys.argv) != 3:
-		print("USAGE: python FeatureExtractionAlgorithms.py [filename] [map_dir]\n")
+	if len(sys.argv) != 4:
+		print("USAGE: python FeatureExtractionAlgorithms.py [class] [filename] [map_dir]\n")
 		sys.exit()
-	fea = FEA(sys.argv[1], sys.argv[2])
+	fea = FEA(sys.argv[1], sys.argv[2], sys.argv[3])
 	fea.finalize()
