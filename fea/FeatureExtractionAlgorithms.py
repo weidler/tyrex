@@ -3,7 +3,7 @@ import json
 import re
 import os
 from pathlib import Path
-from Collections import Counter
+#from Collections import Counter
 #from tyrex_lib import checkFileExistance
 
 class FEA():
@@ -78,7 +78,7 @@ class FEA():
 		Calculates the length of the text and ignores XMl-tags.
 		"""
 		#S.L.
-		text = re.sub("<.*?>","", self.source)
+		text = re.sub("<.*?>", "", self.source)
 		return len(text.split())
 
 	def calcSentenceLengthAvg(self):
@@ -118,24 +118,24 @@ class FEA():
 		Counts all occurence of endings and returns the number of rhymes/count of lines. From 0->1; 0 means no rhymes, 1 means everything rhymes.
 		"""
 		#S.L.
-	    # muss noch angepasst werden an: unreine Reime, wenn "" auftaucht
-	    lines = re.findall("(.*?)[\.|\!|\?|\,|\;|\:|\-]*[\\n]", source)    # parser "" und '' umgewandelt? # anpassen
-	    endings_dict = {}
-	    for line in lines:
-	        lastword = line.split()[-1]
-	        lastchar = lastword[-1]
-	        if lastchar != " ":
-	            lastchars = lastword[-3:]
-	            if lastchars in endings_dict.keys():
-	                endings_dict[lastchars] += 1
-	            else:
-	                endings_dict[lastchars] = 1
-	    rhymes = 0
-	    for k in endings_dict:
-	        if endings_dict[k] >= 2:		#counts all endings that occures min 2 times
-	            rhymes += endings_dict[k]
+		## muss noch angepasst werden an: unreine Reime, wenn "" auftaucht
+		#lines = re.findall("(.*?)[\.|\!|\?|\,|\;|\:|\-]*[\\n]", source)    # parser "" und '' umgewandelt? # anpassen
+		#endings_dict = {}
+		#for line in lines:
+		lastword = line.split()[-1]
+		lastchar = lastword[-1]
+		if lastchar != " ":
+			lastchars = lastword[-3:]
+			if lastchars in endings_dict.keys():
+				endings_dict[lastchars] += 1
+			else:
+				endings_dict[lastchars] = 1
+		rhymes = 0
+		for k in endings_dict:
+			if endings_dict[k] >= 2:		#counts all endings that occures min 2 times
+				rhymes += endings_dict[k]
 
-	    return float(rhymes)/len(lines) #durschnittlicher Reimwert, 0 means no rhymes, 1 means everything rhymes
+		return float(rhymes)/len(lines) #durschnittlicher Reimwert, 0 means no rhymes, 1 means everything rhymes
 
 	def calcRhyme2(self):
 		#TODO
@@ -159,6 +159,7 @@ class FEA():
 
 	def calcTerminologicalCongruence(self):
 		# TODO
+		pass
 
 	def calcPhrasesPerParagraph(self):
 		# TODO
@@ -171,7 +172,6 @@ class FEA():
 		for char in self.source.split():
 			if re.match(r'.*\d+', char):
 				count += 1
-				print char
 		return float(count)/len(self.source)
 
 	def calcPunctuationFrequency(self):
