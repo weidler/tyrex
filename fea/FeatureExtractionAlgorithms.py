@@ -23,7 +23,6 @@ class FEA():
 		m = re.search(".*\/(.*)\..*", source)
 		if m:
 			self.filename = m.group(1)
-			print(self.filename)
 		else:
 			self.filename = source
 
@@ -42,11 +41,11 @@ class FEA():
 
 		self.data.update({"class": class_name})
 
-		print("____________________")
-		print(source)
-		print(self.filename)
-		print(self.map_dir)
-		print("____________________")
+		#print("____________________")
+		#print(source)
+		print("Calculating Vector for: " + self.filename)
+		#print(self.map_dir)
+		#print("____________________")
 
 	# PREPROCESSORS
 	def readFile(self, filename):
@@ -193,25 +192,25 @@ class FEA():
 	def finalize(self):
 		if "sentence_length_avg" not in self.data.keys():
 			self.data.update({"sentence_length_avg": self.calcSentenceLengthAvg()})
-			print("calculated sentence_length_avg")
+			#print("calculated sentence_length_avg")
 		if "sentence_length_max" not in self.data.keys():
 			self.data.update({"sentence_length_max": self.calcSentenceLengthMax()})
-			print("calculated sentence_length_max")
+			#print("calculated sentence_length_max")
 		if "sentence_length_min" not in self.data.keys():
 			self.data.update({"sentence_length_min": self.calcSentenceLengthMin()})
-			print("calculated sentence_length_min")
+			#print("calculated sentence_length_min")
 		if "text_length" not in self.data.keys():
 			self.data.update({"text_length": self.calcTextLength()})
-			print("calculated text_length")
+			#print("calculated text_length")
 		if "digit_frequency" not in self.data.keys():
 			self.data.update({"digit_frequency": self.calcDigitFrequency()})
-			print("calculated digit_frequency")
+			#print("calculated digit_frequency")
 		if "punctuation_frequency" not in self.data.keys():
 			self.data.update({"punctuation_frequency": self.calcPunctuationFrequency()})
-			print("calculated punctuation_frequency")
+			#print("calculated punctuation_frequency")
 		if "hashtag_frequency" not in self.data.keys():
 			self.data.update({"hashtag_frequency": self.calcHashtagFrequency()})
-			print("calculated hashtag_frequency")
+			#print("calculated hashtag_frequency")
 		#if "rhyme_average" not in self.data.keys():
 		#	self.data.update({"rhyme_average": self.calcRhyme1()})
 		#	print("calculated rhyme_average")

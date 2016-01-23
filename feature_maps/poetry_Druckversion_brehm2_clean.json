@@ -1,1 +1,1 @@
-{"punctuation_frequency": 0.0018227009113504556, "text_length": 147, "sentence_length_avg": 1.2372881355932204, "sentence_length_max": 17, "digit_frequency": 0.0, "class": "poetry", "hashtag_frequency": 0.0, "sentence_length_min": 1}
+{"class": "poetry", "sentence_length_min": 7, "sentence_length_avg": 25.67391304347826, "sentence_length_max": 62, "digit_frequency": 0.00021094821221390148, "text_length": 1243, "punctuation_frequency": 0.0006328446366417044, "hashtag_frequency": 0.0}
