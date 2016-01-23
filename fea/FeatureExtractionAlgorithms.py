@@ -19,7 +19,7 @@ class FEA():
 
 	def __init__(self, class_name, source, map_dir, use_json=False):
 
-		print("----------NEW---------------")
+		print("\n----------NEW---------------")
 		m = re.search(".*\/(.*)\..*", source)
 		if m:
 			self.filename = m.group(1)

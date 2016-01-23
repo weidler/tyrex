@@ -1,5 +1,6 @@
 import sys
 import re
+import codecs
 from pathlib import Path
 from html2text import html2text
 
@@ -19,7 +20,7 @@ class Parser():
 
 	def readFileAtPath(self, posix_path):
 		print("AT FILE: "+posix_path.name)
-		with posix_path.open() as f:
+		with posix_path.open(encoding="cp273") as f:  # german language encoding
 			return html2text(f.read())
 
 	def writeNormalizedFile(self, normalized, parent, filename):
