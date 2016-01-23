@@ -1,1 +1,1 @@
-{"class": "report", "sentence_length_min": 1, "sentence_length_avg": 2.3918495297805644, "sentence_length_max": 55, "digit_frequency": 0.0013882002974714923, "text_length": 495, "punctuation_frequency": 0.014873574615765989, "hashtag_frequency": 0.0}
+{"class": "report", "sentence_length_max": 55, "sentence_length_avg": 2.4811594202898553, "punctuation_frequency": 0.01569916027747353, "hashtag_frequency": 0.0, "digit_frequency": 0.001551661190215407, "text_length": 522, "sentence_length_min": 1}

@@ -22,7 +22,7 @@ class Parser():
 	def readFileAtPath(self, posix_path):
 		print("AT FILE: "+posix_path.name)
 		try:
-			with posix_path.open(encoding="utf-8") as f:  # german language encoding
+			with posix_path.open(encoding="utf-8") as f:  # general encoding
 				return html2text(f.read())
 		except UnicodeDecodeError:
 			try:

@@ -1,11 +1,10 @@
 #!/bin/bash
-# USAGE: run.sh raw_data data map_dir arff_filename [prefix]
+# USAGE: run.sh raw_data data map_dir arff_filename
 
 RAW_DATA=$1
 DATA=$2
 MAP_DIR=$3
-PREFIX=$4
-ARFF_FILE=$5
+ARFF_FILE=$4
 
 # PARSER
 python3 parser/Parser.py $RAW_DATA $DATA;

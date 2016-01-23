@@ -1,1 +1,1 @@
-{"class": "drama", "sentence_length_min": 1, "sentence_length_avg": 6.023255813953488, "sentence_length_max": 47, "digit_frequency": 0.0, "text_length": 237, "punctuation_frequency": 0.015625, "hashtag_frequency": 0.0}
+{"class": "drama", "sentence_length_max": 47, "sentence_length_avg": 5.673913043478261, "punctuation_frequency": 0.017580577647551276, "hashtag_frequency": 0.0, "digit_frequency": 0.0008371703641691084, "text_length": 237, "sentence_length_min": 1}
