@@ -148,12 +148,16 @@ class FEA():
 	def calcTerminologicalCongruence(self):
 		# TODO
 		pass
-
+		
 	def calcPhrasesPerParagraph(self):
-		# TODO
-		# Weil: in romanen/epik werden mit blocksatz nur für neue absätze umbrüche benutzt, dementsprechend viele sätze pro line
-		# gedichte hingegen haben meist weniger als einen satz pro line
-		pass
+		splitfile = self.source.splitlines()
+		while '' in splitfile:
+			splitfile.remove('')
+		count = 0
+		for line in splitfile:
+			if re.match(r'.*<s>.*', line):
+				count +=1	
+		return float(count)/len(source)
 
 	def calcDigitFrequency(self):
 		count = 0 #count per word
@@ -168,6 +172,8 @@ class FEA():
 			if re.match(r'(...)', char) or re.match(r'([!\?,;:(\(.*\))]|[...])', char): # ..., ()
 				count += 1
 		return float(count)/len(self.source)
+
+
 
 		# S.L.
 		# aussortieren von Füllwörtern, Zeichen etc fehlt
@@ -202,6 +208,9 @@ class FEA():
 		if "text_length" not in self.data.keys():
 			self.data.update({"text_length": self.calcTextLength()})
 			#print("calculated text_length")
+		if "phrases_per_paragraph" not in self.data.keys():
+			self.data.update({"phrases_per_paragraph": self.calcPhrasesPerParagraph()})
+			#print("calculated phrases_per_paragraph")
 		if "digit_frequency" not in self.data.keys():
 			self.data.update({"digit_frequency": self.calcDigitFrequency()})
 			#print("calculated digit_frequency")

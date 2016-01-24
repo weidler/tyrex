@@ -61,6 +61,7 @@ class Parser():
 		susp = "<suspension>"  # ...
 		comma = "<comma>"  #  ,
 		colon = "<colon>"  #  :
+		semicolon = "<semicolon>"  #  ;
 		think = "<thinking>"  #  -
 
 		#apostroph
@@ -80,6 +81,7 @@ class Parser():
 		out = re.sub("\!", excl, out)
 		out = re.sub("\,", comma, out)
 		out = re.sub("\:", colon, out)
+		out = re.sub("\;", semicolon, out)
 		out = re.sub("\s- ", think, out)
 
 		out = re.sub("[\*\_]|\#{1,} ", "", out)  # remove markdown
