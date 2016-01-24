@@ -108,7 +108,7 @@ class FEA():
 		"""
 		#S.L.
 		## muss noch angepasst werden an: unreine Reime, wenn "" auftaucht
-		lines = re.findall("(.*?)[\.|\!|\?|\,|\;|\:|\-]*[\\n]", self.source)    # parser "" und '' umgewandelt? # anpassen
+		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source)    # parser "" und '' umgewandelt? # anpassen
 		endings_dict = {}
 		for line in lines:
 			lastword = line.split()[-1]
@@ -148,7 +148,7 @@ class FEA():
 	def calcTerminologicalCongruence(self):
 		# TODO
 		pass
-		
+
 	def calcPhrasesPerParagraph(self):
 		splitfile = self.source.splitlines()
 		while '' in splitfile:
@@ -156,7 +156,7 @@ class FEA():
 		count = 0
 		for line in splitfile:
 			if re.match(r'.*<s>.*', line):
-				count +=1	
+				count +=1
 		return float(count)/len(source)
 
 	def calcDigitFrequency(self):
