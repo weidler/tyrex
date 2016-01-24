@@ -50,44 +50,58 @@ class Parser():
 	def convertToNormalized(self, unnormalized):
 		#sentence bounds
 
-		try:
-			phrase = "<s>", "</s>"
+		#return unnormalized  # skip
 
-			#punctuations
-			punct = "<punct>"  #  .
-			question = "<question>"  #  ?
-			excl = "<exclamation>"  #  !
-			susp = "<suspension>"  # ...
-			comma = "<comma>"  #  ,
-			colon = "<colon>"  #  :
-			think = "<thinking>"  #  -
+		phrase = "<s>", "</s>"
 
-			#apostroph
-			direct = ("<speech>", "</speech>")
-			apo = ("<apo>", "</apo>")
+		#punctuations
+		punct = "<punct>"  #  .
+		question = "<question>"  #  ?
+		excl = "<exclamation>"  #  !
+		susp = "<suspension>"  # ...
+		comma = "<comma>"  #  ,
+		colon = "<colon>"  #  :
+		think = "<thinking>"  #  -
 
-			#regex
-			phrase_bound = punct + "|" + question + "|" + excl
-			phrase_match = "(?=((" + phrase_bound + "|^)(((.|\s)*?)(" + phrase_bound + "))))"
+		#apostroph
+		direct = ("<speech>", "</speech>")
+		apo = ("<apo>", "</apo>")
 
-			#ANNOTATING...
+		#regex
+		phrase_bound = punct + "|" + question + "|" + excl + "|" + "\n{2,}"
+		phrase_match = "(?=((" + phrase_bound + "|^)(((.|\s)+?)(" + phrase_bound + "))))"
 
-			#tags
-			out = re.sub("\.{3,}", susp, unnormalized)
-			out = re.sub("\.", punct, out)
-			out = re.sub("\?", question, out)
-			out = re.sub("\!", excl, out)
-			out = re.sub("\,", comma, out)
-			out = re.sub("\:", colon, out)
-			out = re.sub(" \- ", think, out)
+		#ANNOTATING...
 
-			out = "".join([phrase[0] + match[2] + phrase[1] for match in re.findall(phrase_match, out)])  #sentence bounds
-			out = out.replace("<s>\n", "\n<s>")  #linebreak before, not after sentence start
-			#out = re.sub("[^\s]<", lambda match: match[0] + " " + match[1], out)  #have all elements seperated by space
-			return out
+		#tags
+		out = re.sub("\.{3,}", susp, unnormalized)
+		out = re.sub("\.", punct, out)
+		out = re.sub("\?", question, out)
+		out = re.sub("\!", excl, out)
+		out = re.sub("\,", comma, out)
+		out = re.sub("\:", colon, out)
+		out = re.sub("\s- ", think, out)
 
-		except:
-			return False
+		out = re.sub("[\*\_]|\#{1,} ", "", out)  # remove markdown
+		out = re.sub("\[(.|\s)*\]|\||-{2,}|\t|/", "", out)  # remove unnecessary characters
+		out = re.sub("(\n|^)\s+\n", "\n\n", out)  # remove lines only containing whitespaces
+		out = re.sub("\n +", "\n", out)  # remove whitespaces preceding any lines
+		out = re.sub("^\s+", "", out)  # remove initial whitespaces
+		out = re.sub(" {2,}", " ", out)  # reduce multi space
+		out = out.replace("\\", "")
+
+		phrases = re.findall(phrase_match, out)
+		clean_phrases = [phrases[i][2] for i in range(len(phrases)) if phrases[i][4] != phrases[i-1][4]]
+
+		out = "".join([phrase[0] + match + phrase[1] for match in clean_phrases])  #sentence bounds
+
+		# order the linebreaks and sentence bounds
+		while re.search("[\n\r]\</s\>", out) or re.search("\<s\>[\n\r]", out):
+			out = re.sub("\n\<\/s\>", "</s>\n", out)
+			out = re.sub("\<s\>[ \t]*\n", "\n<s>", out)
+
+		#out = re.sub("[^\s]<", lambda match: match[0] + " " + match[1], out)  #have all elements seperated by space
+		return out
 
 	# MAIN PROCESSORS
 
