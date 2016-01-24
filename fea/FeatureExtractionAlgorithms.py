@@ -165,11 +165,11 @@ class FEA():
 			if re.match(r'.*\d+', char):
 				count += 1
 		return float(count)/len(self.source)
-
+		
 	def calcPunctuationFrequency(self):
-		count = 0 #how to count? punct per word/char?
+		count = 0 #count per word
 		for char in self.source:
-			if re.match(r'(...)', char) or re.match(r'([!\?,;:(\(.*\))]|[...])', char): # ..., ()
+			if re.match(r'.*[<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>].*', char): 
 				count += 1
 		return float(count)/len(self.source)
 
