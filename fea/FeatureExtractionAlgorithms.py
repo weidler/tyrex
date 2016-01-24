@@ -3,7 +3,7 @@ import json
 import re
 import os
 from pathlib import Path
-#from Collections import Counter
+from Collections import Counter
 #from tyrex_lib import checkFileExistance
 
 class FEA():
@@ -146,8 +146,11 @@ class FEA():
 		# vergleichen übereinstimmung
 
 	def calcTerminologicalCongruence(self):
-		# TODO
-		pass
+		"""Zählt die 'mostCommonWords' """
+		# S.L.
+ +		words = self.source.split()
+ +		mostCommonWords = Counter(words).most_common() 	# list with tuples
+ +		return mostCommonWords
 
 	def calcPhrasesPerParagraph(self):
 		splitfile = self.source.splitlines()
