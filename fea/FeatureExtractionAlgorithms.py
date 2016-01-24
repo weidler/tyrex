@@ -3,7 +3,7 @@ import json
 import re
 import os
 from pathlib import Path
-#from Collections import Counter
+from Collections import Counter
 #from tyrex_lib import checkFileExistance
 
 class FEA():
@@ -108,7 +108,7 @@ class FEA():
 		"""
 		#S.L.
 		## muss noch angepasst werden an: unreine Reime, wenn "" auftaucht
-		lines = re.findall("(.*?)[\.|\!|\?|\,|\;|\:|\-]*[\\n]", self.source)    # parser "" und '' umgewandelt? # anpassen
+		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source)    # parser "" und '' umgewandelt? # anpassen
 		endings_dict = {}
 		for line in lines:
 			lastword = line.split()[-1]
@@ -146,9 +146,12 @@ class FEA():
 		# vergleichen übereinstimmung
 
 	def calcTerminologicalCongruence(self):
-		# TODO
-		pass
-		
+		"""Zählt die 'mostCommonWords' """
+		# S.L.
+ +		words = self.source.split()
+ +		mostCommonWords = Counter(words).most_common() 	# list with tuples
+ +		return mostCommonWords
+
 	def calcPhrasesPerParagraph(self):
 		splitfile = self.source.splitlines()
 		while '' in splitfile:
@@ -156,7 +159,7 @@ class FEA():
 		count = 0
 		for line in splitfile:
 			if re.match(r'.*<s>.*', line):
-				count +=1	
+				count +=1
 		return float(count)/len(source)
 
 	def calcDigitFrequency(self):
