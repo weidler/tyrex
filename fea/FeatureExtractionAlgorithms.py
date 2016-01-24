@@ -108,9 +108,10 @@ class FEA():
 		"""
 		#S.L.
 		## muss noch angepasst werden an: unreine Reime, wenn "" auftaucht
-		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source)    # parser "" und '' umgewandelt? # anpassen
+		lines = re.findall("(.*?)[\\n]", self.source)    # parser "" und '' umgewandelt? # anpassen
 		endings_dict = {}
 		for line in lines:
+			re.sub("<.*?>","",line)
 			lastword = line.split()[-1]
 			lastchar = lastword[-1]
 			if lastchar != " ":
@@ -146,11 +147,11 @@ class FEA():
 		# vergleichen übereinstimmung
 
 	def calcTerminologicalCongruence(self):
-		"""Zählt die 'mostCommonWords' """
+		"""Counts the most Common Words..."""
 		# S.L.
  +		words = self.source.split()
  +		mostCommonWords = Counter(words).most_common() 	# list with tuples
- +		return mostCommonWords
+ +		return mostCommonWords # was soll ausgegeben werden?
 
 	def calcPhrasesPerParagraph(self):
 		splitfile = self.source.splitlines()
