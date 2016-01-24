@@ -66,7 +66,7 @@ class FEA():
 		"""
 		Calculates the length of the text and ignores XMl-tags.
 		"""
-		#S.L.
+		#(S.L.)
 		text = re.sub("<.*?>", "", self.source)
 		return len(text.split())
 
@@ -106,12 +106,14 @@ class FEA():
 		"""
 		Counts all occurence of endings and returns the number of rhymes/count of lines. From 0->1; 0 means no rhymes, 1 means everything rhymes.
 		"""
-		#S.L.
+		#(S.L.)
 		## muss noch angepasst werden an: unreine Reime, wenn "" auftaucht
 		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source)    # parser "" und '' umgewandelt? # anpassen
+		lines = re.findall("(.*?)[\\n]", self.source)    # parser "" und '' umgewandelt?
 		endings_dict = {}
 		for line in lines:
-			lastword = line.split()[-1]
+			act_line = re.sub("<.*?>","",line)
+			lastword = act_line.split()[-1]
 			lastchar = lastword[-1]
 			if lastchar != " ":
 				lastchars = lastword[-3:]
@@ -148,9 +150,17 @@ class FEA():
 	def calcTerminologicalCongruence(self):
 		"""Zählt die 'mostCommonWords' """
 		# S.L.
- +		words = self.source.split()
- +		mostCommonWords = Counter(words).most_common() 	# list with tuples
- +		return mostCommonWords
+ 		words = self.source.split()
+ 		mostCommonWords = Counter(words).most_common() 	# list with tuples
+ 		return mostCommonWords
+
+		"""Counts the most Common Words..."""
+		# S.L.
+		# aussortieren von Füllwörtern, Zeichen etc fehlt
+		# lemmatisieren
+		words = self.source.split()
+		mostCommonWords = Counter(words).most_common() 	# list with tuples
+		return mostCommonWords # was soll ausgegeben werden?
 
 	def calcPhrasesPerParagraph(self):
 		splitfile = self.source.splitlines()
@@ -175,16 +185,6 @@ class FEA():
 			if re.match(r'.*[<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>].*', char): 
 				count += 1
 		return float(count)/len(self.source)
-
-
-
-		# S.L.
-		# aussortieren von Füllwörtern, Zeichen etc fehlt
-		# lemmatisieren
-		words = self.source.split()
-		mostCommonWords = Counter(words).most_common() 	# list with tuples
-		return mostCommonWords
-
 
 	def calcHashtagFrequency(self):
 		count = 0 #count per word
