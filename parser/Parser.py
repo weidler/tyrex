@@ -93,7 +93,7 @@ class Parser():
 		out = out.replace("\\", "")
 
 		phrases = re.findall(phrase_match, out)
-		clean_phrases = [phrases[i][2] for i in range(len(phrases)) if phrases[i][4] != phrases[i-1][4]]
+		clean_phrases = [phrases[i][2] for i in range(len(phrases)) if phrases[i][3] != phrases[i-1][3]]
 
 		out = "".join([phrase[0] + match + phrase[1] for match in clean_phrases])  #sentence bounds
 
@@ -101,6 +101,8 @@ class Parser():
 		while re.search("[\n\r]\</s\>", out) or re.search("\<s\>[\n\r]", out):
 			out = re.sub("\n\<\/s\>", "</s>\n", out)
 			out = re.sub("\<s\>[ \t]*\n", "\n<s>", out)
+
+		out = re.sub("<s><\/s>", "", out)
 
 		#out = re.sub("[^\s]<", lambda match: match[0] + " " + match[1], out)  #have all elements seperated by space
 		return out

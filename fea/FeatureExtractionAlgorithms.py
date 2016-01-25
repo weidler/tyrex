@@ -160,26 +160,22 @@ class FEA():
 			splitfile.remove('')
 		count = 0
 		for line in splitfile:
-			if re.match(r'.*<s>.*', line):
-				count +=1
-		return float(count)/len(source)
+			count += len(re.findall('<s>', line))
+
+		return float(count)/len(splitfile)
 
 	def calcDigitFrequency(self):
-		count = 0 #count per word
-		for char in self.source.split():
-			if re.match(r'.*\d+', char):
-				count += 1
-		return float(count)/len(self.source)
+		numbs = len(re.findall("\d+", self.source))
+		return float(numbs)/len(self.source.split(" "))
 
 	def calcPunctuationFrequency(self):
-		count = 0 #count per word
-		for char in self.source:
-			if re.match(r'.*[<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>].*', char):
-				count += 1
-		return float(count)/len(self.source)
+		text_length = len(re.sub('<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>', "i", self.source))
+		puncts = len(re.findall('<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>', self.source))
+		return float(puncts)/text_length
+
 
 	def calcHashtagFrequency(self):
-		count = 0 #count per word
+		count = 0  #count per word
 		for char in self.source.split():
 			if re.match(r'#[.]*', char):
 				count += 1
@@ -193,31 +189,22 @@ class FEA():
 	def finalize(self):
 		if "sentence_length_avg" not in self.data.keys():
 			self.data.update({"sentence_length_avg": self.calcSentenceLengthAvg()})
-			#print("calculated sentence_length_avg")
 		if "sentence_length_max" not in self.data.keys():
 			self.data.update({"sentence_length_max": self.calcSentenceLengthMax()})
-			#print("calculated sentence_length_max")
 		if "sentence_length_min" not in self.data.keys():
 			self.data.update({"sentence_length_min": self.calcSentenceLengthMin()})
-			#print("calculated sentence_length_min")
 		if "text_length" not in self.data.keys():
 			self.data.update({"text_length": self.calcTextLength()})
-			#print("calculated text_length")
 		if "phrases_per_paragraph" not in self.data.keys():
 			self.data.update({"phrases_per_paragraph": self.calcPhrasesPerParagraph()})
-			#print("calculated phrases_per_paragraph")
 		if "digit_frequency" not in self.data.keys():
 			self.data.update({"digit_frequency": self.calcDigitFrequency()})
-			#print("calculated digit_frequency")
 		if "punctuation_frequency" not in self.data.keys():
 			self.data.update({"punctuation_frequency": self.calcPunctuationFrequency()})
-			#print("calculated punctuation_frequency")
-		if "hashtag_frequency" not in self.data.keys():
-			self.data.update({"hashtag_frequency": self.calcHashtagFrequency()})
-			#print("calculated hashtag_frequency")
+		#if "hashtag_frequency" not in self.data.keys():
+		#	self.data.update({"hashtag_frequency": self.calcHashtagFrequency()})
 		#if "rhyme_average" not in self.data.keys():
 		#	self.data.update({"rhyme_average": self.calcRhyme1()})
-		#	print("calculated rhyme_average")
 
 		self.writeFeatureMaps()
 
