@@ -3,7 +3,7 @@ import json
 import re
 import os
 from pathlib import Path
-#from Collections import Counter
+from Collections import Counter
 #from tyrex_lib import checkFileExistance
 
 class FEA():
@@ -66,7 +66,7 @@ class FEA():
 		"""
 		Calculates the length of the text and ignores XMl-tags.
 		"""
-		#S.L.
+		#(S.L.)
 		text = re.sub("<.*?>", "", self.source)
 		return len(text.split())
 
@@ -106,12 +106,14 @@ class FEA():
 		"""
 		Counts all occurence of endings and returns the number of rhymes/count of lines. From 0->1; 0 means no rhymes, 1 means everything rhymes.
 		"""
-		#S.L.
+		#(S.L.)
 		## muss noch angepasst werden an: unreine Reime, wenn "" auftaucht
-		lines = re.findall("(.*?)[\.|\!|\?|\,|\;|\:|\-]*[\\n]", self.source)    # parser "" und '' umgewandelt? # anpassen
+		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source)    # parser "" und '' umgewandelt? # anpassen
+		lines = re.findall("(.*?)[\\n]", self.source)    # parser "" und '' umgewandelt?
 		endings_dict = {}
 		for line in lines:
-			lastword = line.split()[-1]
+			act_line = re.sub("<.*?>","",line)
+			lastword = act_line.split()[-1]
 			lastchar = lastword[-1]
 			if lastchar != " ":
 				lastchars = lastword[-3:]
@@ -146,14 +148,29 @@ class FEA():
 		# vergleichen übereinstimmung
 
 	def calcTerminologicalCongruence(self):
-		# TODO
-		pass
+		"""Zählt die 'mostCommonWords' """
+		# S.L.
+ 		words = self.source.split()
+ 		mostCommonWords = Counter(words).most_common() 	# list with tuples
+ 		return mostCommonWords
+
+		"""Counts the most Common Words..."""
+		# S.L.
+		# aussortieren von Füllwörtern, Zeichen etc fehlt
+		# lemmatisieren
+		words = self.source.split()
+		mostCommonWords = Counter(words).most_common() 	# list with tuples
+		return mostCommonWords # was soll ausgegeben werden?
 
 	def calcPhrasesPerParagraph(self):
-		# TODO
-		# Weil: in romanen/epik werden mit blocksatz nur für neue absätze umbrüche benutzt, dementsprechend viele sätze pro line
-		# gedichte hingegen haben meist weniger als einen satz pro line
-		pass
+		splitfile = self.source.splitlines()
+		while '' in splitfile:
+			splitfile.remove('')
+		count = 0
+		for line in splitfile:
+			if re.match(r'.*<s>.*', line):
+				count +=1
+		return float(count)/len(source)
 
 	def calcDigitFrequency(self):
 		count = 0 #count per word
@@ -161,21 +178,13 @@ class FEA():
 			if re.match(r'.*\d+', char):
 				count += 1
 		return float(count)/len(self.source)
-
+		
 	def calcPunctuationFrequency(self):
-		count = 0 #how to count? punct per word/char?
+		count = 0 #count per word
 		for char in self.source:
-			if re.match(r'(...)', char) or re.match(r'([!\?,;:(\(.*\))]|[...])', char): # ..., ()
+			if re.match(r'.*[<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>].*', char): 
 				count += 1
 		return float(count)/len(self.source)
-
-		# S.L.
-		# aussortieren von Füllwörtern, Zeichen etc fehlt
-		# lemmatisieren
-		words = self.source.split()
-		mostCommonWords = Counter(words).most_common() 	# list with tuples
-		return mostCommonWords
-
 
 	def calcHashtagFrequency(self):
 		count = 0 #count per word
@@ -202,6 +211,9 @@ class FEA():
 		if "text_length" not in self.data.keys():
 			self.data.update({"text_length": self.calcTextLength()})
 			#print("calculated text_length")
+		if "phrases_per_paragraph" not in self.data.keys():
+			self.data.update({"phrases_per_paragraph": self.calcPhrasesPerParagraph()})
+			#print("calculated phrases_per_paragraph")
 		if "digit_frequency" not in self.data.keys():
 			self.data.update({"digit_frequency": self.calcDigitFrequency()})
 			#print("calculated digit_frequency")
