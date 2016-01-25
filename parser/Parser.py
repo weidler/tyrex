@@ -85,7 +85,7 @@ class Parser():
 		out = re.sub("\s- ", think, out)
 
 		out = re.sub("[\*\_]|\#{1,} ", "", out)  # remove markdown
-		out = re.sub("\[(.|\s)*\]|\||-{2,}|\t|/", "", out)  # remove unnecessary characters
+		out = re.sub("\[(.*?|\s*?)\]|\||-{2,}|\t|\/", "", out)  # remove unnecessary characters
 		out = re.sub("(\n|^)\s+\n", "\n\n", out)  # remove lines only containing whitespaces
 		out = re.sub("\n +", "\n", out)  # remove whitespaces preceding any lines
 		out = re.sub("^\s+", "", out)  # remove initial whitespaces

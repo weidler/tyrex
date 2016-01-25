@@ -55,3 +55,6 @@ docs/_build/
 target/
 
 raw_data/
+data/
+feature_maps/
+test-data/

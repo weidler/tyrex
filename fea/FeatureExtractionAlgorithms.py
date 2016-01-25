@@ -3,7 +3,7 @@ import json
 import re
 import os
 from pathlib import Path
-from Collections import Counter
+from collections import Counter
 #from tyrex_lib import checkFileExistance
 
 class FEA():
@@ -150,17 +150,9 @@ class FEA():
 	def calcTerminologicalCongruence(self):
 		"""Zählt die 'mostCommonWords' """
 		# S.L.
- 		words = self.source.split()
- 		mostCommonWords = Counter(words).most_common() 	# list with tuples
- 		return mostCommonWords
-
-		"""Counts the most Common Words..."""
-		# S.L.
-		# aussortieren von Füllwörtern, Zeichen etc fehlt
-		# lemmatisieren
 		words = self.source.split()
 		mostCommonWords = Counter(words).most_common() 	# list with tuples
-		return mostCommonWords # was soll ausgegeben werden?
+		return mostCommonWords
 
 	def calcPhrasesPerParagraph(self):
 		splitfile = self.source.splitlines()
@@ -178,11 +170,11 @@ class FEA():
 			if re.match(r'.*\d+', char):
 				count += 1
 		return float(count)/len(self.source)
-		
+
 	def calcPunctuationFrequency(self):
 		count = 0 #count per word
 		for char in self.source:
-			if re.match(r'.*[<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>].*', char): 
+			if re.match(r'.*[<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>].*', char):
 				count += 1
 		return float(count)/len(self.source)
 
