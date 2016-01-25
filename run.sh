@@ -6,6 +6,10 @@ DATA=$2
 MAP_DIR=$3
 ARFF_FILE=$4
 
+# CLEAN DIRECTORIES
+rm $2*
+rm $3*
+
 # PARSER
 python3 parser/Parser.py $RAW_DATA $DATA;
 

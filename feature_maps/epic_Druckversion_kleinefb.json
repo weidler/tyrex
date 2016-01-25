@@ -1,1 +1,1 @@
-{"class": "epic", "digit_frequency": 0.0, "hashtag_frequency": 0.0, "sentence_length_min": 2, "text_length": 68, "sentence_length_max": 50, "sentence_length_avg": 16.25, "punctuation_frequency": 0.0}
+{"hashtag_frequency": 0.0, "punctuation_frequency": 0.0, "sentence_length_min": 2, "text_length": 68, "digit_frequency": 0.0, "sentence_length_avg": 16.25, "class": "epic", "sentence_length_max": 50}
