@@ -202,8 +202,8 @@ class FEA():
 			self.data.update({"punctuation_frequency": self.calcPunctuationFrequency()})
 		#if "hashtag_frequency" not in self.data.keys():
 		#	self.data.update({"hashtag_frequency": self.calcHashtagFrequency()})
-		if "rhyme_average" not in self.data.keys():
-			self.data.update({"rhyme_average": self.calcRhyme1()})
+		#if "rhyme_average" not in self.data.keys():
+		#	self.data.update({"rhyme_average": self.calcRhyme1()})
 
 		self.writeFeatureMaps()
 
