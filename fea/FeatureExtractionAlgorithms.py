@@ -107,8 +107,7 @@ class FEA():
 		"""
 		#(S.L.)
 		## muss noch angepasst werden an: unreine Reime, wenn "" auftaucht
-		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source)    # parser "" und '' umgewandelt? # anpassen
-		lines = re.findall("(.*?)[\\n]", self.source)    # parser "" und '' umgewandelt?
+		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source)
 		endings_dict = {}
 		for line in lines:
 			act_line = re.sub("<.*?>","",line)
