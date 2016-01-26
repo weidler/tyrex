@@ -8,7 +8,7 @@
 @attribute	sentence_length_avg	numeric
 @attribute	sentence_length_max	numeric
 @attribute	sentence_length_min	numeric
-@attribute	class	{ epic, poetry, drama, report }
+@attribute	class	{ epic, drama, poetry, report }
 
 
 @DATA
