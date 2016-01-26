@@ -159,7 +159,6 @@ class FEA():
 		count = 0
 		for line in splitfile:
 			count += len(re.findall('<s>', line))
-
 		return float(count)/len(splitfile)
 
 	def calcDigitFrequency(self):
@@ -171,7 +170,6 @@ class FEA():
 		puncts = len(re.findall('<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>', self.source))
 		return float(puncts)/text_length
 
-
 	def calcHashtagFrequency(self):
 		count = 0  #count per word
 		for char in self.source.split():
@@ -179,6 +177,17 @@ class FEA():
 				count += 1
 		return float(count)/len(self.source)
 
+	def calcWordLengthAvg(self):
+		clean_text = re.sub('<.*?>', "", self.source))
+		char = 0
+		for word in clean_text.split():
+			char += len(word)
+		return float(char)/len(clean_text)
+
+	def calcWordVariance(self):
+		clean_text = re.sub('<.*?>', "", self.source))
+		return len(set(clean_text.split()))/len(clean_text.split())
+			
 	def calcNEFrequency(self):
 		# TODO
 		pass
@@ -203,6 +212,10 @@ class FEA():
 		#	self.data.update({"hashtag_frequency": self.calcHashtagFrequency()})
 		if "rhyme_average" not in self.data.keys():
 			self.data.update({"rhyme_average": self.calcRhyme1()})
+		if "word_length_average" not in self.data.keys():
+			self.data.update({"word_length_average": self.calcWordLengthAvg()})
+		if "word_variance" not in self.data.keys():
+			self.data.update({"word_variance": self.calcWordVariance()})
 
 		self.writeFeatureMaps()
 
