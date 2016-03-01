@@ -145,12 +145,16 @@ class FEA():
 
 		# vergleichen übereinstimmung
 
-	def calcTerminologicalCongruence(self):
+	def calcMostCommonWords(self):
 		"""Zählt die 'mostCommonWords' """
 		# S.L.
 		words = self.source.split()
 		mostCommonWords = Counter(words).most_common() 	# list with tuples
 		return mostCommonWords
+		
+	def calcTerminologicalCongruence(self):
+		# TODO
+		pass
 
 	def calcPhrasesPerParagraph(self):
 		splitfile = self.source.splitlines()
@@ -190,6 +194,9 @@ class FEA():
 			
 	def calcNEFrequency(self):
 		# TODO
+		pass
+	def calcVerbFrequency(self):
+		# TODO - Treetagger
 		pass
 
 	# MAIN PROCESSORS
