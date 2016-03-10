@@ -63,9 +63,8 @@ class ARFFBuilder():
 		distr = {c: 0 for c in set([c["class"] for c in self.vectors])}
 		for c in self.vectors:
 			distr[c["class"]] += 1
-		print(distr)
+		print("Class Distribution: " + str(distr))
 		return distr
-
 
 	# WRITE COMPONENTS
 	def writeHead(self):

@@ -1,6 +1,6 @@
 #!/bin/bash
 # USAGE: run.sh raw_data data map_dir arff_filename
-# DIRECTORYS without ending /
+# DIRECTORYS with ending /
 
 RAW_DATA=$1
 DATA=$2

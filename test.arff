@@ -1,0 +1,17 @@
+@relation tyrex
+
+
+@attribute	word_variance	numeric
+@attribute	digit_frequency	numeric
+@attribute	phrases_per_paragraph	numeric
+@attribute	punctuation_frequency	numeric
+@attribute	sentence_length_avg	numeric
+@attribute	sentence_length_max	numeric
+@attribute	sentence_length_min	numeric
+@attribute	text_length	numeric
+@attribute	word_length_average	numeric
+@attribute	class	{ test-data }
+
+
+@DATA
+0.8867924528301887, 0.0, 0.6, 0.029023746701846966, 9.666666666666666, 25, 1, 53, 0.7975460122699386, test-data
