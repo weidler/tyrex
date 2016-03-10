@@ -1,6 +1,8 @@
 import sys
 import json
 import re
+import pprint
+import treetaggerwrapper as tt
 from pathlib import Path
 from collections import Counter
 #from tyrex_lib import checkFileExistance
@@ -19,26 +21,34 @@ class FEA():
 	def __init__(self, class_name, source, map_dir, use_json=False):
 
 		print("\n----------NEW---------------")
+
+		# get the filename of the input file
 		m = re.search(".*\/(.*)\..*", source)
 		if m:
 			self.filename = m.group(1)
 		else:
 			self.filename = source
 
+		# target directory of vector json files
 		self.map_dir = map_dir
 
+		# read source file if existing, else stop
 		try:
 			self.source = self.readFile(source)
 		except IOError:
 			print("SOURCE FILE does not exist. Please provide valid path name.")
 			exit()
 
+		# if use_json flag is true, use existing data
 		if use_json:
 			self.data = json.loads(self.readFile(self.map_dir + source.split("."[0])))
 		else:
 			self.data = {}
 
+		# add class name to this vector
 		self.data.update({"class": class_name})
+
+		self.treetagged = self.applyTreeTagger(self.source)
 
 		#print("____________________")
 		#print(source)
@@ -59,6 +69,15 @@ class FEA():
 
 		with path.open("w") as f:
 			f.write(json.dumps(self.data))
+
+	def applyTreeTagger(self, text):
+		tagger = tt.TreeTagger(TAGLANG="de")
+		tagged_list = tt.make_tags(tagger.tag_text(self.cleanSource(text)))
+		print(tagged_list)
+		return tagged_list
+
+	def cleanSource(self, source):
+		return re.sub("<.*?>", "", source)
 
 	# EXTRACTION ALGORITHMS
 	def calcTextLength(self):
@@ -110,7 +129,7 @@ class FEA():
 		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source)
 		endings_dict = {}
 		for line in lines:
-			act_line = re.sub("<.*?>","",line)
+			act_line = re.sub("<.*?>", "", line)
 			lastword = act_line.split()[-1]
 			lastchar = lastword[-1]
 			if lastchar != " ":
@@ -134,11 +153,11 @@ class FEA():
 		#S.L.
 		lines = re.findall("(.*?)[\\n]", self.source)
 		endings_list = ["" for i in len(lines)]
-		c=0			#counter
+		c = 0			#counter
 		for line in lines:
 			lastchars = line[-1][-1:-3]
 			endings_list[c] = lastchars
-			c +=1
+			c += 1
 
 		rhyme_schemes = [[a,a,b,b],[a,b,a,b],[a,b,b,a],[a,a,b,c,c,b],[a,b,a,((b,c,b)|(c,b,c))],[a,b,c,a,b,c]]
 		# Paarreim, Kreuzreim, umarmender Reim, Schweifreim, Kettenreim, verschränkter Reim, (Binnenreim?[...a...a...,...b...,...b...])
@@ -159,7 +178,6 @@ class FEA():
 		count = 0
 		for line in splitfile:
 			count += len(re.findall('<s>', line))
-
 		return float(count)/len(splitfile)
 
 	def calcDigitFrequency(self):
@@ -171,13 +189,23 @@ class FEA():
 		puncts = len(re.findall('<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>', self.source))
 		return float(puncts)/text_length
 
-
 	def calcHashtagFrequency(self):
 		count = 0  #count per word
 		for char in self.source.split():
 			if re.match(r'#[.]*', char):
 				count += 1
 		return float(count)/len(self.source)
+
+	def calcWordLengthAvg(self):
+		clean_text = re.sub('<.*?>', "", self.source)
+		char = 0
+		for word in clean_text.split():
+			char += len(word)
+		return float(char)/len(clean_text)
+
+	def calcWordVariance(self):
+		clean_text = re.sub('<.*?>', "", self.source)
+		return len(set(clean_text.split()))/len(clean_text.split())
 
 	def calcNEFrequency(self):
 		# TODO
@@ -203,6 +231,10 @@ class FEA():
 		#	self.data.update({"hashtag_frequency": self.calcHashtagFrequency()})
 		#if "rhyme_average" not in self.data.keys():
 		#	self.data.update({"rhyme_average": self.calcRhyme1()})
+		if "word_length_average" not in self.data.keys():
+			self.data.update({"word_length_average": self.calcWordLengthAvg()})
+		if "word_variance" not in self.data.keys():
+			self.data.update({"word_variance": self.calcWordVariance()})
 
 		self.writeFeatureMaps()
 
