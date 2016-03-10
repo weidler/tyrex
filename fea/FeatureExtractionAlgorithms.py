@@ -182,14 +182,14 @@ class FEA():
 		return float(count)/len(self.source)
 
 	def calcWordLengthAvg(self):
-		clean_text = re.sub('<.*?>', "", self.source))
+		clean_text = re.sub('<.*?>', "", self.source)
 		char = 0
 		for word in clean_text.split():
 			char += len(word)
 		return float(char)/len(clean_text)
 
 	def calcWordVariance(self):
-		clean_text = re.sub('<.*?>', "", self.source))
+		clean_text = re.sub('<.*?>', "", self.source)
 		return len(set(clean_text.split()))/len(clean_text.split())
 			
 	def calcNEFrequency(self):

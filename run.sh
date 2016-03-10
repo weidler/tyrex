@@ -10,10 +10,10 @@ ARFF_FILE=$4
 # rm $2*
 # rm $3*
 
-# PARSER
+# PARSER STEP 1: Create all normed files
 python3 parser/Parser.py $RAW_DATA $DATA;
 
-# Multiple FEA
+# Multiple FEA STEP 2: Take all normed files and apply FEA on them and save results as JSON maps
 python3 fea/AutomizedFEA.py $DATA $MAP_DIR;
 
 # BUILD ARFF
