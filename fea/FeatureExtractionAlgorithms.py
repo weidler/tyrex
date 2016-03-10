@@ -1,6 +1,8 @@
 import sys
 import json
 import re
+import pprint
+import treetaggerwrapper as tt
 from pathlib import Path
 from collections import Counter
 #from tyrex_lib import checkFileExistance
@@ -16,29 +18,46 @@ class FEA():
 		data	-->	dict object of already calculated data and destination of newly calculated data
 	"""
 
-	def __init__(self, class_name, source, map_dir, use_json=False):
+	def __init__(self, class_name, source, map_dir, use_json=False, is_file=True):
 
 		print("\n----------NEW---------------")
-		m = re.search(".*\/(.*)\..*", source)
-		if m:
-			self.filename = m.group(1)
+
+		# recognising file or textstring
+		if is_file:
+			# get the filename of the input file
+			m = re.search(".*\/(.*)\..*", source)
+			if m:
+				self.filename = m.group(1)
+			else:
+				self.filename = source
+
+			# read source file if existing, else stop
+			try:
+				self.source = self.readFile(source)
+			except IOError:
+				print("SOURCE FILE does not exist. Please provide valid path name.")
+				exit()
 		else:
-			self.filename = source
+			self.filename = "unknown"
+			self.source = source
 
-		self.map_dir = map_dir
-
-		try:
-			self.source = self.readFile(source)
-		except IOError:
-			print("SOURCE FILE does not exist. Please provide valid path name.")
-			exit()
-
+		# if use_json flag is true, use existing data
 		if use_json:
 			self.data = json.loads(self.readFile(self.map_dir + source.split("."[0])))
 		else:
 			self.data = {}
 
-		self.data.update({"class": class_name})
+		# if class_name is unknown, return data for recognition instead of writing learning vector file
+		if class_name != "unknown":
+			# add class name to this vector
+			self.data.update({"class": class_name})
+			self.class_name = True
+			# target directory of vector json files
+			self.map_dir = map_dir
+		else:
+			self.class_name = class_name
+
+		self.treetagged = self.applyTreeTagger(self.source)
 
 		#print("____________________")
 		#print(source)
@@ -55,10 +74,16 @@ class FEA():
 		path = Path(self.map_dir + self.filename + ".json")
 		path.touch(exist_ok=True)
 
-		#checkFileExistance(path)
-
 		with path.open("w") as f:
 			f.write(json.dumps(self.data))
+
+	def applyTreeTagger(self, text):
+		tagger = tt.TreeTagger(TAGLANG="de")
+		tagged_list = tt.make_tags(tagger.tag_text(self.cleanSource(text)))
+		return tagged_list
+
+	def cleanSource(self, source):
+		return re.sub("<.*?>", "", source)
 
 	# EXTRACTION ALGORITHMS
 	def calcTextLength(self):
@@ -110,7 +135,7 @@ class FEA():
 		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source)
 		endings_dict = {}
 		for line in lines:
-			act_line = re.sub("<.*?>","",line)
+			act_line = re.sub("<.*?>", "", line)
 			lastword = act_line.split()[-1]
 			lastchar = lastword[-1]
 			if lastchar != " ":
@@ -134,11 +159,11 @@ class FEA():
 		#S.L.
 		lines = re.findall("(.*?)[\\n]", self.source)
 		endings_list = ["" for i in len(lines)]
-		c=0			#counter
+		c = 0			#counter
 		for line in lines:
 			lastchars = line[-1][-1:-3]
 			endings_list[c] = lastchars
-			c +=1
+			c += 1
 
 		rhyme_schemes = [[a,a,b,b],[a,b,a,b],[a,b,b,a],[a,a,b,c,c,b],[a,b,a,((b,c,b)|(c,b,c))],[a,b,c,a,b,c]]
 		# Paarreim, Kreuzreim, umarmender Reim, Schweifreim, Kettenreim, verschränkter Reim, (Binnenreim?[...a...a...,...b...,...b...])
@@ -151,7 +176,7 @@ class FEA():
 		words = self.source.split()
 		mostCommonWords = Counter(words).most_common() 	# list with tuples
 		return mostCommonWords
-		
+
 	def calcTerminologicalCongruence(self):
 		# TODO
 		pass
@@ -191,7 +216,7 @@ class FEA():
 	def calcWordVariance(self):
 		clean_text = re.sub('<.*?>', "", self.source)
 		return len(set(clean_text.split()))/len(clean_text.split())
-			
+
 	def calcNEFrequency(self):
 		# TODO
 		pass
@@ -217,18 +242,22 @@ class FEA():
 			self.data.update({"punctuation_frequency": self.calcPunctuationFrequency()})
 		#if "hashtag_frequency" not in self.data.keys():
 		#	self.data.update({"hashtag_frequency": self.calcHashtagFrequency()})
-		if "rhyme_average" not in self.data.keys():
-			self.data.update({"rhyme_average": self.calcRhyme1()})
+		#if "rhyme_average" not in self.data.keys():
+		#	self.data.update({"rhyme_average": self.calcRhyme1()})
 		if "word_length_average" not in self.data.keys():
 			self.data.update({"word_length_average": self.calcWordLengthAvg()})
 		if "word_variance" not in self.data.keys():
 			self.data.update({"word_variance": self.calcWordVariance()})
 
-		self.writeFeatureMaps()
+		if self.class_name:
+			self.writeFeatureMaps()
+			return True
+		else:
+			return self.data
 
 if __name__ == "__main__":
 	if len(sys.argv) != 4:
 		print("USAGE: python FeatureExtractionAlgorithms.py [class] [filename] [map_dir]\n")
 		sys.exit()
 	fea = FEA(sys.argv[1], sys.argv[2], sys.argv[3])
-	fea.finalize()
+	print(fea.finalize())

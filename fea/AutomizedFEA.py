@@ -32,8 +32,8 @@ class AutomizedFEA():
 				class_name = self.prefix
 
 			fea = FEA(class_name, str(f), self.target)
-			fea.finalize()
-			print("wrote file " + f.name + "...")
+			if fea.finalize():
+				print("wrote file " + f.name + "...")
 
 if __name__ == '__main__':
 	if len(sys.argv) == 3:

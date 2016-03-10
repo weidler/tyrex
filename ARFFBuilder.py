@@ -29,6 +29,7 @@ class ARFFBuilder():
 		self.f_order[-1], self.f_order[self.f_order.index("class")] = "class", self.f_order[-1]
 
 		self.vectors = [self.readJSONToDict(self.files[i]) for i in range(len(self.files))]
+		self.class_distribution = self.getClassDistribution()
 
 	# PREPROCESSORS
 	def checkVektorLengths(self):
@@ -57,6 +58,13 @@ class ARFFBuilder():
 			out += attr + ", "
 		out = out[:-2] + " }"
 		return out
+
+	def getClassDistribution(self):
+		distr = {c: 0 for c in set([c["class"] for c in self.vectors])}
+		for c in self.vectors:
+			distr[c["class"]] += 1
+		print("Class Distribution: " + str(distr))
+		return distr
 
 	# WRITE COMPONENTS
 	def writeHead(self):

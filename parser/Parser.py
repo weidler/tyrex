@@ -4,6 +4,7 @@ import re
 from pathlib import Path
 from html2text import html2text
 
+
 class Parser():
 	def __init__(self, source_dir, target_dir, prefix=None):
 		self.files = list(Path(source_dir).rglob("**/*.*"))
@@ -65,8 +66,8 @@ class Parser():
 		think = "<thinking>"  #  -
 
 		#apostroph
-		direct = ("<speech>", "</speech>")
-		apo = ("<apo>", "</apo>")
+		#direct = ("<speech>", "</speech>")
+		#apo = ("<apo>", "</apo>")
 
 		#regex
 		phrase_bound = punct + "|" + question + "|" + excl + "|" + "\n{2,}"

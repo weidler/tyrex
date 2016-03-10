@@ -1,5 +1,6 @@
 #!/bin/bash
 # USAGE: run.sh raw_data data map_dir arff_filename
+# DIRECTORYS with ending /
 
 RAW_DATA=$1
 DATA=$2
@@ -7,8 +8,8 @@ MAP_DIR=$3
 ARFF_FILE=$4
 
 # CLEAN DIRECTORIES
-# rm $2*
-# rm $3*
+rm $2*
+rm $3*
 
 # PARSER STEP 1: Create all normed files
 python3 parser/Parser.py $RAW_DATA $DATA;
