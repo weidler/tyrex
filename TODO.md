@@ -1,9 +1,13 @@
 WHAT WE HAVE TO DO:
 ---
-*1.* more data (feinere Klassen)  
-*2.* Benutzeroberfläche?  
-*3.* German NER (Named Entity Recognizer; Sebastian Pado, Stuttgart); TreeTagger (POS and Lemma; Stuttgart)  
-*4.* more features (NE, Rhyme, Terminology)  
-*5.* Doku  
+*1.* more data (feinere Klassen) --> **Lydia**  
+*2.* Bash-Programm --> **Tonio** 
+*3.* NE/Verb/Noun Frequency -->**Lydia**,   
+      Rhyme --> **Svenja**;   
+      Terminology, WordVariance  -->  **Tonio**  
+*4.* Doku --> **Svenja**  
+*5.* README
 
-ABGABE: 31.03.2016  
+FERTIG: DO 24.03.2016
+
+ABGABE: DO 31.03.2016  
