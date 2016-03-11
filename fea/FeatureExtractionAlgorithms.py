@@ -165,7 +165,7 @@ class FEA():
 			endings_list[c] = lastchars
 			c += 1
 
-		rhyme_schemes = [[a,a,b,b],[a,b,a,b],[a,b,b,a],[a,a,b,c,c,b],[a,b,a,((b,c,b)|(c,b,c))],[a,b,c,a,b,c]]
+		rhyme_schemes = [[a, a, b, b],[a, b, a,b],[a,b,b,a],[a,a,b,c,c,b],[a,b,a,((b,c,b)|(c,b,c))],[a,b,c,a,b,c]]
 		# Paarreim, Kreuzreim, umarmender Reim, Schweifreim, Kettenreim, verschränkter Reim, (Binnenreim?[...a...a...,...b...,...b...])
 
 		# vergleichen übereinstimmung
@@ -178,7 +178,7 @@ class FEA():
 		return mostCommonWords
 
 	def calcTerminologicalCongruence(self):
-		# TODO
+		# TODO Tonio
 		pass
 
 	def calcPhrasesPerParagraph(self):
@@ -213,16 +213,26 @@ class FEA():
 			char += len(word)
 		return float(char)/len(clean_text)
 
+
 	def calcWordVariance(self):
-		clean_text = re.sub('<.*?>', "", self.source)
-		return len(set(clean_text.split()))/len(clean_text.split())
+		# TODO Lemmata als Basis Tonio
+		lemmata = [l[2] for l in self.treetagged]
+		print(set(lemmata))
+		return len(set(lemmata))/len(lemmata)
 
 	def calcNEFrequency(self):
-		# TODO
+		# TODO Lydia
 		pass
+
 	def calcVerbFrequency(self):
-		# TODO - Treetagger
+		# TODO Lydia
 		pass
+
+	def calcNounFrequency(self):
+		# TODO Lydia
+		pass
+
+
 
 	# MAIN PROCESSORS
 	def finalize(self):
