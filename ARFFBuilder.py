@@ -26,7 +26,7 @@ class ARFFBuilder():
 		self.arff = checkFileExistance(arff_filename)
 
 		self.f_order = sorted(list(self.readJSONToDict(self.files[0]).keys()))
-		self.f_order[-1], self.f_order[self.f_order.index("class")] = "class", self.f_order[-1]
+		self.f_order[-1], self.f_order[self.f_order.index("class")] = "class", self.f_order[-1] # move class to last position
 
 		self.vectors = [self.readJSONToDict(self.files[i]) for i in range(len(self.files))]
 		self.class_distribution = self.getClassDistribution()

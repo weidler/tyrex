@@ -133,22 +133,20 @@ class FEA():
 		Counts all occurence of endings and returns the number of rhymes/count of lines. From 0->1; 0 means no rhymes, 1 means everything rhymes.
 		"""
 		#(S.L.)
-		## muss noch angepasst werden an: unreine Reime, wenn "" auftaucht
-		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source)
+		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source) #sucht Zeilen
 		endings_dict = {}
 		for line in lines:
-			act_line = re.sub("<.*?>", "", line)
-			lastword = act_line.split()[-1]
-			lastchar = lastword[-1]
-			if lastchar != " ":
-				lastchars = lastword[-3:]
-				if lastchars in endings_dict.keys():
-					endings_dict[lastchars] += 1
-				else:
-					endings_dict[lastchars] = 1
+			act_line = re.sub("<.*?>", "", line)     #nimmt Tags raus
+			lastword = act_line.split()[-1]          #nimmt letztes Wort
+			lastchars = lastword[-3:]
+			lastchars.replace(" ", "").replace(Chr(34), "")     #löscht Leerzeichen und Anführungszeichen 
+			if lastchars in endings_dict.keys():
+				endings_dict[lastchars] += 1                    #zählt die Endung plus 1
+			else:
+				endings_dict[lastchars] = 1                     #erstellt neuen Dict-Eintrag
 		rhymes = 0
 		for k in endings_dict:
-			if endings_dict[k] >= 2:		#counts all endings that occures min 2 times
+			if endings_dict[k] >= 2:		                   #counts all endings that occures min 2 times
 				rhymes += endings_dict[k]
 
 		return float(rhymes)/len(lines)  #durschnittlicher Reimwert, 0 means no rhymes, 1 means everything rhymes
@@ -156,15 +154,19 @@ class FEA():
 	def calcRhyme2(self):
 		#TODO
 		"""
-		Takes rhyme schemes and checks a text with them, giving back ???
+		Takes rhyme schemes and checks a text with them. Giving back 1 if it has a Reimschema, 0 else
 		"""
 		#S.L.
-		lines = re.findall("(.*?)[\\n]", self.source)
+		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source)
 		endings_list = ["" for i in len(lines)]
-		c = 0			#counter
+		c = 0
 		for line in lines:
-			lastchars = line[-1][-1:-3]
+			act_line = re.sub("<.*?>", "", line)     #nimmt Tags raus
+			lastword = act_line.split()[-1]          #nimmt letztes Wort
+			lastchars = lastword[-3:]
+			lastchars.replace(" ", "").replace(Chr(34), "") #löscht Leerzeichen und Anführungszeichen
 			endings_list[c] = lastchars
+<<<<<<< HEAD
 			c += 1
 
 		rhyme_schemes = [[a,a,b,b],[a,b,a,b],[a,b,b,a],[a,a,b,c,c,b],[a,b,a,((b,c,b)|(c,b,c))],[a,b,c,a,b,c]]
@@ -172,6 +174,14 @@ class FEA():
 
 		# vergleichen uebereinstimmung
 
+=======
+			c+=1
+		
+        	# nimmt immer 4 Zeilen und überprüft - ob 0 & 2 und 1 & 3 - ob 0 & 1 und 2 & 3 - 0&3 und 1&2 übereinstimmen
+		# nimmt 6 Zeilen und überprüft - ob 0&1 und 3&4 und 2&5 - ob 0&2 und (1&3&5| (1&4 und 3&5)) - 0&3 und 1&4 und 2&5 übereinstimmen
+		# rhyme_schemes = [[a, a, b, b],[a, b, a,b],[a,b,b,a],[a,a,b,c,c,b],[a,b,a,((b,c,b)|(c,b,c))],[a,b,c,a,b,c]]
+		# Paarreim, Kreuzreim, umarmender Reim, Schweifreim, Kettenreim, verschränkter Reim, (Binnenreim?[...a...a...,...b...,...b...])
+>>>>>>> 6a547ea300f966975ffba44a1c041d52c90cef4b
 	def calcMostCommonWords(self):
 		"""Zaehlt die 'mostCommonWords' """
 		# S.L.
@@ -180,7 +190,7 @@ class FEA():
 		return mostCommonWords
 
 	def calcTerminologicalCongruence(self):
-		# TODO
+		# TODO Tonio
 		pass
 
 	def calcPhrasesPerParagraph(self):
@@ -215,21 +225,34 @@ class FEA():
 			char += len(word)
 		return float(char)/len(clean_text)
 
+
 	def calcWordVariance(self):
-		clean_text = re.sub('<.*?>', "", self.source)
-		return len(set(clean_text.split()))/len(clean_text.split())
+		# TODO Lemmata als Basis Tonio
+		lemmata = [l[2] for l in self.treetagged]
+		print(set(lemmata))
+		return len(set(lemmata))/len(lemmata)
 
 	def calcNEFrequency(self):
-		# TODO
+		# TODO Lydia
 		pass
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> 6a547ea300f966975ffba44a1c041d52c90cef4b
 	def calcVerbFrequency(self):
-		# TODO - Treetagger
+		# TODO Lydia
+		pass
+
+	def calcNounFrequency(self):
+		# TODO Lydia
 		pass
 		
 	def calcNounFrequency(self):
 		# TODO - Treetagger
 		pass
+
+
 
 	# MAIN PROCESSORS
 	def finalize(self):
