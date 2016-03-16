@@ -7,6 +7,8 @@ from pathlib import Path
 from collections import Counter
 #from tyrex_lib import checkFileExistance
 
+# -*- coding: utf-8 -*-
+
 class FEA():
 
 	"""
@@ -166,12 +168,12 @@ class FEA():
 			c += 1
 
 		rhyme_schemes = [[a,a,b,b],[a,b,a,b],[a,b,b,a],[a,a,b,c,c,b],[a,b,a,((b,c,b)|(c,b,c))],[a,b,c,a,b,c]]
-		# Paarreim, Kreuzreim, umarmender Reim, Schweifreim, Kettenreim, verschränkter Reim, (Binnenreim?[...a...a...,...b...,...b...])
+		# Paarreim, Kreuzreim, umarmender Reim, Schweifreim, Kettenreim, verschraenkter Reim, (Binnenreim?[...a...a...,...b...,...b...])
 
-		# vergleichen übereinstimmung
+		# vergleichen uebereinstimmung
 
 	def calcMostCommonWords(self):
-		"""Zählt die 'mostCommonWords' """
+		"""Zaehlt die 'mostCommonWords' """
 		# S.L.
 		words = self.source.split()
 		mostCommonWords = Counter(words).most_common() 	# list with tuples
@@ -220,7 +222,12 @@ class FEA():
 	def calcNEFrequency(self):
 		# TODO
 		pass
+		
 	def calcVerbFrequency(self):
+		# TODO - Treetagger
+		pass
+		
+	def calcNounFrequency(self):
 		# TODO - Treetagger
 		pass
 
@@ -254,10 +261,11 @@ class FEA():
 			return True
 		else:
 			return self.data
+		pprint.pprint(self.treetagged)
 
 if __name__ == "__main__":
 	if len(sys.argv) != 4:
 		print("USAGE: python FeatureExtractionAlgorithms.py [class] [filename] [map_dir]\n")
 		sys.exit()
 	fea = FEA(sys.argv[1], sys.argv[2], sys.argv[3])
-	print(fea.finalize())
+	print(fea.finalize("poetry_Druckversion_2schwest_clean.txt"))
