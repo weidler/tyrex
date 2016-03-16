@@ -43,9 +43,18 @@ class FEA():
 			self.filename = "unknown"
 			self.source = source
 
+		# target directory of vector json files
+		self.map_dir = map_dir
+
 		# if use_json flag is true, use existing data
+
+		print(self.map_dir)
+		print(source)
 		if use_json:
-			self.data = json.loads(self.readFile(self.map_dir + source.split("."[0])))
+			try:
+				self.data = json.loads(self.readFile(self.map_dir + re.match("(.*[/\\\]|.*?)(.*)\..+", source).group(2) + ".json"))
+			except:
+				self.data = {}
 		else:
 			self.data = {}
 
@@ -54,12 +63,10 @@ class FEA():
 			# add class name to this vector
 			self.data.update({"class": class_name})
 			self.class_name = True
-			# target directory of vector json files
-			self.map_dir = map_dir
 		else:
 			self.class_name = class_name
 
-		self.treetagged = self.applyTreeTagger(self.source)
+		self.treetagged = ""
 
 		#print("____________________")
 		#print(source)
@@ -80,9 +87,12 @@ class FEA():
 			f.write(json.dumps(self.data))
 
 	def applyTreeTagger(self, text):
-		tagger = tt.TreeTagger(TAGLANG="de")
-		tagged_list = tt.make_tags(tagger.tag_text(self.cleanSource(text)))
-		return tagged_list
+		if self.treetagged == "":
+			tagger = tt.TreeTagger(TAGLANG="de")
+			tagged_list = tt.make_tags(tagger.tag_text(self.cleanSource(text)))
+			return tagged_list
+		else:
+			return self.treetagged
 
 	def cleanSource(self, source):
 		return re.sub("<.*?>", "", source)
@@ -166,22 +176,14 @@ class FEA():
 			lastchars = lastword[-3:]
 			lastchars.replace(" ", "").replace(Chr(34), "") #löscht Leerzeichen und Anführungszeichen
 			endings_list[c] = lastchars
-<<<<<<< HEAD
-			c += 1
 
-		rhyme_schemes = [[a,a,b,b],[a,b,a,b],[a,b,b,a],[a,a,b,c,c,b],[a,b,a,((b,c,b)|(c,b,c))],[a,b,c,a,b,c]]
-		# Paarreim, Kreuzreim, umarmender Reim, Schweifreim, Kettenreim, verschraenkter Reim, (Binnenreim?[...a...a...,...b...,...b...])
-
-		# vergleichen uebereinstimmung
-
-=======
 			c+=1
 		
         	# nimmt immer 4 Zeilen und überprüft - ob 0 & 2 und 1 & 3 - ob 0 & 1 und 2 & 3 - 0&3 und 1&2 übereinstimmen
 		# nimmt 6 Zeilen und überprüft - ob 0&1 und 3&4 und 2&5 - ob 0&2 und (1&3&5| (1&4 und 3&5)) - 0&3 und 1&4 und 2&5 übereinstimmen
 		# rhyme_schemes = [[a, a, b, b],[a, b, a,b],[a,b,b,a],[a,a,b,c,c,b],[a,b,a,((b,c,b)|(c,b,c))],[a,b,c,a,b,c]]
 		# Paarreim, Kreuzreim, umarmender Reim, Schweifreim, Kettenreim, verschränkter Reim, (Binnenreim?[...a...a...,...b...,...b...])
->>>>>>> 6a547ea300f966975ffba44a1c041d52c90cef4b
+
 	def calcMostCommonWords(self):
 		"""Zaehlt die 'mostCommonWords' """
 		# S.L.
@@ -235,11 +237,7 @@ class FEA():
 	def calcNEFrequency(self):
 		# TODO Lydia
 		pass
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> 6a547ea300f966975ffba44a1c041d52c90cef4b
 	def calcVerbFrequency(self):
 		# TODO Lydia
 		pass
@@ -256,6 +254,8 @@ class FEA():
 
 	# MAIN PROCESSORS
 	def finalize(self):
+
+		# if feature needs treetagger insert "self.treetagged = self.applyTreeTagger(self.source)" before update
 		if "sentence_length_avg" not in self.data.keys():
 			self.data.update({"sentence_length_avg": self.calcSentenceLengthAvg()})
 		if "sentence_length_max" not in self.data.keys():
@@ -277,6 +277,7 @@ class FEA():
 		if "word_length_average" not in self.data.keys():
 			self.data.update({"word_length_average": self.calcWordLengthAvg()})
 		if "word_variance" not in self.data.keys():
+			self.treetagged = self.applyTreeTagger(self.source)
 			self.data.update({"word_variance": self.calcWordVariance()})
 
 		if self.class_name:
