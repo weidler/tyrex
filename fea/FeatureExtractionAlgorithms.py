@@ -231,24 +231,29 @@ class FEA():
 	def calcWordVariance(self):
 		# TODO Lemmata als Basis Tonio
 		lemmata = [l[2] for l in self.treetagged]
-		print(set(lemmata))
+		#print(set(lemmata))
 		return len(set(lemmata))/len(lemmata)
 
 	def calcNEFrequency(self):
-		# TODO Lydia
-		pass
+		count = 0
+		for i in self.treetagged:
+			if i[1] == 'NE':
+				count +=1
+		print(float(count)/len(self.source))
 
 	def calcVerbFrequency(self):
-		# TODO Lydia
-		pass
-
-	def calcNounFrequency(self):
-		# TODO Lydia
-		pass
+		count = 0
+		for i in self.treetagged:
+			if i[1] == 'VAFIN' or 'VAIMP' or 'VVFIN' or 'VVIMP' or 'VMFIN':
+				count +=1
+		print(float(count)/len(self.source))
 		
 	def calcNounFrequency(self):
-		# TODO - Treetagger
-		pass
+		count = 0
+		for i in self.treetagged:
+			if i[1] == 'NN':
+				count +=1
+		print(float(count)/len(self.source))
 
 
 
@@ -279,17 +284,27 @@ class FEA():
 		if "word_variance" not in self.data.keys():
 			self.treetagged = self.applyTreeTagger(self.source)
 			self.data.update({"word_variance": self.calcWordVariance()})
+		if "NEFrequency" not in self.data.keys():
+			self.data.update({"NE_frequency": self.calcNEFrequency()})
+		if "verbFrequency" not in self.data.keys():
+			self.data.update({"verb_frequency": self.calcVerbFrequency()})
+		if "nounFrequency" not in self.data.keys():
+			self.data.update({"noun_frequency": self.calcNounFrequency()})
+
+		#pprint.pprint([i[1] for i in self.treetagged])
 
 		if self.class_name:
 			self.writeFeatureMaps()
 			return True
 		else:
 			return self.data
-		pprint.pprint(self.treetagged)
+			
+		
 
 if __name__ == "__main__":
 	if len(sys.argv) != 4:
 		print("USAGE: python FeatureExtractionAlgorithms.py [class] [filename] [map_dir]\n")
 		sys.exit()
 	fea = FEA(sys.argv[1], sys.argv[2], sys.argv[3])
-	print(fea.finalize("poetry_Druckversion_2schwest_clean.txt"))
+	print(fea.finalize())
+	
