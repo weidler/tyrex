@@ -140,26 +140,43 @@ class FEA():
 
 	def calcRhyme1(self):
 		"""
-		Counts all occurence of endings and returns the number of rhymes/count of lines. From 0->1; 0 means no rhymes, 1 means everything rhymes.
+		Counts all occurence of endings and returns the average rhyme value (rhymes/lines).
+		Returns float number From 0->1.0;
+		0 means no rhymes, 1 means everything rhymes. From 0.5 up it's likely to be real rhymes.
 		"""
-		#(S.L.)
-		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source) #sucht Zeilen
+		#S.L.
+	    	lines = re.findall("(.*)\n", self.source) 	# takes every line
 		endings_dict = {}
+		l=0	#counter for non-empty lines
 		for line in lines:
-			act_line = re.sub("<.*?>", "", line)     #nimmt Tags raus
-			lastword = act_line.split()[-1]          #nimmt letztes Wort
-			lastchars = lastword[-3:]
-			lastchars.replace(" ", "").replace(Chr(34), "")     #löscht Leerzeichen und Anführungszeichen 
-			if lastchars in endings_dict.keys():
-				endings_dict[lastchars] += 1                    #zählt die Endung plus 1
-			else:
-				endings_dict[lastchars] = 1                     #erstellt neuen Dict-Eintrag
+			act_line = re.sub("<.*?>", "", line)     #deletes tags
+
+			if act_line != "":
+				l += 1
+				lastword = act_line.split()[-1]          #takes last word
+				lastword.replace("\s", "").replace("'", "").replace("-","")	#deletes whitespace, ' and -
+
+				if len(lastword) >=3:		#checks if lastword is long enough
+					lastchars = lastword[-3:]
+				elif len(lastword) <3 and len(lastword)>=2:
+					lastchars = lastword[-2:]
+				else:
+					lastchars = lastword
+				lastchars = re.sub("[0-9]*","",lastchars)	#deletes lastchars with numbers
+
+				if lastchars != "":
+					if lastchars in endings_dict.keys():
+						endings_dict[lastchars] += 1                    #counts ending plus 1
+					else:
+						endings_dict[lastchars] = 1                     #creates new key-value
+
 		rhymes = 0
 		for k in endings_dict:
 			if endings_dict[k] >= 2:		                   #counts all endings that occures min 2 times
 				rhymes += endings_dict[k]
 
-		return float(rhymes)/len(lines)  #durschnittlicher Reimwert, 0 means no rhymes, 1 means everything rhymes
+		return (float(rhymes)/l)	#returns average rhyme value; 0-1, from 0.5 up it's likely to be real rhymes. 1 means, everything rhymes.
+
 
 	def calcRhyme2(self):
 		#TODO
@@ -178,7 +195,7 @@ class FEA():
 			endings_list[c] = lastchars
 
 			c+=1
-		
+		pass
         	# nimmt immer 4 Zeilen und überprüft - ob 0 & 2 und 1 & 3 - ob 0 & 1 und 2 & 3 - 0&3 und 1&2 übereinstimmen
 		# nimmt 6 Zeilen und überprüft - ob 0&1 und 3&4 und 2&5 - ob 0&2 und (1&3&5| (1&4 und 3&5)) - 0&3 und 1&4 und 2&5 übereinstimmen
 		# rhyme_schemes = [[a, a, b, b],[a, b, a,b],[a,b,b,a],[a,a,b,c,c,b],[a,b,a,((b,c,b)|(c,b,c))],[a,b,c,a,b,c]]
