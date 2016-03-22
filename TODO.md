@@ -9,6 +9,10 @@ WHAT WE HAVE TO DO:
 *4.* Doku --> **Svenja**   
 *5.* README  
 
-FERTIG: DO 24.03.2016  
+INHALTE:    
+**Abgabe**: extrahierte Daten, Literatur, Code+Readme, Zusammenfassung  
+**Doku**: zusammengefasste Ergebnisse ausgeschrieben  
+**ReadMe**: Programmteile/Funktionen beschreiben (wie in SemProjekt)  
 
-ABGABE: DO 31.03.2016  
+FERTIG: DO 24.03.2016  []  
+ABGABE: DO 31.03.2016  []  
