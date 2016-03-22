@@ -27,13 +27,13 @@ Usage
   - Run all: ```bash learn.sh raw_data_dir data_dir map_dir arff_filename```  
   - All directories need a trailing "/"  
   
-Structure and Usage of the Single Program Parts - Preprocessing  
+Structure of the Single Program Parts - Preprocessing  
 ---------------------------------------------------------------
 **Title**    
 *PATH OF PY*  
 Description  
 
-Structure and Usage of the Single Program Parts - Main Algorithm  
+Structure of the Single Program Parts - Main Algorithm  
 ----------------------------------------------------------------
 **Title**  
 *PATH OF PY*  
