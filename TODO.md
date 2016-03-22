@@ -2,7 +2,7 @@ WHAT WE HAVE TO DO:
 ---
 *1.* more data (feinere Klassen) --> **Lydia**  
 *2.* Bash-Programm --> **Tonio**   
-*3.* Features
+*3.* Features DON'T FORGET FUNCTION-DOC-STRINGS!!!  
     - NE/Verb/Noun Frequency --> **Lydia**,     
     - Rhyme --> **Svenja**;     
     - Terminology, WordVariance  -->  **Tonio**   
