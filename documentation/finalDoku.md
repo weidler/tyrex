@@ -1,6 +1,6 @@
 TyReX (Text Type Recognition)  
 ----------------
-Abschlussdokumentation 31.03.2016  
+Projektdokumentation 31.03.2016  
 Autoren: Lydia Hofmann, Svenja Lohse, Tonio Weidler  
 Betreuer: Éva Mújdricza-Maydt  
 
@@ -23,7 +23,24 @@ Korpora, Aufbereitung/Normierung, Vor-, Nachteile
   
 Struktur und Features
 -------
-Theorien, Architekturübersicht, Auflistung/Beschreibung Features, ARFF Ergebnis
+Theorien, Architekturübersicht, Auflistung/Beschreibung Features (Sinn, Beispiel, Ausgabe), ARFF Ergebnis  
+... calcTextLength  
+... calcSentenceLengthAvg  
+... calcSentenceLengthMax  
+... calcSentenceLengthMin  
+... calcRhyme1  
+... calcRhyme2  
+... calcMostCommonWords  
+... calcTerminologicalCongruence  
+... calcPhrasesPerParagraph  
+... calcDigitFrequency  
+... calcPunctuationFrequency  
+... calcHashtagFrequency  
+... calcWordLengthAvg  
+... calcWordVariance  
+... calcNEFrequency  
+... calcVerbFrequency  
+... calcNounFrequency  
 
 Experimente und Evaluation  
 -------
