@@ -3,7 +3,7 @@ usage() {
 
 	TyReX Script to get the text type of a file
 
-	Usage: $0 FILE
+	Usage: $0 FILE [options]
 
 	ARGUMENTS:
 
@@ -12,18 +12,21 @@ usage() {
 	OPTIONS:
 
 		-h 			This help message
-		-p			Show probability for that solution
+		-p			Show propability for that solution
 
 EOF
 }
 
-while getopts h o; do
+SHOW_PROP=false
+
+while getopts hp o; do
 	case $o in
 		h)
 			usage
 			exit 1
 			;;
 		p)
+			SHOW_PROP=true
 			;;
 	esac
 done
