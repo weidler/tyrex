@@ -96,7 +96,7 @@ fi
 
 # DO THE TYREX STUFF!!!
 # PARSER
-python3 parser/Parser.py $RAW_DATA $DATA;
+python3 parser/MultiParser.py $RAW_DATA $DATA;
 
 # Multiple FEA
 if $USE_JSON; then

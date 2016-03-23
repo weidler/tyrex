@@ -48,8 +48,6 @@ class FEA():
 
 		# if use_json flag is true, use existing data
 
-		print(self.map_dir)
-		print(source)
 		if use_json:
 			try:
 				self.data = json.loads(self.readFile(self.map_dir + re.match("(.*[/\\\]|.*?)(.*)\..+", source).group(2) + ".json"))
@@ -62,9 +60,9 @@ class FEA():
 		if class_name != "unknown":
 			# add class name to this vector
 			self.data.update({"class": class_name})
-			self.class_name = True
+			self.calc_class = True
 		else:
-			self.class_name = class_name
+			self.calc_class = False
 
 		self.treetagged = ""
 
@@ -254,21 +252,21 @@ class FEA():
 		for i in self.treetagged:
 			if i[1] == 'NE':
 				count += 1
-		print(float(count)/len(self.source))
+		return float(count)/len(self.source)
 
 	def calcVerbFrequency(self):
 		count = 0
 		for i in self.treetagged:
 			if i[1] == 'VAFIN' or 'VAIMP' or 'VVFIN' or 'VVIMP' or 'VMFIN':
 				count += 1
-		print(float(count)/len(self.source))
+		return float(count)/len(self.source)
 
 	def calcNounFrequency(self):
 		count = 0
 		for i in self.treetagged:
 			if i[1] == 'NN':
 				count += 1
-		print(float(count)/len(self.source))
+		return float(count)/len(self.source)
 
 	# MAIN PROCESSORS
 	def finalize(self):
@@ -306,7 +304,7 @@ class FEA():
 
 		#pprint.pprint([i[1] for i in self.treetagged])
 
-		if self.class_name:
+		if self.calc_class:
 			self.writeFeatureMaps()
 			return True
 		else:
