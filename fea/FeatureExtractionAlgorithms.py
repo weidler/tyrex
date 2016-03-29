@@ -22,7 +22,7 @@ class FEA():
 
 	def __init__(self, class_name, source, map_dir, use_json=False, is_file=True):
 
-		print("\n----------NEW---------------")
+		print("")
 
 		# recognising file or textstring
 		if is_file:
@@ -40,7 +40,7 @@ class FEA():
 				print("SOURCE FILE does not exist. Please provide valid path name.")
 				exit()
 		else:
-			self.filename = "unknown"
+			self.filename = ""
 			self.source = source
 
 		# target directory of vector json files
@@ -68,7 +68,7 @@ class FEA():
 
 		#print("____________________")
 		#print(source)
-		print("Calculating Vector for: " + self.filename)
+		print("Calculating Vector for: " + (self.filename or "given file"))
 		#print(self.map_dir)
 		#print("____________________")
 
@@ -252,21 +252,21 @@ class FEA():
 		for i in self.treetagged:
 			if i[1] == 'NE':
 				count += 1
-		return float(count)/len(self.source)
+		return float(count)/len(self.treetagged)
 
 	def calcVerbFrequency(self):
 		count = 0
 		for i in self.treetagged:
 			if i[1] == 'VAFIN' or 'VAIMP' or 'VVFIN' or 'VVIMP' or 'VMFIN':
 				count += 1
-		return float(count)/len(self.source)
+		return float(count)/len(self.treetagged)
 
 	def calcNounFrequency(self):
 		count = 0
 		for i in self.treetagged:
 			if i[1] == 'NN':
 				count += 1
-		return float(count)/len(self.source)
+		return float(count)/len(self.treetagged)
 
 	# MAIN PROCESSORS
 	def finalize(self):
@@ -288,18 +288,21 @@ class FEA():
 			self.data.update({"punctuation_frequency": self.calcPunctuationFrequency()})
 		#if "hashtag_frequency" not in self.data.keys():
 		#	self.data.update({"hashtag_frequency": self.calcHashtagFrequency()})
-		#if "rhyme_average" not in self.data.keys():
-		#	self.data.update({"rhyme_average": self.calcRhyme1()})
+		if "rhyme_average" not in self.data.keys():
+			self.data.update({"rhyme_average": self.calcRhyme1()})
 		if "word_length_average" not in self.data.keys():
 			self.data.update({"word_length_average": self.calcWordLengthAvg()})
 		if "word_variance" not in self.data.keys():
 			self.treetagged = self.applyTreeTagger(self.source)
 			self.data.update({"word_variance": self.calcWordVariance()})
 		if "NEFrequency" not in self.data.keys():
+			self.treetagged = self.applyTreeTagger(self.source)
 			self.data.update({"NE_frequency": self.calcNEFrequency()})
 		if "verbFrequency" not in self.data.keys():
+			self.treetagged = self.applyTreeTagger(self.source)
 			self.data.update({"verb_frequency": self.calcVerbFrequency()})
 		if "nounFrequency" not in self.data.keys():
+			self.treetagged = self.applyTreeTagger(self.source)
 			self.data.update({"noun_frequency": self.calcNounFrequency()})
 
 		#pprint.pprint([i[1] for i in self.treetagged])

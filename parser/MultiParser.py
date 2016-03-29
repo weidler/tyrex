@@ -23,7 +23,7 @@ class MultiParser(Parser.Parser):
 	# FILE PROCESSING
 
 	def readFileAtPath(self, posix_path):
-		print("AT FILE: "+posix_path.name)
+		print("parsing: "+posix_path.name)
 		try:
 			with posix_path.open(encoding="utf-8") as f:  # general encoding
 				return html2text(f.read())

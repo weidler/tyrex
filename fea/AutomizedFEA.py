@@ -31,7 +31,9 @@ class AutomizedFEA():
 		if self.use_json:
 			print("Using already calculated data...")
 
-		for f in self.files:
+		amount_of_vectors = len(self.files)
+
+		for pos, f in enumerate(self.files):
 			if not self.prefix:
 				class_name = f.name.split("_")[0]
 			else:
@@ -39,7 +41,7 @@ class AutomizedFEA():
 
 			fea = FEA(class_name, str(f), self.target, use_json=self.use_json)
 			if fea.finalize():
-				print("wrote file " + f.name + "...")
+				print(str(pos+1) + "/" + str(amount_of_vectors) + " processed files. (at " + f.name + ")")
 
 if __name__ == '__main__':
 	if len(sys.argv) == 3:

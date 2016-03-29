@@ -30,3 +30,5 @@ while getopts hp o; do
 			;;
 	esac
 done
+
+python3 recognizeTextType.py $1
