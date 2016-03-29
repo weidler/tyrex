@@ -117,10 +117,10 @@ Die Evaluation verwendet CrossValidation mit 10 folds.
 **4-Klassen-Datensatz**  
 Der grob gegliederte Datensatz enthält 1261 Instanzen die auf 4 Klassen verteilt sind. Diese Verteilung verhält sich wie folgt:
 
-* 222 Epische Texte
-* 291 Dramas
-* 302 Artikel
-* 446 Gedichte
+    222 Epische Texte
+    291 Dramas
+    302 Artikel
+    446 Gedichte
 
 
 Die *Baseline* klssifiziert etwa 35% aller Instanzen korrekt. Im folgenden eine detailliertere Übersicht der Ergebnisse der Baseline:
@@ -198,9 +198,13 @@ Anhand der verschiedenen Precision und Recall Werte für die einzelnen Klassen l
        1   1 300   0 |   c = report
       26  12   1 407 |   d = poetry
 
-Während drama und report sehr gut klassifiziert werden, sowohl hinsichtlich Precision als auch Recall, gibt es Verwirrungen zwischen Epic und Poetry.
+Während `drama` und `report` sehr gut klassifiziert werden, sowohl hinsichtlich Precision als auch Recall, gibt es Verwirrungen zwischen Epic und Poetry.
 
-(Datenverteilung,) Algorithmen, Bewertung, ...  
+Gründe hierfür sind u.a. wohl Ähnlichkeiten in Hinblick auf Zeichensetzung und Schreibstil. Sowohl bezüglich der NounFrequency als auch der VerbFrequency sind Texte beider Klassen kaum zu unterscheiden.  
+Features, die zur besseren Unterscheidung dieser Klassen dienen sollten, konnten aufgrund der Beschaffenheit der Texte zudem nicht immer richtig greifen. So sind die Epischen Texte leider nicht anhand der Paragraphen umgebrochen. Dadurch kann nicht zwischen Gedichtszeilen und layoutbedingten Umbrüchen in epischen Texten unterschieden werden.
+
+Verbesserte Features (z.B. bzgl. Rhymes) und evtl. Parserfunktionalität, die Paragraphen erkennt könnten dieses Problem umgeben.
+
 
 Aussichten
 -------
