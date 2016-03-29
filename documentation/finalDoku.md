@@ -15,15 +15,44 @@ Inhaltsverzeichnis
 
 Einführung     
 -------
-Ziel, Bsp Anwendung
+Das Ziel dieses Projektes ist eine automatische Klassifizierung von Texten nach ihrer Textart. 
+Suchmaschinen könnten das zur Kategorisierung und damit besseren Suche vorhandener Dokumente verwenden und auch andere Unternehmen würden von einem internen Kategoriensystem (mit Kategorien wie u.a. Rechnungen, Mitarbeitergespräche, Rezensionen, etc.) profitieren.  
+
+Um dieses Ziel zu erreichen, müssen viele Daten gesammelt, aufbereitet und analysiert werden.  
+Features, die die Eigenschaften der unterschiedlichen Texte beschreiben, spielen eine wichtige Rolle bei der Genre-Klassifizierung.  
+...Satz zu unserem Ergebnis   
+Weitere Schritte wären u.a. eine Erweiterung der Feature-Liste, größere Trainingsdatenmenge und z.B. eine einfach zu bedienende Webanwendung.  
   
 Daten  
 -------
-Korpora, Aufbereitung/Normierung, Vor-, Nachteile  
+Die Trainingsdaten stammen aus dem "Projekt-Gutenberg"-Korpus, der viele Werke bekannter Autoren bereit stellt, und "Zeit-Online" dient ebenfalls als Quelle.  
+Die Texte sind unannotiert und wie folgt auf vier Kategorien aufgeteilt:  
+*EPIC*(...)  
+*DRAMA*(...)  
+*POETRY*(...)  
+*REPORT*(...)
   
-Struktur und Features
+Die Texte werden durch den "TextNormierer" aufbereitet, d.h. Satzzeichen werden durch <Tags/> ersetzt und unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen entstehen. Durch die Normierung ist die Weiterverarbeitung der Daten einfacher und nützliche Metadaten werden durch die Tag-Setzung eingebunden. Ein Nachteil ist allerdings, dass uns externe Metadaten verloren gehen und der Nomierer viele Datentypen zu verarbeiten hat.  
+
+Zusätzlich lassen wir den TreeTagger die Texte annotieren, um die so entstandenen POS-Tags und die Baumstruktur in Features verwenden zu können. 
+
+...AUSSCHNITT NORM_TEXT  
+...AUSSCHNITT TAGGED_TEXT  
+  
+Struktur
 -------
-Theorien, Architekturübersicht, Auflistung/Beschreibung Features (Sinn, Beispiel, Ausgabe), ARFF Ergebnis  
+Das einfache Prinzip bisheriger Theorien zu diesem Thema lautet, aus Trainingsdaten Features zu extrahieren und sie an einen Klassifizierungsalgorithmus zu übergeben.  
+Z.B. Zelch und Engel (2005) haben Wort-Features aus ihren Texten extrahiert, Lexeme gebildet, lemmatisiert und diese Features dann mit einem 'SVM'-Algorithmus verarbeitet. 2015 beschrieb Ghaffari ebenfalls Vektoren aus extrahierten Worten, die er mit den 'SVM'-, 'Naive Bayes'- und 'Decision Tree'-Algorithmen zur Textklassifikation verwendet hatte. 
+Unsere Vorgehensweise ist (weitgehend) ohne Wortvektoren, mit mehr trivialen Features. Mit Weka lassen wir u.a. 'Naive Bayes', 'MultilayerPerceptron' und 'Decision Tree' über die Daten laufen.  
+  
+  
+*ARCHITEKTURÜBERSICHT*  
+  
+Features
+-------
+Im Folgenden werden alle bisher verwendeten Features aufgezählt und ihre Funktion grob beschrieben (für einen genauen Einblick kann der Code in "/fea/FeatureExtractionAlgorithms" nachvollzogen werden).  
+
+Auflistung/Beschreibung Features (Sinn, Beispiel, Ausgabe), ARFF Ergebnis  
 ... calcTextLength  
 ... calcSentenceLengthAvg  
 ... calcSentenceLengthMax  
@@ -48,7 +77,8 @@ Experimente und Evaluation
 
 Aussichten
 -------
-Probleme, Überlegungen, Lösungsansätze  
+Probleme (mehr und besser verteilte Daten; Featureergebnisse nicht immer wie erwartet(z.B.Rhyme bei Poetry); weitere Features benötigt (z.B. Terminologien))  
+Überlegungen (Kombination mit anderen Projekten; weitere Experimente; feinere Klassen; )  
 
 Literatur
 -------
