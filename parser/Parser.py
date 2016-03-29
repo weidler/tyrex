@@ -2,12 +2,30 @@ import re
 from html2text import *
 
 class Parser():
+	"""
+	@parameters
+
+	@variables
+
+	"""
 
 	def __init__(self, filename):
+		"""
+		@parameters
+
+		@variables
+
+		"""
 		self.filename = filename
 		self.text = self.readFileAtPath(self.filename)
 
 	def readFileAtPath(self, posix_path):
+		"""
+		@parameters
+
+		@variables
+
+		"""
 		try:
 			with open(posix_path, encoding="utf-8") as f:  # general encoding
 				return html2text(f.read())
@@ -26,6 +44,12 @@ class Parser():
 			return False
 
 	def convertToNormalized(self, unnormalized):
+		"""
+		@parameters
+
+		@variables
+
+		"""
 		#sentence bounds
 
 		#return unnormalized  # skip

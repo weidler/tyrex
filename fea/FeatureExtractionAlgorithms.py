@@ -225,13 +225,6 @@ class FEA():
 		puncts = len(re.findall('<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>', self.source))
 		return float(puncts)/text_length
 
-	def calcHashtagFrequency(self):
-		count = 0  #count per word
-		for char in self.source.split():
-			if re.match(r'#[.]*', char):
-				count += 1
-		return float(count)/len(self.source)
-
 	def calcWordLengthAvg(self):
 		clean_text = re.sub('<.*?>', "", self.source)
 		char = 0
@@ -284,8 +277,6 @@ class FEA():
 			self.data.update({"digit_frequency": self.calcDigitFrequency()})
 		if "punctuation_frequency" not in self.data.keys():
 			self.data.update({"punctuation_frequency": self.calcPunctuationFrequency()})
-		#if "hashtag_frequency" not in self.data.keys():
-		#	self.data.update({"hashtag_frequency": self.calcHashtagFrequency()})
 		if "rhyme_average" not in self.data.keys():
 			self.data.update({"rhyme_average": self.calcRhyme1()})
 		if "word_length_average" not in self.data.keys():

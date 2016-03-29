@@ -6,8 +6,21 @@ import parser.Parser as p
 import fea.FeatureExtractionAlgorithms as fea
 
 class TyReX():
+	"""
+	Class that takes a filepath and calculates the files normed text and vector to
+	then get the Text Type
+
+	@parameters
+	filename	string	the name/path of the file
+	"""
 
 	def __init__(self, filename):
+		"""
+		@attributes
+		self.filename	string	name/path of concerned file
+		self.normed		string	normed (by parser) version of the files content
+		self.vector		string	vector for file content, calced by FEA
+		"""
 
 		self.filename = filename
 		self.normed = self.parse(self.filename)
@@ -15,14 +28,38 @@ class TyReX():
 		self.vector = self.getVector(self.normed)
 
 	def parse(self, filename):
+		"""
+		@parameters
+		filename	string	filename with original text
+
+		@variables
+		parser		Parser	Parser Object
+		"""
+
 		parser = p.Parser(filename)
 		return parser.convertToNormalized(parser.text)
 
 	def getVector(self, normed_text):
+		"""
+		@parameters
+		normed_text		string	a string containing a text normed by the parser
+
+		@variables
+		falg			FEA		Feature Extraction ALgorithm Object that calcs the vector
+
+		"""
 		falg = fea.FEA("unknown", normed_text, "", is_file=False)
 		return falg.finalize()
 
 	def getTextType(self):
+		"""
+		@variables
+		epic		float	SimpleLogistRegression Value for epic class
+		drama		float	SimpleLogistRegression Value for drama class
+		report		float	SimpleLogistRegression Value for report class
+		poetry		float	SimpleLogistRegression Value for poetry class
+		classes		tuples	contains tuples with classname/regressionvalue pairs
+		"""
 
 		# USES SimpleLogistic
 
