@@ -84,6 +84,3 @@ class Parser():
 
 		#out = re.sub("[^\s]<", lambda match: match[0] + " " + match[1], out)  #have all elements seperated by space
 		return out
-
-if __name__ == "__main__":
-	print("NO WAY")

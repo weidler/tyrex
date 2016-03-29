@@ -1,5 +1,6 @@
 import sys
 import pprint
+import math as m
 
 import parser.Parser as p
 import fea.FeatureExtractionAlgorithms as fea
@@ -23,6 +24,8 @@ class TyReX():
 
 	def getTextType(self):
 
+		# USES SimpleLogistic
+
 		epic = -86.84 + self.vector["NE_frequency"] * -240.51 + self.vector["digit_frequency"] * 41.74 + self.vector["noun_frequency"] * -121.33 + self.vector["phrases_per_paragraph"] * 0.87 + self.vector["rhyme_average"] * -1.54 + self.vector["sentence_length_max"] * 0 + self.vector["verb_frequency"] * 147.94 + self.vector["word_length_average"] * 86.19
 
 		drama = 60.87 + self.vector["NE_frequency"] * 29.37 + self.vector["digit_frequency"] * -171.98 + self.vector["phrases_per_paragraph"] * -1.39 + self.vector["rhyme_average"] * 1.75 + self.vector["sentence_length_avg"] * -0.25 + self.vector["sentence_length_max"] * 0.04 + self.vector["sentence_length_min"] * -0.15 + self.vector["verb_frequency"] * -194.75 + self.vector["word_length_average"] * -42.27
@@ -33,7 +36,9 @@ class TyReX():
 
 		classes = (("epic", epic), ("drama", drama), ("report", report), ("poetry", poetry))
 
-		return (max(classes)[0], min(classes)[0])
+		#pprint.pprint([c + ": " + str(v) for c, v in classes])
+
+		return max(classes, key=lambda x: x[1])[0]
 
 if __name__ == "__main__":
 	tyrex = TyReX(sys.argv[1])

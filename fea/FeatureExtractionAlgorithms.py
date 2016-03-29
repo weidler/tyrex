@@ -21,9 +21,6 @@ class FEA():
 	"""
 
 	def __init__(self, class_name, source, map_dir, use_json=False, is_file=True):
-
-		print("")
-
 		# recognising file or textstring
 		if is_file:
 			# get the filename of the input file
@@ -68,7 +65,8 @@ class FEA():
 
 		#print("____________________")
 		#print(source)
-		print("Calculating Vector for: " + (self.filename or "given file"))
+		if self.filename:
+			print("Calculating Vector for: " + (self.filename))
 		#print(self.map_dir)
 		#print("____________________")
 
