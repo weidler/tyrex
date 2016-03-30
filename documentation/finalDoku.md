@@ -22,8 +22,6 @@ Suchmaschinen könnten das zur Kategorisierung und damit besseren Suche vorhande
 
 Um dieses Ziel zu erreichen, müssen viele Daten gesammelt, aufbereitet und analysiert werden.  
 Features, die die Eigenschaften der unterschiedlichen Texte beschreiben, spielen eine wichtige Rolle bei der Genre-Klassifizierung.  
-...Satz zu unserem Ergebnis   
-Weitere Schritte wären u.a. eine Erweiterung der Feature-Liste, größere Trainingsdatenmenge und z.B. eine einfach zu bedienende Webanwendung.  
 
 2 Daten  
 -------
@@ -361,8 +359,12 @@ blablabla
 7 Aussichten
 -------
 Eine Verbesserung der Klassifizierung könnte weiterhin mit größeren und ausgewogeneren Datenmengen erzielt werden. Diese sind allerdings meist schwierig zu finden, vorallem sobald eine Aufteilung in feinere Klassen erfolgen soll.  
+
 Bei der Anwendung der Feature-Methoden fällt auf, dass einige Ergebnisse nicht immer wie erwartet ausfallen:  
-u.a. der durchschnittliche Reimwert bei 'Poetry' ist vergleichsweise sehr niedrig, obwohl dieser Feature eigens für Gedichterkennung gedacht war.  Eine Entwicklung weiterer Features (die z.B. Terminologien vergleichen) ist ratsam, ebenfalls könnte man durch weitere Experimente und weitere feinere Klasse ein besseres Ergebnis erzielen. Kombinationen dieses Projekts mit anderen Forschungsprojekten wären eine Überlegung wert.  
+u.a. der durchschnittliche Reimwert bei 'Poetry' ist vergleichsweise sehr niedrig, obwohl dieser Feature eigens für Gedichterkennung gedacht war.  
+
+Weitere Schritte wären u.a. eine Erweiterung der Feature-Liste (z.B. ein Terminologienvergleich), weitere Experimente und eine einfach zu bedienende Webanwendung.  
+Kombinationen dieses Projekts mit anderen Forschungsprojekten wären eine Überlegung wert.  
 
 8 Literatur
 -------
