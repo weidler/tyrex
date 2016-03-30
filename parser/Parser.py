@@ -3,29 +3,35 @@ from html2text import *
 
 class Parser():
 	"""
+	Parser class that contains basic functionality for file reading and the main normalization method.
+	Can be used to parse a single file and get the result. To process multiple Files use MultiParser (subclass)
+
 	@parameters
-
-	@variables
-
+	filename	string	the name/path of the file that is supposed to be normalized
 	"""
 
 	def __init__(self, filename):
 		"""
-		@parameters
-
-		@variables
-
+		@attributes
+		self.filename	string	the name/path of the file that is supposed to be normalized
+		self.text		string	file content gets automatically read into this variable when object is instanciated
 		"""
+
 		self.filename = filename
 		self.text = self.readFileAtPath(self.filename)
 
 	def readFileAtPath(self, posix_path):
 		"""
+		Reads a file at a given path. Looks for utf-8/latin-1 encoding. Converts HTML Markup to Text.
+
 		@parameters
+		posix_path		string	the concerned filepath at which the method should read
 
 		@variables
 
+		@returns		string	
 		"""
+
 		try:
 			with open(posix_path, encoding="utf-8") as f:  # general encoding
 				return html2text(f.read())
