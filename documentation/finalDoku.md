@@ -50,26 +50,28 @@ Unsere Vorgehensweise ist (weitgehend) ohne Wortvektoren, mit mehr trivialen Fea
 
 Features
 -------
-Im Folgenden werden alle bisher verwendeten Features aufgezählt und ihre Funktion grob beschrieben (für einen genauen Einblick kann der Code in "/fea/FeatureExtractionAlgorithms" nachvollzogen werden).  
-
-Auflistung/Beschreibung Features (Sinn, Beispiel, Ausgabe), ARFF Ergebnis  
-... calcTextLength  
-... calcSentenceLengthAvg  
-... calcSentenceLengthMax  
-... calcSentenceLengthMin  
-... calcRhyme1  
-... calcRhyme2  
-... calcMostCommonWords  
-... calcTerminologicalCongruence  
-... calcPhrasesPerParagraph  
-... calcDigitFrequency  
-... calcPunctuationFrequency  
-... calcHashtagFrequency  
-... calcWordLengthAvg  
-... calcWordVariance  
-... calcNEFrequency  
-... calcVerbFrequency  
-... calcNounFrequency  
+Im Folgenden werden alle bisher verwendeten Features aufgezählt und ihre Funktion grob beschrieben (für einen genauen Einblick kann der Code in "/fea/FeatureExtractionAlgorithms.py" nachvollzogen werden).  
+Auflistung/Beschreibung Features (Sinn, Beispiel, Ausgabe)
+- *calcTextLength*  
+Berechnet die Länge der Texte und ignoriert dabei XML-Tags.  
+Annahme: z.B. epische Texte sind meist länger als Zeitungsartikel.  
+- *calcSentenceLengthAvg* / *calcSentenceLengthMax* / *calcSentenceLengthMin* 
+Berechnet die durschnittliche/maximalste/minimalste Anzahl von Wörtern aller Sätze.  
+Annahme: z.B. während Dramen eher kurze Sätze (u.a. Regieanweisungen) beinhalten, sind epische Werke oder wissenschaftliche Arbeiten eventuell eher langsätzig.  
+- *calcRhymeAvg*  
+Zählt alle Aufkommen von Zeilenendungen und berechnet einen Durschnitt der wiederkehrenden Endungen.  
+Annahme: z.B. sollten Gedichte mehr reimende Endungen enthalten als Zeitungsartikel.  
+Revision: längere Texte besitzen mehr Endungen, somit eine erhöhte Chance auf gleiche Endungen, und Texte aus der 'Poetry'-Kategorie besitzen weniger reine Reime als gedacht;  
+Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
+- *calcPhrasesPerParagraph*    
+- *calcDigitFrequency*   
+- *calcPunctuationFrequency*  
+- *calcHashtagFrequency*  
+- *calcWordLengthAvg*  
+- *calcWordVariance*  
+- *calcNEFrequency*  
+- *calcVerbFrequency*  
+- *calcNounFrequency*  
 
 Diese Features werden durch den FEA berechnet und vom ARFFBuilder in einer ARFF Datei zusammengefasst. Der folgende Ausschnitt zeigt einen Teil dieser ARFF Datei.
 
