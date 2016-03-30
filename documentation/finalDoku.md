@@ -230,7 +230,7 @@ Während `drama` und `report` sehr gut klassifiziert werden, sowohl hinsichtlich
 Gründe hierfür sind u.a. wohl Ähnlichkeiten in Hinblick auf Zeichensetzung und Schreibstil. Sowohl bezüglich der NounFrequency als auch der VerbFrequency sind Texte beider Klassen kaum zu unterscheiden.  
 Features, die zur besseren Unterscheidung dieser Klassen dienen sollten, konnten aufgrund der Beschaffenheit der Texte zudem nicht immer richtig greifen. So sind die Epischen Texte leider nicht anhand der Paragraphen umgebrochen. Dadurch kann nicht zwischen Gedichtszeilen und layoutbedingten Umbrüchen in epischen Texten unterschieden werden.
 
-Verbesserte Features (z.B. bzgl. Rhymes) und evtl. Parserfunktionalität, die Paragraphen erkennt könnten dieses Problem umgeben.
+Verbesserte Features (z.B. bzgl. Rhymes) und evtl. Parserfunktionalität, die Paragraphen erkennt, könnten dieses Problem umgeben.
 
 **Feiner Datensatz**
 
@@ -360,8 +360,9 @@ blablabla
 
 7 Aussichten
 -------
-Probleme (mehr und besser verteilte Daten - schwierig zu finden; Featureergebnisse nicht immer wie erwartet(z.B.Rhyme bei Poetry); weitere Features benötigt (z.B. Terminologien))  
-Überlegungen (Kombination mit anderen Projekten; weitere Experimente; feinere Klassen; )  
+Eine Verbesserung der Klassifizierung könnte weiterhin mit größeren und ausgewogeneren Datenmengen erzielt werden. Diese sind allerdings meist schwierig zu finden, vorallem sobald eine Aufteilung in feinere Klassen erfolgen soll.  
+Bei der Anwendung der Feature-Methoden fällt auf, dass einige Ergebnisse nicht immer wie erwartet ausfallen:  
+u.a. der durchschnittliche Reimwert bei 'Poetry' ist vergleichsweise sehr niedrig, obwohl dieser Feature eigens für Gedichterkennung gedacht war.  Eine Entwicklung weiterer Features (die z.B. Terminologien vergleichen) ist ratsam, ebenfalls könnte man durch weitere Experimente und weitere feinere Klasse ein besseres Ergebnis erzielen. Kombinationen dieses Projekts mit anderen Forschungsprojekten wären eine Überlegung wert.  
 
 8 Literatur
 -------
