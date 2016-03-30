@@ -11,9 +11,9 @@ Heidelberg University, Germany
 
 Outline  
 ----
-Goal of this project is an unsupervised classification of text types.
-In the first step the algorithm normalises the given texts. After that it analyses the preprocessed data with an extensible set of features returning an ARFF-file with the results....
-Further steps to be made would be better features to differentiate the classes better....   
+Goal of this project is an unsupervised classification of text types.  
+In the first step the algorithm normalises the given texts, with a so-called "Parser". After that it analyses the preprocessed data with an extensible set of features returning an ARFF-file with the results, which Weka uses to run algorithms with and to evaluate the outcome.  
+Further steps would be i.a. an expansion of features and data to differentiate more classes successfully.   
   
 Requirements  
 ------------

@@ -196,24 +196,58 @@ class FEA():
 		return mostCommonWords
 
 	def calcPhrasesPerParagraph(self):
+		'''
+		Calculates average number of phrases by their tags in a paragraph
+		
+		@variables	
+		splitfile	list	splitted source - every list item was a line (paragraph) in the source
+		
+		@returns	float	average number of phrases per paragraph
+		'''
 		splitfile = self.source.splitlines()
-		while '' in splitfile:
-			splitfile.remove('')
+		while '' in splitfile:	
+			splitfile.remove('')	#removes all blank lines as strings without content
 		count = 0
 		for line in splitfile:
-			count += len(re.findall('<s>', line))
+			count += len(re.findall('<s>', line))	#counts phrases by the <s>-tag
 		return float(count)/len(splitfile)
 
 	def calcDigitFrequency(self):
-		numbs = len(re.findall("\d+", self.source))
+		'''
+		Calculates the average number of digits in the text
+		
+		@variables
+		numbs		int		total number of all numbers, consisting of one or more digits
+		
+		@returns	float	average number of digits per number of tokens
+		'''
+		numbs = len(re.findall("\d+", self.source))	
 		return float(numbs)/len(self.source.split(" "))
 
 	def calcPunctuationFrequency(self):
+		'''
+		Calculates the average occurence of punctuation
+		
+		@variables
+		text_length	int		number of tokens without punctuation tags
+		puncts		int		number of punctuation counted by its tags
+		
+		@returns	float	average number of punctuation per tokens
+		'''
 		text_length = len(re.sub('<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>', "i", self.source))
 		puncts = len(re.findall('<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>', self.source))
 		return float(puncts)/text_length
 
 	def calcWordLengthAvg(self):
+		'''
+		Calculates the average length of tokens
+		
+		@variables
+		clean_text	str		given text without any tags
+		char		int		counter for total number of letters
+		
+		@returns	float	average word length
+		'''
 		clean_text = re.sub('<.*?>', "", self.source)
 		char = 0
 		for word in clean_text.split():
@@ -221,27 +255,50 @@ class FEA():
 		return float(char)/len(clean_text)
 
 	def calcWordVariance(self):
+		'''
+		### TO DO TOOOOOOOOOOONNNNNIIIIIIIIIIIIIOOOOOOOOOOOO ###
+		
+		@variables
+		
+		
+		@returns
+		'''
 		lemmata = [l[2] for l in self.treetagged]
 		return len(set(lemmata))/len(lemmata)
 
 	def calcNEFrequency(self):
-		count = 0
+		'''
+		Calculates the relation of Named Entities (NE) to the total number of tokens
+		
+		@returns	float	average occurence of NEs
+		'''
+		count = 0	#counter of NEs
 		for i in self.treetagged:
-			if i[1] == 'NE':
+			if i[1] == 'NE':	#counts if the lemma is 'NE'
 				count += 1
 		return float(count)/len(self.treetagged)
 
 	def calcVerbFrequency(self):
+		'''
+		Calculates the relation of verbs to the total number of tokens
+		
+		@returns	float	average occurence of verbs
+		'''
 		count = 0
 		for i in self.treetagged:
-			if i[1] == 'VAFIN' or 'VAIMP' or 'VVFIN' or 'VVIMP' or 'VMFIN':
+			if i[1] == 'VAFIN' or 'VAIMP' or 'VVFIN' or 'VVIMP' or 'VMFIN':		#counts lemmas that have to do with any sort of verb
 				count += 1
 		return float(count)/len(self.treetagged)
 
 	def calcNounFrequency(self):
+		'''
+		Calculates the relation of nouns to the total number of tokens
+		
+		@returns	float	average occurence of nouns
+		'''
 		count = 0
 		for i in self.treetagged:
-			if i[1] == 'NN':
+			if i[1] == 'NN':	#counts if the lemma is 'NN'
 				count += 1
 		return float(count)/len(self.treetagged)
 
