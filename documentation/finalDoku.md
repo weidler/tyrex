@@ -33,7 +33,7 @@ Mit diesen unannotierten Texten wurden zwei Korpora erstellt.
 Der erste Korpus umfasst 1261 Dateien die wie folgt in 4 grobe Klassen unterteilt wurden. 
 
     222 Epische Texte
-    291 Dramas
+    291 Dramen
     302 Artikel
     446 Gedichte
     
@@ -145,7 +145,7 @@ Die Evaluation verwendet CrossValidation mit 10 folds.
 Der grob gegliederte Datensatz enthält 1261 Instanzen die auf 4 Klassen verteilt sind. Diese Verteilung verhält sich wie folgt:
 
     222 Epische Texte
-    291 Dramas
+    291 Dramen
     302 Artikel
     446 Gedichte
 
