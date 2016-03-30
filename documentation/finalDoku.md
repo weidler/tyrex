@@ -1,5 +1,5 @@
 TyReX (Text Type Recognition)  
-----------------
+===============================
 Projektdokumentation 31.03.2016  
 Autoren: Lydia Hofmann, Svenja Lohse, Tonio Weidler  
 Betreuer: Éva Mújdricza-Maydt  
