@@ -12,8 +12,8 @@ Heidelberg University, Germany
 Outline  
 ----
 Goal of this project is an unsupervised classification of text types.
-In the first step the algorithm normalizes the given texts. After that it analyses the preprocessed data with an extensible set of features returning an ARFF-file with the results.
-Further steps to be made ...  
+In the first step the algorithm normalises the given texts. After that it analyses the preprocessed data with an extensible set of features returning an ARFF-file with the results....
+Further steps to be made would be better features to differentiate the classes better....   
   
 Requirements  
 ------------
