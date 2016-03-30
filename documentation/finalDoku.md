@@ -254,7 +254,7 @@ blablabla
 
 7 Aussichten
 -------
-Probleme (mehr und besser verteilte Daten; Featureergebnisse nicht immer wie erwartet(z.B.Rhyme bei Poetry); weitere Features benötigt (z.B. Terminologien))  
+Probleme (mehr und besser verteilte Daten - schwierig zu finden; Featureergebnisse nicht immer wie erwartet(z.B.Rhyme bei Poetry); weitere Features benötigt (z.B. Terminologien))  
 Überlegungen (Kombination mit anderen Projekten; weitere Experimente; feinere Klassen; )  
 
 8 Literatur
