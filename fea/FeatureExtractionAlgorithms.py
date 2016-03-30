@@ -96,7 +96,10 @@ class FEA():
 	# EXTRACTION ALGORITHMS
 	def calcTextLength(self):
 		"""
-		Calculates the length of the text and ignores XMl-tags.
+		Calculates the length of the text and ignores XML-tags.
+	
+		@variables
+		text	string		Source string without Tags
 		"""
 		text = re.sub("<.*?>", "", self.source)
 		return len(text.split())
@@ -132,9 +135,13 @@ class FEA():
 
 	def calcRhymeAvg(self):
 		"""
-		Counts all occurence of endings and returns the average rhyme value (rhymes/lines).
-		Returns float number From 0->1.0;
+		Counts all occurence of endings and returns the average rhyme value (rhymes/lines).Returns float number From 0->1.0;
 		0 means no rhymes, 1 means everything rhymes. From 0.5 up it's likely to be real rhymes.
+		
+		@variables
+		endings_dict	Dictionary	key (last chars of a line) and value (number of occurences)
+		rhymes		int		number of endings that occured 2 times or more
+		avgRhyme	float		number of rhymes divided by number of actual lines
 		"""
 		lines = re.findall("(.*)\n", self.source) 	# takes every line
 		endings_dict = {}
@@ -165,11 +172,15 @@ class FEA():
 		for k in endings_dict:
 			if endings_dict[k] >= 2:		                   #counts all endings that occures min 2 times
 				rhymes += endings_dict[k]
-
-		return (float(rhymes)/l)  #returns average rhyme value; 0-1, from 0.5 up it's likely to be real rhymes. 1 means, everything rhymes.
+		
+		avgRhyme = float(rhymes)/l
+		return (avgRhyme)  #returns average rhyme value; 0-1, from 0.5 up it's likely to be real rhymes. 1 means, everything rhymes.
 
 	def calcMostCommonWords(self):
-		"""Zaehlt die 'mostCommonWords' """
+		#unused
+		"""
+		Zaehlt die 'mostCommonWords'; unused
+		"""
 		words = self.source.split()
 		mostCommonWords = Counter(words).most_common() 	# list with tuples
 		return mostCommonWords
@@ -200,9 +211,7 @@ class FEA():
 		return float(char)/len(clean_text)
 
 	def calcWordVariance(self):
-		# TODO Lemmata als Basis Tonio
 		lemmata = [l[2] for l in self.treetagged]
-		#print(set(lemmata))
 		return len(set(lemmata))/len(lemmata)
 
 	def calcNEFrequency(self):
