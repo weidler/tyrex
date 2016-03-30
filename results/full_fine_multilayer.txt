@@ -1,0 +1,481 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.MultilayerPerceptron -L 0.3 -M 0.2 -N 500 -V 0 -S 0 -E 20 -H a
+Relation:     tyrex
+Instances:    11949
+Attributes:   14
+              NE_frequency
+              word_variance
+              digit_frequency
+              noun_frequency
+              phrases_per_paragraph
+              punctuation_frequency
+              rhyme_average
+              sentence_length_avg
+              sentence_length_max
+              sentence_length_min
+              text_length
+              verb_frequency
+              word_length_average
+              class
+Test mode:4-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Sigmoid Node 0
+    Inputs    Weights
+    Threshold    -2.5762452891973853
+    Node 12    -2.1455414816837766
+    Node 13    -0.9710749210879344
+    Node 14    -0.34073773400670726
+    Node 15    4.537677894254968
+    Node 16    0.25215382944015396
+    Node 17    2.5552157074631
+    Node 18    0.6099428605474674
+    Node 19    -12.803437509774314
+    Node 20    -11.156880991205409
+    Node 21    0.5497722263398918
+    Node 22    -14.999270155173308
+    Node 23    -7.978896748650478
+Sigmoid Node 1
+    Inputs    Weights
+    Threshold    -2.678226258073587
+    Node 12    -2.3556621980775305
+    Node 13    1.0745675580563805
+    Node 14    -2.5017703291163795
+    Node 15    -4.017629397745062
+    Node 16    -0.036886816869657287
+    Node 17    0.8549069571959909
+    Node 18    -1.520400492329554
+    Node 19    1.8198955331820574
+    Node 20    0.8149396475975027
+    Node 21    2.3658274069030623
+    Node 22    11.277905847561737
+    Node 23    1.0161040445198275
+Sigmoid Node 2
+    Inputs    Weights
+    Threshold    -15.14681212670142
+    Node 12    2.4313922029195663
+    Node 13    3.2233047504431553
+    Node 14    -1.0267644859521095
+    Node 15    -13.017989801769284
+    Node 16    0.399134611175424
+    Node 17    2.293002407572133
+    Node 18    2.358669955100823
+    Node 19    -5.145101833234887
+    Node 20    -0.4386447925034552
+    Node 21    6.302830024310639
+    Node 22    -1.5157478615878912
+    Node 23    -2.4861074194864945
+Sigmoid Node 3
+    Inputs    Weights
+    Threshold    -7.244272062726782
+    Node 12    2.584042478609901
+    Node 13    -3.557379079735451
+    Node 14    -7.689624539700291
+    Node 15    -1.0388438358536671
+    Node 16    1.2642792786676313
+    Node 17    -0.11148156509795999
+    Node 18    2.3477058096636023
+    Node 19    -2.7414264560335
+    Node 20    1.6671870733123946
+    Node 21    1.2001718675865634
+    Node 22    -0.8583610094223153
+    Node 23    -3.2598455489256306
+Sigmoid Node 4
+    Inputs    Weights
+    Threshold    -4.977922665281776
+    Node 12    -1.18164949318273
+    Node 13    -1.136869071892637
+    Node 14    -1.2036477152095626
+    Node 15    -0.7143797413329139
+    Node 16    -1.1181323602209667
+    Node 17    -1.0084761098549333
+    Node 18    -1.0688225408253604
+    Node 19    -1.4174688889682807
+    Node 20    -1.3981915534972047
+    Node 21    -1.4247160315603216
+    Node 22    -0.9845465343196687
+    Node 23    -1.1382957311888415
+Sigmoid Node 5
+    Inputs    Weights
+    Threshold    -5.637178226917109
+    Node 12    -0.03349709945945591
+    Node 13    0.4527287464056413
+    Node 14    -12.197766814073134
+    Node 15    8.258738604357662
+    Node 16    0.419770891626536
+    Node 17    -2.027394348213055
+    Node 18    2.9043455347316542
+    Node 19    -6.219533555997995
+    Node 20    -2.8480430953440634
+    Node 21    4.116425323748842
+    Node 22    -6.95953681177723
+    Node 23    -1.5968306788860127
+Sigmoid Node 6
+    Inputs    Weights
+    Threshold    -0.5043740881269383
+    Node 12    0.7494504782921295
+    Node 13    2.660133657758777
+    Node 14    0.8542031535571879
+    Node 15    -3.6784310450919033
+    Node 16    -1.837118893590884
+    Node 17    0.8216189949484277
+    Node 18    -4.559812861103094
+    Node 19    -0.10593775280519929
+    Node 20    -9.035627688498657
+    Node 21    -2.47093473585555
+    Node 22    -8.037962807240215
+    Node 23    5.57523048506482
+Sigmoid Node 7
+    Inputs    Weights
+    Threshold    -4.451985135241855
+    Node 12    -1.5187202604342454
+    Node 13    2.100853939333474
+    Node 14    -1.5948757673800549
+    Node 15    -3.765859106085927
+    Node 16    0.33352260077523455
+    Node 17    0.6976343274328275
+    Node 18    3.063349955904776
+    Node 19    -7.397710991980585
+    Node 20    -9.685542037863241
+    Node 21    -2.463228869864361
+    Node 22    -2.1975707538759317
+    Node 23    -2.616909871875738
+Sigmoid Node 8
+    Inputs    Weights
+    Threshold    -7.78789987508644
+    Node 12    -4.074101643831252
+    Node 13    -1.2591896060564711
+    Node 14    -2.34145812035325
+    Node 15    -1.2694942445023625
+    Node 16    -0.7076944543408306
+    Node 17    -1.443765426733339
+    Node 18    -8.367510260758142
+    Node 19    4.003687947390875
+    Node 20    0.5040255456846519
+    Node 21    2.3659698648737693
+    Node 22    -2.603129897580193
+    Node 23    -5.59059830991194
+Sigmoid Node 9
+    Inputs    Weights
+    Threshold    -2.2419026058659135
+    Node 12    1.9105109973544265
+    Node 13    -1.089062716851837
+    Node 14    -0.07994849629173513
+    Node 15    -9.623885099240946
+    Node 16    -3.9855304802754494
+    Node 17    -2.13122323482497
+    Node 18    3.6014381135182285
+    Node 19    -1.1298258859981738
+    Node 20    -7.107723208848032
+    Node 21    -2.4503147954160434
+    Node 22    -6.039180846142676
+    Node 23    -5.844849911848695
+Sigmoid Node 10
+    Inputs    Weights
+    Threshold    -1.7031418135898595
+    Node 12    -1.7267866357977317
+    Node 13    -2.203183807006538
+    Node 14    -5.598922874877575
+    Node 15    -1.5711941807119372
+    Node 16    -1.834888496263976
+    Node 17    -0.39919697852829333
+    Node 18    -6.386644926421871
+    Node 19    -4.347879021720886
+    Node 20    0.5553263475743069
+    Node 21    1.5823094616228073
+    Node 22    -2.026388915714006
+    Node 23    -0.8149989479222868
+Sigmoid Node 11
+    Inputs    Weights
+    Threshold    1.1729816453316348
+    Node 12    -1.0666896324361714
+    Node 13    -3.0400781364196647
+    Node 14    -1.5324873943227109
+    Node 15    -9.749742434580211
+    Node 16    1.47146009099029
+    Node 17    -8.666661302663465
+    Node 18    -2.821374748519024
+    Node 19    -2.2096763446565095
+    Node 20    -1.3351956168401888
+    Node 21    -2.596596306361865
+    Node 22    -8.308327654831562
+    Node 23    -4.3999428070000315
+Sigmoid Node 12
+    Inputs    Weights
+    Threshold    5.7455651321987995
+    Attrib NE_frequency    18.3943699857246
+    Attrib word_variance    -15.551479692949956
+    Attrib digit_frequency    2.098106893985584
+    Attrib noun_frequency    -0.3538711549347892
+    Attrib phrases_per_paragraph    29.45459716220061
+    Attrib punctuation_frequency    2.294990822485243
+    Attrib rhyme_average    3.27784980189639
+    Attrib sentence_length_avg    -12.84004489504204
+    Attrib sentence_length_max    12.336134831741392
+    Attrib sentence_length_min    -10.779412232694487
+    Attrib text_length    -19.47938089965808
+    Attrib verb_frequency    -0.021048663412268555
+    Attrib word_length_average    -2.830822508917957
+Sigmoid Node 13
+    Inputs    Weights
+    Threshold    -18.785065787290897
+    Attrib NE_frequency    10.250914510919937
+    Attrib word_variance    -0.3414396871618852
+    Attrib digit_frequency    -61.45404676850057
+    Attrib noun_frequency    19.079692564236613
+    Attrib phrases_per_paragraph    11.467601585371513
+    Attrib punctuation_frequency    -7.082046690620744
+    Attrib rhyme_average    0.767558073215039
+    Attrib sentence_length_avg    -2.5283907851984733
+    Attrib sentence_length_max    4.0723882789509345
+    Attrib sentence_length_min    5.855034580091253
+    Attrib text_length    7.547176876970366
+    Attrib verb_frequency    0.025481263473497648
+    Attrib word_length_average    -4.562264293573526
+Sigmoid Node 14
+    Inputs    Weights
+    Threshold    -4.937604532329882
+    Attrib NE_frequency    5.303048086891731
+    Attrib word_variance    -11.98852067226516
+    Attrib digit_frequency    -8.347254316667968
+    Attrib noun_frequency    0.49579518178839876
+    Attrib phrases_per_paragraph    -15.188710811026375
+    Attrib punctuation_frequency    -11.681510151549551
+    Attrib rhyme_average    -0.910545994584595
+    Attrib sentence_length_avg    7.229393053174632
+    Attrib sentence_length_max    7.650319853635311
+    Attrib sentence_length_min    10.597571392382747
+    Attrib text_length    -3.941942884512693
+    Attrib verb_frequency    -0.014759568815020184
+    Attrib word_length_average    3.0716568248077767
+Sigmoid Node 15
+    Inputs    Weights
+    Threshold    0.5275899813429562
+    Attrib NE_frequency    13.929395240782224
+    Attrib word_variance    -7.1370548443923685
+    Attrib digit_frequency    -8.98237391859136
+    Attrib noun_frequency    9.62036362007506
+    Attrib phrases_per_paragraph    16.162116126637397
+    Attrib punctuation_frequency    -19.132018082386022
+    Attrib rhyme_average    1.2322110750692012
+    Attrib sentence_length_avg    -4.173175272406364
+    Attrib sentence_length_max    6.287887656785439
+    Attrib sentence_length_min    -13.221545722590905
+    Attrib text_length    0.5713062583412988
+    Attrib verb_frequency    0.009804431502056024
+    Attrib word_length_average    -8.933682804691637
+Sigmoid Node 16
+    Inputs    Weights
+    Threshold    8.122221764745657
+    Attrib NE_frequency    -8.535886676445054
+    Attrib word_variance    17.094718473702233
+    Attrib digit_frequency    26.236789095833725
+    Attrib noun_frequency    -14.454543889123816
+    Attrib phrases_per_paragraph    22.529008606306174
+    Attrib punctuation_frequency    -1.5562128600669134
+    Attrib rhyme_average    2.128133690246036
+    Attrib sentence_length_avg    -14.725361435669432
+    Attrib sentence_length_max    5.700114749972876
+    Attrib sentence_length_min    -30.276138968192164
+    Attrib text_length    16.53414593552233
+    Attrib verb_frequency    0.020250038459470363
+    Attrib word_length_average    0.6187393642338245
+Sigmoid Node 17
+    Inputs    Weights
+    Threshold    0.21108842258311694
+    Attrib NE_frequency    7.752686503259805
+    Attrib word_variance    0.3438583327499695
+    Attrib digit_frequency    -12.417122120283164
+    Attrib noun_frequency    8.066849749857937
+    Attrib phrases_per_paragraph    -17.40789118529992
+    Attrib punctuation_frequency    17.73518324348797
+    Attrib rhyme_average    8.152176435983172
+    Attrib sentence_length_avg    -1.3832605253855916
+    Attrib sentence_length_max    -12.892720952928693
+    Attrib sentence_length_min    0.20051182413615845
+    Attrib text_length    21.338362893760603
+    Attrib verb_frequency    0.011907362061208328
+    Attrib word_length_average    -11.374038030200898
+Sigmoid Node 18
+    Inputs    Weights
+    Threshold    40.22443356401337
+    Attrib NE_frequency    -2.8143910174706104
+    Attrib word_variance    -1.0756578416376616
+    Attrib digit_frequency    9.650141022768763
+    Attrib noun_frequency    -10.704305810276093
+    Attrib phrases_per_paragraph    14.354065644305622
+    Attrib punctuation_frequency    7.633164626872109
+    Attrib rhyme_average    1.931228154869202
+    Attrib sentence_length_avg    1.4671699400441738
+    Attrib sentence_length_max    51.46928252518194
+    Attrib sentence_length_min    -36.28665742356763
+    Attrib text_length    34.80720664878456
+    Attrib verb_frequency    -0.01432717386050919
+    Attrib word_length_average    39.10865026438193
+Sigmoid Node 19
+    Inputs    Weights
+    Threshold    -8.88772879551208
+    Attrib NE_frequency    1.046959750168163
+    Attrib word_variance    13.15243466793117
+    Attrib digit_frequency    -46.78638880733615
+    Attrib noun_frequency    -5.925130442423243
+    Attrib phrases_per_paragraph    -4.502599793537064
+    Attrib punctuation_frequency    7.630408524250772
+    Attrib rhyme_average    -0.3856039632260161
+    Attrib sentence_length_avg    9.492394926090151
+    Attrib sentence_length_max    -2.7802991408637183
+    Attrib sentence_length_min    25.724947802932082
+    Attrib text_length    8.462027789828026
+    Attrib verb_frequency    0.024620923428834623
+    Attrib word_length_average    -3.913706988193694
+Sigmoid Node 20
+    Inputs    Weights
+    Threshold    5.887545147568886
+    Attrib NE_frequency    -8.621028787289886
+    Attrib word_variance    -0.49831291806152933
+    Attrib digit_frequency    6.52749119008562
+    Attrib noun_frequency    31.69336807393773
+    Attrib phrases_per_paragraph    1.1549693768752656
+    Attrib punctuation_frequency    14.01403958472349
+    Attrib rhyme_average    -0.5750118884190659
+    Attrib sentence_length_avg    -2.238970041102704
+    Attrib sentence_length_max    -20.908341595886426
+    Attrib sentence_length_min    13.150564539993411
+    Attrib text_length    -7.20611046299526
+    Attrib verb_frequency    0.039697615088712224
+    Attrib word_length_average    -18.33423802724934
+Sigmoid Node 21
+    Inputs    Weights
+    Threshold    -9.63215434325962
+    Attrib NE_frequency    6.031943785168065
+    Attrib word_variance    13.709092434055663
+    Attrib digit_frequency    -75.86572483294512
+    Attrib noun_frequency    18.91044236016796
+    Attrib phrases_per_paragraph    0.38560344263144625
+    Attrib punctuation_frequency    21.405243516113337
+    Attrib rhyme_average    0.6667863460954144
+    Attrib sentence_length_avg    -1.5979459459905305
+    Attrib sentence_length_max    17.521366606641678
+    Attrib sentence_length_min    -7.615690013661276
+    Attrib text_length    26.409676745123626
+    Attrib verb_frequency    0.012223985550704052
+    Attrib word_length_average    -22.848965332685122
+Sigmoid Node 22
+    Inputs    Weights
+    Threshold    1.2678881019244554
+    Attrib NE_frequency    7.199671104112395
+    Attrib word_variance    4.375896112758188
+    Attrib digit_frequency    -9.20788368214705
+    Attrib noun_frequency    2.7401712981127817
+    Attrib phrases_per_paragraph    23.948009313726626
+    Attrib punctuation_frequency    -32.439590783015774
+    Attrib rhyme_average    0.3021535427751391
+    Attrib sentence_length_avg    -2.1784021106028852
+    Attrib sentence_length_max    -4.570553032254465
+    Attrib sentence_length_min    -3.1539733899813376
+    Attrib text_length    -3.0238071819065095
+    Attrib verb_frequency    0.01091626363478189
+    Attrib word_length_average    -28.662226177050652
+Sigmoid Node 23
+    Inputs    Weights
+    Threshold    -19.195917500928662
+    Attrib NE_frequency    -41.026257181350736
+    Attrib word_variance    -21.92471675182755
+    Attrib digit_frequency    34.59843046879072
+    Attrib noun_frequency    15.277423148802558
+    Attrib phrases_per_paragraph    2.6376313678420273
+    Attrib punctuation_frequency    -0.21911532706157213
+    Attrib rhyme_average    -3.2138381408672556
+    Attrib sentence_length_avg    5.443516454100856
+    Attrib sentence_length_max    -2.1388080271694503
+    Attrib sentence_length_min    1.6617099053946702
+    Attrib text_length    -34.09871630941489
+    Attrib verb_frequency    -0.039600185580979955
+    Attrib word_length_average    -28.53042595451495
+Class erzaehlung
+    Input
+    Node 0
+Class lyrik
+    Input
+    Node 1
+Class dramatik
+    Input
+    Node 2
+Class lustspiel
+    Input
+    Node 3
+Class essay
+    Input
+    Node 4
+Class tragoedie
+    Input
+    Node 5
+Class maerchen
+    Input
+    Node 6
+Class novelle
+    Input
+    Node 7
+Class sonett
+    Input
+    Node 8
+Class roman
+    Input
+    Node 9
+Class ballade
+    Input
+    Node 10
+Class fabel
+    Input
+    Node 11
+
+
+Time taken to build model: 54.04 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        8567               71.6964 %
+Incorrectly Classified Instances      3382               28.3036 %
+Kappa statistic                          0.6283
+Mean absolute error                      0.066 
+Root mean squared error                  0.187 
+Relative absolute error                 50.1964 %
+Root relative squared error             72.96   %
+Total Number of Instances            11949     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.134     0.012      0.374     0.134     0.197      0.829    erzaehlung
+                 0.923     0.119      0.803     0.923     0.859      0.952    lyrik
+                 0.19      0.003      0.364     0.19      0.25       0.956    dramatik
+                 0.142     0.005      0.26      0.142     0.184      0.933    lustspiel
+                 0.25      0          1         0.25      0.4        0.676    essay
+                 0.61      0.021      0.544     0.61      0.575      0.941    tragoedie
+                 0.663     0.052      0.687     0.663     0.674      0.915    maerchen
+                 0.023     0.003      0.19      0.023     0.041      0.865    novelle
+                 0         0          0         0         0          0.924    sonett
+                 0.893     0.118      0.696     0.893     0.782      0.944    roman
+                 0.008     0          1         0.008     0.016      0.856    ballade
+                 0.543     0.032      0.675     0.543     0.602      0.901    fabel
+Weighted Avg.    0.717     0.081      0.677     0.717     0.681      0.928
+
+=== Confusion Matrix ===
+
+    a    b    c    d    e    f    g    h    i    j    k    l   <-- classified as
+   79   19    1   12    0   22   43    8    0  381    0   25 |    a = erzaehlung
+    9 3806   10   12    0   40   96    3    0   28    0  119 |    b = lyrik
+    1   20   20    4    0   54    0    0    0    5    0    1 |    c = dramatik
+    1   18   11   19    0   62    2    0    0   18    0    3 |    d = lustspiel
+    2    3    0    1    5    3    0    0    0    3    0    3 |    e = essay
+    5  110   11    9    0  294    1    2    0   46    0    4 |    f = tragoedie
+   23  164    2    3    0   13 1157    5    0  250    0  129 |    g = maerchen
+   16    2    0    0    0    4   38    8    0  273    0    7 |    h = novelle
+    1  197    0    0    0    0    2    0    0    0    0    3 |    i = sonett
+   66   36    0    4    0   33  113   12    0 2468    0   31 |    j = roman
+    0   93    0    0    0    1   15    0    0    1    1   17 |    k = ballade
+    8  269    0    9    0   14  218    4    0   75    0  710 |    l = fabel
+

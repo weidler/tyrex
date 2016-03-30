@@ -30,13 +30,13 @@ Weitere Schritte wären u.a. eine Erweiterung der Feature-Liste, größere Train
 Die Trainingsdaten stammen aus dem "Projekt-Gutenberg"-Korpus, der viele Werke bekannter Autoren bereit stellt, und "Zeit-Online" dient ebenfalls als Quelle.  
 Mit diesen unannotierten Texten wurden zwei Korpora erstellt.
 
-Der erste Korpus umfasst 1261 Dateien, die wie folgt in 4 grobe Klassen unterteilt wurden: 
+Der erste Korpus umfasst 1261 Dateien, die wie folgt in 4 grobe Klassen unterteilt wurden:
 
     222 Epische Texte
     291 Dramen
     302 Artikel
     446 Gedichte
-    
+
 Der zweite Korpus enthält 11950 Dateien, die wie folgt in x feinere Klassen eingeteilt wurden:
 
 	efwefwe
@@ -213,7 +213,7 @@ Eine genauere Betrachtung des MultiLayerPerceptrons liefert die folgende Evaluie
                      0.913     0.056      0.898     0.913     0.905      0.973    poetry
     Weighted Avg.    0.923     0.03       0.923     0.923     0.923      0.979
 
-Bei einer Precision von 62.3077 % sind diese Ergebnisse mehr als zufriedenstellend.
+Bei einer Precision von 92.3077 % sind diese Ergebnisse sehr gut. Die gewählten Features sind offensichtlich ausreichend, um einen sehr genauen Classifier für diese 4 Klassen zu trainieren. Die Klasse report erreicht einen beeindruckenden Recall Wert von 0.993. Quasi alle Zeitungsartikel wurden also auch als solche erkannt. Eventuell ist das aber auch auf ein Overfitting zurückzuführen, basierend auf der über alle Instanzen der Klasse hinweg gleichen Quelle.
 
 Anhand der verschiedenen Precision und Recall Werte für die einzelnen Klassen lässt sich bereits eine Vermutung machen die mit der Confusion Matrix bestätigt wird.
 
@@ -234,19 +234,125 @@ Verbesserte Features (z.B. bzgl. Rhymes) und evtl. Parserfunktionalität, die Pa
 
 **Feiner Datensatz**
 
-verteilung
+Der feinere Datensatz enthält insgesamt 11949 erfolgreich geparste Instanzen. Diese verteilen sich folgendermaßen auf insgesamt 11 Klassen
 
-baseline
+    lyrik: 4123
+    dramatik: 105
+    lustspiel: 134
+    essay: 20
+    tragoedie: 482
+    novelle: 348
+    maerchen: 1746
+    sonett: 203
+    fabel: 1307
+    roman: 2763
+    ballade: 128
+    erzaehlung: 590
 
-experimente
+Ein offensichtliches Problem des Datensatzes ist die ungleiche Verteilung der Daten. Da die Texte per Hand annotiert wurden war eine bessere Annotation
+in Anbetracht der knappen Zeit nicht möglich.
 
-bester algo
+Als *Baseline* wurde auch hier ZeroR gewählt. Die Baseline erreicht einen Wert von 34.505% korrekt klassifizierten Instanzen.
 
-	summary
+    === Summary ===
 
-	confusion
+    Correctly Classified Instances        4123               34.505  %
+    Incorrectly Classified Instances      7826               65.495  %
+    Kappa statistic                          0     
+    Mean absolute error                      0.1315
+    Root mean squared error                  0.2564
+    Relative absolute error                100      %
+    Root relative squared error            100      %
+    Total Number of Instances            11949     
 
-auswertung
+    === Detailed Accuracy By Class ===
+
+                   TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                     0         0          0         0         0          0.5      erzaehlung
+                     1         1          0.345     1         0.513      0.5      lyrik
+                     0         0          0         0         0          0.488    dramatik
+                     0         0          0         0         0          0.491    lustspiel
+                     0         0          0         0         0          0.5      essay
+                     0         0          0         0         0          0.498    tragoedie
+                     0         0          0         0         0          0.499    maerchen
+                     0         0          0         0         0          0.498    novelle
+                     0         0          0         0         0          0.495    sonett
+                     0         0          0         0         0          0.499    roman
+                     0         0          0         0         0          0.494    ballade
+                     0         0          0         0         0          0.499    fabel
+    Weighted Avg.    0.345     0.345      0.119     0.345     0.177      0.499
+
+Insbesondere die durschnittliche Precision von 0.119 sollten bessere Algorithmen übertreffen können.
+
+Bei einem Experiment mit 7 verschiedenen Algorithmen hat sich X als bester Classifier herausgestellt. Es wurden die folgenden Algorithmen verwendet:
+
+    (1) rules.ZeroR '' 48055541465867954
+    (2) bayes.NaiveBayes '' 5995231201785697655
+    (3) functions.SimpleLogistic '-I 0 -M 500 -H 50 -W 0.0' 7397710626304705059
+    (4) functions.Logistic '-R 1.0E-8 -M -1' 3932117032546553727
+    (5) functions.SMO '-C 1.0 -L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K \"functions.supportVector.PolyKernel -C 250007 -E 1.0\"' -6585883636378691736
+    (6) trees.J48 '-C 0.25 -M 2' -217733168393644444
+    (7) functions.MultilayerPerceptron '-L 0.3 -M 0.2 -N 500 -V 0 -S 0 -E 20 -H a' -5990607817048210779
+
+Neben dem MultiLayerPerceptron haben sich die restlichen Algorithmen bis auf NaiveBayes als ähnlich präzise herausgestellt. Die Ergebnisse des J48 Baum sogar innerhalb der Signifikanzschwelle. Alle Algorithmen übertreffen die Baseline.
+
+    Dataset                   (1) rules.Ze | (2) bayes (3) funct (4) funct (5) funct (6) trees (7) funct
+    ----------------------------------------------------------------------------------------------------
+    tyrex                      (9)   34.50 |   47.68 v   69.16 v   69.20 v   65.86 v   70.39 v   71.62 v
+    ----------------------------------------------------------------------------------------------------
+                               (v/ /*) |   (1/0/0)   (1/0/0)   (1/0/0)   (1/0/0)   (1/0/0)   (1/0/0)
+
+Nimmt man den MultiLayerPerceptron genauer unter die Lupe, ergeben sich die folgenden Evaluationsergebnisse:
+
+    === Summary ===
+
+    Correctly Classified Instances        8567               71.6964 %
+    Incorrectly Classified Instances      3382               28.3036 %
+    Kappa statistic                          0.6283
+    Mean absolute error                      0.066
+    Root mean squared error                  0.187
+    Relative absolute error                 50.1964 %
+    Root relative squared error             72.96   %
+    Total Number of Instances            11949     
+
+    === Detailed Accuracy By Class ===
+
+                   TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                     0.134     0.012      0.374     0.134     0.197      0.829    erzaehlung
+                     0.923     0.119      0.803     0.923     0.859      0.952    lyrik
+                     0.19      0.003      0.364     0.19      0.25       0.956    dramatik
+                     0.142     0.005      0.26      0.142     0.184      0.933    lustspiel
+                     0.25      0          1         0.25      0.4        0.676    essay
+                     0.61      0.021      0.544     0.61      0.575      0.941    tragoedie
+                     0.663     0.052      0.687     0.663     0.674      0.915    maerchen
+                     0.023     0.003      0.19      0.023     0.041      0.865    novelle
+                     0         0          0         0         0          0.924    sonett
+                     0.893     0.118      0.696     0.893     0.782      0.944    roman
+                     0.008     0          1         0.008     0.016      0.856    ballade
+                     0.543     0.032      0.675     0.543     0.602      0.901    fabel
+    Weighted Avg.    0.717     0.081      0.677     0.717     0.681      0.928
+
+    === Confusion Matrix ===
+
+        a    b    c    d    e    f    g    h    i    j    k    l   <-- classified as
+       79   19    1   12    0   22   43    8    0  381    0   25 |    a = erzaehlung
+        9 3806   10   12    0   40   96    3    0   28    0  119 |    b = lyrik
+        1   20   20    4    0   54    0    0    0    5    0    1 |    c = dramatik
+        1   18   11   19    0   62    2    0    0   18    0    3 |    d = lustspiel
+        2    3    0    1    5    3    0    0    0    3    0    3 |    e = essay
+        5  110   11    9    0  294    1    2    0   46    0    4 |    f = tragoedie
+       23  164    2    3    0   13 1157    5    0  250    0  129 |    g = maerchen
+       16    2    0    0    0    4   38    8    0  273    0    7 |    h = novelle
+        1  197    0    0    0    0    2    0    0    0    0    3 |    i = sonett
+       66   36    0    4    0   33  113   12    0 2468    0   31 |    j = roman
+        0   93    0    0    0    1   15    0    0    1    1   17 |    k = ballade
+        8  269    0    9    0   14  218    4    0   75    0  710 |    l = fabel
+
+Obwohl die erreichten Werte in Precision, Recall und F-Measure relativ hoch sind, zeigt ein Blick auf die detailliertere Auswertung, dass diese
+Evaluierungsmaße nur in den Klassen gute Werte erreichen, für die viele Instanzen verfügbar sind. Precision Werte über 0.6 erreichen lediglich die 4 größten Klassen (lyrik, märchen, roman, fabel). Einen Recall Wert über 0.6 erreichen lediglich die Klassen Lyrik, Tragödie, Märchen und Roman. Auffällig sind besonders die hohen Recall Werte von ~ 0.9 der Klassen lyrik und roman.  
+
+Zurückzuführen sind diese Beobachtungen auf zum einen die ungleiche Verteilung der Klassen, die ein gutes trainieren des Models erschwert. Es kann angenommen werden dass die Modelle für kleinere Klassen stark overfitten.   
+Zudem ist ersichtlich dass die gewählten Features allein nicht ausreichen, um eine so feine Unterteilung vorzunehmen. Selbst für einen Menschen kann eine derartige Unterteilung schwer sein, deshalb ist dies ein komplexeres Problem.
 
 6 Auswertung
 -------
