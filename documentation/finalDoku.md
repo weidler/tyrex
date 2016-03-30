@@ -53,7 +53,7 @@ Im Folgenden werden alle bisher verwendeten Features aufgezählt und ihre Funkti
 - *calcTextLength*  
 Berechnet die Länge der Texte und ignoriert dabei XML-Tags.  
 Annahme: z.B. epische Texte sind meist länger als Zeitungsartikel.  
-- *calcSentenceLengthAvg* / *calcSentenceLengthMax* / *calcSentenceLengthMin* 
+- *calcSentenceLengthAvg* / *calcSentenceLengthMax* / *calcSentenceLengthMin*    
 Berechnet die durschnittliche/maximalste/minimalste Anzahl von Wörtern aller Sätze.  
 Annahme: z.B. während Dramen eher kurze Sätze (u.a. Regieanweisungen) beinhalten, sind epische Werke oder wissenschaftliche Arbeiten eventuell eher langsätzig.  
 - *calcRhymeAvg*  
@@ -62,9 +62,9 @@ Annahme: z.B. sollten Gedichte mehr reimende Endungen enthalten als Zeitungsarti
 Revision: längere Texte besitzen mehr Endungen, somit eine erhöhte Chance auf gleiche Endungen, und Texte aus der 'Poetry'-Kategorie besitzen weniger reine Reime als gedacht;  
 Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
 - *calcPhrasesPerParagraph*    
-Berechnet die Zahl der Sätze pro Zeile.
+Berechnet die Zahl der Sätze pro Zeile.  
 Annahme: Sollte zur besseren Abgrenzung von Gedichten zu anderen Textsorten dienen. Während in Gedichten Sätze häufig über einen gesamten Vers mit mehreren Umbrüchen gehen, tritt bei epischen Texten und Artikeln
-der erste Umbruch meist erst nach einen gesamten Absatz auf.
+der erste Umbruch meist erst nach einen gesamten Absatz auf.  
 Revision: Leider vermindert die Strukturierung der Dateien den Wert des Features. Auch in epischen Texten sind Zeilen künstlich umgebrochen.
 - *calcDigitFrequency*   
 Berechnet...  
@@ -76,8 +76,8 @@ Annahme: z.B....
 Berechnet...  
 Annahme: z.B....  
 - *calcWordVariance*  
-Berechnet, wie unterschiedlich die Wortwahl im Text ist. Es wird die Zahl der einzigartigen Lemmata über die Gesamtzahl an Worten relativiert.
-Annahme: In Gedichten ist die Wortwahl häufig abwechslungsreicher, in Dramen und Artikeln vermutlich weniger.
+Berechnet, wie unterschiedlich die Wortwahl im Text ist. Es wird die Zahl der einzigartigen Lemmata über die Gesamtzahl an Worten relativiert.  
+Annahme: In Gedichten ist die Wortwahl häufig abwechslungsreicher, in Dramen und Artikeln vermutlich weniger.  
 - *calcNEFrequency*  
 Berechnet...  
 Annahme: z.B....  
