@@ -45,8 +45,7 @@ Das einfache Prinzip bisheriger Theorien zu diesem Thema lautet, aus Trainingsda
 Z.B. Zelch und Engel (2005) haben Wort-Features aus ihren Texten extrahiert, Lexeme gebildet, lemmatisiert und diese Features dann mit einem 'SVM'-Algorithmus verarbeitet. 2015 beschrieb Ghaffari ebenfalls Vektoren aus extrahierten Worten, die er mit den 'SVM'-, 'Naive Bayes'- und 'Decision Tree'-Algorithmen zur Textklassifikation verwendet hatte.
 Unsere Vorgehensweise ist (weitgehend) ohne Wortvektoren, mit mehr trivialen Features. Mit Weka lassen wir u.a. 'Naive Bayes', 'MultilayerPerceptron' und 'Decision Tree' über die Daten laufen.  
 
-
-**ARCHITEKTURÜBERSICHT**  
+![architecture](tyrex_architecture.png?raw=true "Architecture")
 
 Features
 -------
