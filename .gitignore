@@ -58,4 +58,5 @@ raw_data/
 data/
 feature_maps/
 test-data/
+fine_data/
 __pycache__

@@ -1,0 +1,261 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.SimpleLogistic -I 0 -M 500 -H 50 -W 0.0
+Relation:     tyrex
+Instances:    11950
+Attributes:   14
+              NE_frequency
+              word_variance
+              digit_frequency
+              noun_frequency
+              phrases_per_paragraph
+              punctuation_frequency
+              rhyme_average
+              sentence_length_avg
+              sentence_length_max
+              sentence_length_min
+              text_length
+              verb_frequency
+              word_length_average
+              class
+Test mode:10-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+SimpleLogistic:
+
+Class 0 :
+-26.12 + 
+[word_variance] * -7.73 +
+[digit_frequency] * 115.82 +
+[noun_frequency] * -17 +
+[phrases_per_paragraph] * -0.44 +
+[punctuation_frequency] * -399.3 +
+[rhyme_average] * 3.98 +
+[sentence_length_avg] * -0.2 +
+[sentence_length_max] * 0.04 +
+[sentence_length_min] * -0.47 +
+[text_length] * 0    +
+[word_length_average] * 46.99
+
+Class 1 :
+-142.02 + 
+[NE_frequency] * 3.78 +
+[word_variance] * -7.86 +
+[digit_frequency] * 93.68 +
+[noun_frequency] * -32.59 +
+[phrases_per_paragraph] * 0.35 +
+[punctuation_frequency] * -22.28 +
+[rhyme_average] * 3.48 +
+[sentence_length_max] * 0.02 +
+[sentence_length_min] * -0.12 +
+[word_length_average] * 179.86
+
+Class 2 :
+-89.74 + 
+[NE_frequency] * -4.26 +
+[word_variance] * 3.45 +
+[digit_frequency] * -233 +
+[noun_frequency] * -25.76 +
+[phrases_per_paragraph] * 0.17 +
+[punctuation_frequency] * -94.57 +
+[rhyme_average] * 6.49 +
+[sentence_length_avg] * -0.03 +
+[sentence_length_max] * 0.01 +
+[sentence_length_min] * -0.19 +
+[text_length] * 0    +
+[word_length_average] * 110.52
+
+Class 3 :
+-13.49 + 
+[NE_frequency] * 6.66 +
+[word_variance] * 5.03 +
+[digit_frequency] * -48 +
+[noun_frequency] * 15.46 +
+[phrases_per_paragraph] * 2.04 +
+[punctuation_frequency] * 171.07 +
+[rhyme_average] * 3.79 +
+[sentence_length_avg] * -0.3 +
+[sentence_length_max] * 0.05 +
+[sentence_length_min] * -0.4 +
+[text_length] * 0    +
+[word_length_average] * -1.42
+
+Class 4 :
+-354.15 + 
+[NE_frequency] * 18.84 +
+[word_variance] * -42.4 +
+[digit_frequency] * 148.23 +
+[noun_frequency] * -73.4 +
+[punctuation_frequency] * -95.74 +
+[rhyme_average] * 11.31 +
+[sentence_length_max] * -0.04 +
+[sentence_length_min] * -2.25 +
+[text_length] * -0.03 +
+[word_length_average] * 453.46
+
+Class 5 :
+6.54 + 
+[NE_frequency] * -10.34 +
+[digit_frequency] * 81.12 +
+[noun_frequency] * -15.45 +
+[phrases_per_paragraph] * -0.33 +
+[punctuation_frequency] * -65.83 +
+[rhyme_average] * -0.64 +
+[sentence_length_avg] * 0.04 +
+[sentence_length_max] * -0.02 +
+[sentence_length_min] * -0.04 +
+[text_length] * 0   
+
+Class 6 :
+43.57 + 
+[NE_frequency] * -7.91 +
+[word_variance] * -10.33 +
+[digit_frequency] * -12.45 +
+[noun_frequency] * 1.16 +
+[phrases_per_paragraph] * -2.43 +
+[punctuation_frequency] * -133.36 +
+[rhyme_average] * -1.11 +
+[sentence_length_avg] * -0.06 +
+[sentence_length_max] * -0.01 +
+[sentence_length_min] * 0.11 +
+[text_length] * 0    +
+[word_length_average] * -37.35
+
+Class 7 :
+-42.91 + 
+[NE_frequency] * 7.71 +
+[word_variance] * 6.57 +
+[digit_frequency] * -39.15 +
+[noun_frequency] * -2.48 +
+[phrases_per_paragraph] * 2.68 +
+[punctuation_frequency] * 80.67 +
+[rhyme_average] * 1.18 +
+[sentence_length_avg] * -0.16 +
+[sentence_length_max] * 0.05 +
+[sentence_length_min] * -0.21 +
+[text_length] * 0    +
+[word_length_average] * 41.58
+
+Class 8 :
+65.01 + 
+[NE_frequency] * -0.36 +
+[word_variance] * 14.78 +
+[digit_frequency] * -52.98 +
+[noun_frequency] * 12.55 +
+[phrases_per_paragraph] * 0.52 +
+[punctuation_frequency] * 74.71 +
+[rhyme_average] * 0.1  +
+[sentence_length_max] * -0.01 +
+[sentence_length_min] * 0.06 +
+[text_length] * 0    +
+[word_length_average] * -92.03
+
+Class 9 :
+-87.31 + 
+[NE_frequency] * 11.02 +
+[digit_frequency] * 78.14 +
+[noun_frequency] * -16.74 +
+[phrases_per_paragraph] * -1.01 +
+[punctuation_frequency] * 43.54 +
+[rhyme_average] * 4.74 +
+[sentence_length_avg] * 0    +
+[sentence_length_max] * 0.01 +
+[sentence_length_min] * -0.31 +
+[text_length] * 0    +
+[word_length_average] * 104.56
+
+Class 10 :
+52.55 + 
+[NE_frequency] * 3.12 +
+[word_variance] * 0.26 +
+[digit_frequency] * 52.76 +
+[noun_frequency] * 12.29 +
+[phrases_per_paragraph] * -0.95 +
+[punctuation_frequency] * 87.31 +
+[rhyme_average] * 0.82 +
+[sentence_length_avg] * 0.03 +
+[sentence_length_max] * -0.01 +
+[sentence_length_min] * -0.01 +
+[text_length] * 0    +
+[word_length_average] * -70.19
+
+Class 11 :
+93.71 + 
+[NE_frequency] * -39.72 +
+[word_variance] * 22.77 +
+[digit_frequency] * -33.41 +
+[noun_frequency] * 7.45 +
+[phrases_per_paragraph] * -1.97 +
+[punctuation_frequency] * 110.59 +
+[sentence_length_avg] * 0.05 +
+[sentence_length_max] * -0.03 +
+[sentence_length_min] * 0.06 +
+[text_length] * 0    +
+[word_length_average] * -134.03
+
+Class 12 :
+-17.43 + 
+[NE_frequency] * 3.46 +
+[word_variance] * 2.05 +
+[digit_frequency] * 35.63 +
+[noun_frequency] * -11.05 +
+[phrases_per_paragraph] * 0.98 +
+[punctuation_frequency] * 147.95 +
+[rhyme_average] * 1.91 +
+[sentence_length_avg] * -0.42 +
+[sentence_length_max] * 0.01 +
+[sentence_length_min] * -0.2 +
+[text_length] * 0    +
+[word_length_average] * 18.26
+
+
+Time taken to build model: 42.53 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        8267               69.1799 %
+Incorrectly Classified Instances      3683               30.8201 %
+Kappa statistic                          0.5929
+Mean absolute error                      0.07  
+Root mean squared error                  0.1855
+Relative absolute error                 57.6584 %
+Root relative squared error             75.2957 %
+Total Number of Instances            11950     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.55      0          0.786     0.55      0.647      0.876    essay
+                 0.924     0.133      0.676     0.924     0.781      0.946    roman
+                 0         0.001      0         0         0          0.88     novelle
+                 0.086     0.002      0.29      0.086     0.132      0.962    dramatik
+                 0         0          0         0         0          0.059    new
+                 0.522     0.045      0.589     0.522     0.554      0.905    fabel
+                 0.602     0.06       0.632     0.602     0.617      0.899    maerchen
+                 0.539     0.018      0.553     0.539     0.546      0.953    tragoedie
+                 0.893     0.137      0.775     0.893     0.83       0.94     lyrik
+                 0.005     0.002      0.13      0.005     0.01       0.837    erzaehlung
+                 0         0          0         0         0          0.915    ballade
+                 0         0.001      0         0         0          0.939    sonett
+                 0.119     0.002      0.356     0.119     0.179      0.971    lustspiel
+Weighted Avg.    0.692     0.092      0.617     0.692     0.644      0.925
+
+=== Confusion Matrix ===
+
+    a    b    c    d    e    f    g    h    i    j    k    l    m   <-- classified as
+   11    4    1    0    0    3    0    1    0    0    0    0    0 |    a = essay
+    2 2554    0    1    0   31  122   16   34    1    0    1    1 |    b = roman
+    0  292    0    0    0    2   49    2    2    1    0    0    0 |    c = novelle
+    0    8    0    9    0    0    2   75   10    1    0    0    0 |    d = dramatik
+    0    1    0    0    0    0    0    0    0    0    0    0    0 |    e = new
+    0   67    1    0    0  682  220    3  327    2    1    0    4 |    f = fabel
+    1  265    2    0    0  191 1051   14  218    1    1    0    2 |    g = maerchen
+    0   64    0    7    0    2    2  260  140    2    0    0    5 |    h = tragoedie
+    0   31    3    6    0  195  154   32 3681    9    2    5    5 |    i = lyrik
+    0  462    1    0    0   30   47   17   18    3    0    0   12 |    j = erzaehlung
+    0    1    0    0    0   17   12    0   96    2    0    0    0 |    k = ballade
+    0    0    0    0    0    2    0    0  200    1    0    0    0 |    l = sonett
+    0   30    0    8    0    2    4   50   24    0    0    0   16 |    m = lustspiel
+
