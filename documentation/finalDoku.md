@@ -8,12 +8,14 @@ Inhaltsverzeichnis
 -------
 1. Einführung  
 2. Daten  
-3. Struktur und Features  
-4. Experimente und Evaluation  
-5. Aussichten  
-6. Literatur
+3. Struktur
+4. Features  
+5. Experimente und Evaluation
+6. Auswertung
+7. Aussichten  
+8. Literatur
 
-Einführung     
+1 Einführung     
 -------
 Das Ziel dieses Projektes ist eine automatische Klassifizierung von Texten nach ihrer Textart.
 Suchmaschinen könnten das zur Kategorisierung und damit besseren Suche vorhandener Dokumente verwenden und auch andere Unternehmen würden von einem internen Kategoriensystem (mit Kategorien wie u.a. Rechnungen, Mitarbeitergespräche, Rezensionen, etc.) profitieren.  
@@ -23,23 +25,36 @@ Features, die die Eigenschaften der unterschiedlichen Texte beschreiben, spielen
 ...Satz zu unserem Ergebnis   
 Weitere Schritte wären u.a. eine Erweiterung der Feature-Liste, größere Trainingsdatenmenge und z.B. eine einfach zu bedienende Webanwendung.  
 
-Daten  
+2 Daten  
 -------
 Die Trainingsdaten stammen aus dem "Projekt-Gutenberg"-Korpus, der viele Werke bekannter Autoren bereit stellt, und "Zeit-Online" dient ebenfalls als Quelle.  
-Die Texte sind unannotiert und wie folgt auf vier Kategorien aufgeteilt:  
-*EPIC*(...)  
-*DRAMA*(...)  
-*POETRY*(...)  
-*REPORT*(...)
+Mit diesen unannotierten Texten wurden zwei Korpora erstellt.
 
-Die Texte werden durch den "TextNormierer" aufbereitet, d.h. Satzzeichen werden durch <Tags/> ersetzt und unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen entstehen. Durch die Normierung ist die Weiterverarbeitung der Daten einfacher und nützliche Metadaten werden durch die Tag-Setzung eingebunden. Ein Nachteil ist allerdings, dass uns externe Metadaten verloren gehen und der Nomierer viele Datentypen zu verarbeiten hat.  
+Der erste Korpus umfasst 1261 Dateien die wie folgt in 4 grobe Klassen unterteilt wurden. 
 
-Zusätzlich lassen wir den TreeTagger die Texte annotieren, um die so entstandenen POS-Tags und die Baumstruktur in Features verwenden zu können.
+    222 Epische Texte
+    291 Dramas
+    302 Artikel
+    446 Gedichte
+    
+Der zweite Korpus enthält 11950 Dateien die wie folgt in x feinere Klassen eingeteilt wurden.
+
+	efwefwe
+	fwefwfe
+	wefwff
+
+Die Texte werden durch den "TextNormierer" (Parser) aufbereitet, d.h. Satzzeichen werden durch <Tags/> ersetzt und unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen entstehen.
+Durch die Normierung ist die Weiterverarbeitung der Daten einfacher und nützliche Metadaten werden durch die Tag-Setzung eingebunden. Ein Nachteil ist allerdings, dass uns externe Metadaten
+verloren gehen und der Nomierer viele Datentypen zu verarbeiten hat, wodurch eine optimale Normierung teilweise nicht möglich ist.  
 
 **AUSSCHNITT NORM_TEXT**  
-**AUSSCHNITT TAGGED_TEXT**  
+**AUSSCHNITT TAGGED_TEXT**
 
-Struktur
+Zusätzlich lassen wir den TreeTagger die Texte bei der Featureberechnung annotieren, um die so entstandenen POS-Tags und die Baumstruktur in Features verwenden zu können.
+
+
+
+3 Struktur
 -------
 Das einfache Prinzip bisheriger Theorien zu diesem Thema lautet, aus Trainingsdaten Features zu extrahieren und sie an einen Klassifizierungsalgorithmus zu übergeben.  
 Z.B. Zelch und Engel (2005) haben Wort-Features aus ihren Texten extrahiert, Lexeme gebildet, lemmatisiert und diese Features dann mit einem 'SVM'-Algorithmus verarbeitet. 2015 beschrieb Ghaffari ebenfalls Vektoren aus extrahierten Worten, die er mit den 'SVM'-, 'Naive Bayes'- und 'Decision Tree'-Algorithmen zur Textklassifikation verwendet hatte.
@@ -47,7 +62,7 @@ Unsere Vorgehensweise ist (weitgehend) ohne Wortvektoren, mit mehr trivialen Fea
 
 ![architecture](tyrex_architecture.png?raw=true "Architecture")
 
-Features
+4 Features
 -------
 Im Folgenden werden alle bisher verwendeten Features aufgezählt und ihre Funktion grob beschrieben (für einen genauen Einblick kann der Code in "/fea/FeatureExtractionAlgorithms.py" nachvollzogen werden).  
 - *calcTextLength*  
@@ -120,7 +135,7 @@ Diese Features werden durch den FEA berechnet und vom ARFFBuilder in einer ARFF 
     0.00281483294578387, 0.432661717921527, 0.012987012987012988, 0.02753640925223351, 0.6415094339622641, 0.019772071948372924, 0.5, 13.441176470588236, 33, 1, 932, 0.11540815077713866, 0.8539696833258292, report
     0.002178649237472767, 0.7575757575757576, 0.0, 0.026143790849673203, 0.6, 0.027989821882951654, 0.5, 21.0, 29, 15, 65, 0.1437908496732026, 0.8227146814404432, poetry
 
-Experimente und Evaluation  
+5 Experimente und Evaluation  
 -------
 Es wurden Experimente auf den grob und fein gegliederten Datensätzen ausgeführt.  
 Als Baseline wird in beiden Fällen ein ZeroR Algorithmus verwendet der alle Instanzen mit der häufigsten Klasse klassifiziert.  
@@ -233,16 +248,16 @@ bester algo
 
 auswertung
 
-Auswertung
+6 Auswertung
 -------
 blablabla
 
-Aussichten
+7 Aussichten
 -------
 Probleme (mehr und besser verteilte Daten; Featureergebnisse nicht immer wie erwartet(z.B.Rhyme bei Poetry); weitere Features benötigt (z.B. Terminologien))  
 Überlegungen (Kombination mit anderen Projekten; weitere Experimente; feinere Klassen; )  
 
-Literatur
+8 Literatur
 -------
 **Klassifikation:**  
 http://www.kdnuggets.com/2015/01/text-analysis-101-document-classification.html - *comparing the number of matching terms in doc vectors*  
