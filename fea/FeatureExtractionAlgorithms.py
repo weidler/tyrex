@@ -96,17 +96,24 @@ class FEA():
 	# EXTRACTION ALGORITHMS
 	def calcTextLength(self):
 		"""
-		Calculates the length of the text and ignores XMl-tags.
+		Calculates the length of the text and ignores XML-tags.
+	
+		@variables
+		text	string		Source string without Tags
+		
+		@returns
+		int 	number of words
 		"""
-		#(S.L.)
 		text = re.sub("<.*?>", "", self.source)
 		return len(text.split())
 
 	def calcSentenceLengthAvg(self):
 		"""
 		Calculates the average of number of words in all sentences.
+		
+		@returns
+		int	average number of words in all sentences
 		"""
-		#(S.L.)
 		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		NumOfPhrases = 0
 		allPhrases = 0
@@ -121,26 +128,36 @@ class FEA():
 	def calcSentenceLengthMax(self):
 		"""
 		Calculates the longest sentence and gives back the number of words in this sentence.
+		
+		@returns
+		int	maximal number of words in all sentences
 		"""
-		#(S.L./T.W.)
 		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		return max(map(len, [i.split(" ") for i in sentences]))
 
 	def calcSentenceLengthMin(self):
 		"""
 		Calculates the shortest sentence and gives back the number of words in this sentence.
+		
+		@returns
+		int	minimal number of words in all sentences
 		"""
-		#(S.L./T.W.)
 		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		return min(map(len, [i.split(" ") for i in sentences]))
 
-	def calcRhyme1(self):
+	def calcRhymeAvg(self):
 		"""
-		Counts all occurence of endings and returns the average rhyme value (rhymes/lines).
-		Returns float number From 0->1.0;
+		Counts all occurence of endings and returns the average rhyme value (rhymes/lines).Returns float number From 0->1.0;
 		0 means no rhymes, 1 means everything rhymes. From 0.5 up it's likely to be real rhymes.
+		
+		@variables
+		endings_dict	Dictionary	key (last chars of a line) and value (number of occurences)
+		rhymes		int		number of endings that occured 2 times or more
+		avgRhyme	float		number of rhymes divided by number of actual lines
+		
+		@returns
+		float	average number of rhymes
 		"""
-		#S.L.
 		lines = re.findall("(.*)\n", self.source) 	# takes every line
 		endings_dict = {}
 		l = 0  #counter for non-empty lines
@@ -170,42 +187,18 @@ class FEA():
 		for k in endings_dict:
 			if endings_dict[k] >= 2:		                   #counts all endings that occures min 2 times
 				rhymes += endings_dict[k]
-
-		return (float(rhymes)/l)  #returns average rhyme value; 0-1, from 0.5 up it's likely to be real rhymes. 1 means, everything rhymes.
-
-	def calcRhyme2(self):
-		#TODO
-		"""
-		Takes rhyme schemes and checks a text with them. Giving back 1 if it has a Reimschema, 0 else
-		"""
-		#S.L.
-		lines = re.findall("(.*?)(<.*?>)*[\\n]", self.source)
-		endings_list = ["" for i in len(lines)]
-		c = 0
-		for line in lines:
-			act_line = re.sub("<.*?>", "", line)     #nimmt Tags raus
-			lastword = act_line.split()[-1]          #nimmt letztes Wort
-			lastchars = lastword[-3:]
-			lastchars.replace(" ", "").replace(Chr(34), "")  #löscht Leerzeichen und Anführungszeichen
-			endings_list[c] = lastchars
-
-			c += 1
-		pass
-		# nimmt immer 4 Zeilen und überprüft - ob 0 & 2 und 1 & 3 - ob 0 & 1 und 2 & 3 - 0&3 und 1&2 übereinstimmen
-		# nimmt 6 Zeilen und überprüft - ob 0&1 und 3&4 und 2&5 - ob 0&2 und (1&3&5| (1&4 und 3&5)) - 0&3 und 1&4 und 2&5 übereinstimmen
-		# rhyme_schemes = [[a, a, b, b],[a, b, a,b],[a,b,b,a],[a,a,b,c,c,b],[a,b,a,((b,c,b)|(c,b,c))],[a,b,c,a,b,c]]
-		# Paarreim, Kreuzreim, umarmender Reim, Schweifreim, Kettenreim, verschränkter Reim, (Binnenreim?[...a...a...,...b...,...b...])
+		
+		avgRhyme = float(rhymes)/l
+		return (avgRhyme)  #returns average rhyme value; 0-1, from 0.5 up it's likely to be real rhymes. 1 means, everything rhymes.
 
 	def calcMostCommonWords(self):
-		"""Zaehlt die 'mostCommonWords' """
-		# S.L.
+		#unused
+		"""
+		Zaehlt die 'mostCommonWords'; unused
+		"""
 		words = self.source.split()
 		mostCommonWords = Counter(words).most_common() 	# list with tuples
 		return mostCommonWords
-
-	def calcTerminologicalCongruence(self):
-		# TODO Tonio
-		pass
 
 	def calcPhrasesPerParagraph(self):
 		splitfile = self.source.splitlines()
@@ -233,9 +226,7 @@ class FEA():
 		return float(char)/len(clean_text)
 
 	def calcWordVariance(self):
-		# TODO Lemmata als Basis Tonio
 		lemmata = [l[2] for l in self.treetagged]
-		#print(set(lemmata))
 		return len(set(lemmata))/len(lemmata)
 
 	def calcNEFrequency(self):
@@ -278,7 +269,7 @@ class FEA():
 		if "punctuation_frequency" not in self.data.keys():
 			self.data.update({"punctuation_frequency": self.calcPunctuationFrequency()})
 		if "rhyme_average" not in self.data.keys():
-			self.data.update({"rhyme_average": self.calcRhyme1()})
+			self.data.update({"rhyme_average": self.calcRhymeAvg()})
 		if "word_length_average" not in self.data.keys():
 			self.data.update({"word_length_average": self.calcWordLengthAvg()})
 		if "word_variance" not in self.data.keys():

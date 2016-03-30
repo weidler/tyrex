@@ -11,9 +11,9 @@ Heidelberg University, Germany
 
 Outline  
 ----
-Goal of this project ...  
-In the first step the algorithm ...  
-Further steps to be made ...  
+Goal of this project is an unsupervised classification of text types.
+In the first step the algorithm normalises the given texts. After that it analyses the preprocessed data with an extensible set of features returning an ARFF-file with the results....
+Further steps to be made would be better features to differentiate the classes better....   
   
 Requirements  
 ------------
@@ -34,11 +34,11 @@ Structure of the Single Program Parts - Preprocessing
 ---------------------------------------------------------------
 **Parser**    
 *parser/Parser.py*  
-Main Parser SuperClass, that takes a single path to a file. Contains methods to read this File (with different Encodings) and the converter method, that creates the normalized text.
+Main 'Parser' SuperClass, that takes a single path to a file. Contains methods to read this File (with different Encodings) and the converter method, that creates the normalized text.
 
 **MultiParser**    
 *parser/MultiParser.py*  
-Subclass of a/the Parser. Takes a directory instead of a single files path and converts all contained files to a normalized version. Saves this Version as a new file at a given location.
+Subclass of a/the 'Parser'. Takes a directory instead of a single files path and converts all contained files to a normalized version. Saves this Version as a new file at a given location.
 
 Structure of the Single Program Parts - Main Algorithm  
 ----------------------------------------------------------------

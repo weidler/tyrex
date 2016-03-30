@@ -36,8 +36,8 @@ Die Texte werden durch den "TextNormierer" aufbereitet, d.h. Satzzeichen werden 
 
 Zusätzlich lassen wir den TreeTagger die Texte annotieren, um die so entstandenen POS-Tags und die Baumstruktur in Features verwenden zu können.
 
-...AUSSCHNITT NORM_TEXT  
-...AUSSCHNITT TAGGED_TEXT  
+**AUSSCHNITT NORM_TEXT**  
+**AUSSCHNITT TAGGED_TEXT**  
 
 Struktur
 -------
@@ -46,30 +46,49 @@ Z.B. Zelch und Engel (2005) haben Wort-Features aus ihren Texten extrahiert, Lex
 Unsere Vorgehensweise ist (weitgehend) ohne Wortvektoren, mit mehr trivialen Features. Mit Weka lassen wir u.a. 'Naive Bayes', 'MultilayerPerceptron' und 'Decision Tree' über die Daten laufen.  
 
 
-*ARCHITEKTURÜBERSICHT*  
+**ARCHITEKTURÜBERSICHT**  
 
 Features
 -------
-Im Folgenden werden alle bisher verwendeten Features aufgezählt und ihre Funktion grob beschrieben (für einen genauen Einblick kann der Code in "/fea/FeatureExtractionAlgorithms" nachvollzogen werden).  
-
-Auflistung/Beschreibung Features (Sinn, Beispiel, Ausgabe), ARFF Ergebnis  
-... calcTextLength  
-... calcSentenceLengthAvg  
-... calcSentenceLengthMax  
-... calcSentenceLengthMin  
-... calcRhyme1  
-... calcRhyme2  
-... calcMostCommonWords  
-... calcTerminologicalCongruence  
-... calcPhrasesPerParagraph  
-... calcDigitFrequency  
-... calcPunctuationFrequency  
-... calcHashtagFrequency  
-... calcWordLengthAvg  
-... calcWordVariance  
-... calcNEFrequency  
-... calcVerbFrequency  
-... calcNounFrequency  
+Im Folgenden werden alle bisher verwendeten Features aufgezählt und ihre Funktion grob beschrieben (für einen genauen Einblick kann der Code in "/fea/FeatureExtractionAlgorithms.py" nachvollzogen werden).  
+- *calcTextLength*  
+Berechnet die Länge der Texte und ignoriert dabei XML-Tags.  
+Annahme: z.B. epische Texte sind meist länger als Zeitungsartikel.  
+- *calcSentenceLengthAvg* / *calcSentenceLengthMax* / *calcSentenceLengthMin* 
+Berechnet die durschnittliche/maximalste/minimalste Anzahl von Wörtern aller Sätze.  
+Annahme: z.B. während Dramen eher kurze Sätze (u.a. Regieanweisungen) beinhalten, sind epische Werke oder wissenschaftliche Arbeiten eventuell eher langsätzig.  
+- *calcRhymeAvg*  
+Zählt alle Aufkommen von Zeilenendungen und berechnet einen Durschnitt der wiederkehrenden Endungen.  
+Annahme: z.B. sollten Gedichte mehr reimende Endungen enthalten als Zeitungsartikel.  
+Revision: längere Texte besitzen mehr Endungen, somit eine erhöhte Chance auf gleiche Endungen, und Texte aus der 'Poetry'-Kategorie besitzen weniger reine Reime als gedacht;  
+Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
+- *calcPhrasesPerParagraph*    
+Berechnet...  
+Annahme: z.B....  
+- *calcDigitFrequency*   
+Berechnet...  
+Annahme: z.B....  
+- *calcPunctuationFrequency*  
+Berechnet...  
+Annahme: z.B....  
+- *calcHashtagFrequency*  
+Berechnet...  
+Annahme: z.B....  
+- *calcWordLengthAvg*  
+Berechnet...  
+Annahme: z.B....  
+- *calcWordVariance*  
+Berechnet...  
+Annahme: z.B....  
+- *calcNEFrequency*  
+Berechnet...  
+Annahme: z.B....  
+- *calcVerbFrequency*  
+Berechnet...  
+Annahme: z.B....  
+- *calcNounFrequency*  
+Berechnet...  
+Annahme: z.B....  
 
 Diese Features werden durch den FEA berechnet und vom ARFFBuilder in einer ARFF Datei zusammengefasst. Der folgende Ausschnitt zeigt einen Teil dieser ARFF Datei.
 
