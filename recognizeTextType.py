@@ -29,11 +29,15 @@ class TyReX():
 
 	def parse(self, filename):
 		"""
+		Parses the contents of a file to a normalized version. Uses the Parser Class.
+
 		@parameters
 		filename	string	filename with original text
 
 		@variables
 		parser		Parser	Parser Object
+
+		@returns	string	the normed text
 		"""
 
 		parser = p.Parser(filename)
@@ -41,24 +45,32 @@ class TyReX():
 
 	def getVector(self, normed_text):
 		"""
+		Calcs the Vector for a normed text. Uses the FEA Class.
+
 		@parameters
 		normed_text		string	a string containing a text normed by the parser
 
 		@variables
 		falg			FEA		Feature Extraction ALgorithm Object that calcs the vector
 
+		@returns		dict	vector dictionary: {"featurename": value, ...}
 		"""
 		falg = fea.FEA("unknown", normed_text, "", is_file=False)
 		return falg.finalize()
 
 	def getTextType(self):
 		"""
+		Uses the Results of a simple logistic algorithm, that learned from over 1000 files, to calc which class is most likely.
+		Returns this class.
+
 		@variables
 		epic		float	SimpleLogistRegression Value for epic class
 		drama		float	SimpleLogistRegression Value for drama class
 		report		float	SimpleLogistRegression Value for report class
 		poetry		float	SimpleLogistRegression Value for poetry class
 		classes		tuples	contains tuples with classname/regressionvalue pairs
+
+		@returns	string	most likely classname
 		"""
 
 		# USES SimpleLogistic
