@@ -1,5 +1,5 @@
 TyReX (Text Type Recognition)  
-----------------
+===============================
 Projektdokumentation 31.03.2016  
 Autoren: Lydia Hofmann, Svenja Lohse, Tonio Weidler  
 Betreuer: Éva Mújdricza-Maydt  
@@ -8,12 +8,14 @@ Inhaltsverzeichnis
 -------
 1. Einführung  
 2. Daten  
-3. Struktur und Features  
-4. Experimente und Evaluation  
-5. Aussichten  
-6. Literatur
+3. Struktur
+4. Features  
+5. Experimente und Evaluation
+6. Auswertung
+7. Aussichten  
+8. Literatur
 
-Einführung     
+1 Einführung     
 -------
 Das Ziel dieses Projektes ist eine automatische Klassifizierung von Texten nach ihrer Textart.
 Suchmaschinen könnten das zur Kategorisierung und damit besseren Suche vorhandener Dokumente verwenden und auch andere Unternehmen würden von einem internen Kategoriensystem (mit Kategorien wie u.a. Rechnungen, Mitarbeitergespräche, Rezensionen, etc.) profitieren.  
@@ -23,38 +25,50 @@ Features, die die Eigenschaften der unterschiedlichen Texte beschreiben, spielen
 ...Satz zu unserem Ergebnis   
 Weitere Schritte wären u.a. eine Erweiterung der Feature-Liste, größere Trainingsdatenmenge und z.B. eine einfach zu bedienende Webanwendung.  
 
-Daten  
+2 Daten  
 -------
 Die Trainingsdaten stammen aus dem "Projekt-Gutenberg"-Korpus, der viele Werke bekannter Autoren bereit stellt, und "Zeit-Online" dient ebenfalls als Quelle.  
-Die Texte sind unannotiert und wie folgt auf vier Kategorien aufgeteilt:  
-*EPIC*(...)  
-*DRAMA*(...)  
-*POETRY*(...)  
-*REPORT*(...)
+Mit diesen unannotierten Texten wurden zwei Korpora erstellt.
 
-Die Texte werden durch den "TextNormierer" aufbereitet, d.h. Satzzeichen werden durch <Tags/> ersetzt und unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen entstehen. Durch die Normierung ist die Weiterverarbeitung der Daten einfacher und nützliche Metadaten werden durch die Tag-Setzung eingebunden. Ein Nachteil ist allerdings, dass uns externe Metadaten verloren gehen und der Nomierer viele Datentypen zu verarbeiten hat.  
+Der erste Korpus umfasst 1261 Dateien, die wie folgt in 4 grobe Klassen unterteilt wurden: 
 
-Zusätzlich lassen wir den TreeTagger die Texte annotieren, um die so entstandenen POS-Tags und die Baumstruktur in Features verwenden zu können.
+    222 Epische Texte
+    291 Dramen
+    302 Artikel
+    446 Gedichte
+    
+Der zweite Korpus enthält 11950 Dateien, die wie folgt in x feinere Klassen eingeteilt wurden:
+
+	efwefwe
+	fwefwfe
+	wefwff
+
+Die Texte werden durch den "TextNormierer" (Parser) aufbereitet, d.h. Satzzeichen werden durch Tags (\</\>) ersetzt und unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen entstehen.
+Durch die Normierung ist die Weiterverarbeitung der Daten einfacher und nützliche Metadaten werden durch die Tag-Setzung eingebunden. Ein Nachteil ist allerdings, dass uns externe Metadaten
+verloren gehen und der Nomierer viele Datentypen zu verarbeiten hat, wodurch eine optimale Normierung teilweise nicht möglich ist.  
 
 **AUSSCHNITT NORM_TEXT**  
-**AUSSCHNITT TAGGED_TEXT**  
+**AUSSCHNITT TAGGED_TEXT**
 
-Struktur
+Zusätzlich lassen wir den TreeTagger die Texte bei der Featureberechnung annotieren, um die so entstandenen POS-Tags und die Baumstruktur in Features verwenden zu können.
+
+
+
+3 Struktur
 -------
 Das einfache Prinzip bisheriger Theorien zu diesem Thema lautet, aus Trainingsdaten Features zu extrahieren und sie an einen Klassifizierungsalgorithmus zu übergeben.  
 Z.B. Zelch und Engel (2005) haben Wort-Features aus ihren Texten extrahiert, Lexeme gebildet, lemmatisiert und diese Features dann mit einem 'SVM'-Algorithmus verarbeitet. 2015 beschrieb Ghaffari ebenfalls Vektoren aus extrahierten Worten, die er mit den 'SVM'-, 'Naive Bayes'- und 'Decision Tree'-Algorithmen zur Textklassifikation verwendet hatte.
 Unsere Vorgehensweise ist (weitgehend) ohne Wortvektoren, mit mehr trivialen Features. Mit Weka lassen wir u.a. 'Naive Bayes', 'MultilayerPerceptron' und 'Decision Tree' über die Daten laufen.  
 
+![architecture](tyrex_architecture.png?raw=true "Architecture")
 
-**ARCHITEKTURÜBERSICHT**  
-
-Features
+4 Features
 -------
 Im Folgenden werden alle bisher verwendeten Features aufgezählt und ihre Funktion grob beschrieben (für einen genauen Einblick kann der Code in "/fea/FeatureExtractionAlgorithms.py" nachvollzogen werden).  
 - *calcTextLength*  
 Berechnet die Länge der Texte und ignoriert dabei XML-Tags.  
 Annahme: z.B. epische Texte sind meist länger als Zeitungsartikel.  
-- *calcSentenceLengthAvg* / *calcSentenceLengthMax* / *calcSentenceLengthMin* 
+- *calcSentenceLengthAvg* / *calcSentenceLengthMax* / *calcSentenceLengthMin*    
 Berechnet die durschnittliche/maximalste/minimalste Anzahl von Wörtern aller Sätze.  
 Annahme: z.B. während Dramen eher kurze Sätze (u.a. Regieanweisungen) beinhalten, sind epische Werke oder wissenschaftliche Arbeiten eventuell eher langsätzig.  
 - *calcRhymeAvg*  
@@ -63,23 +77,22 @@ Annahme: z.B. sollten Gedichte mehr reimende Endungen enthalten als Zeitungsarti
 Revision: längere Texte besitzen mehr Endungen, somit eine erhöhte Chance auf gleiche Endungen, und Texte aus der 'Poetry'-Kategorie besitzen weniger reine Reime als gedacht;  
 Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
 - *calcPhrasesPerParagraph*    
-Berechnet...  
-Annahme: z.B....  
+Berechnet die Zahl der Sätze pro Zeile.  
+Annahme: Sollte zur besseren Abgrenzung von Gedichten zu anderen Textsorten dienen. Während in Gedichten Sätze häufig über einen gesamten Vers mit mehreren Umbrüchen gehen, tritt bei epischen Texten und Artikeln
+der erste Umbruch meist erst nach einen gesamten Absatz auf.  
+Revision: Leider vermindert die Strukturierung der Dateien den Wert des Features. Auch in epischen Texten sind Zeilen künstlich umgebrochen.
 - *calcDigitFrequency*   
 Berechnet...  
 Annahme: z.B....  
 - *calcPunctuationFrequency*  
 Berechnet...  
 Annahme: z.B....  
-- *calcHashtagFrequency*  
-Berechnet...  
-Annahme: z.B....  
 - *calcWordLengthAvg*  
 Berechnet...  
 Annahme: z.B....  
 - *calcWordVariance*  
-Berechnet...  
-Annahme: z.B....  
+Berechnet, wie unterschiedlich die Wortwahl im Text ist. Es wird die Zahl der einzigartigen Lemmata über die Gesamtzahl an Worten relativiert.  
+Annahme: In Gedichten ist die Wortwahl häufig abwechslungsreicher, in Dramen und Artikeln vermutlich weniger.  
 - *calcNEFrequency*  
 Berechnet...  
 Annahme: z.B....  
@@ -122,17 +135,17 @@ Diese Features werden durch den FEA berechnet und vom ARFFBuilder in einer ARFF 
     0.00281483294578387, 0.432661717921527, 0.012987012987012988, 0.02753640925223351, 0.6415094339622641, 0.019772071948372924, 0.5, 13.441176470588236, 33, 1, 932, 0.11540815077713866, 0.8539696833258292, report
     0.002178649237472767, 0.7575757575757576, 0.0, 0.026143790849673203, 0.6, 0.027989821882951654, 0.5, 21.0, 29, 15, 65, 0.1437908496732026, 0.8227146814404432, poetry
 
-Experimente und Evaluation  
+5 Experimente und Evaluation  
 -------
 Es wurden Experimente auf den grob und fein gegliederten Datensätzen ausgeführt.  
 Als Baseline wird in beiden Fällen ein ZeroR Algorithmus verwendet der alle Instanzen mit der häufigsten Klasse klassifiziert.  
 Die Evaluation verwendet CrossValidation mit 10 folds.
 
-**4-Klassen-Datensatz**  
+**Grober Datensatz**  
 Der grob gegliederte Datensatz enthält 1261 Instanzen die auf 4 Klassen verteilt sind. Diese Verteilung verhält sich wie folgt:
 
     222 Epische Texte
-    291 Dramas
+    291 Dramen
     302 Artikel
     446 Gedichte
 
@@ -219,13 +232,32 @@ Features, die zur besseren Unterscheidung dieser Klassen dienen sollten, konnten
 
 Verbesserte Features (z.B. bzgl. Rhymes) und evtl. Parserfunktionalität, die Paragraphen erkennt könnten dieses Problem umgeben.
 
+**Feiner Datensatz**
 
-Aussichten
+verteilung
+
+baseline
+
+experimente
+
+bester algo
+
+	summary
+
+	confusion
+
+auswertung
+
+6 Auswertung
 -------
-Probleme (mehr und besser verteilte Daten; Featureergebnisse nicht immer wie erwartet(z.B.Rhyme bei Poetry); weitere Features benötigt (z.B. Terminologien))  
+blablabla
+
+7 Aussichten
+-------
+Probleme (mehr und besser verteilte Daten - schwierig zu finden; Featureergebnisse nicht immer wie erwartet(z.B.Rhyme bei Poetry); weitere Features benötigt (z.B. Terminologien))  
 Überlegungen (Kombination mit anderen Projekten; weitere Experimente; feinere Klassen; )  
 
-Literatur
+8 Literatur
 -------
 **Klassifikation:**  
 http://www.kdnuggets.com/2015/01/text-analysis-101-document-classification.html - *comparing the number of matching terms in doc vectors*  
