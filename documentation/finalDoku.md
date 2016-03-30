@@ -41,21 +41,22 @@ Der zweite Korpus enthält 11950 Dateien, die wie folgt in x feinere Klassen ein
 	fwefwfe
 	wefwff
 
-Die Texte werden durch den "TextNormierer" (Parser) aufbereitet, d.h. Satzzeichen werden durch Tags (\</\>) ersetzt und unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen entstehen.
+Die Texte werden durch den "Textnormierer" (Parser) aufbereitet, d.h. Satzzeichen werden durch Tags (\</\>) ersetzt und unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen entstehen.
 Durch die Normierung ist die Weiterverarbeitung der Daten einfacher und nützliche Metadaten werden durch die Tag-Setzung eingebunden. Ein Nachteil ist allerdings, dass uns externe Metadaten
 verloren gehen und der Nomierer viele Datentypen zu verarbeiten hat, wodurch eine optimale Normierung teilweise nicht möglich ist.  
 
 **AUSSCHNITT NORM_TEXT**  
 **AUSSCHNITT TAGGED_TEXT**
 
-Zusätzlich lassen wir den TreeTagger die Texte bei der Featureberechnung annotieren, um die so entstandenen POS-Tags und die Baumstruktur in Features verwenden zu können.
+Zusätzlich lassen wir den TreeTagger die Texte bei der Featureberechnung annotieren, um die so entstandenen POS-Tags und die Baumstruktur in den Features verwenden zu können.
 
 
 
 3 Struktur
 -------
 Das einfache Prinzip bisheriger Theorien zu diesem Thema lautet, aus Trainingsdaten Features zu extrahieren und sie an einen Klassifizierungsalgorithmus zu übergeben.  
-Z.B. Zelch und Engel (2005) haben Wort-Features aus ihren Texten extrahiert, Lexeme gebildet, lemmatisiert und diese Features dann mit einem 'SVM'-Algorithmus verarbeitet. 2015 beschrieb Ghaffari ebenfalls Vektoren aus extrahierten Worten, die er mit den 'SVM'-, 'Naive Bayes'- und 'Decision Tree'-Algorithmen zur Textklassifikation verwendet hatte.
+Z.B. Zelch und Engel (2005) haben Wort-Features aus ihren Texten extrahiert, Lexeme gebildet, lemmatisiert und diese Features dann mit einem 'SVM'-Algorithmus verarbeitet.  
+2015 beschrieb Ghaffari ebenfalls Vektoren aus extrahierten Worten, die er mit den 'SVM'-, 'Naive Bayes'- und 'Decision Tree'-Algorithmen zur Textklassifikation verwendet hatte.  
 Unsere Vorgehensweise ist (weitgehend) ohne Wortvektoren, mit mehr trivialen Features. Mit Weka lassen wir u.a. 'Naive Bayes', 'MultilayerPerceptron' und 'Decision Tree' über die Daten laufen.  
 
 ![architecture](tyrex_architecture.png?raw=true "Architecture")
@@ -101,7 +102,7 @@ Annahme: z.B....
 Berechnet...  
 Annahme: z.B....  
 
-Diese Features werden durch den FEA berechnet und vom ARFFBuilder in einer ARFF Datei zusammengefasst. Der folgende Ausschnitt zeigt einen Teil dieser ARFF Datei.
+Diese Features werden durch den FEA berechnet und vom ARFFBuilder in einer ARFF Datei zusammengefasst. Der folgende Ausschnitt zeigt einen Teil dieser ARFF Datei:
 
     @relation tyrex
 
@@ -136,11 +137,11 @@ Diese Features werden durch den FEA berechnet und vom ARFFBuilder in einer ARFF 
 5 Experimente und Evaluation  
 -------
 Es wurden Experimente auf den grob und fein gegliederten Datensätzen ausgeführt.  
-Als Baseline wird in beiden Fällen ein ZeroR Algorithmus verwendet der alle Instanzen mit der häufigsten Klasse klassifiziert.  
-Die Evaluation verwendet CrossValidation mit 10 folds.
+Als Baseline wird in beiden Fällen ein 'ZeroR'-Algorithmus verwendet, der alle Instanzen mit der häufigsten Klasse klassifiziert.  
+Die Evaluation verwendet 'CrossValidation' mit 10 folds.
 
 **Grober Datensatz**  
-Der grob gegliederte Datensatz enthält 1261 Instanzen die auf 4 Klassen verteilt sind. Diese Verteilung verhält sich wie folgt:
+Der grob gegliederte Datensatz enthält 1261 Instanzen, die auf 4 Klassen verteilt sind. Diese Verteilung verhält sich wie folgt:
 
     222 Epische Texte
     291 Dramen
@@ -148,7 +149,7 @@ Der grob gegliederte Datensatz enthält 1261 Instanzen die auf 4 Klassen verteil
     446 Gedichte
 
 
-Die *Baseline* klassifiziert etwa 35% aller Instanzen korrekt. Im folgenden eine detailliertere Übersicht der Ergebnisse der Baseline:
+Die *Baseline* klassifiziert etwa 35% aller Instanzen korrekt. Im Folgenden eine detailliertere Übersicht der Ergebnisse der Baseline:
 
     Correctly Classified Instances         446               35.3688 %
     Incorrectly Classified Instances       815               64.6312 %
@@ -180,7 +181,7 @@ Es wurde ein *Experiment* mit 9 verschiedenen Algorithmen durchgeführt.
     (8) meta.AdaBoostM1 '-P 100 -S 1 -I 10 -W trees.DecisionStump' -7378107808933117974
     (9) trees.J48 '-C 0.25 -M 2' -217733168393644444
 
-Die Ergebnisse zeigen, dass alle gewählten Algorithmen in unterschiedlichem Ausmaß die Baseline übertreffen.
+Die Ergebnisse zeigen, dass alle gewählten Algorithmen die Baseline in unterschiedlichem Ausmaß übertreffen.
 
     Dataset                   (4) function | (1) rules (2) bayes (3) funct (5) funct (6) funct (7) lazy. (8) meta. (9) trees
     ------------------------------------------------------------------------------------------------------------------------
@@ -189,9 +190,9 @@ Die Ergebnisse zeigen, dass alle gewählten Algorithmen in unterschiedlichem Aus
                                    (v/ /*) |   (0/0/1)   (0/0/1)   (0/1/0)   (0/1/0)   (0/0/1)   (0/1/0)   (0/0/1)   (0/0/1)
 
 
-Die besten Ergebnisse erreicht der MultilayerPerceptron. Logistic, SimpleLogistic und KStar erreichen jedoch Leistungen, die nicht signifikant schlechter sind. Dies ist besonders in Hinsicht auf Logistic und SimpleLogistic von Bedeutung, da ihre Berechnung bedeutend weniger aufwendig ist.
+Die besten Ergebnisse erreicht der 'MultilayerPerceptron'. 'Logistic', 'SimpleLogistic' und 'KStar' erreichen jedoch Leistungen, die nicht signifikant schlechter sind. Dies ist besonders in Hinsicht auf 'Logistic' und 'SimpleLogistic' von Bedeutung, da ihre Berechnung bedeutend weniger aufwendig ist.
 
-Eine genauere Betrachtung des MultiLayerPerceptrons liefert die folgende Evaluierung:
+Eine genauere Betrachtung des 'MultiLayerPerceptrons' liefert die folgende Evaluierung:
 
     Correctly Classified Instances        1164               92.3077 %
     Incorrectly Classified Instances        97                7.6923 %
@@ -211,9 +212,9 @@ Eine genauere Betrachtung des MultiLayerPerceptrons liefert die folgende Evaluie
                      0.913     0.056      0.898     0.913     0.905      0.973    poetry
     Weighted Avg.    0.923     0.03       0.923     0.923     0.923      0.979
 
-Bei einer Precision von 92.3077 % sind diese Ergebnisse sehr gut. Die gewählten Features sind offensichtlich ausreichend, um einen sehr genauen Classifier für diese 4 Klassen zu trainieren. Die Klasse report erreicht einen beeindruckenden Recall Wert von 0.993. Quasi alle Zeitungsartikel wurden also auch als solche erkannt. Eventuell ist das aber auch auf ein Overfitting zurückzuführen, basierend auf der über alle Instanzen der Klasse hinweg gleichen Quelle.
+Bei einer *Precision* von 92.3077 % sind diese Ergebnisse sehr gut. Die gewählten Features sind offensichtlich ausreichend, um einen sehr genauen Klassifikator für diese 4 Klassen zu trainieren. Die Klasse "report" erreicht einen beeindruckenden *Recall* Wert von 0.993. Quasi alle Zeitungsartikel wurden also auch als solche erkannt. Eventuell ist das aber auch auf ein Overfitting zurückzuführen, basierend auf der über alle Instanzen der Klasse hinweg gleichen Quelle.
 
-Anhand der verschiedenen Precision und Recall Werte für die einzelnen Klassen lässt sich bereits eine Vermutung machen die mit der Confusion Matrix bestätigt wird.
+Anhand der verschiedenen *Precision* und *Recall* Werte für die einzelnen Klassen lässt sich bereits eine Vermutung machen, die mit der Confusion Matrix bestätigt wird.
 
     === Confusion Matrix ===
 
@@ -223,16 +224,16 @@ Anhand der verschiedenen Precision und Recall Werte für die einzelnen Klassen l
        1   1 300   0 |   c = report
       26  12   1 407 |   d = poetry
 
-Während `drama` und `report` sehr gut klassifiziert werden, sowohl hinsichtlich Precision als auch Recall, gibt es Verwirrungen zwischen Epic und Poetry.
+Während 'drama' und 'report' sehr gut klassifiziert werden, sowohl hinsichtlich *Precision* als auch *Recall*, gibt es Verwirrungen zwischen 'epic' und 'poetry'.
 
-Gründe hierfür sind u.a. wohl Ähnlichkeiten in Hinblick auf Zeichensetzung und Schreibstil. Sowohl bezüglich der NounFrequency als auch der VerbFrequency sind Texte beider Klassen kaum zu unterscheiden.  
-Features, die zur besseren Unterscheidung dieser Klassen dienen sollten, konnten aufgrund der Beschaffenheit der Texte zudem nicht immer richtig greifen. So sind die Epischen Texte leider nicht anhand der Paragraphen umgebrochen. Dadurch kann nicht zwischen Gedichtszeilen und layoutbedingten Umbrüchen in epischen Texten unterschieden werden.
+Gründe hierfür sind u.a. wohl Ähnlichkeiten in Hinblick auf Zeichensetzung und Schreibstil. Sowohl bezüglich der 'NounFrequency' als auch der 'VerbFrequency' sind Texte beider Klassen kaum zu unterscheiden.  
+Features, die zur besseren Unterscheidung dieser Klassen dienen sollten, konnten aufgrund der Beschaffenheit der Texte zudem nicht immer richtig greifen. So sind die epischen Texte leider nicht an den Paragraphenabschnitten umgebrochen, dadurch kann nicht zwischen Gedichtszeilen und layoutbedingten Umbrüchen in epischen Texten unterschieden werden.
 
-Verbesserte Features (z.B. bzgl. Rhymes) und evtl. Parserfunktionalität, die Paragraphen erkennt, könnten dieses Problem umgeben.
+Verbesserte Features (z.B. bzgl. 'Rhymes') und evtl. Parserfunktionalität, die Paragraphen erkennt, könnten dieses Problem umgehen.
 
 **Feiner Datensatz**
 
-Der feinere Datensatz enthält insgesamt 11949 erfolgreich geparste Instanzen. Diese verteilen sich folgendermaßen auf insgesamt 11 Klassen
+Der feinere Datensatz enthält insgesamt 11949 erfolgreich geparste Instanzen. Diese verteilen sich folgendermaßen auf insgesamt 11 Klassen:
 
     lyrik: 4123
     dramatik: 105
@@ -247,10 +248,9 @@ Der feinere Datensatz enthält insgesamt 11949 erfolgreich geparste Instanzen. D
     ballade: 128
     erzaehlung: 590
 
-Ein offensichtliches Problem des Datensatzes ist die ungleiche Verteilung der Daten. Da die Texte per Hand annotiert wurden war eine bessere Annotation
-in Anbetracht der knappen Zeit nicht möglich.
+Ein offensichtliches Problem des Datensatzes ist die ungleiche Verteilung der Daten. Da die Texte per Hand annotiert wurden, war eine bessere Annotation in Anbetracht der knappen Zeit nicht möglich.  
 
-Als *Baseline* wurde auch hier ZeroR gewählt. Die Baseline erreicht einen Wert von 34.505% korrekt klassifizierten Instanzen.
+Als *Baseline* wurde auch hier 'ZeroR' gewählt. Die Baseline erreicht einen Wert von 34.505% korrekt klassifizierten Instanzen.
 
     === Summary ===
 
@@ -280,9 +280,9 @@ Als *Baseline* wurde auch hier ZeroR gewählt. Die Baseline erreicht einen Wert 
                      0         0          0         0         0          0.499    fabel
     Weighted Avg.    0.345     0.345      0.119     0.345     0.177      0.499
 
-Insbesondere die durschnittliche Precision von 0.119 sollten bessere Algorithmen übertreffen können.
+Insbesondere die durschnittliche *Precision* von 0.119 sollten bessere Algorithmen übertreffen können.
 
-Bei einem Experiment mit 7 verschiedenen Algorithmen hat sich X als bester Classifier herausgestellt. Es wurden die folgenden Algorithmen verwendet:
+Bei einem Experiment mit 7 verschiedenen Algorithmen hat sich **X** als bester Classifier herausgestellt. Es wurden die folgenden Algorithmen verwendet:
 
     (1) rules.ZeroR '' 48055541465867954
     (2) bayes.NaiveBayes '' 5995231201785697655
@@ -292,7 +292,7 @@ Bei einem Experiment mit 7 verschiedenen Algorithmen hat sich X als bester Class
     (6) trees.J48 '-C 0.25 -M 2' -217733168393644444
     (7) functions.MultilayerPerceptron '-L 0.3 -M 0.2 -N 500 -V 0 -S 0 -E 20 -H a' -5990607817048210779
 
-Neben dem MultiLayerPerceptron haben sich die restlichen Algorithmen bis auf NaiveBayes als ähnlich präzise herausgestellt. Die Ergebnisse des J48 Baum sogar innerhalb der Signifikanzschwelle. Alle Algorithmen übertreffen die Baseline.
+Neben dem 'MultiLayerPerceptron' haben sich die restlichen Algorithmen, bis auf 'NaiveBayes', als ähnlich präzise herausgestellt. Die Ergebnisse des 'J48 Baum' sogar innerhalb der Signifikanzschwelle. Alle Algorithmen übertreffen die Baseline.
 
     Dataset                   (1) rules.Ze | (2) bayes (3) funct (4) funct (5) funct (6) trees (7) funct
     ----------------------------------------------------------------------------------------------------
@@ -300,7 +300,7 @@ Neben dem MultiLayerPerceptron haben sich die restlichen Algorithmen bis auf Nai
     ----------------------------------------------------------------------------------------------------
                                (v/ /*) |   (1/0/0)   (1/0/0)   (1/0/0)   (1/0/0)   (1/0/0)   (1/0/0)
 
-Nimmt man den MultiLayerPerceptron genauer unter die Lupe, ergeben sich die folgenden Evaluationsergebnisse:
+Nimmt man den 'MultiLayerPerceptron' genauer unter die Lupe, ergeben sich die folgenden Evaluationsergebnisse:
 
     === Summary ===
 
@@ -346,11 +346,10 @@ Nimmt man den MultiLayerPerceptron genauer unter die Lupe, ergeben sich die folg
         0   93    0    0    0    1   15    0    0    1    1   17 |    k = ballade
         8  269    0    9    0   14  218    4    0   75    0  710 |    l = fabel
 
-Obwohl die erreichten Werte in Precision, Recall und F-Measure relativ hoch sind, zeigt ein Blick auf die detailliertere Auswertung, dass diese
-Evaluierungsmaße nur in den Klassen gute Werte erreichen, für die viele Instanzen verfügbar sind. Precision Werte über 0.6 erreichen lediglich die 4 größten Klassen (lyrik, märchen, roman, fabel). Einen Recall Wert über 0.6 erreichen lediglich die Klassen Lyrik, Tragödie, Märchen und Roman. Auffällig sind besonders die hohen Recall Werte von ~ 0.9 der Klassen lyrik und roman.  
+Obwohl die erreichten Werte in *Precision*, *Recall* und *F-Measure* relativ hoch sind, zeigt ein Blick auf die detailliertere Auswertung, dass diese Evaluierungsmaße nur in den Klassen gute Werte erreichen, für die viele Instanzen verfügbar sind. *Precision*-Werte über 0.6 erreichen lediglich die 4 größten Klassen (lyrik, märchen, roman, fabel). Einen *Recall*-Wert über 0.6 erreichen lediglich die Klassen "lyrik", "tragödie", "märchen" und "roman". Auffällig sind besonders die hohen *Recall*-Werte von ~ 0.9 der Klassen "lyrik" und "roman".  
 
-Zurückzuführen sind diese Beobachtungen auf zum einen die ungleiche Verteilung der Klassen, die ein gutes trainieren des Models erschwert. Es kann angenommen werden dass die Modelle für kleinere Klassen stark overfitten.   
-Zudem ist ersichtlich dass die gewählten Features allein nicht ausreichen, um eine so feine Unterteilung vorzunehmen. Selbst für einen Menschen kann eine derartige Unterteilung schwer sein, deshalb ist dies ein komplexeres Problem.
+Zurückzuführen sind diese Beobachtungen zum Einen auf die ungleiche Verteilung der Klassen, die ein gutes Trainieren des Modells erschwert. Es kann angenommen werden, dass die Modelle für kleinere Klassen stark overfitten.   
+Zum Anderen ist ersichtlich, dass die gewählten Features alleine nicht ausreichen, um eine so feine Unterteilung vorzunehmen. Selbst für einen Menschen kann eine derartige Unterteilung schwer sein, weshalb dies ein komplexeres Problem ergibt.
 
 6 Auswertung
 -------
