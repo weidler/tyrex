@@ -137,7 +137,7 @@ Diese Features werden durch den FEA berechnet und vom ARFFBuilder in einer ARFF 
 5 Experimente und Evaluation  
 -------
 Es wurden Experimente auf den grob und fein gegliederten Datensätzen ausgeführt.  
-Als Baseline wird in beiden Fällen ein 'ZeroR'-Algorithmus verwendet, der alle Instanzen mit der häufigsten Klasse klassifiziert.  
+Als Baseline wird in beiden Fällen ein 'ZeroR'-Algorithmus verwendet, der alle Instanzen mit der häufigsten Klasse klassifiziert.
 Die Evaluation verwendet 'CrossValidation' mit 10 folds.
 
 **Grober Datensatz**  
@@ -212,9 +212,9 @@ Eine genauere Betrachtung des 'MultiLayerPerceptrons' liefert die folgende Evalu
                      0.913     0.056      0.898     0.913     0.905      0.973    poetry
     Weighted Avg.    0.923     0.03       0.923     0.923     0.923      0.979
 
-Bei einer *Precision* von 92.3077 % sind diese Ergebnisse sehr gut. Die gewählten Features sind offensichtlich ausreichend, um einen sehr genauen Klassifikator für diese 4 Klassen zu trainieren. Die Klasse "report" erreicht einen beeindruckenden *Recall* Wert von 0.993. Quasi alle Zeitungsartikel wurden also auch als solche erkannt. Eventuell ist das aber auch auf ein Overfitting zurückzuführen, basierend auf der über alle Instanzen der Klasse hinweg gleichen Quelle.
+Bei einer *Precision* von 92.3077 % sind diese Ergebnisse sehr gut. Die gewählten Features sind offensichtlich ausreichend, um einen sehr genauen Klassifikator für diese 4 Klassen zu trainieren. Die Klasse "report" erreicht einen beeindruckenden *Recall*-Wert von 0.993. Quasi alle Zeitungsartikel wurden also auch als solche erkannt. Eventuell ist das aber auch auf ein Overfitting zurückzuführen, basierend auf der über alle Instanzen der Klasse hinweg gleichen Quelle.
 
-Anhand der verschiedenen *Precision* und *Recall* Werte für die einzelnen Klassen lässt sich bereits eine Vermutung machen, die mit der Confusion Matrix bestätigt wird.
+Anhand der verschiedenen *Precision*- und *Recall*-Werte für die einzelnen Klassen lässt sich bereits eine Vermutung machen, die mit der Confusion Matrix bestätigt wird.
 
     === Confusion Matrix ===
 
@@ -224,7 +224,7 @@ Anhand der verschiedenen *Precision* und *Recall* Werte für die einzelnen Klass
        1   1 300   0 |   c = report
       26  12   1 407 |   d = poetry
 
-Während 'drama' und 'report' sehr gut klassifiziert werden, sowohl hinsichtlich *Precision* als auch *Recall*, gibt es Verwirrungen zwischen 'epic' und 'poetry'.
+Während "drama" und "report" sehr gut klassifiziert werden, sowohl hinsichtlich *Precision* als auch *Recall*, gibt es Verwirrungen zwischen "epic" und "poetry".
 
 Gründe hierfür sind u.a. wohl Ähnlichkeiten in Hinblick auf Zeichensetzung und Schreibstil. Sowohl bezüglich der 'NounFrequency' als auch der 'VerbFrequency' sind Texte beider Klassen kaum zu unterscheiden.  
 Features, die zur besseren Unterscheidung dieser Klassen dienen sollten, konnten aufgrund der Beschaffenheit der Texte zudem nicht immer richtig greifen. So sind die epischen Texte leider nicht an den Paragraphenabschnitten umgebrochen, dadurch kann nicht zwischen Gedichtszeilen und layoutbedingten Umbrüchen in epischen Texten unterschieden werden.
@@ -348,7 +348,7 @@ Nimmt man den 'MultiLayerPerceptron' genauer unter die Lupe, ergeben sich die fo
 
 Obwohl die erreichten Werte in *Precision*, *Recall* und *F-Measure* relativ hoch sind, zeigt ein Blick auf die detailliertere Auswertung, dass diese Evaluierungsmaße nur in den Klassen gute Werte erreichen, für die viele Instanzen verfügbar sind. *Precision*-Werte über 0.6 erreichen lediglich die 4 größten Klassen (lyrik, märchen, roman, fabel). Einen *Recall*-Wert über 0.6 erreichen lediglich die Klassen "lyrik", "tragödie", "märchen" und "roman". Auffällig sind besonders die hohen *Recall*-Werte von ~ 0.9 der Klassen "lyrik" und "roman".  
 
-Zurückzuführen sind diese Beobachtungen zum Einen auf die ungleiche Verteilung der Klassen, die ein gutes Trainieren des Modells erschwert. Es kann angenommen werden, dass die Modelle für kleinere Klassen stark overfitten.   
+Zurückzuführen sind diese Beobachtungen zum Einen auf die ungleiche Verteilung der Klassen, die ein gutes Trainieren des Modells erschwert. Es kann angenommen werden, dass die Modelle für kleinere Klassen stark overfitten.    
 Zum Anderen ist ersichtlich, dass die gewählten Features alleine nicht ausreichen, um eine so feine Unterteilung vorzunehmen. Selbst für einen Menschen kann eine derartige Unterteilung schwer sein, weshalb dies ein komplexeres Problem ergibt.
 
 6 Auswertung
@@ -360,7 +360,7 @@ blablabla
 Eine Verbesserung der Klassifizierung könnte weiterhin mit größeren und ausgewogeneren Datenmengen erzielt werden. Diese sind allerdings meist schwierig zu finden, vorallem sobald eine Aufteilung in feinere Klassen erfolgen soll.  
 
 Bei der Anwendung der Feature-Methoden fällt auf, dass einige Ergebnisse nicht immer wie erwartet ausfallen:  
-u.a. der durchschnittliche Reimwert bei 'Poetry' ist vergleichsweise sehr niedrig, obwohl dieser Feature eigens für Gedichterkennung gedacht war.  
+u.a. der durchschnittliche Reimwert bei "poetry" ist vergleichsweise sehr niedrig, obwohl dieser Feature eigens für Gedichterkennung gedacht war.  
 
 Weitere Schritte wären u.a. eine Erweiterung der Feature-Liste (z.B. ein Terminologienvergleich), weitere Experimente und eine einfach zu bedienende Webanwendung.  
 Kombinationen dieses Projekts mit anderen Forschungsprojekten wären eine Überlegung wert.  
