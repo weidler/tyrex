@@ -24,19 +24,37 @@ TyRex is written in *Python3*!
   
 Usage  
 -----  
-  - Run all: ```bash learn.sh raw_data_dir data_dir map_dir arff_filename```  
+  - Run all: ```bash learn.sh -s DIR -d DIR -m DIR -f FILE [options]```  
   - All directories need a trailing "/"  
+  - run ```bash learn.sh -h``` to get further help and options
   
 Structure of the Single Program Parts - Preprocessing  
 ---------------------------------------------------------------
-**Title**    
-*PATH OF PY*  
-Description  
+**Parser**    
+*parser/Parser.py*  
+Main Parser SuperClass, that takes a single path to a file. Contains methods to read this File (with different Encodings) and the converter method, that creates the normalized text.
+
+**MultiParser**    
+*parser/MultiParser.py*  
+Subclass of a/the Parser. Takes a directory instead of a single files path and converts all contained files to a normalized version. Saves this Version as a new file at a given location.
 
 Structure of the Single Program Parts - Main Algorithm  
 ----------------------------------------------------------------
-**Title**  
-*PATH OF PY*  
+**Feature Extraction Algorithm (FEA)**  
+*FeatureExtractionAlgorithm.py*  
+Main Class, containing all the Methods that calc the Features.
+
+**Automized FEA**  
+*AutomizedFEA.py*
+
+Structure of the Single Program Parts - Postprocessing  
+----------------------------------------------------------------
+**ARFFBuilder**  
+*ARFFBuilder.py*  
 Description  
 
-See the comments in the file for more information regarding other methods of the Class.  
+**Text Type Recognizer**  
+*recognizeTextType.py*  
+Description  
+
+See the comments in the files for more information regarding other methods of the Class.  
