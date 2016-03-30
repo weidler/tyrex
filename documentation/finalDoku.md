@@ -282,7 +282,7 @@ Als ***Baseline*** wurde auch hier 'ZeroR' gewählt. Die Baseline erreicht einen
 
 Insbesondere die durschnittliche *Precision* von 0.119 sollten bessere Algorithmen übertreffen können.
 
-Bei einem ***Experiment*** mit 7 verschiedenen Algorithmen hat sich **X** als bester Classifier herausgestellt. Es wurden die folgenden Algorithmen verwendet:
+Bei einem ***Experiment*** mit 7 verschiedenen Algorithmen hat sich ein 'MultiLayerPerceptron' als bester Classifier herausgestellt. Es wurden die folgenden Algorithmen verwendet:
 
     (1) rules.ZeroR '' 48055541465867954
     (2) bayes.NaiveBayes '' 5995231201785697655
