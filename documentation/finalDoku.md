@@ -149,7 +149,7 @@ Der grob gegliederte Datensatz enthält 1261 Instanzen, die auf 4 Klassen vertei
     446 Gedichte
 
 
-Die *Baseline* klassifiziert etwa 35% aller Instanzen korrekt. Im Folgenden eine detailliertere Übersicht der Ergebnisse der Baseline:
+Die ***Baseline*** klassifiziert etwa 35% aller Instanzen korrekt. Im Folgenden eine detailliertere Übersicht der Ergebnisse der Baseline:
 
     Correctly Classified Instances         446               35.3688 %
     Incorrectly Classified Instances       815               64.6312 %
@@ -169,7 +169,7 @@ Die *Baseline* klassifiziert etwa 35% aller Instanzen korrekt. Im Folgenden eine
                      1         1          0.354     1         0.523      0.496    poetry
     Weighted Avg.    0.354     0.354      0.125     0.354     0.185      0.496
 
-Es wurde ein *Experiment* mit 9 verschiedenen Algorithmen durchgeführt.
+Es wurde ein ***Experiment*** mit 9 verschiedenen Algorithmen durchgeführt.
 
     (1) rules.ZeroR '' 48055541465867954
     (2) bayes.NaiveBayes '' 5995231201785697655
@@ -214,7 +214,7 @@ Eine genauere Betrachtung des 'MultiLayerPerceptrons' liefert die folgende Evalu
 
 Bei einer *Precision* von 92.3077 % sind diese Ergebnisse sehr gut. Die gewählten Features sind offensichtlich ausreichend, um einen sehr genauen Klassifikator für diese 4 Klassen zu trainieren. Die Klasse "report" erreicht einen beeindruckenden *Recall*-Wert von 0.993. Quasi alle Zeitungsartikel wurden also auch als solche erkannt. Eventuell ist das aber auch auf ein Overfitting zurückzuführen, basierend auf der über alle Instanzen der Klasse hinweg gleichen Quelle.
 
-Anhand der verschiedenen *Precision*- und *Recall*-Werte für die einzelnen Klassen lässt sich bereits eine Vermutung machen, die mit der Confusion Matrix bestätigt wird.
+Anhand der verschiedenen Precision- und Recall-Werte für die einzelnen Klassen lässt sich bereits eine Vermutung machen, die mit der *Confusion Matrix* bestätigt wird.
 
     === Confusion Matrix ===
 
@@ -224,7 +224,7 @@ Anhand der verschiedenen *Precision*- und *Recall*-Werte für die einzelnen Klas
        1   1 300   0 |   c = report
       26  12   1 407 |   d = poetry
 
-Während "drama" und "report" sehr gut klassifiziert werden, sowohl hinsichtlich *Precision* als auch *Recall*, gibt es Verwirrungen zwischen "epic" und "poetry".
+Während "drama" und "report" sehr gut klassifiziert werden, sowohl hinsichtlich Precision als auch Recall, gibt es Verwirrungen zwischen "epic" und "poetry".
 
 Gründe hierfür sind u.a. wohl Ähnlichkeiten in Hinblick auf Zeichensetzung und Schreibstil. Sowohl bezüglich der 'NounFrequency' als auch der 'VerbFrequency' sind Texte beider Klassen kaum zu unterscheiden.  
 Features, die zur besseren Unterscheidung dieser Klassen dienen sollten, konnten aufgrund der Beschaffenheit der Texte zudem nicht immer richtig greifen. So sind die epischen Texte leider nicht an den Paragraphenabschnitten umgebrochen, dadurch kann nicht zwischen Gedichtszeilen und layoutbedingten Umbrüchen in epischen Texten unterschieden werden.
@@ -250,7 +250,7 @@ Der feinere Datensatz enthält insgesamt 11949 erfolgreich geparste Instanzen. D
 
 Ein offensichtliches Problem des Datensatzes ist die ungleiche Verteilung der Daten. Da die Texte per Hand annotiert wurden, war eine bessere Annotation in Anbetracht der knappen Zeit nicht möglich.  
 
-Als *Baseline* wurde auch hier 'ZeroR' gewählt. Die Baseline erreicht einen Wert von 34.505% korrekt klassifizierten Instanzen.
+Als ***Baseline*** wurde auch hier 'ZeroR' gewählt. Die Baseline erreicht einen Wert von 34.505% korrekt klassifizierten Instanzen.
 
     === Summary ===
 
@@ -282,7 +282,7 @@ Als *Baseline* wurde auch hier 'ZeroR' gewählt. Die Baseline erreicht einen Wer
 
 Insbesondere die durschnittliche *Precision* von 0.119 sollten bessere Algorithmen übertreffen können.
 
-Bei einem Experiment mit 7 verschiedenen Algorithmen hat sich **X** als bester Classifier herausgestellt. Es wurden die folgenden Algorithmen verwendet:
+Bei einem ***Experiment*** mit 7 verschiedenen Algorithmen hat sich **X** als bester Classifier herausgestellt. Es wurden die folgenden Algorithmen verwendet:
 
     (1) rules.ZeroR '' 48055541465867954
     (2) bayes.NaiveBayes '' 5995231201785697655
@@ -346,7 +346,7 @@ Nimmt man den 'MultiLayerPerceptron' genauer unter die Lupe, ergeben sich die fo
         0   93    0    0    0    1   15    0    0    1    1   17 |    k = ballade
         8  269    0    9    0   14  218    4    0   75    0  710 |    l = fabel
 
-Obwohl die erreichten Werte in *Precision*, *Recall* und *F-Measure* relativ hoch sind, zeigt ein Blick auf die detailliertere Auswertung, dass diese Evaluierungsmaße nur in den Klassen gute Werte erreichen, für die viele Instanzen verfügbar sind. *Precision*-Werte über 0.6 erreichen lediglich die 4 größten Klassen (lyrik, märchen, roman, fabel). Einen *Recall*-Wert über 0.6 erreichen lediglich die Klassen "lyrik", "tragödie", "märchen" und "roman". Auffällig sind besonders die hohen *Recall*-Werte von ~ 0.9 der Klassen "lyrik" und "roman".  
+Obwohl die erreichten Werte in *Precision*, *Recall* und *F-Measure* relativ hoch sind, zeigt ein Blick auf die detailliertere Auswertung, dass diese Evaluierungsmaße nur in den Klassen gute Werte erreichen, für die viele Instanzen verfügbar sind. Precision-Werte über 0.6 erreichen lediglich die 4 größten Klassen (lyrik, märchen, roman, fabel). Einen Recall-Wert über 0.6 erreichen lediglich die Klassen "lyrik", "tragödie", "märchen" und "roman". Auffällig sind besonders die hohen Recall-Werte von ~ 0.9 der Klassen "lyrik" und "roman".  
 
 Zurückzuführen sind diese Beobachtungen zum Einen auf die ungleiche Verteilung der Klassen, die ein gutes Trainieren des Modells erschwert. Es kann angenommen werden, dass die Modelle für kleinere Klassen stark overfitten.    
 Zum Anderen ist ersichtlich, dass die gewählten Features alleine nicht ausreichen, um eine so feine Unterteilung vorzunehmen. Selbst für einen Menschen kann eine derartige Unterteilung schwer sein, weshalb dies ein komplexeres Problem ergibt.
