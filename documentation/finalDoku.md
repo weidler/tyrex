@@ -30,14 +30,14 @@ Weitere Schritte wären u.a. eine Erweiterung der Feature-Liste, größere Train
 Die Trainingsdaten stammen aus dem "Projekt-Gutenberg"-Korpus, der viele Werke bekannter Autoren bereit stellt, und "Zeit-Online" dient ebenfalls als Quelle.  
 Mit diesen unannotierten Texten wurden zwei Korpora erstellt.
 
-Der erste Korpus umfasst 1261 Dateien die wie folgt in 4 grobe Klassen unterteilt wurden. 
+Der erste Korpus umfasst 1261 Dateien, die wie folgt in 4 grobe Klassen unterteilt wurden 
 
     222 Epische Texte
     291 Dramen
     302 Artikel
     446 Gedichte
     
-Der zweite Korpus enthält 11950 Dateien die wie folgt in x feinere Klassen eingeteilt wurden.
+Der zweite Korpus enthält 11950 Dateien, die wie folgt in x feinere Klassen eingeteilt wurden:
 
 	efwefwe
 	fwefwfe
