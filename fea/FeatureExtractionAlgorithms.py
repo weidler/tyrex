@@ -100,6 +100,9 @@ class FEA():
 	
 		@variables
 		text	string		Source string without Tags
+		
+		@returns
+		int 	number of words
 		"""
 		text = re.sub("<.*?>", "", self.source)
 		return len(text.split())
@@ -107,6 +110,9 @@ class FEA():
 	def calcSentenceLengthAvg(self):
 		"""
 		Calculates the average of number of words in all sentences.
+		
+		@returns
+		int	average number of words in all sentences
 		"""
 		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		NumOfPhrases = 0
@@ -122,6 +128,9 @@ class FEA():
 	def calcSentenceLengthMax(self):
 		"""
 		Calculates the longest sentence and gives back the number of words in this sentence.
+		
+		@returns
+		int	maximal number of words in all sentences
 		"""
 		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		return max(map(len, [i.split(" ") for i in sentences]))
@@ -129,6 +138,9 @@ class FEA():
 	def calcSentenceLengthMin(self):
 		"""
 		Calculates the shortest sentence and gives back the number of words in this sentence.
+		
+		@returns
+		int	minimal number of words in all sentences
 		"""
 		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		return min(map(len, [i.split(" ") for i in sentences]))
@@ -142,6 +154,9 @@ class FEA():
 		endings_dict	Dictionary	key (last chars of a line) and value (number of occurences)
 		rhymes		int		number of endings that occured 2 times or more
 		avgRhyme	float		number of rhymes divided by number of actual lines
+		
+		@returns
+		float	average number of rhymes
 		"""
 		lines = re.findall("(.*)\n", self.source) 	# takes every line
 		endings_dict = {}
