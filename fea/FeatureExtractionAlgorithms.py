@@ -12,15 +12,28 @@ from collections import Counter
 class FEA():
 
 	"""
-	Feature Extraction Algorithms
-	-----------------------------
+	Feature Extraction Algorithms Wrapper Class. Takes a file or text and calculates Vector for that file. Then writes this vector into
+	a json file at given directory. Alternativly can skip writing and simply return the vector.
 
-	ATTRIBUTES:
-		source	-->	string representation of the normalized text
-		data	-->	dict object of already calculated data and destination of newly calculated data
+	@parameters
+	class_name			string		name of the class of the file, if unknown pass "unknown"
+	source				string 		representation of the normalized text or filename
+	map_dir				string		path of directory where JSON files with vectors will be saved
+	use_json[=False]	bool		if True, map_dir will be searched for existing json file and already calced data will be used
+	is_file[=True]		bool		if True, source will be taken as filename, else as whole text
 	"""
 
 	def __init__(self, class_name, source, map_dir, use_json=False, is_file=True):
+		"""
+		@attributes
+		self.data		dict	dict object of already calculated data and destination of newly calculated data
+		self.filename	string	name of the file
+		self.source		string 	representation of the normalized text
+		self.map_dir	string	path of directory where JSON files with vectors will be saved
+		self.calc_class	bool	if True, class_name was set to "unknown" and FEA is supposed to return Vector instead of writing json
+		self.treetagged	list	treetagger result
+		"""
+
 		# recognising file or textstring
 		if is_file:
 			# get the filename of the input file
@@ -72,17 +85,42 @@ class FEA():
 
 	# PREPROCESSORS
 	def readFile(self, filename):
+		"""
+		Simple file reading.
+
+		@parameters
+		filename	string	name of the file that will be read
+
+		@returns	string	content of file
+		"""
+
 		with open(filename) as f:
 			return f.read()
 
 	def writeFeatureMaps(self):
+		"""
+		Writes the Vector as file in self.map_dir.
+
+		@variables
+		path	PosixPath	path where file will be written
+
+		@returns	bool	True if success
+		"""
 		path = Path(self.map_dir + self.filename + ".json")
 		path.touch(exist_ok=True)
 
 		with path.open("w") as f:
-			f.write(json.dumps(self.data))
+			return f.write(json.dumps(self.data))
 
 	def applyTreeTagger(self, text):
+		"""
+		Calcs TreeTagger Result for given text if not already done
+
+		@parameters
+		text		string	text that will be tagged
+
+		@returns	list	treetagger result
+		"""
 		if self.treetagged == "":
 			tagger = tt.TreeTagger(TAGLANG="de")
 			tagged_list = tt.make_tags(tagger.tag_text(self.cleanSource(text)))
@@ -91,6 +129,14 @@ class FEA():
 			return self.treetagged
 
 	def cleanSource(self, source):
+		"""
+		Cleans a string from any Tags
+
+		@parameters
+		source		string		text that will be cleaned
+
+		@returns	strings		clean text
+		"""
 		return re.sub("<.*?>", "", source)
 
 	# EXTRACTION ALGORITHMS
@@ -103,6 +149,7 @@ class FEA():
 
 		@returns	int 	number of words
 		"""
+
 		text = re.sub("<.*?>", "", self.source)
 		return len(text.split())
 
@@ -112,6 +159,7 @@ class FEA():
 
 		@returns	int	average number of words in all sentences
 		"""
+
 		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		NumOfPhrases = 0
 		allPhrases = 0
@@ -129,6 +177,7 @@ class FEA():
 
 		@returns	int	maximal number of words in all sentences
 		"""
+
 		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		return max(map(len, [i.split(" ") for i in sentences]))
 
@@ -138,6 +187,7 @@ class FEA():
 
 		@returns	int	minimal number of words in all sentences
 		"""
+
 		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		return min(map(len, [i.split(" ") for i in sentences]))
 
@@ -153,6 +203,7 @@ class FEA():
 
 		@returns	float	average number of rhymes
 		"""
+
 		lines = re.findall("(.*)\n", self.source) 	# takes every line
 		endings_dict = {}
 		l = 0  #counter for non-empty lines
@@ -191,6 +242,7 @@ class FEA():
 		"""
 		Zaehlt die 'mostCommonWords'; unused
 		"""
+
 		words = self.source.split()
 		mostCommonWords = Counter(words).most_common() 	# list with tuples
 		return mostCommonWords
@@ -198,14 +250,15 @@ class FEA():
 	def calcPhrasesPerParagraph(self):
 		'''
 		Calculates average number of phrases by their tags in a paragraph
-		
-		@variables	
+
+		@variables
 		splitfile	list	splitted source - every list item was a line (paragraph) in the source
-		
+
 		@returns	float	average number of phrases per paragraph
 		'''
+
 		splitfile = self.source.splitlines()
-		while '' in splitfile:	
+		while '' in splitfile:
 			splitfile.remove('')	#removes all blank lines as strings without content
 		count = 0
 		for line in splitfile:
@@ -215,25 +268,27 @@ class FEA():
 	def calcDigitFrequency(self):
 		'''
 		Calculates the average number of digits in the text
-		
+
 		@variables
 		numbs		int		total number of all numbers, consisting of one or more digits
-		
+
 		@returns	float	average number of digits per number of tokens
 		'''
-		numbs = len(re.findall("\d+", self.source))	
+
+		numbs = len(re.findall("\d+", self.source))
 		return float(numbs)/len(self.source.split(" "))
 
 	def calcPunctuationFrequency(self):
 		'''
 		Calculates the average occurence of punctuation
-		
+
 		@variables
 		text_length	int		number of tokens without punctuation tags
 		puncts		int		number of punctuation counted by its tags
-		
+
 		@returns	float	average number of punctuation per tokens
 		'''
+
 		text_length = len(re.sub('<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>', "i", self.source))
 		puncts = len(re.findall('<punct>|<exclamation>|<question>|<colon>|<semicolon>|<suspension>|<comma>|<thinking>', self.source))
 		return float(puncts)/text_length
@@ -241,13 +296,14 @@ class FEA():
 	def calcWordLengthAvg(self):
 		'''
 		Calculates the average length of tokens
-		
+
 		@variables
 		clean_text	str		given text without any tags
 		char		int		counter for total number of letters
-		
+
 		@returns	float	average word length
 		'''
+
 		clean_text = re.sub('<.*?>', "", self.source)
 		char = 0
 		for word in clean_text.split():
@@ -256,22 +312,24 @@ class FEA():
 
 	def calcWordVariance(self):
 		'''
-		### TO DO TOOOOOOOOOOONNNNNIIIIIIIIIIIIIOOOOOOOOOOOO ###
-		
+		Calculates how much different words are used and divides by amount of all words
+
 		@variables
-		
-		
-		@returns
+		lemmata		list	list of all lemmatas in text
+
+		@returns 	float	word variance from 0 to 1
 		'''
+
 		lemmata = [l[2] for l in self.treetagged]
 		return len(set(lemmata))/len(lemmata)
 
 	def calcNEFrequency(self):
 		'''
 		Calculates the relation of Named Entities (NE) to the total number of tokens
-		
+
 		@returns	float	average occurence of NEs
 		'''
+
 		count = 0	#counter of NEs
 		for i in self.treetagged:
 			if i[1] == 'NE':	#counts if the lemma is 'NE'
@@ -281,9 +339,10 @@ class FEA():
 	def calcVerbFrequency(self):
 		'''
 		Calculates the relation of verbs to the total number of tokens
-		
+
 		@returns	float	average occurence of verbs
 		'''
+
 		count = 0
 		for i in self.treetagged:
 			if i[1] == 'VAFIN' or 'VAIMP' or 'VVFIN' or 'VVIMP' or 'VMFIN':		#counts lemmas that have to do with any sort of verb
@@ -293,9 +352,10 @@ class FEA():
 	def calcNounFrequency(self):
 		'''
 		Calculates the relation of nouns to the total number of tokens
-		
+
 		@returns	float	average occurence of nouns
 		'''
+
 		count = 0
 		for i in self.treetagged:
 			if i[1] == 'NN':	#counts if the lemma is 'NN'
@@ -304,6 +364,12 @@ class FEA():
 
 	# MAIN PROCESSORS
 	def finalize(self):
+		"""
+		Method calls all FeatureFunctions and builds the vector. Then either wirtes or returns vector.
+
+		@returns	bool	True if successfully written
+					dict	vector dictionary
+		"""
 
 		# if feature needs treetagger insert "self.treetagged = self.applyTreeTagger(self.source)" before update
 		if "sentence_length_avg" not in self.data.keys():

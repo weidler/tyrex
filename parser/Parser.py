@@ -27,9 +27,8 @@ class Parser():
 		@parameters
 		posix_path		string	the concerned filepath at which the method should read
 
-		@variables
-
-		@returns		string	
+		@returns		string	html-free content of filepath
+						bool	FALSE if encoding unknown or file not found
 		"""
 
 		try:
@@ -51,10 +50,15 @@ class Parser():
 
 	def convertToNormalized(self, unnormalized):
 		"""
+		Converts a text to its normalized version.
+
 		@parameters
+		unnormalized	string	the unnormalized text that will be converted
 
 		@variables
+		out				string	the output string, originally unnormalized text
 
+		@returns		string	normalized text
 		"""
 		#sentence bounds
 
