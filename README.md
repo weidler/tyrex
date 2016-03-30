@@ -24,11 +24,11 @@ TyRex is written in *Python3*!
   
 Usage  
 -----  
-  - learn from data and create arff: ```bash learn.sh -s DIR -d DIR -m DIR -f FILE [options]```  
+  * learn from data and create arff: ```bash learn.sh -s DIR -d DIR -m DIR -f FILE [options]```  
     (all directories need a trailing "/")
-  - run ```bash learn.sh -h``` to get further help and options
-  
-  - get a files text type: ```bash tyrex.sh FILENAME```
+  * run ```bash learn.sh -h``` to get further help and options  
+
+  * get a files text type: ```bash tyrex.sh FILENAME```
   
 Structure of the Single Program Parts - Preprocessing  
 ---------------------------------------------------------------
