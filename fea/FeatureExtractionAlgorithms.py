@@ -99,10 +99,9 @@ class FEA():
 		Calculates the length of the text and ignores XML-tags.
 	
 		@variables
-		text	string		Source string without Tags
+		text		string		Source string without Tags
 		
-		@returns
-		int 	number of words
+		@returns	int 	number of words
 		"""
 		text = re.sub("<.*?>", "", self.source)
 		return len(text.split())
@@ -129,8 +128,7 @@ class FEA():
 		"""
 		Calculates the longest sentence and gives back the number of words in this sentence.
 		
-		@returns
-		int	maximal number of words in all sentences
+		@returns	int	maximal number of words in all sentences
 		"""
 		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		return max(map(len, [i.split(" ") for i in sentences]))
@@ -139,8 +137,7 @@ class FEA():
 		"""
 		Calculates the shortest sentence and gives back the number of words in this sentence.
 		
-		@returns
-		int	minimal number of words in all sentences
+		@returns	int	minimal number of words in all sentences
 		"""
 		sentences = [group[0] for group in re.findall("<s>((.|\s)*?)<\/s>", self.source)]
 		return min(map(len, [i.split(" ") for i in sentences]))
@@ -151,12 +148,11 @@ class FEA():
 		0 means no rhymes, 1 means everything rhymes. From 0.5 up it's likely to be real rhymes.
 		
 		@variables
-		endings_dict	Dictionary	key (last chars of a line) and value (number of occurences)
+		endings_dict	dict	key (last chars of a line) and value (number of occurences)
 		rhymes		int		number of endings that occured 2 times or more
 		avgRhyme	float		number of rhymes divided by number of actual lines
 		
-		@returns
-		float	average number of rhymes
+		@returns	float	average number of rhymes
 		"""
 		lines = re.findall("(.*)\n", self.source) 	# takes every line
 		endings_dict = {}
