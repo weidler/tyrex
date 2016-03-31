@@ -150,7 +150,7 @@ Berechnet die durschnittliche Menge an Ziffern im Text.
 *Annahme*: Wissenschaftliche Artikel benutzen meist Ziffern für Datumangaben, Forschungsergebnisse, etc., während epische und poetische Texte sehr wenige bis keine Ziffern verwenden.  
 - ***calcPunctuationFrequency***  
 Berechnet das durchschnittliche Auftreten von Satzzeichen pro Text.  
-*Annahme*: ...  
+*Annahme*: Textarten unterscheiden sich in der Benutzung von Satzzeichen. So enthalten reports meist längere Sätze, die mit Kommata verschachtelt sind. Dramen haben für wörtliche Rede viele Doppelpunkte und kurze Sätze, die mehr Satzendzeichen hervorrufen.
 - ***calcWordLengthAvg***  
 Berechnet die durschnittliche Anzahl von Buchstaben/Zeichen pro Wort, d.h. die Länge.    
 *Annahme*: Im Deutschen treten häufiger lange Worte (wie z.B. Wortbedeutungsdisambiguierungsalgorithmus oder Donaudampfschiffahrtsgesellschaftskapitän) in Wissenschaftsarbeiten und Reportagen auf, als in "epic" oder "poetry". Wobei letztere auch ab und zu lange Wortkreationen und -spielereien beinhalten.
