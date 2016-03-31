@@ -78,12 +78,11 @@ Berechnet die Länge der Texte und ignoriert dabei XML-Tags.
 Annahme: z.B. epische Texte sind meist länger als Zeitungsartikel.  
 - *calcSentenceLengthAvg* / *calcSentenceLengthMax* / *calcSentenceLengthMin*    
 Berechnet die durschnittliche/maximalste/minimalste Anzahl von Wörtern aller Sätze.  
-Annahme: z.B. während Dramen eher kurze Sätze (u.a. Regieanweisungen) beinhalten, sind epische Werke oder wissenschaftliche Arbeiten eventuell eher langsätzig.  
+Annahme: Während Dramen eher kurze Sätze (u.a. Regieanweisungen) beinhalten, sind epische Werke oder wissenschaftliche Arbeiten eventuell eher langsätzig.  
 - *calcRhymeAvg*  
 Zählt alle Aufkommen von Zeilenendungen und berechnet einen Durschnitt der wiederkehrenden Endungen.  
-Annahme: z.B. sollten Gedichte mehr reimende Endungen enthalten als Zeitungsartikel.  
-Revision: längere Texte besitzen mehr Endungen, somit eine erhöhte Chance auf gleiche Endungen, und Texte aus der 'Poetry'-Kategorie besitzen weniger reine Reime als gedacht;  
-Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
+Annahme: Gedichte sollten mehr reimende Endungen enthalten als z.B. Zeitungsartikel.  
+Revision: Längere Texte besitzen mehr Endungen, somit eine erhöhte Chance auf gleiche Endungen, und Texte aus der 'Poetry'-Kategorie besitzen weniger reine Reime als gedacht; Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
 - *calcPhrasesPerParagraph*    
 Berechnet die Zahl der Sätze pro Abschnitt.  
 Annahme: Sollte zur besseren Abgrenzung von Gedichten zu anderen Textsorten dienen. Während in Gedichten Sätze häufig über einen gesamten Vers mit mehreren Umbrüchen gehen, tritt bei epischen Texten und Artikeln
