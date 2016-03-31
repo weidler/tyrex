@@ -367,8 +367,8 @@ blablabla
 -------
 Eine Verbesserung der Klassifizierung könnte weiterhin mit größeren und ausgewogeneren Datenmengen erzielt werden. Diese sind allerdings meist schwierig zu finden, vorallem sobald eine Aufteilung in feinere Klassen erfolgen soll.  
 
-Bei der Anwendung der Feature-Methoden fällt auf, dass einige Ergebnisse nicht immer wie erwartet ausfallen:  
-u.a. der durchschnittliche Reimwert bei "poetry" ist vergleichsweise sehr niedrig, obwohl dieser Feature eigens für Gedichterkennung gedacht war.  
+Bei der Anwendung der Feature-Methoden fällt auf, dass einige Ergebnisse nicht immer wie erwartet ausfallen und somit eine Erweiterung benötigen:  
+u.a. der durchschnittliche Reimwert bei "poetry" ist vergleichsweise sehr niedrig, obwohl dieser Feature eigens für Gedichterkennung gedacht war. Dieser Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
 
 Weitere Schritte wären u.a. eine Erweiterung der Feature-Liste (z.B. ein Terminologienvergleich), weitere Experimente und eine einfach zu bedienende Webanwendung.  
 Kombinationen dieses Projekts mit anderen Forschungsprojekten wären eine Überlegung wert.  
