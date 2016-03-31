@@ -5,18 +5,28 @@ import sys
 class AutomizedFEA():
 
 	"""
-	Automized Feature Extraction Algorithms
-	---------------------------------------
-
 	Automatically applies FEA on a whole directory with some options
 
-	ATTRIBUTES:
-		dir		-->	directory where normalized source files are stored
-		path	-->	path object to that directory
-		target	-->	path where feature maps will be saved
+	@parameters:
+	directory			string		directory for normalized files are stored
+	target				string		directory where JSON files will be stored
+	prefix				string		optional prefix, if passing a prefix, only files with that prefix will be used
+									and the prefix is taken as classname for those files
+	f_type[=txt]		string		file extention for files that are used, only files with that extension will be read
+	use_json[=False]	bool		if set True, FEAs will use existing JSON files
 	"""
 
 	def __init__(self, directory, target, prefix="", f_type="txt", use_json=False):
+		"""
+		@attributes
+		self.dir		string	directory where normalized source files are stored
+		self.prefix		string	only files with that prefix will be used
+		self.target		string	path where feature maps will be saved
+		self.use_json	bool	use existing JSON info in FEAs
+		self.f_type		string	only use files of that type
+		self.files		list	all files as PosixPaths
+		"""
+
 		self.dir = directory
 		self.prefix = prefix
 		self.target = target
@@ -27,7 +37,15 @@ class AutomizedFEA():
 		self.files = list(Path(self.dir).rglob(self.prefix + "*." + self.f_type))
 
 	def process(self):
+		"""
+		Processes all files in self.files by determining their classname from the filename or self.prefix
+		and creating their FEA Object.
 
+		@variables
+		amount_of_vectors	int		tracks how many files where processed yet together with enumerate in for loop
+
+		@returns	None
+		"""
 		if self.use_json:
 			print("Using already calculated data...")
 
