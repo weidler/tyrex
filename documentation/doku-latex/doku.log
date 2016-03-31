@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.30)  31 MAR 2016 15:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.30)  31 MAR 2016 15:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -934,121 +934,117 @@ File: ../tyrex_architecture.png Graphic file (type png)
 Package pdftex.def Info: ../tyrex_architecture.png used on input line 228.
 (pdftex.def)             Requested size: 440.83705pt x 325.97105pt.
  [3] [4 <../tyrex_architecture.png>] [5]
-Overfull \hbox (47.40112pt too wide) in paragraph at lines 344--344
+Overfull \hbox (47.40112pt too wide) in paragraph at lines 345--345
 []\T1/lmtt/m/n/10 0.0020035491441982942, 0.35643988018827555, 0.000467726847521
 0477, 0.023241170072700212,  ...[] 
  []
 
 
-Overfull \hbox (10.65123pt too wide) in paragraph at lines 344--344
+Overfull \hbox (10.65123pt too wide) in paragraph at lines 345--345
 []\T1/lmtt/m/n/10 0.015503875968992248, 0.7073170731707317, 0.03947368421052631
 4, 0.020671834625323, ...[] 
  []
 
 
-Overfull \hbox (10.65123pt too wide) in paragraph at lines 344--344
+Overfull \hbox (10.65123pt too wide) in paragraph at lines 345--345
 []\T1/lmtt/m/n/10 0.00281483294578387, 0.432661717921527, 0.012987012987012988,
  0.02753640925223351, ...[] 
  []
 
 [6]
-Overfull \hbox (0.15126pt too wide) in paragraph at lines 391--391
+Overfull \hbox (0.15126pt too wide) in paragraph at lines 392--392
 []                 \T1/lmtt/m/n/10 0         0          0         0         0  
         0.496    report[] 
  []
 
 
-Overfull \hbox (0.15126pt too wide) in paragraph at lines 391--391
+Overfull \hbox (0.15126pt too wide) in paragraph at lines 392--392
 []                 \T1/lmtt/m/n/10 1         1          0.354     1         0.5
 23      0.496    poetry[] 
  []
 
 
-Overfull \hbox (5.39854pt too wide) in paragraph at lines 418--418
+Overfull \hbox (5.39854pt too wide) in paragraph at lines 419--419
 []\T1/lmtt/m/n/8 Dataset    (4) function | (1) rules (2) bayes (3) funct (5) fu
 nct (6) funct (7) lazy. (8) meta. (9) trees[] 
  []
 
 
-Overfull \hbox (5.40254pt too wide) in paragraph at lines 418--418
+Overfull \hbox (5.40254pt too wide) in paragraph at lines 419--419
 []\T1/lmtt/m/n/8 --------------------------------------------------------------
 -------------------------------------------[] 
  []
 
 
-Overfull \hbox (5.38455pt too wide) in paragraph at lines 418--418
+Overfull \hbox (5.38455pt too wide) in paragraph at lines 419--419
 []\T1/lmtt/m/n/8 tyrex      (30)   92.10 |   35.37 *   85.80 *   91.65     92.0
 4     89.56 *   91.09     56.54 *   87.73 *[] 
  []
 
 
-Overfull \hbox (5.40254pt too wide) in paragraph at lines 418--418
+Overfull \hbox (5.40254pt too wide) in paragraph at lines 419--419
 []\T1/lmtt/m/n/8 --------------------------------------------------------------
 -------------------------------------------[] 
  []
 
 
-Overfull \hbox (5.40254pt too wide) in paragraph at lines 418--418
+Overfull \hbox (5.40254pt too wide) in paragraph at lines 419--419
 []                \T1/lmtt/m/n/8 (v/ /*) |   (0/0/1)   (0/0/1)   (0/1/0)   (0/1
 /0)   (0/0/1)   (0/1/0)   (0/0/1)   (0/0/1)[] 
  []
 
 [7]
-Overfull \hbox (0.15126pt too wide) in paragraph at lines 449--449
+Overfull \hbox (0.15126pt too wide) in paragraph at lines 450--450
 []                 \T1/lmtt/m/n/10 0.993     0.006      0.98      0.993     0.9
 87      0.999    report[] 
  []
 
 
-Overfull \hbox (0.15126pt too wide) in paragraph at lines 449--449
+Overfull \hbox (0.15126pt too wide) in paragraph at lines 450--450
 []                 \T1/lmtt/m/n/10 0.913     0.056      0.898     0.913     0.9
 05      0.973    poetry[] 
  []
 
 [8] [9]
-Overfull \hbox (5.40125pt too wide) in paragraph at lines 580--580
+Overfull \hbox (5.40125pt too wide) in paragraph at lines 581--581
 []\T1/lmtt/m/n/10 Dataset    (1) rules.Ze | (2) bayes (3) funct (4) funct (5) f
 unct (6) trees (7) funct[] 
  []
 
 
-Overfull \hbox (5.40125pt too wide) in paragraph at lines 580--580
+Overfull \hbox (5.40125pt too wide) in paragraph at lines 581--581
 []\T1/lmtt/m/n/10 -------------------------------------------------------------
 ------------------------[] 
  []
 
 
-Overfull \hbox (5.40125pt too wide) in paragraph at lines 580--580
+Overfull \hbox (5.40125pt too wide) in paragraph at lines 581--581
 []\T1/lmtt/m/n/10 tyrex       (9)   34.50 |   47.68 v   69.16 v   69.20 v   65.
 86 v   70.39 v   71.62 v[] 
  []
 
 
-Overfull \hbox (5.40125pt too wide) in paragraph at lines 580--580
+Overfull \hbox (5.40125pt too wide) in paragraph at lines 581--581
 []\T1/lmtt/m/n/10 -------------------------------------------------------------
 ------------------------[] 
  []
 
 
-Overfull \hbox (5.40125pt too wide) in paragraph at lines 580--580
+Overfull \hbox (5.40125pt too wide) in paragraph at lines 581--581
 []                \T1/lmtt/m/n/10 (v/ /*) |   (1/0/0)   (1/0/0)   (1/0/0)   (1/
 0/0)   (1/0/0)   (1/0/0)[] 
  []
 
 [10] [11] [12]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 755.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 756.
  [13]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 755.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 756.
  (./doku.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 755.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 755.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 756.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 756.
 Package rerunfilecheck Info: File `doku.out' has not changed.
 (rerunfilecheck)             Checksum: ABE8CE3212789287054686D8C649F82C;972.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 755.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 756.
  ) 
 Here is how much of TeX's memory you used:
  13556 strings out of 494977
@@ -1065,7 +1061,7 @@ m/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/tex
 mf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/lmri1
 0.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/font
 s/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
-Output written on doku.pdf (13 pages, 341536 bytes).
+Output written on doku.pdf (13 pages, 341507 bytes).
 PDF statistics:
  157 PDF objects out of 1000 (max. 8388607)
  129 compressed objects within 2 object streams
