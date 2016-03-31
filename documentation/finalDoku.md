@@ -35,11 +35,20 @@ Der erste Korpus umfasst 1261 Dateien, die wie folgt in 4 grobe Klassen untertei
     302 Artikel
     446 Gedichte
 
-Der zweite Korpus enthält 11950 Dateien, die wie folgt in x feinere Klassen eingeteilt wurden:
+Der zweite Korpus enthält 11950 Dateien, die wie folgt in 12 feinere Klassen eingeteilt wurden:
 
-	efwefwe
-	fwefwfe
-	wefwff
+    4123 Lyrik
+    105 Dramen
+    134 Lustspiele
+    20 Essays
+    482 Tragödien
+    348 Novelle
+    1746 Märchen
+    203 Sonette
+    1307 Fabeln
+    2763 Romane
+    128 Balladen
+    590 Erzählungen
 
 Die Texte werden durch den "Textnormierer" (Parser) aufbereitet, d.h. Satzzeichen werden durch Tags (\</\>) ersetzt und unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen entstehen.
 Durch die Normierung ist die Weiterverarbeitung der Daten einfacher und nützliche Metadaten werden durch die Tag-Setzung eingebunden. Ein Nachteil ist allerdings, dass uns externe Metadaten
