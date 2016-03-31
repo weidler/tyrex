@@ -18,9 +18,25 @@ Further steps would be i.a. an expansion of features and data to differentiate m
 Requirements  
 ------------
 TyRex is written in *Python3*!  
-  - https://pypi.python.org/pypi/html2text or ```pip install html2text``` (needs sudo)  
-  - https://perso.limsi.fr/pointal/doku.php?id=dev:treetaggerwrapper or ```pip install treetaggerwrapper``` (needs sudo)  
+  - https://pypi.python.org/pypi/html2text or ```pip3 install html2text``` (needs sudo)  
+  - https://perso.limsi.fr/pointal/doku.php?id=dev:treetaggerwrapper or ```pip3 install treetaggerwrapper``` (needs sudo)  
   - http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/ the TreeTagger  
+
+Though this *should* be all additional software needed, you might miss some usually standard packages in python.
+Contact us if further help is needed.
+
+Data (not included in GitHub due to copyright)
+-----
+
+| Directory    | Content                                                                                                                                                                                                                                                                                                              |
+|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| raw_data     | unnormalized files for coarse classes                                                                                                                                                                                                                                                                                |
+| fine_data    | contains for fine-grained classes:  new_data - unnormalized files new_data.zip - those as archive data_fine - normalized files feature_maps_fine - JSON feature map files  this data takes more than 3h to compute, you should not recompute it if not necessary. Use -j in learn.sh to use the already calced data! |
+| data         | normalized files for coarse classes                                                                                                                                                                                                                                                                                  |
+| feature_maps | JSON feature maps for coarse classes                                                                                                                                                                                                                                                                                 |
+| test_data    | few files to test learn.sh without waiting too long for results                                                                                                                                                                                                                                                      |
+
+data* and feature_maps* folders contain precalculated data, that takes some time to get calculated. To test the system, test_data may be enough.
 
 Usage  
 -----  
