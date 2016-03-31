@@ -17,7 +17,7 @@ Inhaltsverzeichnis
 
 1 Einführung     
 -------
-Das Ziel dieses Projektes ist eine automatische Klassifizierung von Texten nach ihrer Textart.
+Das Ziel dieses Projektes ist eine automatische Klassifizierung von Texten nach ihrer Textart.  
 Suchmaschinen könnten derlei Klassifikatoren zur Kategorisierung und damit besseren Suche vorhandener Dokumente verwenden. Auch andere Unternehmen würden von einem internen Kategorisierungssystem (mit Kategorien wie u.a. Rechnungen, Mitarbeitergespräche, Rezensionen, etc.) profitieren. Text-Analyse-Tools können Auskunft geben, in welchem Maß ein Text dem Standard seiner Kategorie entspricht.
 
 Um dieses Ziel zu erreichen, müssen viele Daten gesammelt, aufbereitet und analysiert werden.  
@@ -50,7 +50,7 @@ Der zweite Korpus enthält 11950 Dateien, die wie folgt in 12 feinere Klassen ei
     128 Balladen
     590 Erzählungen
 
-Die Texte werden durch den "Textnormierer" (Parser) aufbereitet, d.h. Satzzeichen werden durch Tags (\</\>) ersetzt und unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen entstehen.
+Die Texte werden durch den "Textnormierer" (Parser) aufbereitet, d.h. Satzzeichen werden durch Tags (\</\>) ersetzt und unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen entstehen.  
 Durch die Normierung ist die Weiterverarbeitung der Daten einfacher und nützliche Metadaten werden durch die Tag-Setzung eingebunden. Ein Nachteil ist allerdings, dass uns externe Metadaten verloren gehen und der Nomierer viele Datentypen zu verarbeiten hat, wodurch eine optimale Normierung teilweise nicht möglich ist. Zudem ist der Normierer nicht ausgereift. Es gibt Probleme mit Satzgrenzen und einige Funktionalitäten, wie Erkennung von direkter Rede oder Paragraphen, sind noch nicht implementiert.
 
 Ausschnitt in Rohform:
@@ -412,18 +412,19 @@ Nimmt man den 'MultiLayerPerceptron' genauer unter die Lupe, ergeben sich die fo
         8  269    0    9    0   14  218    4    0   75    0  710 |    l = fabel
 
 Obwohl die erreichten Werte in *Precision*, *Recall* und *F-Measure* relativ hoch sind, zeigt ein Blick auf die detailliertere Auswertung, dass diese Evaluierungsmaße nur in den Klassen gute Werte erreichen, für die viele Instanzen verfügbar sind. Precision-Werte über 0.6 erreichen lediglich die 4 größten Klassen ("lyrik", "märchen", "roman", "fabel"). Einen Recall-Wert über 0.6 erreichen lediglich die Klassen "lyrik", "tragödie", "märchen" und "roman". Auffällig sind besonders die hohen Recall-Werte von ~ 0.9 der Klassen "lyrik" und "roman".  
-
+  
 Zurückzuführen sind diese Beobachtungen zum Einen auf die ungleiche Verteilung der Klassen, die ein gutes Trainieren des Modells erschwert. Es kann angenommen werden, dass die Modelle für kleinere Klassen stark overfitten.    
 Zum Anderen ist ersichtlich, dass die gewählten Features alleine nicht ausreichen, um eine so feine Unterteilung vorzunehmen. Selbst für einen Menschen kann eine derartige Unterteilung schwer sein, weshalb dies ein komplexeres Problem ergibt.
 
 6 Bewertung der Ergebnisse
 -------
-Insgesamt ließ sich die Zielsetzung der Klassifizierung von Texten in Textarten erfüllen. Es wurden zudem Probleme offengelegt, die mit feineren Klassen auftreten und durch verschiedene Dateiformatierungen und -encodings entstehen.
-
-Während eine Klassifizierung in grobe Klassen (hier "report", "drama", "epic" und "lyrik/poetry") gut funktioniert (Precision, Recall & F-Measure über 0.9), ist eine Klassifizierung in weitere Unterklassen dieser Hauptkategorien mit größeren Schwierigkeiten verbunden. Das kann zum Einen an der nicht ausgereiften, vorangehenden Normierung der Texte liegen. Paragraphen werden nicht erkannt und auch die Erkennung von Satzgrenzen ist eher primitiv. 
+Insgesamt ließ sich die Zielsetzung der Klassifizierung von Texten in Textarten erfüllen. Es wurden zudem Probleme offengelegt, die mit feineren Klassen auftreten und durch verschiedene Dateiformatierungen und -encodings entstehen.  
+  
+Während eine Klassifizierung in grobe Klassen (hier "report", "drama", "epic" und "lyrik/poetry") gut funktioniert (Precision, Recall & F-Measure über 0.9), ist eine Klassifizierung in weitere Unterklassen dieser Hauptkategorien mit größeren Schwierigkeiten verbunden. Das kann zum Einen an der nicht ausgereiften, vorangehenden Normierung der Texte liegen. Paragraphen werden nicht erkannt und auch die Erkennung von Satzgrenzen ist eher primitiv.   
 Zum Anderen reichen die Features nicht aus, um derlei genaue Unterschiede zu erkennen, die teilweise vom Menschen schwer zu ermitteln sind und eventuell auch in der Annotierung nicht durchweg beachtet wurden. Hier würde eine bessere Datenbasis genauere Schlüsse über den Wert und die Schwachpunkte verschiedener Features zulassen.  
+  
 Im Allgemeinen lässt sich vermuten, dass Features auf inhaltlicher Ebene bessere Ergebnisse erzielen könnten. Solche könnten terminologische Beschreibungen, rhetorische Mittel und Stimmungsanalysen anhand der Wortwahl umfassen.
-
+  
 Die Features, die im Groben erfolgreich waren, beweisen zudem verschiedene Qualitäten. Eine Filterung der Features in Weka ('AttributeSelection' mit Standardeinstellungen) zeigt auf, dass im Besonderen die folgenden Features entscheidend sind:
 
     NE_frequency
@@ -448,10 +449,10 @@ Das 'Rhyme'-Feature ist offensichtlich noch nicht ausgereift genug, um eine auss
 7 Aussichten
 -------
 Eine Verbesserung der Klassifizierung könnte weiterhin mit größeren und ausgewogeneren Datenmengen erzielt werden. Diese sind allerdings meist schwierig zu finden, vorallem sobald eine Aufteilung in feinere Klassen erfolgen soll.  
-
+  
 Bei der Anwendung der Feature-Methoden fällt auf, dass einige Ergebnisse nicht immer wie erwartet ausfallen und somit eine Erweiterung benötigen:  
 u.a. der durchschnittliche Reimwert bei "poetry" ist vergleichsweise sehr niedrig, obwohl dieser Feature eigens für Gedichterkennung gedacht war. Dieser Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
-
+  
 Weitere Schritte wären u.a. eine Erweiterung der Feature-Liste (z.B. ein Terminologienvergleich), weitere Experimente und eine einfach zu bedienende Webanwendung.  
 Kombinationen dieses Projekts mit anderen Forschungsprojekten wären eine Überlegung wert.  
 
