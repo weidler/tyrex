@@ -158,14 +158,14 @@ Annahme: Im Deutschen treten häufiger lange Worte (wie z.B. Wortbedeutungsdisam
 Berechnet, wie unterschiedlich die Wortwahl im Text ist. Es wird die Zahl der einzigartigen Lemmata über die Gesamtzahl an Worten relativiert.  
 Annahme: In Gedichten ist die Wortwahl häufig abwechslungsreicher, in Dramen und Artikeln vermutlich weniger.  
 - *calcNEFrequency*  
-Berechnet das relative Vorkommen von Named Entities (NE).
-Annahme: In Gedichten  ....
+Berechnet das relative Vorkommen von Named Entities (NE).  
+Annahme: Eigennamen tauchen wahrscheinlicher in Texten der Klasse "report" auf als in "poetry", welche eher mehr Personalpronomen o.Ä. verwenden.  
 - *calcVerbFrequency*  
-Berechnet...  
-Annahme: z.B....  
+Berechnet das relative Vorkommen von Verben.  
+Annahme: Unterschiede zwischen Verbalstil und Nominalstil lassen auf Textarten schließen. Belletristische Texte werden oft von vielen Verben dominiert. (Nominalstil: siehe 'calcNounFrequency')  
 - *calcNounFrequency*  
-Berechnet...  
-Annahme: z.B....  
+Berechnet das relative Vorkommen von Nomen.  
+Annahme: Unterschiede zwischen Verbalstil und Nominalstil lassen auf Textarten schließen. Der Nominalstil ist in wissenschaftliche und fachsprachliche Werken stark verbreitet. (Verbalstil: siehe 'calcVerbFrequency')  
 
 Diese Features werden durch den FEA berechnet und vom ARFFBuilder in einer ARFF Datei zusammengefasst. Der folgende Ausschnitt zeigt einen Teil dieser ARFF Datei:
 
