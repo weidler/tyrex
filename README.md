@@ -14,22 +14,21 @@ Outline
 Goal of this project is an unsupervised classification of text types.  
 In the first step the algorithm normalises the given texts, with a so-called "Parser". After that it analyses the preprocessed data with an extensible set of features returning an ARFF-file with the results, which Weka uses to run algorithms with and to evaluate the outcome.  
 Further steps would be i.a. an expansion of features and data to differentiate more classes successfully.   
-  
+
 Requirements  
 ------------
 TyRex is written in *Python3*!  
   - https://pypi.python.org/pypi/html2text or ```pip install html2text``` (needs sudo)  
   - https://perso.limsi.fr/pointal/doku.php?id=dev:treetaggerwrapper or ```pip install treetaggerwrapper``` (needs sudo)  
   - http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/ the TreeTagger  
-  
+
 Usage  
 -----  
   * learn from data and create arff: ```bash learn.sh -s DIR -d DIR -m DIR -f FILE [options]```  
     (all directories need a trailing "/")
-  * run ```bash learn.sh -h``` to get further help and options  
-
+  * run ```bash learn.sh -h``` to get further help and options
   * get a files text type: ```bash tyrex.sh FILENAME```
-  
+
 Structure of the Single Program Parts - Preprocessing  
 ---------------------------------------------------------------
 **Parser**    
@@ -61,4 +60,4 @@ This class manages ARFF file construction out of FEA results.
 Class that takes a filepath and calculates the files normed text and vector.
 It then returns the most likely text type.
 
-See the comments in the files for more information regarding other methods of the Class.  
+See the comments in the files for more information regarding other methods of the Class and detailed descriptions.  
