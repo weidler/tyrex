@@ -48,15 +48,17 @@ Main Class, containing all the Methods that calc the Features.
 
 **Automized FEA**  
 *AutomizedFEA.py*
+Automatically applies FEA on a whole directory with some options.  
 
 Structure of the Single Program Parts - Postprocessing  
 ----------------------------------------------------------------
 **ARFFBuilder**  
 *ARFFBuilder.py*  
-Description  
+This class manages ARFF file construction out of FEA results.
 
 **Text Type Recognizer**  
 *recognizeTextType.py*  
-Description  
+Class that takes a filepath and calculates the files normed text and vector.
+It then returns the most likely text type.
 
 See the comments in the files for more information regarding other methods of the Class.  
