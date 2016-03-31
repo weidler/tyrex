@@ -18,7 +18,7 @@ Inhaltsverzeichnis
 1 Einführung     
 -------
 Das Ziel dieses Projektes ist eine automatische Klassifizierung von Texten nach ihrer Textart.
-Suchmaschinen könnten derlei Klassifizierer zur Kategorisierung und damit besseren Suche vorhandener Dokumente verwenden und auch andere Unternehmen würden von einem internen Kategoriensystem (mit Kategorien wie u.a. Rechnungen, Mitarbeitergespräche, Rezensionen, etc.) profitieren. Text-Analyse-Tools können Auskunft geben, in welchem Maß ein Text dem Standart seiner Kategorie entspricht.
+Suchmaschinen könnten derlei Klassifikatoren zur Kategorisierung und damit besseren Suche vorhandener Dokumente verwenden. Auch andere Unternehmen würden von einem internen Kategorisierungssystem (mit Kategorien wie u.a. Rechnungen, Mitarbeitergespräche, Rezensionen, etc.) profitieren. Text-Analyse-Tools können Auskunft geben, in welchem Maß ein Text dem Standard seiner Kategorie entspricht.
 
 Um dieses Ziel zu erreichen, müssen viele Daten gesammelt, aufbereitet und analysiert werden.  
 Features, die die Eigenschaften der unterschiedlichen Texte beschreiben, spielen eine wichtige Rolle bei der Genre-Klassifizierung.  
@@ -51,8 +51,7 @@ Der zweite Korpus enthält 11950 Dateien, die wie folgt in 12 feinere Klassen ei
     590 Erzählungen
 
 Die Texte werden durch den "Textnormierer" (Parser) aufbereitet, d.h. Satzzeichen werden durch Tags (\</\>) ersetzt und unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen entstehen.
-Durch die Normierung ist die Weiterverarbeitung der Daten einfacher und nützliche Metadaten werden durch die Tag-Setzung eingebunden. Ein Nachteil ist allerdings, dass uns externe Metadaten
-verloren gehen und der Nomierer viele Datentypen zu verarbeiten hat, wodurch eine optimale Normierung teilweise nicht möglich ist. Zudem ist der Normierer nicht ausgereift. Es gibt Probleme mit Satzgrenzen und einige Funktionalitäten wie Erkennung von direkter Rede oder Paragraphen ist noch nicht implementiert.
+Durch die Normierung ist die Weiterverarbeitung der Daten einfacher und nützliche Metadaten werden durch die Tag-Setzung eingebunden. Ein Nachteil ist allerdings, dass uns externe Metadaten verloren gehen und der Nomierer viele Datentypen zu verarbeiten hat, wodurch eine optimale Normierung teilweise nicht möglich ist. Zudem ist der Normierer nicht ausgereift. Es gibt Probleme mit Satzgrenzen und einige Funktionalitäten, wie Erkennung von direkter Rede oder Paragraphen, sind noch nicht implementiert.
 
 Ausschnitt in Rohform:
 
@@ -124,30 +123,31 @@ Zusätzlich lassen wir den TreeTagger die Texte bei der Featureberechnung annoti
 Das einfache Prinzip bisheriger Theorien zu diesem Thema lautet, aus Trainingsdaten Features zu extrahieren und sie an einen Klassifizierungsalgorithmus zu übergeben.  
 Z.B. Zelch und Engel (2005) haben Wort-Features aus ihren Texten extrahiert, Lexeme gebildet, lemmatisiert und diese Features dann mit einem 'SVM'-Algorithmus verarbeitet.  
 2015 beschrieb Ghaffari ebenfalls Vektoren aus extrahierten Worten, die er mit den 'SVM'-, 'Naive Bayes'- und 'Decision Tree'-Algorithmen zur Textklassifikation verwendet hatte.  
-Unsere Vorgehensweise ist (weitgehend) ohne Wortvektoren, mit mehr trivialen Features. Mit Weka lassen wir u.a. 'Naive Bayes', 'MultilayerPerceptron' und 'Decision Tree' über die Daten laufen.  
+Unsere Vorgehensweise ist (bisher) ohne Wortvektoren, mit mehr trivialen Features. Mit Weka lassen wir u.a. 'Naive Bayes', 'MultilayerPerceptron' und 'Decision Tree' über die Daten laufen.  
 
 ![architecture](tyrex_architecture.png?raw=true "Architecture")
 
 4 Features
 -------
-Im Folgenden werden alle bisher verwendeten Features aufgezählt und ihre Funktion grob beschrieben (für einen genauen Einblick kann der Code in "/fea/FeatureExtractionAlgorithms.py" nachvollzogen werden).  
+Im Folgenden werden alle bisher verwendeten Features aufgezählt und ihre Funktion grob beschrieben  
+(für einen genauen Einblick kann der Code in "/fea/FeatureExtractionAlgorithms.py" nachvollzogen werden):  
 - ***calcTextLength***  
 Berechnet die Länge der Texte und ignoriert dabei XML-Tags.  
-*Annahme*: z.B. epische Texte sind meist länger als Zeitungsartikel.  
+*Annahme*: Z.B. epische Texte sind meist länger als Zeitungsartikel.  
 - ***calcSentenceLengthAvg*** / ***calcSentenceLengthMax*** / ***calcSentenceLengthMin***    
 Berechnet die durschnittliche/maximalste/minimalste Anzahl von Wörtern aller Sätze.  
 *Annahme*: Während Dramen eher kurze Sätze (u.a. Regieanweisungen) beinhalten, sind epische Werke oder wissenschaftliche Arbeiten eventuell eher langsätzig.  
 - ***calcRhymeAvg***  
 Zählt alle Aufkommen von Zeilenendungen und berechnet einen Durschnitt der wiederkehrenden Endungen.  
 *Annahme*: Gedichte sollten mehr reimende Endungen enthalten als z.B. Zeitungsartikel.  
-*Revision*: Längere Texte besitzen mehr Endungen, somit eine erhöhte Chance auf gleiche Endungen, und Texte aus der 'Poetry'-Kategorie besitzen weniger reine Reime als gedacht; Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
+*Revision*: Längere Texte besitzen mehr Endungen, somit eine erhöhte Chance auf gleiche Endungen, und Texte aus der "poetry"-Kategorie besitzen weniger reine Reime als gedacht, eine Verbesserung des Features ist von Nöten (z.B. mit einer Schema-Prüfung).  
 - ***calcPhrasesPerParagraph***    
 Berechnet die Zahl der Sätze pro Abschnitt.  
-*Annahme*: Sollte zur besseren Abgrenzung von Gedichten zu anderen Textsorten dienen. Während in Gedichten Sätze häufig über einen gesamten Vers mit mehreren Umbrüchen gehen, tritt bei epischen Texten und Artikeln der erste Umbruch meist erst nach einen gesamten Absatz auf.  
+*Annahme*: Sollte zur besseren Abgrenzung von Gedichten zu anderen Textsorten dienen. Während in Gedichten Sätze häufig über einen gesamten Vers mit mehreren Umbrüchen gehen, tritt bei epischen Texten und Artikeln der erste Umbruch meist erst nach einem gesamten Absatz auf.  
 *Revision*: Leider vermindert die Strukturierung der Dateien den Wert des Features. Auch in epischen Texten sind Zeilen künstlich umgebrochen.
 - ***calcDigitFrequency***   
 Berechnet die durschnittliche Menge an Ziffern im Text.  
-*Annahme*: Wissenschaftliche Artikel benutzen meist Ziffern für Datumangaben, Forschungsergebnisse, etc., während epische und poetische Texte sehr wenige bis keine Ziffern verwenden.  
+*Annahme*: Wissenschaftliche Artikel benutzen meist Ziffern für Datumsangaben, Forschungsergebnisse, etc., während epische und poetische Texte sehr wenige bis keine Ziffern verwenden.  
 - ***calcPunctuationFrequency***  
 Berechnet das durchschnittliche Auftreten von Satzzeichen pro Text.  
 *Annahme*: Textarten unterscheiden sich in der Benutzung von Satzzeichen. So enthalten reports meist längere Sätze, die mit Kommata verschachtelt sind. Dramen haben für wörtliche Rede viele Doppelpunkte und kurze Sätze, die mehr Satzendzeichen hervorrufen.
@@ -201,7 +201,7 @@ Diese Features werden durch den FEA berechnet und vom ARFFBuilder in einer ARFF 
 
 5 Experimente und Evaluation  
 -------
-Es wurden Experimente auf den grob und fein gegliederten Datensätzen ausgeführt.  
+Es wurden Experimente auf den grob- und feingegliederten Datensätzen ausgeführt.  
 Als Baseline wird in beiden Fällen ein 'ZeroR'-Algorithmus verwendet, der alle Instanzen mit der häufigsten Klasse klassifiziert.
 Die Evaluation verwendet 'CrossValidation' mit 10 folds.
 
@@ -347,7 +347,7 @@ Als ***Baseline*** wurde auch hier 'ZeroR' gewählt. Die Baseline erreicht einen
 
 Insbesondere die durschnittliche *Precision* von 0.119 sollten bessere Algorithmen übertreffen können.
 
-Bei einem ***Experiment*** mit 7 verschiedenen Algorithmen hat sich ein 'MultiLayerPerceptron' als bester Classifier herausgestellt. Es wurden die folgenden Algorithmen verwendet:
+Bei einem ***Experiment*** mit 7 verschiedenen Algorithmen hat sich ein 'MultiLayerPerceptron' als bester Klassifikator herausgestellt. Es wurden die folgenden Algorithmen verwendet:
 
     (1) rules.ZeroR '' 48055541465867954
     (2) bayes.NaiveBayes '' 5995231201785697655
@@ -411,7 +411,7 @@ Nimmt man den 'MultiLayerPerceptron' genauer unter die Lupe, ergeben sich die fo
         0   93    0    0    0    1   15    0    0    1    1   17 |    k = ballade
         8  269    0    9    0   14  218    4    0   75    0  710 |    l = fabel
 
-Obwohl die erreichten Werte in *Precision*, *Recall* und *F-Measure* relativ hoch sind, zeigt ein Blick auf die detailliertere Auswertung, dass diese Evaluierungsmaße nur in den Klassen gute Werte erreichen, für die viele Instanzen verfügbar sind. Precision-Werte über 0.6 erreichen lediglich die 4 größten Klassen (lyrik, märchen, roman, fabel). Einen Recall-Wert über 0.6 erreichen lediglich die Klassen "lyrik", "tragödie", "märchen" und "roman". Auffällig sind besonders die hohen Recall-Werte von ~ 0.9 der Klassen "lyrik" und "roman".  
+Obwohl die erreichten Werte in *Precision*, *Recall* und *F-Measure* relativ hoch sind, zeigt ein Blick auf die detailliertere Auswertung, dass diese Evaluierungsmaße nur in den Klassen gute Werte erreichen, für die viele Instanzen verfügbar sind. Precision-Werte über 0.6 erreichen lediglich die 4 größten Klassen ("lyrik", "märchen", "roman", "fabel"). Einen Recall-Wert über 0.6 erreichen lediglich die Klassen "lyrik", "tragödie", "märchen" und "roman". Auffällig sind besonders die hohen Recall-Werte von ~ 0.9 der Klassen "lyrik" und "roman".  
 
 Zurückzuführen sind diese Beobachtungen zum Einen auf die ungleiche Verteilung der Klassen, die ein gutes Trainieren des Modells erschwert. Es kann angenommen werden, dass die Modelle für kleinere Klassen stark overfitten.    
 Zum Anderen ist ersichtlich, dass die gewählten Features alleine nicht ausreichen, um eine so feine Unterteilung vorzunehmen. Selbst für einen Menschen kann eine derartige Unterteilung schwer sein, weshalb dies ein komplexeres Problem ergibt.
@@ -420,9 +420,11 @@ Zum Anderen ist ersichtlich, dass die gewählten Features alleine nicht ausreich
 -------
 Insgesamt ließ sich die Zielsetzung der Klassifizierung von Texten in Textarten erfüllen. Es wurden zudem Probleme offengelegt, die mit feineren Klassen auftreten und durch verschiedene Dateiformatierungen und -encodings entstehen.
 
-Während eine Klassifizierung in grobe Klassen (hier report, drama, epic und lyrik/poetry) gut funktioniert (Precision, Recall & F-Measure über 0.9), ist eine Klassifizierung in weitere Unterklassen dieser Hauptkategorien mit größeren Schwierigkeiten verbunden. Das kann zum Einen an der nicht ausgereiften vorangehenden Normierung der Texte liegen. Paragraphen werden nicht erkannt und auch die Erkennung von Satzgrenzen ist eher primitiv. Zum Anderen reichen die Features nicht aus um derlei genaue Unterschiede zu erkennen, die teilweise vom Menschen schwer zu ermitteln sind und eventuell auch in der Annotierung nicht durchweg beachtet wurden. Hier würde eine bessere Datenbasis genauere Schlüsse über den Wert und die Schwachpunkte verschiedener Features zulassen. Im Allgemeinen lässt sich vermuten, dass Features auf inhaltlicher Ebene bessere Ergebnisse erzielen könnten. Solche könnten terminologische Beschreibungen, rhetorische Mittel und Stimmungsanalysen anhand der Wortwahl umfassen.
+Während eine Klassifizierung in grobe Klassen (hier "report", "drama", "epic" und "lyrik/poetry") gut funktioniert (Precision, Recall & F-Measure über 0.9), ist eine Klassifizierung in weitere Unterklassen dieser Hauptkategorien mit größeren Schwierigkeiten verbunden. Das kann zum Einen an der nicht ausgereiften, vorangehenden Normierung der Texte liegen. Paragraphen werden nicht erkannt und auch die Erkennung von Satzgrenzen ist eher primitiv. 
+Zum Anderen reichen die Features nicht aus, um derlei genaue Unterschiede zu erkennen, die teilweise vom Menschen schwer zu ermitteln sind und eventuell auch in der Annotierung nicht durchweg beachtet wurden. Hier würde eine bessere Datenbasis genauere Schlüsse über den Wert und die Schwachpunkte verschiedener Features zulassen.  
+Im Allgemeinen lässt sich vermuten, dass Features auf inhaltlicher Ebene bessere Ergebnisse erzielen könnten. Solche könnten terminologische Beschreibungen, rhetorische Mittel und Stimmungsanalysen anhand der Wortwahl umfassen.
 
-Die Features, die im groben erfolgreich waren, beweisen zudem verschiedene Qualität. Eine Filterung der Features in Weka (AttributeSelection mit Standardeinstellungen) zeigt auf, dass im Besonderen die folgenden Features entscheidend sind:
+Die Features, die im Groben erfolgreich waren, beweisen zudem verschiedene Qualitäten. Eine Filterung der Features in Weka ('AttributeSelection' mit Standardeinstellungen) zeigt auf, dass im Besonderen die folgenden Features entscheidend sind:
 
     NE_frequency
     word_variance
@@ -435,13 +437,13 @@ Die Features, die im groben erfolgreich waren, beweisen zudem verschiedene Quali
     verb_frequency
     word_length_average
 
-damit wurden folgende Features herausgefiltert:
+Damit wurden folgende Features herausgefiltert:
 
     rhyme_average
     sentence_length_max
     sentence_length_avg
 
-Das Rhyme Feature ist offensichtlich noch nicht ausgereift genug um eine ausschlaggebende Aussage zu treffen. Die Features zur Satzlänge sind wohl zu einem gewissen Grad redundant. Warum die Länge des kürzesten Satzes relevanter ist als die des längstens, bedarf weiterer Analysen. Grund hierfür kann aber auch die Normierung sein und ihré Probleme mit Satzgrenzen.
+Das 'Rhyme'-Feature ist offensichtlich noch nicht ausgereift genug, um eine ausschlaggebende Aussage zu treffen. Die Features zur Satzlänge sind wohl zu einem gewissen Grad redundant. Warum die Länge des kürzesten Satzes relevanter ist, als die des längstens, bedarf weiterer Analysen. Grund hierfür kann aber auch die Normierung und ihre Probleme mit Satzgrenzen sein.
 
 7 Aussichten
 -------
