@@ -35,11 +35,20 @@ Der erste Korpus umfasst 1261 Dateien, die wie folgt in 4 grobe Klassen untertei
     302 Artikel
     446 Gedichte
 
-Der zweite Korpus enthält 11950 Dateien, die wie folgt in x feinere Klassen eingeteilt wurden:
+Der zweite Korpus enthält 11950 Dateien, die wie folgt in 12 feinere Klassen eingeteilt wurden:
 
-	efwefwe
-	fwefwfe
-	wefwff
+    4123 Lyrik
+    105 Dramen
+    134 Lustspiele
+    20 Essays
+    482 Tragödien
+    348 Novelle
+    1746 Märchen
+    203 Sonette
+    1307 Fabeln
+    2763 Romane
+    128 Balladen
+    590 Erzählungen
 
 Die Texte werden durch den "Textnormierer" (Parser) aufbereitet, d.h. Satzzeichen werden durch Tags (\</\>) ersetzt und unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen entstehen.
 Durch die Normierung ist die Weiterverarbeitung der Daten einfacher und nützliche Metadaten werden durch die Tag-Setzung eingebunden. Ein Nachteil ist allerdings, dass uns externe Metadaten
@@ -127,14 +136,13 @@ Berechnet die Länge der Texte und ignoriert dabei XML-Tags.
 Annahme: z.B. epische Texte sind meist länger als Zeitungsartikel.  
 - *calcSentenceLengthAvg* / *calcSentenceLengthMax* / *calcSentenceLengthMin*    
 Berechnet die durschnittliche/maximalste/minimalste Anzahl von Wörtern aller Sätze.  
-Annahme: z.B. während Dramen eher kurze Sätze (u.a. Regieanweisungen) beinhalten, sind epische Werke oder wissenschaftliche Arbeiten eventuell eher langsätzig.  
+Annahme: Während Dramen eher kurze Sätze (u.a. Regieanweisungen) beinhalten, sind epische Werke oder wissenschaftliche Arbeiten eventuell eher langsätzig.  
 - *calcRhymeAvg*  
 Zählt alle Aufkommen von Zeilenendungen und berechnet einen Durschnitt der wiederkehrenden Endungen.  
-Annahme: z.B. sollten Gedichte mehr reimende Endungen enthalten als Zeitungsartikel.  
-Revision: längere Texte besitzen mehr Endungen, somit eine erhöhte Chance auf gleiche Endungen, und Texte aus der 'Poetry'-Kategorie besitzen weniger reine Reime als gedacht;  
-Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
+Annahme: Gedichte sollten mehr reimende Endungen enthalten als z.B. Zeitungsartikel.  
+Revision: Längere Texte besitzen mehr Endungen, somit eine erhöhte Chance auf gleiche Endungen, und Texte aus der 'Poetry'-Kategorie besitzen weniger reine Reime als gedacht; Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
 - *calcPhrasesPerParagraph*    
-Berechnet die Zahl der Sätze pro Zeile.  
+Berechnet die Zahl der Sätze pro Abschnitt.  
 Annahme: Sollte zur besseren Abgrenzung von Gedichten zu anderen Textsorten dienen. Während in Gedichten Sätze häufig über einen gesamten Vers mit mehreren Umbrüchen gehen, tritt bei epischen Texten und Artikeln
 der erste Umbruch meist erst nach einen gesamten Absatz auf.  
 Revision: Leider vermindert die Strukturierung der Dateien den Wert des Features. Auch in epischen Texten sind Zeilen künstlich umgebrochen.
@@ -440,8 +448,8 @@ Das Rhyme Feature ist offensichtlich noch nicht ausgereift genug um eine ausschl
 -------
 Eine Verbesserung der Klassifizierung könnte weiterhin mit größeren und ausgewogeneren Datenmengen erzielt werden. Diese sind allerdings meist schwierig zu finden, vorallem sobald eine Aufteilung in feinere Klassen erfolgen soll.  
 
-Bei der Anwendung der Feature-Methoden fällt auf, dass einige Ergebnisse nicht immer wie erwartet ausfallen:  
-u.a. der durchschnittliche Reimwert bei "poetry" ist vergleichsweise sehr niedrig, obwohl dieser Feature eigens für Gedichterkennung gedacht war.  
+Bei der Anwendung der Feature-Methoden fällt auf, dass einige Ergebnisse nicht immer wie erwartet ausfallen und somit eine Erweiterung benötigen:  
+u.a. der durchschnittliche Reimwert bei "poetry" ist vergleichsweise sehr niedrig, obwohl dieser Feature eigens für Gedichterkennung gedacht war. Dieser Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
 
 Weitere Schritte wären u.a. eine Erweiterung der Feature-Liste (z.B. ein Terminologienvergleich), weitere Experimente und eine einfach zu bedienende Webanwendung.  
 Kombinationen dieses Projekts mit anderen Forschungsprojekten wären eine Überlegung wert.  
