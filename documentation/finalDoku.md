@@ -131,41 +131,41 @@ Unsere Vorgehensweise ist (weitgehend) ohne Wortvektoren, mit mehr trivialen Fea
 4 Features
 -------
 Im Folgenden werden alle bisher verwendeten Features aufgezählt und ihre Funktion grob beschrieben (für einen genauen Einblick kann der Code in "/fea/FeatureExtractionAlgorithms.py" nachvollzogen werden).  
-- *calcTextLength*  
+- ***calcTextLength***  
 Berechnet die Länge der Texte und ignoriert dabei XML-Tags.  
-Annahme: z.B. epische Texte sind meist länger als Zeitungsartikel.  
-- *calcSentenceLengthAvg* / *calcSentenceLengthMax* / *calcSentenceLengthMin*    
+*Annahme*: z.B. epische Texte sind meist länger als Zeitungsartikel.  
+- ***calcSentenceLengthAvg*** / ***calcSentenceLengthMax*** / ***calcSentenceLengthMin***    
 Berechnet die durschnittliche/maximalste/minimalste Anzahl von Wörtern aller Sätze.  
-Annahme: Während Dramen eher kurze Sätze (u.a. Regieanweisungen) beinhalten, sind epische Werke oder wissenschaftliche Arbeiten eventuell eher langsätzig.  
-- *calcRhymeAvg*  
+*Annahme*: Während Dramen eher kurze Sätze (u.a. Regieanweisungen) beinhalten, sind epische Werke oder wissenschaftliche Arbeiten eventuell eher langsätzig.  
+- ***calcRhymeAvg***  
 Zählt alle Aufkommen von Zeilenendungen und berechnet einen Durschnitt der wiederkehrenden Endungen.  
-Annahme: Gedichte sollten mehr reimende Endungen enthalten als z.B. Zeitungsartikel.  
-Revision: Längere Texte besitzen mehr Endungen, somit eine erhöhte Chance auf gleiche Endungen, und Texte aus der 'Poetry'-Kategorie besitzen weniger reine Reime als gedacht; Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
-- *calcPhrasesPerParagraph*    
+*Annahme*: Gedichte sollten mehr reimende Endungen enthalten als z.B. Zeitungsartikel.  
+*Revision*: Längere Texte besitzen mehr Endungen, somit eine erhöhte Chance auf gleiche Endungen, und Texte aus der 'Poetry'-Kategorie besitzen weniger reine Reime als gedacht; Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
+- ***calcPhrasesPerParagraph***    
 Berechnet die Zahl der Sätze pro Abschnitt.  
-Annahme: Sollte zur besseren Abgrenzung von Gedichten zu anderen Textsorten dienen. Während in Gedichten Sätze häufig über einen gesamten Vers mit mehreren Umbrüchen gehen, tritt bei epischen Texten und Artikeln der erste Umbruch meist erst nach einen gesamten Absatz auf.  
-Revision: Leider vermindert die Strukturierung der Dateien den Wert des Features. Auch in epischen Texten sind Zeilen künstlich umgebrochen.
-- *calcDigitFrequency*   
+*Annahme*: Sollte zur besseren Abgrenzung von Gedichten zu anderen Textsorten dienen. Während in Gedichten Sätze häufig über einen gesamten Vers mit mehreren Umbrüchen gehen, tritt bei epischen Texten und Artikeln der erste Umbruch meist erst nach einen gesamten Absatz auf.  
+*Revision*: Leider vermindert die Strukturierung der Dateien den Wert des Features. Auch in epischen Texten sind Zeilen künstlich umgebrochen.
+- ***calcDigitFrequency***   
 Berechnet die durschnittliche Menge an Ziffern im Text.  
-Annahme: Wissenschaftliche Artikel benutzen meist Ziffern für Datumangaben, Forschungsergebnisse, etc., während epische und poetische Texte sehr wenige bis keine Ziffern verwenden.  
-- *calcPunctuationFrequency*  
+*Annahme*: Wissenschaftliche Artikel benutzen meist Ziffern für Datumangaben, Forschungsergebnisse, etc., während epische und poetische Texte sehr wenige bis keine Ziffern verwenden.  
+- ***calcPunctuationFrequency***  
 Berechnet das durchschnittliche Auftreten von Satzzeichen pro Text.  
-Annahme: ...  
-- *calcWordLengthAvg*  
+*Annahme*: ...  
+- ***calcWordLengthAvg***  
 Berechnet die durschnittliche Anzahl von Buchstaben/Zeichen pro Wort, d.h. die Länge.    
-Annahme: Im Deutschen treten häufiger lange Worte (wie z.B. Wortbedeutungsdisambiguierungsalgorithmus oder Donaudampfschiffahrtsgesellschaftskapitän) in Wissenschaftsarbeiten und Reportagen auf, als in "epic" oder "poetry". Wobei letztere auch ab und zu lange Wortkreationen und -spielereien beinhalten.
-- *calcWordVariance*  
+*Annahme*: Im Deutschen treten häufiger lange Worte (wie z.B. Wortbedeutungsdisambiguierungsalgorithmus oder Donaudampfschiffahrtsgesellschaftskapitän) in Wissenschaftsarbeiten und Reportagen auf, als in "epic" oder "poetry". Wobei letztere auch ab und zu lange Wortkreationen und -spielereien beinhalten.
+- ***calcWordVariance***  
 Berechnet, wie unterschiedlich die Wortwahl im Text ist. Es wird die Zahl der einzigartigen Lemmata über die Gesamtzahl an Worten relativiert.  
-Annahme: In Gedichten ist die Wortwahl häufig abwechslungsreicher, in Dramen und Artikeln vermutlich weniger.  
-- *calcNEFrequency*  
+*Annahme*: In Gedichten ist die Wortwahl häufig abwechslungsreicher, in Dramen und Artikeln vermutlich weniger.  
+- ***calcNEFrequency***  
 Berechnet das relative Vorkommen von Named Entities (NE).  
-Annahme: Eigennamen tauchen wahrscheinlicher in Texten der Klasse "report" auf als in "poetry", welche eher mehr Personalpronomen o.Ä. verwenden.  
-- *calcVerbFrequency*  
+*Annahme*: Eigennamen tauchen wahrscheinlicher in Texten der Klasse "report" auf als in "poetry", welche eher mehr Personalpronomen o.Ä. verwenden.  
+- ***calcVerbFrequency***  
 Berechnet das relative Vorkommen von Verben.  
-Annahme: Unterschiede zwischen Verbalstil und Nominalstil lassen auf Textarten schließen. Belletristische Texte werden oft von vielen Verben dominiert. (Nominalstil: siehe 'calcNounFrequency')  
-- *calcNounFrequency*  
+*Annahme*: Unterschiede zwischen Verbalstil und Nominalstil lassen auf Textarten schließen. Belletristische Texte werden oft von vielen Verben dominiert. (Nominalstil: siehe 'calcNounFrequency')  
+- ***calcNounFrequency***  
 Berechnet das relative Vorkommen von Nomen.  
-Annahme: Unterschiede zwischen Verbalstil und Nominalstil lassen auf Textarten schließen. Der Nominalstil ist in wissenschaftliche und fachsprachliche Werken stark verbreitet. (Verbalstil: siehe 'calcVerbFrequency')  
+*Annahme*: Unterschiede zwischen Verbalstil und Nominalstil lassen auf Textarten schließen. Der Nominalstil ist in wissenschaftliche und fachsprachliche Werken stark verbreitet. (Verbalstil: siehe 'calcVerbFrequency')  
 
 Diese Features werden durch den FEA berechnet und vom ARFFBuilder in einer ARFF Datei zusammengefasst. Der folgende Ausschnitt zeigt einen Teil dieser ARFF Datei:
 
