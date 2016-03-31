@@ -1,0 +1,8 @@
+\contentsline {subsection}{1 Einf\IeC {\"u}hrung}{1}{section*.3}
+\contentsline {subsection}{2 Daten}{1}{section*.4}
+\contentsline {subsection}{3 Struktur}{3}{section*.5}
+\contentsline {subsection}{4 Features}{5}{section*.6}
+\contentsline {subsection}{5 Experimente und Evaluation}{6}{section*.7}
+\contentsline {subsection}{6 Bewertung der Ergebnisse}{11}{section*.8}
+\contentsline {subsection}{7 Aussichten}{12}{section*.9}
+\contentsline {subsection}{8 Literatur}{12}{section*.10}

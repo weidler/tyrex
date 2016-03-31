@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.30)  30 MAR 2016 18:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.3.30)  31 MAR 2016 15:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -134,6 +134,35 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+)
+\lst@mode=\count99
+\lst@gtempboxa=\box28
+\lst@token=\toks21
+\lst@length=\count100
+\lst@currlwidth=\dimen112
+\lst@column=\count101
+\lst@pos=\count102
+\lst@lostspace=\dimen113
+\lst@width=\dimen114
+\lst@newlines=\count103
+\lst@lineno=\count104
+\lst@maxwidth=\dimen115
+
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2014/09/06 1.5e (Carsten Heinz)
+\c@lstnumber=\count105
+\lst@skipnumbers=\count106
+\lst@framebox=\box29
+)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2014/09/06 1.5e listings configuration
+))
+Package: listings 2014/09/06 1.5e (Carsten Heinz)
+
 (/usr/share/texlive/texmf-dist/tex/latex/base/fixltx2e.sty
 Package: fixltx2e 2014/09/29 v1.1s fixes to LaTeX
 LaTeX Info: Redefining \em on input line 430.
@@ -149,8 +178,8 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
 Package: inputenc 2014/04/30 v1.2b Input encoding file
-\inpenc@prehook=\toks20
-\inpenc@posthook=\toks21
+\inpenc@prehook=\toks22
+\inpenc@posthook=\toks23
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
 File: utf8.def 2014/09/29 v1.1m UTF-8 support for inputenc
@@ -525,17 +554,12 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype.sty
 Package: microtype 2013/05/23 v2.5a Micro-typographical refinements (RS)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
-\KV@toks@=\toks22
-)
-\MT@toks=\toks23
-\MT@count=\count99
+\MT@toks=\toks24
+\MT@count=\count107
 LaTeX Info: Redefining \textls on input line 766.
-\MT@outer@kern=\dimen112
+\MT@outer@kern=\dimen116
 LaTeX Info: Redefining \textmicrotypecontext on input line 1285.
-\MT@listname@count=\count100
+\MT@listname@count=\count108
 
 (/usr/share/texlive/texmf-dist/tex/latex/microtype/microtype-pdftex.def
 File: microtype-pdftex.def 2013/05/23 v2.5a Definitions specific to pdftex (RS)
@@ -602,16 +626,16 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
-\@linkdim=\dimen113
-\Hy@linkcounter=\count101
-\Hy@pagecounter=\count102
+\@linkdim=\dimen117
+\Hy@linkcounter=\count109
+\Hy@pagecounter=\count110
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-\Hy@SavedSpaceFactor=\count103
+\Hy@SavedSpaceFactor=\count111
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -623,17 +647,17 @@ Package hyperref Info: Plain pages OFF on input line 4458.
 Package hyperref Info: Backreferencing OFF on input line 4463.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4688.
-\c@Hy@tempcnt=\count104
+\c@Hy@tempcnt=\count112
 
 (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip11
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
-\XeTeXLinkMargin=\dimen114
-\Fld@menulength=\count105
-\Field@Width=\dimen115
-\Fld@charsize=\dimen116
+\XeTeXLinkMargin=\dimen118
+\Fld@menulength=\count113
+\Field@Width=\dimen119
+\Fld@charsize=\dimen120
 Package hyperref Info: Hyper figures OFF on input line 6295.
 Package hyperref Info: Link nesting OFF on input line 6300.
 Package hyperref Info: Hyper index ON on input line 6303.
@@ -643,17 +667,17 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
 LaTeX Info: Redefining \pageref on input line 6369.
-\Hy@abspage=\count106
-\c@Item=\count107
-\c@Hfootnote=\count108
+\Hy@abspage=\count114
+\c@Item=\count115
+\c@Hfootnote=\count116
 )
 
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
-\Fld@listcount=\count109
-\c@bookmark@seq@number=\count110
+\Fld@listcount=\count117
+\c@bookmark@seq@number=\count118
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
 Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
@@ -662,14 +686,14 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip47
 )
-Package hyperref Info: Option `unicode' set `true' on input line 27.
+Package hyperref Info: Option `unicode' set `true' on input line 28.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2012/11/06 v6.83m Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Option `breaklinks' set `true' on input line 27.
+Package hyperref Info: Option `breaklinks' set `true' on input line 28.
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
@@ -687,10 +711,10 @@ Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-\Gread@gobject=\count111
+\Gread@gobject=\count119
 ))
-\Gin@req@height=\dimen117
-\Gin@req@width=\dimen118
+\Gin@req@height=\dimen121
+\Gin@req@width=\dimen122
 )
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grffile.sty
 Package: grffile 2012/04/05 v1.16 Extended file name support for graphics (HO)
@@ -701,38 +725,54 @@ Package grffile Info: \Gin@ii of package `graphicx' fixed on input line 486.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2001/04/09 non-zero parskip adjustments
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+\Gm@cnth=\count120
+\Gm@cntv=\count121
+\c@Gm@tempcnt=\count122
+\Gm@bindingoffset=\dimen123
+\Gm@wd@mp=\dimen124
+\Gm@odd@mp=\dimen125
+\Gm@even@mp=\dimen126
+\Gm@layoutwidth=\dimen127
+\Gm@layoutheight=\dimen128
+\Gm@layouthoffset=\dimen129
+\Gm@layoutvoffset=\dimen130
+\Gm@dimlist=\toks25
 ) (./doku.aux)
 \openout1 = `doku.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 60.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 63.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 63.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 60.
-LaTeX Font Info:    ... okay on input line 60.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 60.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 63.
 
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \microtypecontext on input line 60.
+\c@lstlisting=\count123
+LaTeX Info: Redefining \microtypecontext on input line 63.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
@@ -747,8 +787,8 @@ Package microtype Info: No adjustment of character kerning.
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
 (RS)
 )
-\AtBeginShipoutBox=\box28
-Package hyperref Info: Link coloring OFF on input line 60.
+\AtBeginShipoutBox=\box30
+Package hyperref Info: Link coloring OFF on input line 63.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -756,11 +796,11 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count112
+\c@section@level=\count124
 )
-LaTeX Info: Redefining \ref on input line 60.
-LaTeX Info: Redefining \pageref on input line 60.
-LaTeX Info: Redefining \nameref on input line 60.
+LaTeX Info: Redefining \ref on input line 63.
+LaTeX Info: Redefining \pageref on input line 63.
+LaTeX Info: Redefining \nameref on input line 63.
 
 (./doku.out) (./doku.out)
 \@outlinefile=\write3
@@ -769,17 +809,17 @@ LaTeX Info: Redefining \nameref on input line 60.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count113
-\scratchdimen=\dimen119
-\scratchbox=\box29
-\nofMPsegments=\count114
-\nofMParguments=\count115
-\everyMPshowfont=\toks24
-\MPscratchCnt=\count116
-\MPscratchDim=\dimen120
-\MPnumerator=\count117
-\makeMPintoPDFobject=\count118
-\everyMPtoPDFconversion=\toks25
+\scratchcounter=\count125
+\scratchdimen=\dimen131
+\scratchbox=\box31
+\nofMPsegments=\count126
+\nofMParguments=\count127
+\everyMPshowfont=\toks26
+\MPscratchCnt=\count128
+\MPscratchDim=\dimen132
+\MPnumerator=\count129
+\makeMPintoPDFobject=\count130
+\everyMPtoPDFconversion=\toks27
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -795,627 +835,240 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Underfull \hbox (badness 10000) in paragraph at lines 75--77
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(86.72377pt, 440.84746pt, 86.72377pt)
+* v-part:(T,H,B)=(86.72377pt, 621.52245pt, 86.72377pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=440.84746pt
+* \textheight=621.52245pt
+* \oddsidemargin=14.45378pt
+* \evensidemargin=14.45378pt
+* \topmargin=-22.54622pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
- []
+(./doku.toc
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 1.
+ (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 1.
 
+(/usr/share/texmf/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 77--79
+(/usr/share/texmf/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 1.
 
- []
+(/usr/share/texmf/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 1.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 1.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 1.
+LaTeX Font Info:    Try loading font information for U+msa on input line 1.
 
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 81--83
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+(/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+))
+\tf@toc=\write4
+\openout4 = `doku.toc'.
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--89
-
- []
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 119.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 103.
 
 
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
+) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 172
+.
+ (/usr/share/texmf/tex/latex/lm/ts1lmtt.fd
+File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [2]
 <../tyrex_architecture.png, id=59, 1140.26pt x 843.15pt>
 File: ../tyrex_architecture.png Graphic file (type png)
 
 <use ../tyrex_architecture.png>
-Package pdftex.def Info: ../tyrex_architecture.png used on input line 167.
-(pdftex.def)             Requested size: 344.98627pt x 255.09547pt.
- [2] [3 <../tyrex_architecture.png>] [4]
-Overfull \hbox (862.49649pt too wide) in paragraph at lines 262--262
+Package pdftex.def Info: ../tyrex_architecture.png used on input line 228.
+(pdftex.def)             Requested size: 440.83705pt x 325.97105pt.
+ [3] [4 <../tyrex_architecture.png>] [5]
+Overfull \hbox (47.40112pt too wide) in paragraph at lines 344--344
 []\T1/lmtt/m/n/10 0.0020035491441982942, 0.35643988018827555, 0.000467726847521
-0477, 0.023241170072700212, 0.6939890710382514, 0.03014801173180547, 0.61538461
-53846154, 17.826771653543307, 89, 3, 2317, 0.13377983857118325, 0.8260315078769
-692, poetry[] 
+0477, 0.023241170072700212,  ...[] 
  []
 
 
-Overfull \hbox (563.24736pt too wide) in paragraph at lines 262--262
-[]\T1/lmtt/m/n/10 0.0, 0.7014925373134329, 0.0, 0.02564102564102564, 1.16666666
-66666667, 0.022988505747126436, 0.0, 9.142857142857142, 18, 1, 63, 0.1321499013
-8067062, 0.8297872340425532, epic[] 
- []
-
-
-Overfull \hbox (746.99683pt too wide) in paragraph at lines 262--262
-[]\T1/lmtt/m/n/10 0.004719101123595505, 0.4606205250596659, 0.0, 0.019325842696
-629212, 1.5223880597014925, 0.032768675367953345, 0.5970149253731343, 4.4411764
-705882355, 9, 1, 416, 0.09415730337078651, 0.8248465149873601, drama[] 
- []
-
-
-Overfull \hbox (731.24687pt too wide) in paragraph at lines 262--262
-[]\T1/lmtt/m/n/10 0.0148861646234676, 0.7090909090909091, 0.0, 0.02189141856392
-2942, 1.7222222222222223, 0.03402854006586169, 0.1111111111111111, 3.9677419354
-83871, 17, 1, 106, 0.09632224168126094, 0.8174962292609351, drama[] 
- []
-
-
-Overfull \hbox (662.99707pt too wide) in paragraph at lines 262--262
+Overfull \hbox (10.65123pt too wide) in paragraph at lines 344--344
 []\T1/lmtt/m/n/10 0.015503875968992248, 0.7073170731707317, 0.03947368421052631
-4, 0.020671834625323, 2.2857142857142856, 0.03827751196172249, 0.0, 5.6875, 18,
- 1, 82, 0.10594315245478036, 0.835030549898167, epic[] 
+4, 0.020671834625323, ...[] 
  []
 
 
-Overfull \hbox (594.74727pt too wide) in paragraph at lines 262--262
-[]\T1/lmtt/m/n/10 0.006345177664974619, 0.64, 0.03225806451612903, 0.0317258883
-24873094, 1.75, 0.03201219512195122, 0.0, 7.571428571428571, 26, 1, 100, 0.1269
-0355329949238, 0.8156424581005587, epic[] 
- []
-
-
-Overfull \hbox (694.49698pt too wide) in paragraph at lines 262--262
-[]\T1/lmtt/m/n/10 0.0023745918670228555, 0.6093023255813953, 0.0, 0.02938557435
-4407838, 0.4594594594594595, 0.02661064425770308, 0.19444444444444445, 24.0, 10
-2, 4, 428, 0.12763431285247848, 0.8395340097707629, poetry[] 
- []
-
-
-Overfull \hbox (752.24681pt too wide) in paragraph at lines 262--262
+Overfull \hbox (10.65123pt too wide) in paragraph at lines 344--344
 []\T1/lmtt/m/n/10 0.00281483294578387, 0.432661717921527, 0.012987012987012988,
- 0.02753640925223351, 0.6415094339622641, 0.019772071948372924, 0.5, 13.4411764
-70588236, 33, 1, 932, 0.11540815077713866, 0.8539696833258292, report[] 
+ 0.02753640925223351, ...[] 
  []
 
-
-Overfull \hbox (521.24748pt too wide) in paragraph at lines 262--262
-[]\T1/lmtt/m/n/10 0.002178649237472767, 0.7575757575757576, 0.0, 0.026143790849
-673203, 0.6, 0.027989821882951654, 0.5, 21.0, 29, 15, 65, 0.1437908496732026, 0
-.8227146814404432, poetry[] 
- []
-
-[5]
-Overfull \hbox (1.499pt too wide) in paragraph at lines 305--305
-[]\T1/lmtt/m/n/10 Correctly Classified Instances         446               35.3
-688 %[] 
- []
-
-
-Overfull \hbox (1.499pt too wide) in paragraph at lines 305--305
-[]\T1/lmtt/m/n/10 Incorrectly Classified Instances       815               64.6
-312 %[] 
- []
-
-
-Overfull \hbox (85.49875pt too wide) in paragraph at lines 305--305
-[]               \T1/lmtt/m/n/10 TP Rate   FP Rate   Precision   Recall  F-Meas
-ure   ROC Area  Class[] 
- []
-
-
-Overfull \hbox (85.49875pt too wide) in paragraph at lines 305--305
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.495    epic[] 
- []
-
-
-Overfull \hbox (90.74873pt too wide) in paragraph at lines 305--305
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.498    drama[] 
- []
-
-
-Overfull \hbox (95.99872pt too wide) in paragraph at lines 305--305
+[6]
+Overfull \hbox (0.15126pt too wide) in paragraph at lines 391--391
 []                 \T1/lmtt/m/n/10 0         0          0         0         0  
         0.496    report[] 
  []
 
 
-Overfull \hbox (95.99872pt too wide) in paragraph at lines 305--305
+Overfull \hbox (0.15126pt too wide) in paragraph at lines 391--391
 []                 \T1/lmtt/m/n/10 1         1          0.354     1         0.5
 23      0.496    poetry[] 
  []
 
 
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 305--305
-[]\T1/lmtt/m/n/10 Weighted Avg.    0.354     0.354      0.125     0.354     0.1
-85      0.496[] 
- []
-
-LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 320
-.
-(/usr/share/texmf/tex/latex/lm/ts1lmtt.fd
-File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-Overfull \hbox (174.74849pt too wide) in paragraph at lines 320--320
-[]\T1/lmtt/m/n/10 (4) functions.MultilayerPerceptron \TS1/lmtt/m/n/10 '\T1/lmtt
-/m/n/10 -L 0.3 -M 0.2 -N 500 -V 0 -S 0 -E 20 -H a\TS1/lmtt/m/n/10 ' \T1/lmtt/m/
-n/10 -5990607817048210779[] 
+Overfull \hbox (5.39854pt too wide) in paragraph at lines 418--418
+[]\T1/lmtt/m/n/8 Dataset    (4) function | (1) rules (2) bayes (3) funct (5) fu
+nct (6) funct (7) lazy. (8) meta. (9) trees[] 
  []
 
 
-Overfull \hbox (48.74886pt too wide) in paragraph at lines 320--320
-[]\T1/lmtt/m/n/10 (5) functions.SimpleLogistic \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/1
-0 -I 0 -M 500 -H 50 -W 0.0\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 739771062630470505
-9[] 
+Overfull \hbox (5.40254pt too wide) in paragraph at lines 418--418
+[]\T1/lmtt/m/n/8 --------------------------------------------------------------
+-------------------------------------------[] 
  []
 
 
-Overfull \hbox (400.49783pt too wide) in paragraph at lines 320--320
-[]\T1/lmtt/m/n/10 (6) functions.SMO \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 -C 1.0 -L
- 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K \"functions.supportVector.PolyKernel -C 25
-0007 -E 1.0\"\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 -6585883636378691736[] 
+Overfull \hbox (5.38455pt too wide) in paragraph at lines 418--418
+[]\T1/lmtt/m/n/8 tyrex      (30)   92.10 |   35.37 *   85.80 *   91.65     92.0
+4     89.56 *   91.09     56.54 *   87.73 *[] 
  []
 
 
-Overfull \hbox (90.74873pt too wide) in paragraph at lines 320--320
-[]\T1/lmtt/m/n/10 (8) meta.AdaBoostM1 \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 -P 100 
--S 1 -I 10 -W trees.DecisionStump\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 -7378107808
-933117974[] 
- []
-
-[6]
-Overfull \hbox (284.99817pt too wide) in paragraph at lines 331--331
-[]\T1/lmtt/m/n/10 Dataset                   (4) function | (1) rules (2) bayes 
-(3) funct (5) funct (6) funct (7) lazy. (8) meta. (9) trees[] 
+Overfull \hbox (5.40254pt too wide) in paragraph at lines 418--418
+[]\T1/lmtt/m/n/8 --------------------------------------------------------------
+-------------------------------------------[] 
  []
 
 
-Overfull \hbox (284.99817pt too wide) in paragraph at lines 331--331
-[]\T1/lmtt/m/n/10 -------------------------------------------------------------
------------------------------------------------------------[] 
+Overfull \hbox (5.40254pt too wide) in paragraph at lines 418--418
+[]                \T1/lmtt/m/n/8 (v/ /*) |   (0/0/1)   (0/0/1)   (0/1/0)   (0/1
+/0)   (0/0/1)   (0/1/0)   (0/0/1)   (0/0/1)[] 
  []
 
-
-Overfull \hbox (284.99817pt too wide) in paragraph at lines 331--331
-[]\T1/lmtt/m/n/10 tyrex                     (30)   92.10 |   35.37 *   85.80 * 
-  91.65     92.04     89.56 *   91.09     56.54 *   87.73 *[] 
- []
-
-
-Overfull \hbox (284.99817pt too wide) in paragraph at lines 331--331
-[]\T1/lmtt/m/n/10 -------------------------------------------------------------
------------------------------------------------------------[] 
- []
-
-
-Overfull \hbox (284.99817pt too wide) in paragraph at lines 331--331
-[]                               \T1/lmtt/m/n/10 (v/ /*) |   (0/0/1)   (0/0/1) 
-  (0/1/0)   (0/1/0)   (0/0/1)   (0/1/0)   (0/0/1)   (0/0/1)[] 
- []
-
-
-Overfull \hbox (1.499pt too wide) in paragraph at lines 360--360
-[]\T1/lmtt/m/n/10 Correctly Classified Instances        1164               92.3
-077 %[] 
- []
-
-
-Overfull \hbox (1.499pt too wide) in paragraph at lines 360--360
-[]\T1/lmtt/m/n/10 Incorrectly Classified Instances        97                7.6
-923 %[] 
- []
-
-
-Overfull \hbox (85.49875pt too wide) in paragraph at lines 360--360
-[]               \T1/lmtt/m/n/10 TP Rate   FP Rate   Precision   Recall  F-Meas
-ure   ROC Area  Class[] 
- []
-
-
-Overfull \hbox (85.49875pt too wide) in paragraph at lines 360--360
-[]                 \T1/lmtt/m/n/10 0.82      0.03       0.854     0.82      0.8
-37      0.963    epic[] 
- []
-
-
-Overfull \hbox (90.74873pt too wide) in paragraph at lines 360--360
-[]                 \T1/lmtt/m/n/10 0.945     0.014      0.952     0.945     0.9
-48      0.981    drama[] 
- []
-
-
-Overfull \hbox (95.99872pt too wide) in paragraph at lines 360--360
+[7]
+Overfull \hbox (0.15126pt too wide) in paragraph at lines 449--449
 []                 \T1/lmtt/m/n/10 0.993     0.006      0.98      0.993     0.9
 87      0.999    report[] 
  []
 
 
-Overfull \hbox (95.99872pt too wide) in paragraph at lines 360--360
+Overfull \hbox (0.15126pt too wide) in paragraph at lines 449--449
 []                 \T1/lmtt/m/n/10 0.913     0.056      0.898     0.913     0.9
 05      0.973    poetry[] 
  []
 
-
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 360--360
-[]\T1/lmtt/m/n/10 Weighted Avg.    0.923     0.03       0.923     0.923     0.9
-23      0.979[] 
- []
-
-[7]
-Overfull \hbox (1.499pt too wide) in paragraph at lines 456--456
-[]\T1/lmtt/m/n/10 Correctly Classified Instances        4123               34.5
-05  %[] 
+[8] [9]
+Overfull \hbox (5.40125pt too wide) in paragraph at lines 580--580
+[]\T1/lmtt/m/n/10 Dataset    (1) rules.Ze | (2) bayes (3) funct (4) funct (5) f
+unct (6) trees (7) funct[] 
  []
 
 
-Overfull \hbox (1.499pt too wide) in paragraph at lines 456--456
-[]\T1/lmtt/m/n/10 Incorrectly Classified Instances      7826               65.4
-95  %[] 
- []
-
-[8]
-Overfull \hbox (85.49875pt too wide) in paragraph at lines 456--456
-[]               \T1/lmtt/m/n/10 TP Rate   FP Rate   Precision   Recall  F-Meas
-ure   ROC Area  Class[] 
- []
-
-
-Overfull \hbox (116.99866pt too wide) in paragraph at lines 456--456
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.5      erzaehlung[] 
- []
-
-
-Overfull \hbox (90.74873pt too wide) in paragraph at lines 456--456
-[]                 \T1/lmtt/m/n/10 1         1          0.345     1         0.5
-13      0.5      lyrik[] 
- []
-
-
-Overfull \hbox (106.49869pt too wide) in paragraph at lines 456--456
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.488    dramatik[] 
- []
-
-
-Overfull \hbox (111.74867pt too wide) in paragraph at lines 456--456
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.491    lustspiel[] 
- []
-
-
-Overfull \hbox (90.74873pt too wide) in paragraph at lines 456--456
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.5      essay[] 
- []
-
-
-Overfull \hbox (111.74867pt too wide) in paragraph at lines 456--456
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.498    tragoedie[] 
- []
-
-
-Overfull \hbox (106.49869pt too wide) in paragraph at lines 456--456
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.499    maerchen[] 
- []
-
-
-Overfull \hbox (101.2487pt too wide) in paragraph at lines 456--456
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.498    novelle[] 
- []
-
-
-Overfull \hbox (95.99872pt too wide) in paragraph at lines 456--456
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.495    sonett[] 
- []
-
-
-Overfull \hbox (90.74873pt too wide) in paragraph at lines 456--456
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.499    roman[] 
- []
-
-
-Overfull \hbox (101.2487pt too wide) in paragraph at lines 456--456
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.494    ballade[] 
- []
-
-
-Overfull \hbox (90.74873pt too wide) in paragraph at lines 456--456
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.499    fabel[] 
- []
-
-
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 456--456
-[]\T1/lmtt/m/n/10 Weighted Avg.    0.345     0.345      0.119     0.345     0.1
-77      0.499[] 
- []
-
-
-Overfull \hbox (48.74886pt too wide) in paragraph at lines 473--473
-[]\T1/lmtt/m/n/10 (3) functions.SimpleLogistic \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/1
-0 -I 0 -M 500 -H 50 -W 0.0\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 739771062630470505
-9[] 
- []
-
-
-Overfull \hbox (400.49783pt too wide) in paragraph at lines 473--473
-[]\T1/lmtt/m/n/10 (5) functions.SMO \TS1/lmtt/m/n/10 '\T1/lmtt/m/n/10 -C 1.0 -L
- 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K \"functions.supportVector.PolyKernel -C 25
-0007 -E 1.0\"\TS1/lmtt/m/n/10 ' \T1/lmtt/m/n/10 -6585883636378691736[] 
- []
-
-
-Overfull \hbox (174.74849pt too wide) in paragraph at lines 473--473
-[]\T1/lmtt/m/n/10 (7) functions.MultilayerPerceptron \TS1/lmtt/m/n/10 '\T1/lmtt
-/m/n/10 -L 0.3 -M 0.2 -N 500 -V 0 -S 0 -E 20 -H a\TS1/lmtt/m/n/10 ' \T1/lmtt/m/
-n/10 -5990607817048210779[] 
- []
-
-
-Overfull \hbox (179.99847pt too wide) in paragraph at lines 486--486
-[]\T1/lmtt/m/n/10 Dataset                   (1) rules.Ze | (2) bayes (3) funct 
-(4) funct (5) funct (6) trees (7) funct[] 
- []
-
-
-Overfull \hbox (179.99847pt too wide) in paragraph at lines 486--486
+Overfull \hbox (5.40125pt too wide) in paragraph at lines 580--580
 []\T1/lmtt/m/n/10 -------------------------------------------------------------
----------------------------------------[] 
+------------------------[] 
  []
 
 
-Overfull \hbox (179.99847pt too wide) in paragraph at lines 486--486
-[]\T1/lmtt/m/n/10 tyrex                      (9)   34.50 |   47.68 v   69.16 v 
-  69.20 v   65.86 v   70.39 v   71.62 v[] 
+Overfull \hbox (5.40125pt too wide) in paragraph at lines 580--580
+[]\T1/lmtt/m/n/10 tyrex       (9)   34.50 |   47.68 v   69.16 v   69.20 v   65.
+86 v   70.39 v   71.62 v[] 
  []
 
 
-Overfull \hbox (179.99847pt too wide) in paragraph at lines 486--486
+Overfull \hbox (5.40125pt too wide) in paragraph at lines 580--580
 []\T1/lmtt/m/n/10 -------------------------------------------------------------
----------------------------------------[] 
+------------------------[] 
  []
 
 
-Overfull \hbox (158.99854pt too wide) in paragraph at lines 486--486
-[]                           \T1/lmtt/m/n/10 (v/ /*) |   (1/0/0)   (1/0/0)   (1
-/0/0)   (1/0/0)   (1/0/0)   (1/0/0)[] 
+Overfull \hbox (5.40125pt too wide) in paragraph at lines 580--580
+[]                \T1/lmtt/m/n/10 (v/ /*) |   (1/0/0)   (1/0/0)   (1/0/0)   (1/
+0/0)   (1/0/0)   (1/0/0)[] 
  []
 
-[9]
-Overfull \hbox (1.499pt too wide) in paragraph at lines 535--535
-[]\T1/lmtt/m/n/10 Correctly Classified Instances        8567               71.6
-964 %[] 
- []
-
-
-Overfull \hbox (1.499pt too wide) in paragraph at lines 535--535
-[]\T1/lmtt/m/n/10 Incorrectly Classified Instances      3382               28.3
-036 %[] 
- []
-
-
-Overfull \hbox (85.49875pt too wide) in paragraph at lines 535--535
-[]               \T1/lmtt/m/n/10 TP Rate   FP Rate   Precision   Recall  F-Meas
-ure   ROC Area  Class[] 
- []
-
-
-Overfull \hbox (116.99866pt too wide) in paragraph at lines 535--535
-[]                 \T1/lmtt/m/n/10 0.134     0.012      0.374     0.134     0.1
-97      0.829    erzaehlung[] 
- []
-
-
-Overfull \hbox (90.74873pt too wide) in paragraph at lines 535--535
-[]                 \T1/lmtt/m/n/10 0.923     0.119      0.803     0.923     0.8
-59      0.952    lyrik[] 
- []
-
-
-Overfull \hbox (106.49869pt too wide) in paragraph at lines 535--535
-[]                 \T1/lmtt/m/n/10 0.19      0.003      0.364     0.19      0.2
-5       0.956    dramatik[] 
- []
-
-
-Overfull \hbox (111.74867pt too wide) in paragraph at lines 535--535
-[]                 \T1/lmtt/m/n/10 0.142     0.005      0.26      0.142     0.1
-84      0.933    lustspiel[] 
- []
-
-
-Overfull \hbox (90.74873pt too wide) in paragraph at lines 535--535
-[]                 \T1/lmtt/m/n/10 0.25      0          1         0.25      0.4
-        0.676    essay[] 
- []
-
-
-Overfull \hbox (111.74867pt too wide) in paragraph at lines 535--535
-[]                 \T1/lmtt/m/n/10 0.61      0.021      0.544     0.61      0.5
-75      0.941    tragoedie[] 
- []
-
-
-Overfull \hbox (106.49869pt too wide) in paragraph at lines 535--535
-[]                 \T1/lmtt/m/n/10 0.663     0.052      0.687     0.663     0.6
-74      0.915    maerchen[] 
- []
-
-
-Overfull \hbox (101.2487pt too wide) in paragraph at lines 535--535
-[]                 \T1/lmtt/m/n/10 0.023     0.003      0.19      0.023     0.0
-41      0.865    novelle[] 
- []
-
-
-Overfull \hbox (95.99872pt too wide) in paragraph at lines 535--535
-[]                 \T1/lmtt/m/n/10 0         0          0         0         0  
-        0.924    sonett[] 
- []
-
-
-Overfull \hbox (90.74873pt too wide) in paragraph at lines 535--535
-[]                 \T1/lmtt/m/n/10 0.893     0.118      0.696     0.893     0.7
-82      0.944    roman[] 
- []
-
-
-Overfull \hbox (101.2487pt too wide) in paragraph at lines 535--535
-[]                 \T1/lmtt/m/n/10 0.008     0          1         0.008     0.0
-16      0.856    ballade[] 
- []
-
-
-Overfull \hbox (90.74873pt too wide) in paragraph at lines 535--535
-[]                 \T1/lmtt/m/n/10 0.543     0.032      0.675     0.543     0.6
-02      0.901    fabel[] 
- []
-
-
-Overfull \hbox (43.49887pt too wide) in paragraph at lines 535--535
-[]\T1/lmtt/m/n/10 Weighted Avg.    0.717     0.081      0.677     0.717     0.6
-81      0.928[] 
- []
-
-
-Overfull \hbox (74.99878pt too wide) in paragraph at lines 535--535
-[]    \T1/lmtt/m/n/10 a    b    c    d    e    f    g    h    i    j    k    l 
-  <-- classified as[] 
- []
-
-
-Overfull \hbox (74.99878pt too wide) in paragraph at lines 535--535
-[]   \T1/lmtt/m/n/10 79   19    1   12    0   22   43    8    0  381    0   25 
-|    a = erzaehlung[] 
- []
-
-
-Overfull \hbox (48.74886pt too wide) in paragraph at lines 535--535
-[]    \T1/lmtt/m/n/10 9 3806   10   12    0   40   96    3    0   28    0  119 
-|    b = lyrik[] 
- []
-
-
-Overfull \hbox (64.49881pt too wide) in paragraph at lines 535--535
-[]    \T1/lmtt/m/n/10 1   20   20    4    0   54    0    0    0    5    0    1 
-|    c = dramatik[] 
- []
-
-
-Overfull \hbox (69.7488pt too wide) in paragraph at lines 535--535
-[]    \T1/lmtt/m/n/10 1   18   11   19    0   62    2    0    0   18    0    3 
-|    d = lustspiel[] 
- []
-
-
-Overfull \hbox (48.74886pt too wide) in paragraph at lines 535--535
-[]    \T1/lmtt/m/n/10 2    3    0    1    5    3    0    0    0    3    0    3 
-|    e = essay[] 
- []
-
-
-Overfull \hbox (69.7488pt too wide) in paragraph at lines 535--535
-[]    \T1/lmtt/m/n/10 5  110   11    9    0  294    1    2    0   46    0    4 
-|    f = tragoedie[] 
- []
-
-
-Overfull \hbox (64.49881pt too wide) in paragraph at lines 535--535
-[]   \T1/lmtt/m/n/10 23  164    2    3    0   13 1157    5    0  250    0  129 
-|    g = maerchen[] 
- []
-
-
-Overfull \hbox (59.24883pt too wide) in paragraph at lines 535--535
-[]   \T1/lmtt/m/n/10 16    2    0    0    0    4   38    8    0  273    0    7 
-|    h = novelle[] 
- []
-
-
-Overfull \hbox (53.99884pt too wide) in paragraph at lines 535--535
-[]    \T1/lmtt/m/n/10 1  197    0    0    0    0    2    0    0    0    0    3 
-|    i = sonett[] 
- []
-
-
-Overfull \hbox (48.74886pt too wide) in paragraph at lines 535--535
-[]   \T1/lmtt/m/n/10 66   36    0    4    0   33  113   12    0 2468    0   31 
-|    j = roman[] 
- []
-
-
-Overfull \hbox (59.24883pt too wide) in paragraph at lines 535--535
-[]    \T1/lmtt/m/n/10 0   93    0    0    0    1   15    0    0    1    1   17 
-|    k = ballade[] 
- []
-
-
-Overfull \hbox (48.74886pt too wide) in paragraph at lines 535--535
-[]    \T1/lmtt/m/n/10 8  269    0    9    0   14  218    4    0   75    0  710 
-|    l = fabel[] 
- []
-
-[10]
-Overfull \hbox (14.0439pt too wide) in paragraph at lines 577--590
-\T1/lmr/m/n/10 (-20) http://www.kdnuggets.com/2015/01/text-analysis-101-documen
-t-classification.html
- []
-
-
-Overfull \hbox (39.078pt too wide) in paragraph at lines 577--590
-\T1/lmr/m/n/10 (-20) http://wt.hs-augsburg.de/report/2005/Zelch_Christa_Engel_S
-tephan/Klassifikation.pdf
- []
-
-[11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 599.
- [12]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 599.
+[10] [11] [12]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 755.
+ [13]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 755.
  (./doku.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 599.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 599.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 755.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 755.
 Package rerunfilecheck Info: File `doku.out' has not changed.
-(rerunfilecheck)             Checksum: 4139F952D30E401BCC8C122D637F7811;1325.
+(rerunfilecheck)             Checksum: ABE8CE3212789287054686D8C649F82C;972.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 599.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 755.
  ) 
 Here is how much of TeX's memory you used:
- 11620 strings out of 494977
- 166366 string characters out of 6180183
- 268639 words of memory out of 5000000
- 14644 multiletter control sequences out of 15000+600000
- 30093 words of font info for 55 fonts, out of 8000000 for 9000
+ 13556 strings out of 494977
+ 194912 string characters out of 6180183
+ 299183 words of memory out of 5000000
+ 16486 multiletter control sequences out of 15000+600000
+ 57723 words of font info for 92 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 31i,5n,35p,244b,451s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/d
-vips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/shar
+ 31i,5n,35p,233b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/shar
 e/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texm
-f/fonts/type1/public/lm/lmtt10.pfb>
-Output written on doku.pdf (12 pages, 244791 bytes).
+m/lmbxi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmr5.pfb></usr/share/texmf/fonts/type1/public/lm/lmri1
+0.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf/font
+s/type1/public/lm/lmtt8.pfb></usr/share/texmf/fonts/type1/public/lm/lmtt9.pfb>
+Output written on doku.pdf (13 pages, 341536 bytes).
 PDF statistics:
- 143 PDF objects out of 1000 (max. 8388607)
- 120 compressed objects within 2 object streams
- 32 named destinations out of 1000 (max. 500000)
- 6230 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 157 PDF objects out of 1000 (max. 8388607)
+ 129 compressed objects within 2 object streams
+ 25 named destinations out of 1000 (max. 500000)
+ 12358 words of extra memory for PDF output out of 14400 (max. 10000000)
 

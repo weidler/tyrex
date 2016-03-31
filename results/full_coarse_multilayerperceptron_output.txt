@@ -1,0 +1,241 @@
+=== Run information ===
+
+Scheme:weka.classifiers.functions.MultilayerPerceptron -L 0.3 -M 0.2 -N 500 -V 0 -S 0 -E 20 -H a
+Relation:     tyrex
+Instances:    1261
+Attributes:   14
+              NE_frequency
+              word_variance
+              digit_frequency
+              noun_frequency
+              phrases_per_paragraph
+              punctuation_frequency
+              rhyme_average
+              sentence_length_avg
+              sentence_length_max
+              sentence_length_min
+              text_length
+              verb_frequency
+              word_length_average
+              class
+Test mode:4-fold cross-validation
+
+=== Classifier model (full training set) ===
+
+Sigmoid Node 0
+    Inputs    Weights
+    Threshold    -10.108930803040945
+    Node 4    -5.72064898777589
+    Node 5    11.313136880038362
+    Node 6    9.457390783666204
+    Node 7    3.7447568774066395
+    Node 8    -17.144109448143006
+    Node 9    2.4016827000244527
+    Node 10    -7.985596259442285
+    Node 11    -9.013047137374935
+Sigmoid Node 1
+    Inputs    Weights
+    Threshold    -8.67236113326221
+    Node 4    -7.83095679928019
+    Node 5    -11.067649863592179
+    Node 6    10.44593526049597
+    Node 7    7.012131220434952
+    Node 8    -6.74864829371224
+    Node 9    8.566803754243173
+    Node 10    -4.935456949653997
+    Node 11    -11.473111791714564
+Sigmoid Node 2
+    Inputs    Weights
+    Threshold    -5.61516886173863
+    Node 4    -7.694794045542695
+    Node 5    -4.728059631649424
+    Node 6    7.549546791155089
+    Node 7    -6.389503009174692
+    Node 8    10.658241712870316
+    Node 9    -4.74219536936909
+    Node 10    -3.4456697239481295
+    Node 11    -3.903432174882144
+Sigmoid Node 3
+    Inputs    Weights
+    Threshold    5.259648581855955
+    Node 4    7.226936402332995
+    Node 5    -5.961959316713447
+    Node 6    -12.477082370693974
+    Node 7    -5.048966244444515
+    Node 8    -14.226624389083057
+    Node 9    -11.2860545870324
+    Node 10    10.34755400453959
+    Node 11    12.905350983923254
+Sigmoid Node 4
+    Inputs    Weights
+    Threshold    -3.7234216355573637
+    Attrib NE_frequency    9.925172668934373
+    Attrib word_variance    16.96040343651332
+    Attrib digit_frequency    -15.00292857360813
+    Attrib noun_frequency    -2.413238689675498
+    Attrib phrases_per_paragraph    -3.6177702122001385
+    Attrib punctuation_frequency    7.990761187768168
+    Attrib rhyme_average    -1.518261484545655
+    Attrib sentence_length_avg    15.161336481358182
+    Attrib sentence_length_max    -6.365498503239367
+    Attrib sentence_length_min    0.9316869505155072
+    Attrib text_length    4.324227775812131
+    Attrib verb_frequency    0.12612615088164716
+    Attrib word_length_average    -0.9012353467609079
+Sigmoid Node 5
+    Inputs    Weights
+    Threshold    8.370057748704037
+    Attrib NE_frequency    -5.616893960564935
+    Attrib word_variance    1.5989854294603834
+    Attrib digit_frequency    22.965257104473586
+    Attrib noun_frequency    -6.435637645667633
+    Attrib phrases_per_paragraph    1.7795349733020376
+    Attrib punctuation_frequency    -0.42969787111611285
+    Attrib rhyme_average    -4.908166543882834
+    Attrib sentence_length_avg    7.539567931514785
+    Attrib sentence_length_max    -1.2306433665000538
+    Attrib sentence_length_min    -11.366273724709316
+    Attrib text_length    2.220015947362386
+    Attrib verb_frequency    17.568161637413954
+    Attrib word_length_average    6.0409149788635705
+Sigmoid Node 6
+    Inputs    Weights
+    Threshold    1.570458381166276
+    Attrib NE_frequency    14.897883818751929
+    Attrib word_variance    -10.181873939816743
+    Attrib digit_frequency    2.088751402274078
+    Attrib noun_frequency    -0.625734286989527
+    Attrib phrases_per_paragraph    -7.2802670284536415
+    Attrib punctuation_frequency    -3.1482548160958275
+    Attrib rhyme_average    0.17010405398258746
+    Attrib sentence_length_avg    -0.32325797288942965
+    Attrib sentence_length_max    -0.91385327178874
+    Attrib sentence_length_min    -5.223654214500947
+    Attrib text_length    -3.878201564749111
+    Attrib verb_frequency    -12.932369663488895
+    Attrib word_length_average    -0.4134882374282307
+Sigmoid Node 7
+    Inputs    Weights
+    Threshold    2.411554597656285
+    Attrib NE_frequency    -6.904462029283399
+    Attrib word_variance    -0.4147548578708194
+    Attrib digit_frequency    -4.822697067756009
+    Attrib noun_frequency    -14.757989302547807
+    Attrib phrases_per_paragraph    8.31079790574723
+    Attrib punctuation_frequency    6.372684926683072
+    Attrib rhyme_average    -1.5692943578376704
+    Attrib sentence_length_avg    0.241419455311922
+    Attrib sentence_length_max    4.18457609538413
+    Attrib sentence_length_min    4.137773751725034
+    Attrib text_length    -2.8255790233503806
+    Attrib verb_frequency    -1.330711409061898
+    Attrib word_length_average    -8.148780419318324
+Sigmoid Node 8
+    Inputs    Weights
+    Threshold    -6.140570524084305
+    Attrib NE_frequency    3.0287259506634143
+    Attrib word_variance    -12.11581044757076
+    Attrib digit_frequency    14.427464599966742
+    Attrib noun_frequency    -0.6294951629670181
+    Attrib phrases_per_paragraph    -7.927417567878948
+    Attrib punctuation_frequency    -10.634566594449552
+    Attrib rhyme_average    -3.6279769645720914
+    Attrib sentence_length_avg    -10.005313986671299
+    Attrib sentence_length_max    0.3545129184761346
+    Attrib sentence_length_min    -1.1301583616019246
+    Attrib text_length    -2.3838857773816398
+    Attrib verb_frequency    -9.680863452757215
+    Attrib word_length_average    0.08391364276532537
+Sigmoid Node 9
+    Inputs    Weights
+    Threshold    -5.9582575910849584
+    Attrib NE_frequency    1.995047911611893
+    Attrib word_variance    8.920903114326544
+    Attrib digit_frequency    -6.512205502394526
+    Attrib noun_frequency    -2.7904780753712775
+    Attrib phrases_per_paragraph    -2.5859640948127125
+    Attrib punctuation_frequency    -4.898357961999513
+    Attrib rhyme_average    3.4903181442693807
+    Attrib sentence_length_avg    -5.779329819252146
+    Attrib sentence_length_max    6.0726127264612
+    Attrib sentence_length_min    -2.8996103027243505
+    Attrib text_length    3.439642376641437
+    Attrib verb_frequency    -9.429623663140733
+    Attrib word_length_average    -13.39406709599985
+Sigmoid Node 10
+    Inputs    Weights
+    Threshold    -18.43884409841213
+    Attrib NE_frequency    4.051384412502334
+    Attrib word_variance    1.0222685154087743
+    Attrib digit_frequency    -32.31157052318825
+    Attrib noun_frequency    0.002215511654830505
+    Attrib phrases_per_paragraph    -8.12035403232927
+    Attrib punctuation_frequency    1.8507297172914305
+    Attrib rhyme_average    -0.5347559052190746
+    Attrib sentence_length_avg    8.834463892965957
+    Attrib sentence_length_max    3.6784487199034412
+    Attrib sentence_length_min    -1.28545152164529
+    Attrib text_length    1.6266576134304678
+    Attrib verb_frequency    -17.740456773036946
+    Attrib word_length_average    -11.63581334780284
+Sigmoid Node 11
+    Inputs    Weights
+    Threshold    -1.6955918924651396
+    Attrib NE_frequency    9.087973950055996
+    Attrib word_variance    1.4156535579043694
+    Attrib digit_frequency    3.542172680848269
+    Attrib noun_frequency    2.659456432098503
+    Attrib phrases_per_paragraph    2.8329419201731647
+    Attrib punctuation_frequency    -12.195893806616514
+    Attrib rhyme_average    3.8866640192198423
+    Attrib sentence_length_avg    -0.5857752969137258
+    Attrib sentence_length_max    -9.060332444999306
+    Attrib sentence_length_min    0.8372839739011537
+    Attrib text_length    -0.373166344367419
+    Attrib verb_frequency    5.391629799330033
+    Attrib word_length_average    -11.715432724130107
+Class epic
+    Input
+    Node 0
+Class drama
+    Input
+    Node 1
+Class report
+    Input
+    Node 2
+Class poetry
+    Input
+    Node 3
+
+
+Time taken to build model: 2.6 seconds
+
+=== Stratified cross-validation ===
+=== Summary ===
+
+Correctly Classified Instances        1152               91.3561 %
+Incorrectly Classified Instances       109                8.6439 %
+Kappa statistic                          0.8825
+Mean absolute error                      0.0501
+Root mean squared error                  0.1917
+Relative absolute error                 13.6637 %
+Root relative squared error             44.766  %
+Total Number of Instances             1261     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.878     0.046      0.802     0.878     0.839      0.954    epic
+                 0.921     0.019      0.937     0.921     0.929      0.987    drama
+                 0.99      0.004      0.987     0.99      0.988      0.999    report
+                 0.874     0.048      0.909     0.874     0.891      0.96     poetry
+Weighted Avg.    0.914     0.03       0.915     0.914     0.914      0.975
+
+=== Confusion Matrix ===
+
+   a   b   c   d   <-- classified as
+ 195   2   0  25 |   a = epic
+   7 268   2  14 |   b = drama
+   1   2 299   0 |   c = report
+  40  14   2 390 |   d = poetry
+

@@ -82,7 +82,7 @@ Betreuer: Éva Mújdricza-Maydt
 \item
   Experimente und Evaluation
 \item
-  Auswertung
+  Bewertung der Ergebnisse
 \item
   Aussichten\\
 \item
@@ -92,19 +92,18 @@ Betreuer: Éva Mújdricza-Maydt
 \subsection{1 Einführung}\label{einfuxfchrung}
 
 Das Ziel dieses Projektes ist eine automatische Klassifizierung von
-Texten nach ihrer Textart. Suchmaschinen könnten das zur Kategorisierung
-und damit besseren Suche vorhandener Dokumente verwenden und auch andere
-Unternehmen würden von einem internen Kategoriensystem (mit Kategorien
-wie u.a. Rechnungen, Mitarbeitergespräche, Rezensionen, etc.)
-profitieren.
+Texten nach ihrer Textart.\\
+Suchmaschinen könnten derlei Klassifikatoren zur Kategorisierung und
+damit besseren Suche vorhandener Dokumente verwenden. Auch andere
+Unternehmen würden von einem internen Kategorisierungssystem (mit
+Kategorien wie u.a. Rechnungen, Mitarbeitergespräche, Rezensionen, etc.)
+profitieren. Text-Analyse-Tools können Auskunft geben, in welchem Maß
+ein Text dem Standard seiner Kategorie entspricht.
 
 Um dieses Ziel zu erreichen, müssen viele Daten gesammelt, aufbereitet
 und analysiert werden.\\
 Features, die die Eigenschaften der unterschiedlichen Texte beschreiben,
-spielen eine wichtige Rolle bei der Genre-Klassifizierung.\\
-\ldots{}Satz zu unserem Ergebnis\\
-Weitere Schritte wären u.a. eine Erweiterung der Feature-Liste, größere
-Trainingsdatenmenge und z.B. eine einfach zu bedienende Webanwendung.
+spielen eine wichtige Rolle bei der Genre-Klassifizierung.
 
 \subsection{2 Daten}\label{daten}
 
@@ -123,29 +122,105 @@ unterteilt wurden:
 446 Gedichte
 \end{verbatim}
 
-Der zweite Korpus enthält 11950 Dateien, die wie folgt in x feinere
+Der zweite Korpus enthält 11950 Dateien, die wie folgt in 12 feinere
 Klassen eingeteilt wurden:
 
 \begin{verbatim}
-efwefwe
-fwefwfe
-wefwff
+4123 Lyrik
+105 Dramen
+134 Lustspiele
+20 Essays
+482 Tragödien
+348 Novelle
+1746 Märchen
+203 Sonette
+1307 Fabeln
+2763 Romane
+128 Balladen
+590 Erzählungen
 \end{verbatim}
 
-Die Texte werden durch den ``TextNormierer'' (Parser) aufbereitet, d.h.
+Die Texte werden durch den ``Textnormierer'' (Parser) aufbereitet, d.h.
 Satzzeichen werden durch Tags (\textless{}/\textgreater{}) ersetzt und
 unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen
-entstehen. Durch die Normierung ist die Weiterverarbeitung der Daten
-einfacher und nützliche Metadaten werden durch die Tag-Setzung
-eingebunden. Ein Nachteil ist allerdings, dass uns externe Metadaten
-verloren gehen und der Nomierer viele Datentypen zu verarbeiten hat,
-wodurch eine optimale Normierung teilweise nicht möglich ist.
+entstehen.\\
+Durch die Normierung ist die Weiterverarbeitung der Daten einfacher und
+nützliche Metadaten werden durch die Tag-Setzung eingebunden. Ein
+Nachteil ist allerdings, dass uns externe Metadaten verloren gehen und
+der Nomierer viele Datentypen zu verarbeiten hat, wodurch eine optimale
+Normierung teilweise nicht möglich ist. Zudem ist der Normierer nicht
+ausgereift. Es gibt Probleme mit Satzgrenzen und einige
+Funktionalitäten, wie Erkennung von direkter Rede oder Paragraphen, sind
+noch nicht implementiert.
 
-\textbf{AUSSCHNITT NORM\_TEXT}\\
-\textbf{AUSSCHNITT TAGGED\_TEXT}
+Ausschnitt in Rohform:
+
+\begin{verbatim}
+<BODY>
+<H1>Der Trag&ouml;die zweiter Teil</H1>
+<H2>1. Akt</H2>
+<H3>Anmutige Gegend</H3>
+<BR>
+<P><B>ariel</B><BR>
+Wenn der Bl&uuml;ten Fr&uuml;hlingsregen<BR>
+&uuml;ber alle schwebend sinkt,<BR>
+Wenn der Felder gr&uuml;ner Segen<BR>
+Allen Erdgebornen blinkt,<BR>
+Kleiner Elfen Geistergr&ouml;&szlig;e<BR>
+Eilet, wo sie helfen kann,<BR>
+Ob er heilig, ob er b&ouml;se,<BR>
+Jammert sie der Ungl&uuml;cksmann.<BR>
+Die ihr dies Haupt umschwebt im luft'gen Kreise,<BR>
+Erzeigt euch hier nach edler Elfen Weise,<BR>
+Bes&auml;nftiget des Herzens grimmen Strau&szlig;,<BR>
+Entfernt des Vorwurfs gl&uuml;hend bittre Pfeile,<BR>
+Sein Innres reinigt von erlebtem Graus.<BR>
+<I>Vier</I> sind die Pausen n&auml;chtiger Weile,<BR>
+Nun ohne S&auml;umen f&uuml;llt sie freundlich aus.<BR>
+Erst senkt sein Haupt aufs k&uuml;hle Polster nieder,<BR>
+Dann badet ihn in Tau aus Lethes Flut;<BR>
+Gelenk sind bald die krampferstarrten Glieder,<BR>
+Wenn er gest&auml;rkt dem Tag entgegenruht;<BR>
+Vollbringt der Elfen sch&ouml;nste Pflicht,<BR>
+Gebt ihn zur&uuml;ck dem heiligen Licht.<BR>
+<BR>
+\end{verbatim}
+
+Ausschnitt normiert:
+
+\begin{verbatim}
+<s>Der Tragodie zweiter Teil</s>
+
+<s>1<punct></s><s> Akt</s>
+
+<s>Anmutige Gegend</s>
+
+<s>ariel
+Wenn der Bluten Fruhlingsregen
+uber alle schwebend sinkt<comma>
+Wenn der Felder gruner Segen
+Allen Erdgebornen blinkt<comma>
+Kleiner Elfen Geistergroße
+Eilet<comma> wo sie helfen kann<comma>
+Ob er heilig<comma> ob er bose<comma>
+Jammert sie der Unglucksmann<punct></s>
+<s>Die ihr dies Haupt umschwebt im luft'gen Kreise<comma>
+Erzeigt euch hier nach edler Elfen Weise<comma>
+Besanftiget des Herzens grimmen Strauß<comma>
+Entfernt des Vorwurfs gluhend bittre Pfeile<comma>
+Sein Innres reinigt von erlebtem Graus<punct></s>
+<s>Vier sind die Pausen nachtiger Weile<comma>
+Nun ohne Saumen fullt sie freundlich aus<punct></s>
+<s>Erst senkt sein Haupt aufs kuhle Polster nieder<comma>
+Dann badet ihn in Tau aus Lethes Flut<semicolon>
+Gelenk sind bald die krampferstarrten Glieder<comma>
+Wenn er gestarkt dem Tag entgegenruht<semicolon>
+Vollbringt der Elfen schonste Pflicht<comma>
+Gebt ihn zuruck dem heiligen Licht<punct></s>
+\end{verbatim}
 
 Zusätzlich lassen wir den TreeTagger die Texte bei der Featureberechnung
-annotieren, um die so entstandenen POS-Tags und die Baumstruktur in
+annotieren, um die so entstandenen POS-Tags und die Baumstruktur in den
 Features verwenden zu können.
 
 \subsection{3 Struktur}\label{struktur}
@@ -155,12 +230,13 @@ Trainingsdaten Features zu extrahieren und sie an einen
 Klassifizierungsalgorithmus zu übergeben.\\
 Z.B. Zelch und Engel (2005) haben Wort-Features aus ihren Texten
 extrahiert, Lexeme gebildet, lemmatisiert und diese Features dann mit
-einem `SVM'-Algorithmus verarbeitet. 2015 beschrieb Ghaffari ebenfalls
-Vektoren aus extrahierten Worten, die er mit den `SVM'-, `Naive Bayes'-
-und `Decision Tree'-Algorithmen zur Textklassifikation verwendet hatte.
-Unsere Vorgehensweise ist (weitgehend) ohne Wortvektoren, mit mehr
-trivialen Features. Mit Weka lassen wir u.a. `Naive Bayes',
-`MultilayerPerceptron' und `Decision Tree' über die Daten laufen.
+einem `SVM'-Algorithmus verarbeitet.\\
+2015 beschrieb Ghaffari ebenfalls Vektoren aus extrahierten Worten, die
+er mit den `SVM'-, `Naive Bayes'- und `Decision Tree'-Algorithmen zur
+Textklassifikation verwendet hatte.\\
+Unsere Vorgehensweise ist (bisher) ohne Wortvektoren, mit mehr trivialen
+Features. Mit Weka lassen wir u.a. `Naive Bayes', `MultilayerPerceptron'
+und `Decision Tree' über die Daten laufen.
 
 \begin{figure}[htbp]
 \centering
@@ -171,63 +247,84 @@ trivialen Features. Mit Weka lassen wir u.a. `Naive Bayes',
 \subsection{4 Features}\label{features}
 
 Im Folgenden werden alle bisher verwendeten Features aufgezählt und ihre
-Funktion grob beschrieben (für einen genauen Einblick kann der Code in
-``/fea/FeatureExtractionAlgorithms.py'' nachvollzogen werden).\\
-- \emph{calcTextLength}\\
+Funktion grob beschrieben\\
+(für einen genauen Einblick kann der Code in
+``/fea/FeatureExtractionAlgorithms.py'' nachvollzogen werden):\\
+- \textbf{\emph{calcTextLength}}\\
 Berechnet die Länge der Texte und ignoriert dabei XML-Tags.\\
-Annahme: z.B. epische Texte sind meist länger als Zeitungsartikel.\\
-- \emph{calcSentenceLengthAvg} / \emph{calcSentenceLengthMax} /
-\emph{calcSentenceLengthMin}\\
+\emph{Annahme}: Z.B. epische Texte sind meist länger als
+Zeitungsartikel.\\
+- \textbf{\emph{calcSentenceLengthAvg}} /
+\textbf{\emph{calcSentenceLengthMax}} /
+\textbf{\emph{calcSentenceLengthMin}}\\
 Berechnet die durschnittliche/maximalste/minimalste Anzahl von Wörtern
 aller Sätze.\\
-Annahme: z.B. während Dramen eher kurze Sätze (u.a. Regieanweisungen)
+\emph{Annahme}: Während Dramen eher kurze Sätze (u.a. Regieanweisungen)
 beinhalten, sind epische Werke oder wissenschaftliche Arbeiten eventuell
 eher langsätzig.\\
-- \emph{calcRhymeAvg}\\
+- \textbf{\emph{calcRhymeAvg}}\\
 Zählt alle Aufkommen von Zeilenendungen und berechnet einen Durschnitt
 der wiederkehrenden Endungen.\\
-Annahme: z.B. sollten Gedichte mehr reimende Endungen enthalten als
-Zeitungsartikel.\\
-Revision: längere Texte besitzen mehr Endungen, somit eine erhöhte
-Chance auf gleiche Endungen, und Texte aus der `Poetry'-Kategorie
-besitzen weniger reine Reime als gedacht;\\
-Feature muss z.B. mit einer Schema-Prüfung verbessert werden.\\
-- \emph{calcPhrasesPerParagraph}\\
-Berechnet die Zahl der Sätze pro Zeile.\\
-Annahme: Sollte zur besseren Abgrenzung von Gedichten zu anderen
+\emph{Annahme}: Gedichte sollten mehr reimende Endungen enthalten als
+z.B. Zeitungsartikel.\\
+\emph{Revision}: Längere Texte besitzen mehr Endungen, somit eine
+erhöhte Chance auf gleiche Endungen, und Texte aus der
+``poetry''-Kategorie besitzen weniger reine Reime als gedacht, eine
+Verbesserung des Features ist von Nöten (z.B. mit einer
+Schema-Prüfung).\\
+- \textbf{\emph{calcPhrasesPerParagraph}}\\
+Berechnet die Zahl der Sätze pro Abschnitt.\\
+\emph{Annahme}: Sollte zur besseren Abgrenzung von Gedichten zu anderen
 Textsorten dienen. Während in Gedichten Sätze häufig über einen gesamten
 Vers mit mehreren Umbrüchen gehen, tritt bei epischen Texten und
-Artikeln der erste Umbruch meist erst nach einen gesamten Absatz auf.\\
-Revision: Leider vermindert die Strukturierung der Dateien den Wert des
-Features. Auch in epischen Texten sind Zeilen künstlich umgebrochen. -
-\emph{calcDigitFrequency}\\
-Berechnet\ldots{}\\
-Annahme: z.B\ldots{}.\\
-- \emph{calcPunctuationFrequency}\\
-Berechnet\ldots{}\\
-Annahme: z.B\ldots{}.\\
-- \emph{calcWordLengthAvg}\\
-Berechnet\ldots{}\\
-Annahme: z.B\ldots{}.\\
-- \emph{calcWordVariance}\\
+Artikeln der erste Umbruch meist erst nach einem gesamten Absatz auf.\\
+\emph{Revision}: Leider vermindert die Strukturierung der Dateien den
+Wert des Features. Auch in epischen Texten sind Zeilen künstlich
+umgebrochen. - \textbf{\emph{calcDigitFrequency}}\\
+Berechnet die durschnittliche Menge an Ziffern im Text.\\
+\emph{Annahme}: Wissenschaftliche Artikel benutzen meist Ziffern für
+Datumsangaben, Forschungsergebnisse, etc., während epische und poetische
+Texte sehr wenige bis keine Ziffern verwenden.\\
+- \textbf{\emph{calcPunctuationFrequency}}\\
+Berechnet das durchschnittliche Auftreten von Satzzeichen pro Text.\\
+\emph{Annahme}: Textarten unterscheiden sich in der Benutzung von
+Satzzeichen. So enthalten reports meist längere Sätze, die mit Kommata
+verschachtelt sind. Dramen haben für wörtliche Rede viele Doppelpunkte
+und kurze Sätze, die mehr Satzendzeichen hervorrufen. -
+\textbf{\emph{calcWordLengthAvg}}\\
+Berechnet die durschnittliche Anzahl von Buchstaben/Zeichen pro Wort,
+d.h. die Länge.\\
+\emph{Annahme}: Im Deutschen treten häufiger lange Worte (wie z.B.
+Wortbedeutungsdisambiguierungsalgorithmus oder
+Donaudampfschiffahrtsgesellschaftskapitän) in Wissenschaftsarbeiten und
+Reportagen auf, als in ``epic'' oder ``poetry''. Wobei letztere auch ab
+und zu lange Wortkreationen und -spielereien beinhalten. -
+\textbf{\emph{calcWordVariance}}\\
 Berechnet, wie unterschiedlich die Wortwahl im Text ist. Es wird die
 Zahl der einzigartigen Lemmata über die Gesamtzahl an Worten
 relativiert.\\
-Annahme: In Gedichten ist die Wortwahl häufig abwechslungsreicher, in
-Dramen und Artikeln vermutlich weniger.\\
-- \emph{calcNEFrequency}\\
-Berechnet\ldots{}\\
-Annahme: z.B\ldots{}.\\
-- \emph{calcVerbFrequency}\\
-Berechnet\ldots{}\\
-Annahme: z.B\ldots{}.\\
-- \emph{calcNounFrequency}\\
-Berechnet\ldots{}\\
-Annahme: z.B\ldots{}.
+\emph{Annahme}: In Gedichten ist die Wortwahl häufig
+abwechslungsreicher, in Dramen und Artikeln vermutlich weniger.\\
+- \textbf{\emph{calcNEFrequency}}\\
+Berechnet das relative Vorkommen von Named Entities (NE).\\
+\emph{Annahme}: Eigennamen tauchen wahrscheinlicher in Texten der Klasse
+``report'' auf als in ``poetry'', welche eher mehr Personalpronomen o.Ä.
+verwenden.\\
+- \textbf{\emph{calcVerbFrequency}}\\
+Berechnet das relative Vorkommen von Verben.\\
+\emph{Annahme}: Unterschiede zwischen Verbalstil und Nominalstil lassen
+auf Textarten schließen. Belletristische Texte werden oft von vielen
+Verben dominiert. (Nominalstil: siehe `calcNounFrequency')\\
+- \textbf{\emph{calcNounFrequency}}\\
+Berechnet das relative Vorkommen von Nomen.\\
+\emph{Annahme}: Unterschiede zwischen Verbalstil und Nominalstil lassen
+auf Textarten schließen. Der Nominalstil ist in wissenschaftliche und
+fachsprachliche Werken stark verbreitet. (Verbalstil: siehe
+`calcVerbFrequency')
 
 Diese Features werden durch den FEA berechnet und vom ARFFBuilder in
 einer ARFF Datei zusammengefasst. Der folgende Ausschnitt zeigt einen
-Teil dieser ARFF Datei.
+Teil dieser ARFF Datei:
 
 \begin{verbatim}
 @relation tyrex
@@ -264,14 +361,14 @@ Teil dieser ARFF Datei.
 \subsection{5 Experimente und
 Evaluation}\label{experimente-und-evaluation}
 
-Es wurden Experimente auf den grob und fein gegliederten Datensätzen
+Es wurden Experimente auf den grob- und feingegliederten Datensätzen
 ausgeführt.\\
-Als Baseline wird in beiden Fällen ein ZeroR Algorithmus verwendet der
-alle Instanzen mit der häufigsten Klasse klassifiziert.\\
-Die Evaluation verwendet CrossValidation mit 10 folds.
+Als Baseline wird in beiden Fällen ein `ZeroR'-Algorithmus verwendet,
+der alle Instanzen mit der häufigsten Klasse klassifiziert. Die
+Evaluation verwendet `CrossValidation' mit 10 folds.
 
 \textbf{Grober Datensatz}\\
-Der grob gegliederte Datensatz enthält 1261 Instanzen die auf 4 Klassen
+Der grob gegliederte Datensatz enthält 1261 Instanzen, die auf 4 Klassen
 verteilt sind. Diese Verteilung verhält sich wie folgt:
 
 \begin{verbatim}
@@ -281,8 +378,9 @@ verteilt sind. Diese Verteilung verhält sich wie folgt:
 446 Gedichte
 \end{verbatim}
 
-Die \emph{Baseline} klassifiziert etwa 35\% aller Instanzen korrekt. Im
-folgenden eine detailliertere Übersicht der Ergebnisse der Baseline:
+Die \textbf{\emph{Baseline}} klassifiziert etwa 35\% aller Instanzen
+korrekt. Im Folgenden eine detailliertere Übersicht der Ergebnisse der
+Baseline:
 
 \begin{verbatim}
 Correctly Classified Instances         446               35.3688 %
@@ -304,7 +402,7 @@ Total Number of Instances             1261
 Weighted Avg.    0.354     0.354      0.125     0.354     0.185      0.496
 \end{verbatim}
 
-Es wurde ein \emph{Experiment} mit 9 verschiedenen Algorithmen
+Es wurde ein \textbf{\emph{Experiment}} mit 9 verschiedenen Algorithmen
 durchgeführt.
 
 \begin{verbatim}
@@ -319,8 +417,8 @@ durchgeführt.
 (9) trees.J48 '-C 0.25 -M 2' -217733168393644444
 \end{verbatim}
 
-Die Ergebnisse zeigen, dass alle gewählten Algorithmen in
-unterschiedlichem Ausmaß die Baseline übertreffen.
+Die Ergebnisse zeigen, dass alle gewählten Algorithmen die Baseline in
+unterschiedlichem Ausmaß übertreffen.
 
 \begin{verbatim}
 Dataset                   (4) function | (1) rules (2) bayes (3) funct (5) funct (6) funct (7) lazy. (8) meta. (9) trees
@@ -330,14 +428,14 @@ tyrex                     (30)   92.10 |   35.37 *   85.80 *   91.65     92.04  
                                (v/ /*) |   (0/0/1)   (0/0/1)   (0/1/0)   (0/1/0)   (0/0/1)   (0/1/0)   (0/0/1)   (0/0/1)
 \end{verbatim}
 
-Die besten Ergebnisse erreicht der MultilayerPerceptron. Logistic,
-SimpleLogistic und KStar erreichen jedoch Leistungen, die nicht
-signifikant schlechter sind. Dies ist besonders in Hinsicht auf Logistic
-und SimpleLogistic von Bedeutung, da ihre Berechnung bedeutend weniger
-aufwendig ist.
+Die besten Ergebnisse erreicht der `MultilayerPerceptron'. `Logistic',
+`SimpleLogistic' und `KStar' erreichen jedoch Leistungen, die nicht
+signifikant schlechter sind. Dies ist besonders in Hinsicht auf
+`Logistic' und `SimpleLogistic' von Bedeutung, da ihre Berechnung
+bedeutend weniger aufwendig ist.
 
-Eine genauere Betrachtung des MultiLayerPerceptrons liefert die folgende
-Evaluierung:
+Eine genauere Betrachtung des `MultiLayerPerceptrons' liefert die
+folgende Evaluierung:
 
 \begin{verbatim}
 Correctly Classified Instances        1164               92.3077 %
@@ -359,17 +457,17 @@ Total Number of Instances             1261
 Weighted Avg.    0.923     0.03       0.923     0.923     0.923      0.979
 \end{verbatim}
 
-Bei einer Precision von 92.3077 \% sind diese Ergebnisse sehr gut. Die
-gewählten Features sind offensichtlich ausreichend, um einen sehr
-genauen Classifier für diese 4 Klassen zu trainieren. Die Klasse report
-erreicht einen beeindruckenden Recall Wert von 0.993. Quasi alle
-Zeitungsartikel wurden also auch als solche erkannt. Eventuell ist das
-aber auch auf ein Overfitting zurückzuführen, basierend auf der über
-alle Instanzen der Klasse hinweg gleichen Quelle.
+Bei einer \emph{Precision} von 92.3077 \% sind diese Ergebnisse sehr
+gut. Die gewählten Features sind offensichtlich ausreichend, um einen
+sehr genauen Klassifikator für diese 4 Klassen zu trainieren. Die Klasse
+``report'' erreicht einen beeindruckenden \emph{Recall}-Wert von 0.993.
+Quasi alle Zeitungsartikel wurden also auch als solche erkannt.
+Eventuell ist das aber auch auf ein Overfitting zurückzuführen,
+basierend auf der über alle Instanzen der Klasse hinweg gleichen Quelle.
 
-Anhand der verschiedenen Precision und Recall Werte für die einzelnen
-Klassen lässt sich bereits eine Vermutung machen die mit der Confusion
-Matrix bestätigt wird.
+Anhand der verschiedenen Precision- und Recall-Werte für die einzelnen
+Klassen lässt sich bereits eine Vermutung machen, die mit der
+\emph{Confusion Matrix} bestätigt wird.
 
 \begin{verbatim}
 === Confusion Matrix ===
@@ -381,27 +479,29 @@ Matrix bestätigt wird.
   26  12   1 407 |   d = poetry
 \end{verbatim}
 
-Während \texttt{drama} und \texttt{report} sehr gut klassifiziert
-werden, sowohl hinsichtlich Precision als auch Recall, gibt es
-Verwirrungen zwischen Epic und Poetry.
+Während ``drama'' und ``report'' sehr gut klassifiziert werden, sowohl
+hinsichtlich Precision als auch Recall, gibt es Verwirrungen zwischen
+``epic'' und ``poetry''.
 
 Gründe hierfür sind u.a. wohl Ähnlichkeiten in Hinblick auf
-Zeichensetzung und Schreibstil. Sowohl bezüglich der NounFrequency als
-auch der VerbFrequency sind Texte beider Klassen kaum zu
+Zeichensetzung und Schreibstil. Sowohl bezüglich der `NounFrequency' als
+auch der `VerbFrequency' sind Texte beider Klassen kaum zu
 unterscheiden.\\
 Features, die zur besseren Unterscheidung dieser Klassen dienen sollten,
 konnten aufgrund der Beschaffenheit der Texte zudem nicht immer richtig
-greifen. So sind die Epischen Texte leider nicht anhand der Paragraphen
-umgebrochen. Dadurch kann nicht zwischen Gedichtszeilen und
-layoutbedingten Umbrüchen in epischen Texten unterschieden werden.
+greifen. So sind die epischen Texte leider nicht an den
+Paragraphenabschnitten umgebrochen, dadurch kann nicht zwischen
+Gedichtszeilen und layoutbedingten Umbrüchen in epischen Texten
+unterschieden werden.
 
-Verbesserte Features (z.B. bzgl. Rhymes) und evtl. Parserfunktionalität,
-die Paragraphen erkennt, könnten dieses Problem umgeben.
+Verbesserte Features (z.B. bzgl. `Rhymes') und evtl.
+Parserfunktionalität, die Paragraphen erkennt, könnten dieses Problem
+umgehen.
 
 \textbf{Feiner Datensatz}
 
 Der feinere Datensatz enthält insgesamt 11949 erfolgreich geparste
-Instanzen. Diese verteilen sich folgendermaßen auf insgesamt 11 Klassen
+Instanzen. Diese verteilen sich folgendermaßen auf insgesamt 11 Klassen:
 
 \begin{verbatim}
 lyrik: 4123
@@ -419,11 +519,12 @@ erzaehlung: 590
 \end{verbatim}
 
 Ein offensichtliches Problem des Datensatzes ist die ungleiche
-Verteilung der Daten. Da die Texte per Hand annotiert wurden war eine
+Verteilung der Daten. Da die Texte per Hand annotiert wurden, war eine
 bessere Annotation in Anbetracht der knappen Zeit nicht möglich.
 
-Als \emph{Baseline} wurde auch hier ZeroR gewählt. Die Baseline erreicht
-einen Wert von 34.505\% korrekt klassifizierten Instanzen.
+Als \textbf{\emph{Baseline}} wurde auch hier `ZeroR' gewählt. Die
+Baseline erreicht einen Wert von 34.505\% korrekt klassifizierten
+Instanzen.
 
 \begin{verbatim}
 === Summary ===
@@ -455,12 +556,12 @@ Total Number of Instances            11949
 Weighted Avg.    0.345     0.345      0.119     0.345     0.177      0.499
 \end{verbatim}
 
-Insbesondere die durschnittliche Precision von 0.119 sollten bessere
-Algorithmen übertreffen können.
+Insbesondere die durschnittliche \emph{Precision} von 0.119 sollten
+bessere Algorithmen übertreffen können.
 
-Bei einem Experiment mit 7 verschiedenen Algorithmen hat sich X als
-bester Classifier herausgestellt. Es wurden die folgenden Algorithmen
-verwendet:
+Bei einem \textbf{\emph{Experiment}} mit 7 verschiedenen Algorithmen hat
+sich ein `MultiLayerPerceptron' als bester Klassifikator herausgestellt.
+Es wurden die folgenden Algorithmen verwendet:
 
 \begin{verbatim}
 (1) rules.ZeroR '' 48055541465867954
@@ -472,9 +573,9 @@ verwendet:
 (7) functions.MultilayerPerceptron '-L 0.3 -M 0.2 -N 500 -V 0 -S 0 -E 20 -H a' -5990607817048210779
 \end{verbatim}
 
-Neben dem MultiLayerPerceptron haben sich die restlichen Algorithmen bis
-auf NaiveBayes als ähnlich präzise herausgestellt. Die Ergebnisse des
-J48 Baum sogar innerhalb der Signifikanzschwelle. Alle Algorithmen
+Neben dem `MultiLayerPerceptron' haben sich die restlichen Algorithmen,
+bis auf `NaiveBayes', als ähnlich präzise herausgestellt. Die Ergebnisse
+des `J48 Baum' sogar innerhalb der Signifikanzschwelle. Alle Algorithmen
 übertreffen die Baseline.
 
 \begin{verbatim}
@@ -485,8 +586,8 @@ tyrex                      (9)   34.50 |   47.68 v   69.16 v   69.20 v   65.86 v
                            (v/ /*) |   (1/0/0)   (1/0/0)   (1/0/0)   (1/0/0)   (1/0/0)   (1/0/0)
 \end{verbatim}
 
-Nimmt man den MultiLayerPerceptron genauer unter die Lupe, ergeben sich
-die folgenden Evaluationsergebnisse:
+Nimmt man den `MultiLayerPerceptron' genauer unter die Lupe, ergeben
+sich die folgenden Evaluationsergebnisse:
 
 \begin{verbatim}
 === Summary ===
@@ -534,43 +635,103 @@ Weighted Avg.    0.717     0.081      0.677     0.717     0.681      0.928
     8  269    0    9    0   14  218    4    0   75    0  710 |    l = fabel
 \end{verbatim}
 
-Obwohl die erreichten Werte in Precision, Recall und F-Measure relativ
-hoch sind, zeigt ein Blick auf die detailliertere Auswertung, dass diese
-Evaluierungsmaße nur in den Klassen gute Werte erreichen, für die viele
-Instanzen verfügbar sind. Precision Werte über 0.6 erreichen lediglich
-die 4 größten Klassen (lyrik, märchen, roman, fabel). Einen Recall Wert
-über 0.6 erreichen lediglich die Klassen Lyrik, Tragödie, Märchen und
-Roman. Auffällig sind besonders die hohen Recall Werte von
-\textasciitilde{} 0.9 der Klassen lyrik und roman.
+Obwohl die erreichten Werte in \emph{Precision}, \emph{Recall} und
+\emph{F-Measure} relativ hoch sind, zeigt ein Blick auf die
+detailliertere Auswertung, dass diese Evaluierungsmaße nur in den
+Klassen gute Werte erreichen, für die viele Instanzen verfügbar sind.
+Precision-Werte über 0.6 erreichen lediglich die 4 größten Klassen
+(``lyrik'', ``märchen'', ``roman'', ``fabel''). Einen Recall-Wert über
+0.6 erreichen lediglich die Klassen ``lyrik'', ``tragödie'', ``märchen''
+und ``roman''. Auffällig sind besonders die hohen Recall-Werte von
+\textasciitilde{} 0.9 der Klassen ``lyrik'' und ``roman''.
 
-Zurückzuführen sind diese Beobachtungen auf zum einen die ungleiche
-Verteilung der Klassen, die ein gutes trainieren des Models erschwert.
-Es kann angenommen werden dass die Modelle für kleinere Klassen stark
+Zurückzuführen sind diese Beobachtungen zum Einen auf die ungleiche
+Verteilung der Klassen, die ein gutes Trainieren des Modells erschwert.
+Es kann angenommen werden, dass die Modelle für kleinere Klassen stark
 overfitten.\\
-Zudem ist ersichtlich dass die gewählten Features allein nicht
+Zum Anderen ist ersichtlich, dass die gewählten Features alleine nicht
 ausreichen, um eine so feine Unterteilung vorzunehmen. Selbst für einen
-Menschen kann eine derartige Unterteilung schwer sein, deshalb ist dies
-ein komplexeres Problem.
+Menschen kann eine derartige Unterteilung schwer sein, weshalb dies ein
+komplexeres Problem ergibt.
 
-\subsection{6 Auswertung}\label{auswertung}
+\subsection{6 Bewertung der Ergebnisse}\label{bewertung-der-ergebnisse}
 
-blablabla
+Insgesamt ließ sich die Zielsetzung der Klassifizierung von Texten in
+Textarten erfüllen. Es wurden zudem Probleme offengelegt, die mit
+feineren Klassen auftreten und durch verschiedene Dateiformatierungen
+und -encodings entstehen.
+
+Während eine Klassifizierung in grobe Klassen (hier ``report'',
+``drama'', ``epic'' und ``lyrik/poetry'') gut funktioniert (Precision,
+Recall \& F-Measure über 0.9), ist eine Klassifizierung in weitere
+Unterklassen dieser Hauptkategorien mit größeren Schwierigkeiten
+verbunden. Das kann zum Einen an der nicht ausgereiften, vorangehenden
+Normierung der Texte liegen. Paragraphen werden nicht erkannt und auch
+die Erkennung von Satzgrenzen ist eher primitiv.\\
+Zum Anderen reichen die Features nicht aus, um derlei genaue
+Unterschiede zu erkennen, die teilweise vom Menschen schwer zu ermitteln
+sind und eventuell auch in der Annotierung nicht durchweg beachtet
+wurden. Hier würde eine bessere Datenbasis genauere Schlüsse über den
+Wert und die Schwachpunkte verschiedener Features zulassen.
+
+Im Allgemeinen lässt sich vermuten, dass Features auf inhaltlicher Ebene
+bessere Ergebnisse erzielen könnten. Solche könnten terminologische
+Beschreibungen, rhetorische Mittel und Stimmungsanalysen anhand der
+Wortwahl umfassen.
+
+Die Features, die im Groben erfolgreich waren, beweisen zudem
+verschiedene Qualitäten. Eine Filterung der Features in Weka
+(`AttributeSelection' mit Standardeinstellungen) zeigt auf, dass im
+Besonderen die folgenden Features entscheidend sind:
+
+\begin{verbatim}
+NE_frequency
+word_variance
+digit_frequency
+noun_frequency
+phrases_per_paragraph
+punctuation_frequency
+sentence_length_min
+text_length
+verb_frequency
+word_length_average
+\end{verbatim}
+
+Damit wurden folgende Features herausgefiltert:
+
+\begin{verbatim}
+rhyme_average
+sentence_length_max
+sentence_length_avg
+\end{verbatim}
+
+Das `Rhyme'-Feature ist offensichtlich noch nicht ausgereift genug, um
+eine ausschlaggebende Aussage zu treffen. Die Features zur Satzlänge
+sind wohl zu einem gewissen Grad redundant. Warum die Länge des
+kürzesten Satzes relevanter ist, als die des längstens, bedarf weiterer
+Analysen. Grund hierfür kann aber auch die Normierung und ihre Probleme
+mit Satzgrenzen sein.
 
 \subsection{7 Aussichten}\label{aussichten}
 
 Eine Verbesserung der Klassifizierung könnte weiterhin mit größeren und
 ausgewogeneren Datenmengen erzielt werden. Diese sind allerdings meist
 schwierig zu finden, vorallem sobald eine Aufteilung in feinere Klassen
-erfolgen soll.\\
+erfolgen soll.
+
 Bei der Anwendung der Feature-Methoden fällt auf, dass einige Ergebnisse
-nicht immer wie erwartet ausfallen:\\
-u.a. der durchschnittliche Reimwert bei `Poetry' ist vergleichsweise
+nicht immer wie erwartet ausfallen und somit eine Erweiterung
+benötigen:\\
+u.a. der durchschnittliche Reimwert bei ``poetry'' ist vergleichsweise
 sehr niedrig, obwohl dieser Feature eigens für Gedichterkennung gedacht
-war. Eine Entwicklung weiterer Features (die z.B. Terminologien
-vergleichen) ist ratsam, ebenfalls könnte man durch weitere Experimente
-und weitere feinere Klasse ein besseres Ergebnis erzielen. Kombinationen
-dieses Projekts mit anderen Forschungsprojekten wären eine Überlegung
-wert.
+war. Dieser Feature muss z.B. mit einer Schema-Prüfung verbessert
+werden.
+
+Weitere Schritte wären u.a. eine Erweiterung der Feature-Liste (z.B. ein
+Terminologienvergleich), weitere Experimente und eine einfach zu
+bedienende Webanwendung.\\
+Kombinationen dieses Projekts mit anderen Forschungsprojekten wären eine
+Überlegung wert.
 
 \subsection{8 Literatur}\label{literatur}
 
