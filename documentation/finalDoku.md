@@ -85,7 +85,7 @@ Annahme: z.B. sollten Gedichte mehr reimende Endungen enthalten als Zeitungsarti
 Revision: längere Texte besitzen mehr Endungen, somit eine erhöhte Chance auf gleiche Endungen, und Texte aus der 'Poetry'-Kategorie besitzen weniger reine Reime als gedacht;  
 Feature muss z.B. mit einer Schema-Prüfung verbessert werden.  
 - *calcPhrasesPerParagraph*    
-Berechnet die Zahl der Sätze pro Zeile.  
+Berechnet die Zahl der Sätze pro Abschnitt.  
 Annahme: Sollte zur besseren Abgrenzung von Gedichten zu anderen Textsorten dienen. Während in Gedichten Sätze häufig über einen gesamten Vers mit mehreren Umbrüchen gehen, tritt bei epischen Texten und Artikeln
 der erste Umbruch meist erst nach einen gesamten Absatz auf.  
 Revision: Leider vermindert die Strukturierung der Dateien den Wert des Features. Auch in epischen Texten sind Zeilen künstlich umgebrochen.
