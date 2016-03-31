@@ -161,6 +161,7 @@ class ARFFBuilder():
 
 		@returns	None
 		"""
+
 		for feature in self.f_order:
 			if feature == "class":
 				possible_values = self.toAtrrListString(self.extractPossibleValues(feature))
@@ -183,6 +184,7 @@ class ARFFBuilder():
 
 		@returns	None
 		"""
+
 		self.addToARFF("@DATA")
 		for vector in self.vectors:
 			line = ""
@@ -208,6 +210,7 @@ class ARFFBuilder():
 
 		@returns	None
 		"""
+
 		self.writeHead()
 		self.writeSpacer()
 		self.writeFeatureList()

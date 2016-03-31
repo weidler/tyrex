@@ -11,14 +11,14 @@ Inhaltsverzeichnis
 3. Struktur
 4. Features  
 5. Experimente und Evaluation
-6. Auswertung
+6. Bewertung der Ergebnisse
 7. Aussichten  
 8. Literatur
 
 1 Einführung     
 -------
 Das Ziel dieses Projektes ist eine automatische Klassifizierung von Texten nach ihrer Textart.
-Suchmaschinen könnten das zur Kategorisierung und damit besseren Suche vorhandener Dokumente verwenden und auch andere Unternehmen würden von einem internen Kategoriensystem (mit Kategorien wie u.a. Rechnungen, Mitarbeitergespräche, Rezensionen, etc.) profitieren.  
+Suchmaschinen könnten derlei Klassifizierer zur Kategorisierung und damit besseren Suche vorhandener Dokumente verwenden und auch andere Unternehmen würden von einem internen Kategoriensystem (mit Kategorien wie u.a. Rechnungen, Mitarbeitergespräche, Rezensionen, etc.) profitieren. Text-Analyse-Tools können Auskunft geben, in welchem Maß ein Text dem Standart seiner Kategorie entspricht.
 
 Um dieses Ziel zu erreichen, müssen viele Daten gesammelt, aufbereitet und analysiert werden.  
 Features, die die Eigenschaften der unterschiedlichen Texte beschreiben, spielen eine wichtige Rolle bei der Genre-Klassifizierung.  
@@ -43,14 +43,72 @@ Der zweite Korpus enthält 11950 Dateien, die wie folgt in x feinere Klassen ein
 
 Die Texte werden durch den "Textnormierer" (Parser) aufbereitet, d.h. Satzzeichen werden durch Tags (\</\>) ersetzt und unnötige Zeichen entfernt, sodass geordnete Zeilen- und Satzgrenzen entstehen.
 Durch die Normierung ist die Weiterverarbeitung der Daten einfacher und nützliche Metadaten werden durch die Tag-Setzung eingebunden. Ein Nachteil ist allerdings, dass uns externe Metadaten
-verloren gehen und der Nomierer viele Datentypen zu verarbeiten hat, wodurch eine optimale Normierung teilweise nicht möglich ist.  
+verloren gehen und der Nomierer viele Datentypen zu verarbeiten hat, wodurch eine optimale Normierung teilweise nicht möglich ist. Zudem ist der Normierer nicht ausgereift. Es gibt Probleme mit Satzgrenzen und einige Funktionalitäten wie Erkennung von direkter Rede oder Paragraphen ist noch nicht implementiert.
 
-**AUSSCHNITT NORM_TEXT**  
-**AUSSCHNITT TAGGED_TEXT**
+Ausschnitt in Rohform:
+
+    <BODY>
+    <H1>Der Trag&ouml;die zweiter Teil</H1>
+    <H2>1. Akt</H2>
+    <H3>Anmutige Gegend</H3>
+    <BR>
+    <P><B>ariel</B><BR>
+    Wenn der Bl&uuml;ten Fr&uuml;hlingsregen<BR>
+    &uuml;ber alle schwebend sinkt,<BR>
+    Wenn der Felder gr&uuml;ner Segen<BR>
+    Allen Erdgebornen blinkt,<BR>
+    Kleiner Elfen Geistergr&ouml;&szlig;e<BR>
+    Eilet, wo sie helfen kann,<BR>
+    Ob er heilig, ob er b&ouml;se,<BR>
+    Jammert sie der Ungl&uuml;cksmann.<BR>
+    Die ihr dies Haupt umschwebt im luft'gen Kreise,<BR>
+    Erzeigt euch hier nach edler Elfen Weise,<BR>
+    Bes&auml;nftiget des Herzens grimmen Strau&szlig;,<BR>
+    Entfernt des Vorwurfs gl&uuml;hend bittre Pfeile,<BR>
+    Sein Innres reinigt von erlebtem Graus.<BR>
+    <I>Vier</I> sind die Pausen n&auml;chtiger Weile,<BR>
+    Nun ohne S&auml;umen f&uuml;llt sie freundlich aus.<BR>
+    Erst senkt sein Haupt aufs k&uuml;hle Polster nieder,<BR>
+    Dann badet ihn in Tau aus Lethes Flut;<BR>
+    Gelenk sind bald die krampferstarrten Glieder,<BR>
+    Wenn er gest&auml;rkt dem Tag entgegenruht;<BR>
+    Vollbringt der Elfen sch&ouml;nste Pflicht,<BR>
+    Gebt ihn zur&uuml;ck dem heiligen Licht.<BR>
+    <BR>
+
+Ausschnitt normiert:
+
+    <s>Der Tragodie zweiter Teil</s>
+
+    <s>1<punct></s><s> Akt</s>
+
+    <s>Anmutige Gegend</s>
+
+    <s>ariel
+    Wenn der Bluten Fruhlingsregen
+    uber alle schwebend sinkt<comma>
+    Wenn der Felder gruner Segen
+    Allen Erdgebornen blinkt<comma>
+    Kleiner Elfen Geistergroße
+    Eilet<comma> wo sie helfen kann<comma>
+    Ob er heilig<comma> ob er bose<comma>
+    Jammert sie der Unglucksmann<punct></s>
+    <s>Die ihr dies Haupt umschwebt im luft'gen Kreise<comma>
+    Erzeigt euch hier nach edler Elfen Weise<comma>
+    Besanftiget des Herzens grimmen Strauß<comma>
+    Entfernt des Vorwurfs gluhend bittre Pfeile<comma>
+    Sein Innres reinigt von erlebtem Graus<punct></s>
+    <s>Vier sind die Pausen nachtiger Weile<comma>
+    Nun ohne Saumen fullt sie freundlich aus<punct></s>
+    <s>Erst senkt sein Haupt aufs kuhle Polster nieder<comma>
+    Dann badet ihn in Tau aus Lethes Flut<semicolon>
+    Gelenk sind bald die krampferstarrten Glieder<comma>
+    Wenn er gestarkt dem Tag entgegenruht<semicolon>
+    Vollbringt der Elfen schonste Pflicht<comma>
+    Gebt ihn zuruck dem heiligen Licht<punct></s>
+
 
 Zusätzlich lassen wir den TreeTagger die Texte bei der Featureberechnung annotieren, um die so entstandenen POS-Tags und die Baumstruktur in den Features verwenden zu können.
-
-
 
 3 Struktur
 -------
@@ -351,9 +409,32 @@ Obwohl die erreichten Werte in *Precision*, *Recall* und *F-Measure* relativ hoc
 Zurückzuführen sind diese Beobachtungen zum Einen auf die ungleiche Verteilung der Klassen, die ein gutes Trainieren des Modells erschwert. Es kann angenommen werden, dass die Modelle für kleinere Klassen stark overfitten.    
 Zum Anderen ist ersichtlich, dass die gewählten Features alleine nicht ausreichen, um eine so feine Unterteilung vorzunehmen. Selbst für einen Menschen kann eine derartige Unterteilung schwer sein, weshalb dies ein komplexeres Problem ergibt.
 
-6 Auswertung
+6 Bewertung der Ergebnisse
 -------
-blablabla
+Insgesamt ließ sich die Zielsetzung der Klassifizierung von Texten in Textarten erfüllen. Es wurden zudem Probleme offengelegt, die mit feineren Klassen auftreten und durch verschiedene Dateiformatierungen und -encodings entstehen.
+
+Während eine Klassifizierung in grobe Klassen (hier report, drama, epic und lyrik/poetry) gut funktioniert (Precision, Recall & F-Measure über 0.9), ist eine Klassifizierung in weitere Unterklassen dieser Hauptkategorien mit größeren Schwierigkeiten verbunden. Das kann zum Einen an der nicht ausgereiften vorangehenden Normierung der Texte liegen. Paragraphen werden nicht erkannt und auch die Erkennung von Satzgrenzen ist eher primitiv. Zum Anderen reichen die Features nicht aus um derlei genaue Unterschiede zu erkennen, die teilweise vom Menschen schwer zu ermitteln sind und eventuell auch in der Annotierung nicht durchweg beachtet wurden. Hier würde eine bessere Datenbasis genauere Schlüsse über den Wert und die Schwachpunkte verschiedener Features zulassen. Im Allgemeinen lässt sich vermuten, dass Features auf inhaltlicher Ebene bessere Ergebnisse erzielen könnten. Solche könnten terminologische Beschreibungen, rhetorische Mittel und Stimmungsanalysen anhand der Wortwahl umfassen.
+
+Die Features, die im groben erfolgreich waren, beweisen zudem verschiedene Qualität. Eine Filterung der Features in Weka (AttributeSelection mit Standardeinstellungen) zeigt auf, dass im Besonderen die folgenden Features entscheidend sind:
+
+    NE_frequency
+    word_variance
+    digit_frequency
+    noun_frequency
+    phrases_per_paragraph
+    punctuation_frequency
+    sentence_length_min
+    text_length
+    verb_frequency
+    word_length_average
+
+damit wurden folgende Features herausgefiltert:
+
+    rhyme_average
+    sentence_length_max
+    sentence_length_avg
+
+Das Rhyme Feature ist offensichtlich noch nicht ausgereift genug um eine ausschlaggebende Aussage zu treffen. Die Features zur Satzlänge sind wohl zu einem gewissen Grad redundant. Warum die Länge des kürzesten Satzes relevanter ist als die des längstens, bedarf weiterer Analysen. Grund hierfür kann aber auch die Normierung sein und ihré Probleme mit Satzgrenzen.
 
 7 Aussichten
 -------
